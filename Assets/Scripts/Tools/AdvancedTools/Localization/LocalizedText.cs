@@ -1,33 +1,36 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
-using System;
-
-[RequireComponent(typeof(Text))]
-public class LocalizedText : MonoBehaviour
+﻿namespace Tools.Data.Localization
 {
-    public string key;
-    public bool show = false;
+    using UnityEngine;
+    using UnityEngine.UI;
+    using System;
 
-    private Text textComponent;
-
-    private void Start()
+    [RequireComponent(typeof(Text))]
+    public class LocalizedText : MonoBehaviour
     {
-        if (textComponent == null) textComponent = GetComponent<Text>();
-        textComponent.text = Localization.Instance.TryGetText(key);
-        Localization.Instance.AddEventListener(OnLanguageChanged);
-    }
+        public string key;
+        public bool show = false;
 
-    public void OnLanguageChanged()
-    {
-        textComponent.text = Localization.Instance.TryGetText(key);
-    }
+        private Text textComponent;
 
-    
+        private void Start()
+        {
+            if (textComponent == null) textComponent = GetComponent<Text>();
+            textComponent.text = Localization.Instance.TryGetText(key);
+            Localization.Instance.AddEventListener(OnLanguageChanged);
+        }
 
-    private void OnValidate()
-    {
-        if (!show) return;
-        if (textComponent == null) textComponent = GetComponent<Text>();
-        textComponent.text = "[" + key + "]";
+        public void OnLanguageChanged()
+        {
+            textComponent.text = Localization.Instance.TryGetText(key);
+        }
+
+
+
+        private void OnValidate()
+        {
+            if (!show) return;
+            if (textComponent == null) textComponent = GetComponent<Text>();
+            textComponent.text = "[" + key + "]";
+        }
     }
 }

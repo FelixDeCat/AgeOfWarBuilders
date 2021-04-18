@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Tools.GameObjectTools;
 
 public enum SensorType { barrido, otros }
 

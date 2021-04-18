@@ -29,6 +29,8 @@ namespace Tools
                 current = own.currentSelectedGameObject;
             }
 
+            
+
             if (Mathf.Abs(Input.GetAxis("Horizontal_Menu")) > 0 || Mathf.Abs(Input.GetAxis("Vertical_Menu")) > 0)
             {
                 if (own.currentSelectedGameObject == null)

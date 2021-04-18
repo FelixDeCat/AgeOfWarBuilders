@@ -1,39 +1,43 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Tools.Extensions;
-
-public class SectorManager : MonoBehaviour
+﻿namespace Tools.ProceduralTools
 {
-    public List<Sector> sectors;
+    using System.Collections;
+    using System.Collections.Generic;
+    using UnityEngine;
+    using Tools.Extensions;
 
-    private void Awake() {
-        Recalculate();
-        sectors.ForEach(x => {
-            x.Initialize();
-            x.Optimize();
-        });
-
-    }
-
-    public Vector2 FindRandomPos()
+    public class SectorManager : MonoBehaviour
     {
-        for (int i = 0; i < sectors.Count; i++)
+        public List<Sector> sectors;
+
+        private void Awake()
         {
-            if (!sectors[i].IsVisited)
-            {
-                sectors[i].IsVisited = true;
-                return sectors[i].GetRandomPos();
-            }
-        }
-        Recalculate();
-        sectors[0].IsVisited = true;
-        return sectors[0].GetRandomPos();
-    }
+            Recalculate();
+            sectors.ForEach(x => {
+                x.Initialize();
+                x.Optimize();
+            });
 
-    void Recalculate()
-    {
-        sectors.ForEach(x => x.IsVisited = false);
-        sectors.Randomize();
+        }
+
+        public Vector2 FindRandomPos()
+        {
+            for (int i = 0; i < sectors.Count; i++)
+            {
+                if (!sectors[i].IsVisited)
+                {
+                    sectors[i].IsVisited = true;
+                    return sectors[i].GetRandomPos();
+                }
+            }
+            Recalculate();
+            sectors[0].IsVisited = true;
+            return sectors[0].GetRandomPos();
+        }
+
+        void Recalculate()
+        {
+            sectors.ForEach(x => x.IsVisited = false);
+            sectors.Randomize();
+        }
     }
 }

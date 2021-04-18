@@ -1,12 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class ShutDownRenderOnPlay : MonoBehaviour
+﻿
+namespace Tools.GameObjectTools
 {
-    void Start()
+    using UnityEngine;
+
+    public class ShutDownRenderOnPlay : MonoBehaviour
     {
-        GetComponent<Renderer>().enabled = false;
-        enabled = false;
+        void Start()
+        {
+            GetComponent<Renderer>().enabled = false;
+            enabled = false;
+        }
     }
 }

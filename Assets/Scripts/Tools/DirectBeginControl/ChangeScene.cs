@@ -1,36 +1,39 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Tools.Testing;
-using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.SceneManagement;
-
-public class ChangeScene : MonoBehaviour
+﻿namespace Tools.Testing.SceneJumper
 {
-    public float timer = 1;
-    public string scene = "level_to_change";
-    public bool stayHere;
+    using System.Collections;
+    using System.Collections.Generic;
+    using Tools.Testing;
+    using UnityEngine;
+    using UnityEngine.Events;
+    using UnityEngine.SceneManagement;
 
-    void Start()
+    public class ChangeScene : MonoBehaviour
     {
-        Invoke("Execute", timer);
-    }
-    void Execute()
-    {
-        if (DirectBegin_Jumper.instance != null)
+        public float timer = 1;
+        public string scene = "level_to_change";
+        public bool stayHere;
+
+        void Start()
         {
-            DirectBegin_Jumper.instance.JumpTo();
-            return;
+            Invoke("Execute", timer);
         }
-        if (!stayHere)
+        void Execute()
         {
-            Scenes.Load(scene);
+            if (DirectBegin_Jumper.instance != null)
+            {
+                DirectBegin_Jumper.instance.JumpTo();
+                return;
+            }
+            if (!stayHere)
+            {
+                Scenes.Load(scene);
+            }
+
+
         }
-
-
-    }
-    public void ForceExecute()
-    {
-        SceneManager.LoadScene(scene);
+        public void ForceExecute()
+        {
+            SceneManager.LoadScene(scene);
+        }
     }
 }

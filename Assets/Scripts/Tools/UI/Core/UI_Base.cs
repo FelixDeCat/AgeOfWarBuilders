@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using AgeOfWar.Global;
 
 [RequireComponent(typeof(UI_Anim_Code))] 
 public abstract class UI_Base : MonoBehaviour

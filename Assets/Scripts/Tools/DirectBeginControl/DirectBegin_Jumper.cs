@@ -5,7 +5,7 @@
 /// si es asi, este avisa con un event y hace que se Saltee la
 /// escena de Menu
 /////////////////////////////////////////////////////////////
-namespace Tools.Testing
+namespace Tools.Testing.SceneJumper
 {
     using UnityEngine;
     public class DirectBegin_Jumper : MonoBehaviour

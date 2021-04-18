@@ -5,11 +5,12 @@
 /// Esto es basicamente para que no tengas que abrir el Load
 /// cada vez que queres testear algo
 /////////////////////////////////////////////////////////////
-namespace Tools.Testing
+namespace Tools.Testing.SceneJumper
 {
     using UnityEngine;
     using System.Linq;
     using System.Collections;
+    using AgeOfWar.Global;
 
     public class DirectBegin_Scene : MonoBehaviour
     {
