@@ -31,7 +31,7 @@ namespace Tools
 
             
 
-            if (Mathf.Abs(Input.GetAxis("Horizontal_Menu")) > 0 || Mathf.Abs(Input.GetAxis("Vertical_Menu")) > 0)
+            if (Mathf.Abs(Input.GetAxis("Horizontal")) > 0 || Mathf.Abs(Input.GetAxis("Vertical")) > 0)
             {
                 if (own.currentSelectedGameObject == null)
                 {

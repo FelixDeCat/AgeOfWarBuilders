@@ -4,8 +4,17 @@ using UnityEngine;
 using UnityEngine.Events;
 using Tools.EventClasses;
 
-public class PlayerController : MonoBehaviour
+namespace AgeOfWar.Entities
 {
-    public EventFloat ev_Horizontal;
-    public EventFloat ev_Vertical;
+    public class PlayerController : MonoBehaviour
+    {
+        public EventFloat ev_Horizontal;
+        public EventFloat ev_Vertical;
+
+        private void Update()
+        {
+            ev_Horizontal?.Invoke(Input.GetAxis("Horizontal"));
+            ev_Vertical?.Invoke(Input.GetAxis("Vertical"));
+        }
+    }
 }
