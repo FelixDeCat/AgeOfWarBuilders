@@ -15,6 +15,8 @@
     [System.Serializable] public class EventObject : UnityEvent<object> { }
     [System.Serializable] public class EventAction : UnityEvent<Action> { }
     [System.Serializable] public class EventCounterPredicate : UnityEvent<Func<bool>> { }
+    [System.Serializable] public class EventFuncFloat : UnityEvent<Func<float>> { }
+
 
 }
 
