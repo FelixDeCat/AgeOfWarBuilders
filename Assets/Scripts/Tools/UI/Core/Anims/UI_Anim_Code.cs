@@ -60,6 +60,12 @@ public class UI_Anim_Code : UI_AnimBase
         go = false;
     }
 
+    protected override void InstantClose()
+    {
+        if (usePosition) transform.localPosition = hidepos;
+        if (myCanvasGroup) myCanvasGroup.alpha = 0;
+    }
+
     public void OnGo(float time_value) 
     {
         if (usePosition) transform.localPosition = Vector3.Lerp(hidepos, currentpos, time_value);

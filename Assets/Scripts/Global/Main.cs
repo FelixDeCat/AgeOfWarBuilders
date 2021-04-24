@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Tools;
 
-namespace AgeOfWar.Global
+namespace AgeOfWarBuilders.Global
 {
     public class Main : MonoBehaviour
     {

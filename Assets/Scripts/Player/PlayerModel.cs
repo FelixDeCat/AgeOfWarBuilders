@@ -4,7 +4,7 @@ using UnityEngine;
 using Tools.Components;
 using System;
 
-namespace AgeOfWar.Entities
+namespace AgeOfWarBuilders.Entities
 {
     public class PlayerModel : MonoBehaviour
     {

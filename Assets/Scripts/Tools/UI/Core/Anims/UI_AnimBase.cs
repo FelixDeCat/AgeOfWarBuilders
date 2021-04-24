@@ -21,10 +21,12 @@ public abstract class UI_AnimBase : MonoBehaviour
     //para que me llamen desde afuera
     public void Open() => OnOpen();
     public void Close() => OnClose();
+    public void InstaClose() => InstantClose();
 
     //para avisarles a mis childs que esto sucedió
     protected abstract void OnOpen();
     protected abstract void OnClose();
+    protected virtual void InstantClose() { }
 
 
 }

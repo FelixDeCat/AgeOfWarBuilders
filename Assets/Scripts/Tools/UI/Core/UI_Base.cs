@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-using AgeOfWar.Global;
+using AgeOfWarBuilders.Global;
 
 [RequireComponent(typeof(UI_Anim_Code))] 
 public abstract class UI_Base : MonoBehaviour
@@ -49,6 +49,12 @@ public abstract class UI_Base : MonoBehaviour
         Refresh();
         isActive = true;
         if(firstToOpenMenu) Main.instance.GetMyEventSystem().Set_First(firstToOpenMenu.gameObject);
+    }
+    public virtual void InstantClose()
+    {
+        anim.InstaClose();
+        parent.SetActive(false);
+        isActive = false;
     }
     public virtual void Close(bool buttonDeselect = false)
     {
