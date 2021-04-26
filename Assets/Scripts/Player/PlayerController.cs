@@ -28,20 +28,22 @@ namespace AgeOfWarBuilders.Entities
         public static bool PRESS_DOWN_Skill_3       => instance.ButtonDownSkill3();
         public static bool PRESS_DOWN_BuildMode     => instance.ButtonDownEnterBuildMode();
         public static bool PRESS_Up_BuildMode       => instance.ButtonUpEnterBuildMode();
+        public static float AXIS__Horizontal_ARROWS => instance.AxisHorizontalArrows();
 
         ////////////////////////////////////////////////////////////////////////
         ////  PRIVATES
         ////////////////////////////////////////////////////////////////////////
-        float AxisHorizontal()              { return Input.GetAxis("Horizontal"); }
-        float AxisVertical()                { return Input.GetAxis("Vertical"); }
-        bool ButtonDownJump()               { return Input.GetButtonDown("Jump"); }
-        bool ButtonUpJump()                 { return Input.GetButtonUp("Jump"); }
-        bool ButtonJump()                   { return Input.GetButton("Jump"); }
-        bool ButtonDownSkill1()             { return Input.GetButtonDown("Skill1"); }
-        bool ButtonDownSkill2()             { return Input.GetButtonDown("Skill2"); }
-        bool ButtonDownSkill3()             { return Input.GetButtonDown("Skill2"); }
-        bool ButtonDownEnterBuildMode()     { return Input.GetButtonDown("BuildMode"); }
-        bool ButtonUpEnterBuildMode()       { return Input.GetButtonUp("BuildMode"); }
+        float AxisHorizontal()              { return Input.GetAxis              ("Horizontal"); }
+        float AxisVertical()                { return Input.GetAxis              ("Vertical"); }
+        bool ButtonDownJump()               { return Input.GetButtonDown        ("Jump"); }
+        bool ButtonUpJump()                 { return Input.GetButtonUp          ("Jump"); }
+        bool ButtonJump()                   { return Input.GetButton            ("Jump"); }
+        bool ButtonDownSkill1()             { return Input.GetButtonDown        ("Skill1"); }
+        bool ButtonDownSkill2()             { return Input.GetButtonDown        ("Skill2"); }
+        bool ButtonDownSkill3()             { return Input.GetButtonDown        ("Skill2"); }
+        bool ButtonDownEnterBuildMode()     { return Input.GetButtonDown        ("BuildMode"); }
+        bool ButtonUpEnterBuildMode()       { return Input.GetButtonUp          ("BuildMode"); }
+        float AxisHorizontalArrows()        { return Input.GetAxisRaw           ("HorizontalArrows"); }
     }
 
 }

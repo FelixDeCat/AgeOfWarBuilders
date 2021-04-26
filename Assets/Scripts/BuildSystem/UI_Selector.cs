@@ -4,22 +4,13 @@ using UnityEngine;
 
 public class UI_Selector : MonoBehaviour
 {
-
-    public RectTransform myRect;
-
+    [SerializeField] RectTransform myRect;
     static UI_Selector instance;
-    void Awake()
-    {
-        instance = this;
-    }
-
+    void Awake() => instance = this;
     public static void Posicionate(Vector3 pos)
     {
-        instance.Pos(pos);
+        instance.myRect.gameObject.SetActive(true);
+        instance.myRect.position = pos;
     }
-
-    void Pos(Vector3 pos)
-    {
-        myRect.position = pos;
-    }
+    public static void Hide() => instance.myRect.gameObject.SetActive(false);
 }

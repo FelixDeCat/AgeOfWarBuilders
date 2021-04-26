@@ -7,13 +7,13 @@ TextureImporter:
     second: sprite_tower_01
   - first:
       213: 8755591262435691780
-    second: SpriteSheet_1
+    second: sprite_tower_02
   - first:
       213: -3459558614108198297
-    second: SpriteSheet_2
+    second: sprite_tower_03
   - first:
       213: 659797372610145418
-    second: SpriteSheet_3
+    second: sprite_tower_04
   - first:
       213: -689520407193891599
     second: SpriteSheet_4
@@ -470,7 +470,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteSheet_1
+      name: sprite_tower_02
       rect:
         serializedVersion: 2
         x: 92
@@ -491,7 +491,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteSheet_2
+      name: sprite_tower_03
       rect:
         serializedVersion: 2
         x: 184
@@ -512,7 +512,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteSheet_3
+      name: sprite_tower_04
       rect:
         serializedVersion: 2
         x: 276

@@ -4,22 +4,11 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UI_ItemBuildeable : Selectable
+public class UI_ItemBuildeable : UI_CustomSelectable
 {
-    public Image photo;
-    RectTransform myRect;
 
-    void Start()
+    protected override void OnSelect()
     {
-        myRect = GetComponent<RectTransform>();
+        
     }
-
-    public override void OnSelect(BaseEventData eventData)
-    {
-        Debug.Log("ON SELECT");
-        base.OnSelect(eventData);
-
-        UI_Selector.Posicionate(myRect.position);
-    }
-
 }

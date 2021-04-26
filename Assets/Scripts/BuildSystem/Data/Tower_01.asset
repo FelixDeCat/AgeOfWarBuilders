@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 683eeb6e3d1164848bb12cfbe448a50b, type: 3}
   m_Name: Tower_01
   m_EditorClassIdentifier: 
-  nombre: Tower_01
+  nombre: Torre tira flechas
   model: {fileID: 7129164858054633555, guid: c4e02baa2d327674b96d2f44aed97db1, type: 3}
   item_image: {fileID: 5546671543968653177, guid: 24bd98369990dfe44ae72e549c5ba841,
     type: 3}

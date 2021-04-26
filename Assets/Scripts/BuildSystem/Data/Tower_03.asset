@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 683eeb6e3d1164848bb12cfbe448a50b, type: 3}
+  m_Name: Tower_03
+  m_EditorClassIdentifier: 
+  nombre: Torre Poison
+  model: {fileID: 7129164858054633555, guid: f951debb626f7064992957d3532a8e08, type: 3}
+  item_image: {fileID: -3459558614108198297, guid: 24bd98369990dfe44ae72e549c5ba841,
+    type: 3}
