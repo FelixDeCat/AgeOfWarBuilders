@@ -29,6 +29,8 @@ namespace AgeOfWarBuilders.Entities
         public static bool PRESS_DOWN_BuildMode     => instance.ButtonDownEnterBuildMode();
         public static bool PRESS_Up_BuildMode       => instance.ButtonUpEnterBuildMode();
         public static float AXIS__Horizontal_ARROWS => instance.AxisHorizontalArrows();
+        public static bool PRESS_DOWN_Submit        => instance.ButtonDownSubmit();
+        public static bool HOLD_Ctrl          => instance.ButtonHoldCtrl();
 
         ////////////////////////////////////////////////////////////////////////
         ////  PRIVATES
@@ -44,6 +46,8 @@ namespace AgeOfWarBuilders.Entities
         bool ButtonDownEnterBuildMode()     { return Input.GetButtonDown        ("BuildMode"); }
         bool ButtonUpEnterBuildMode()       { return Input.GetButtonUp          ("BuildMode"); }
         float AxisHorizontalArrows()        { return Input.GetAxisRaw           ("HorizontalArrows"); }
+        bool ButtonDownSubmit()             { return Input.GetButtonDown        ("Submit"); }
+        bool ButtonHoldCtrl()               { return Input.GetButton            ("AuxSideMovement"); }
     }
 
 }

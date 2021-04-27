@@ -12,6 +12,8 @@ namespace AgeOfWarBuilders.Entities
         public Transform cam;
         public float speed = 12f;
 
+        public bool Aux_sideMovement;
+
         PlayerComponent_GroundCheck groundcheck;
 
         Vector3 velocity;
@@ -27,38 +29,44 @@ namespace AgeOfWarBuilders.Entities
         {
             controller = GetComponent<CharacterController>();
             groundcheck = GetComponentInChildren<PlayerComponent_GroundCheck>();
-            
+
             if (groundcheck == null) throw new System.Exception("No have a [PlayerComponent_GroundCheck], plase add to some child object");
         }
 
         float x, z = 0;
         bool press_down_jump = false;
+        Vector3 moveDir;
         private void Update()
         {
 
+            Aux_sideMovement = PlayerController.HOLD_Ctrl;
+
             isGrounded = groundcheck.IsGrounded;
 
-            if ( isGrounded && velocity.y < 0)
+            if (isGrounded && velocity.y < 0)
             {
                 velocity.y = -2f;
             }
 
             Vector3 direction = new Vector3(PlayerController.AXIS_Horizontal, 0f, PlayerController.AXIS_Vertical).normalized;
-            
+
+
             if (direction.magnitude >= 0.1f) //esto es un deathzone virtual
             {
-                // calculo la direccion dependiendo... el input de movimiento y le sumo la rotacion de la camara
-                float targetangle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+                float targetangle;
+                float angle;
 
+                // calculo la direccion dependiendo... el input de movimiento y le sumo la rotacion de la camara
+                targetangle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
                 // esto hace un Smooth entre mi rotacion y la rotacion a la que quiero ir, le paso un valor de "Cantidad de movimiento (turnSmoothTime)"
-                float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetangle, ref turnSmoothVelocity, turnSmoothTime);
+                angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, !Aux_sideMovement ? targetangle : cam.eulerAngles.y, ref turnSmoothVelocity, turnSmoothTime);
 
                 // ahora si le paso la rotacion directamente porque ya esta todo precalculado
                 transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
                 // multiplicar un Quaternion por un Vector3 me da un Vector3
                 //¿ porque se le multiplica por Forward ? porque asi cuando me mueva por segunda vez no pierda mi rotacion original
-                Vector3 moveDir = Quaternion.Euler(0, targetangle, 0) * Vector3.forward;
+                moveDir = Quaternion.Euler(0, targetangle, 0) * Vector3.forward;
 
                 //al controller solo le tengo que pasar el vector direccion
                 controller.Move(moveDir.normalized * speed * Time.deltaTime);
@@ -80,6 +88,11 @@ namespace AgeOfWarBuilders.Entities
             velocity.y += gravity * Time.deltaTime;
 
             controller.Move(velocity * Time.deltaTime);
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.DrawRay(this.transform.position, moveDir * 10);
         }
     }
 }

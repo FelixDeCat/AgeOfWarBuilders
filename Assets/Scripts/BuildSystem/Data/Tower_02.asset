@@ -14,5 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nombre: Torre Caracol
   model: {fileID: 7129164858054633555, guid: 56c8d49d609a3bb4fb7eaf66a0bb9d4a, type: 3}
+  build_phases: []
+  model_BuildMode: {fileID: 7129164858054633555, guid: e693a2012a6c21045b107043c7135853,
+    type: 3}
   item_image: {fileID: 8755591262435691780, guid: 24bd98369990dfe44ae72e549c5ba841,
     type: 3}
