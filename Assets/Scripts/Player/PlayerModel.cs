@@ -8,54 +8,43 @@ namespace AgeOfWarBuilders.Entities
 {
     public class PlayerModel : MonoBehaviour
     {
+        #region D-XZ Vars
         CharacterController controller;
-        public Transform cam;
-        public float speed = 12f;
-
-        public bool Aux_sideMovement;
-
+        [SerializeField] Transform cam;
+        [SerializeField] float speed = 12f;
+        bool Aux_sideMovement;
+        public float turnSmoothTime = 0.1f;
+        float turnSmoothVelocity;
+        Vector3 moveDir;
+        float targetangle;
+        float angle;
+        Vector3 direction;
+        #endregion
+        #region D-Y Vars
         PlayerComponent_GroundCheck groundcheck;
-
         Vector3 velocity;
         bool isGrounded;
         [SerializeField] float jumpHeight = 3f;
         [SerializeField] float gravity = -9.81f;
         const float GFORCE = -2;
-
-        public float turnSmoothTime = 0.1f;
-        float turnSmoothVelocity;
+        #endregion
 
         private void Awake()
         {
             controller = GetComponent<CharacterController>();
             groundcheck = GetComponentInChildren<PlayerComponent_GroundCheck>();
-
             if (groundcheck == null) throw new System.Exception("No have a [PlayerComponent_GroundCheck], plase add to some child object");
         }
-
-        float x, z = 0;
-        bool press_down_jump = false;
-        Vector3 moveDir;
         private void Update()
         {
-
+            #region Movement & Rotation
             Aux_sideMovement = PlayerController.HOLD_Ctrl;
 
-            isGrounded = groundcheck.IsGrounded;
-
-            if (isGrounded && velocity.y < 0)
-            {
-                velocity.y = -2f;
-            }
-
-            Vector3 direction = new Vector3(PlayerController.AXIS_Horizontal, 0f, PlayerController.AXIS_Vertical).normalized;
-
+            direction = new Vector3(PlayerController.AXIS_Horizontal, 0f, PlayerController.AXIS_Vertical).normalized;
 
             if (direction.magnitude >= 0.1f) //esto es un deathzone virtual
             {
-                float targetangle;
-                float angle;
-
+               
                 // calculo la direccion dependiendo... el input de movimiento y le sumo la rotacion de la camara
                 targetangle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
                 // esto hace un Smooth entre mi rotacion y la rotacion a la que quiero ir, le paso un valor de "Cantidad de movimiento (turnSmoothTime)"
@@ -71,7 +60,13 @@ namespace AgeOfWarBuilders.Entities
                 //al controller solo le tengo que pasar el vector direccion
                 controller.Move(moveDir.normalized * speed * Time.deltaTime);
             }
-
+            #endregion
+            #region Jump & Gravity
+            isGrounded = groundcheck.IsGrounded;
+            if (isGrounded && velocity.y < 0)
+            {
+                velocity.y = -2f;
+            }
             //esto se ejecuta 1 solo frame
             if (PlayerController.PRESS_DOWN_Jump && isGrounded)
             {
@@ -88,11 +83,8 @@ namespace AgeOfWarBuilders.Entities
             velocity.y += gravity * Time.deltaTime;
 
             controller.Move(velocity * Time.deltaTime);
+            #endregion
         }
 
-        private void OnDrawGizmos()
-        {
-            Gizmos.DrawRay(this.transform.position, moveDir * 10);
-        }
     }
 }

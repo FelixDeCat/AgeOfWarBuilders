@@ -20,7 +20,7 @@ namespace AgeOfWarBuilders.BuildSystem
         public List<GameObject> MyBuildings = new List<GameObject>(); 
 
         #region Apertura y cierre del modo de Contruccion
-        [SerializeField] Canvas BuildCanvas;
+        [SerializeField] CanvasGroup BuildCanvas;
         [SerializeField] UI_ImageFiller filler;
         float timer;
         float Time_To_TurnOn = 1f;
@@ -82,8 +82,8 @@ namespace AgeOfWarBuilders.BuildSystem
                 timer = 0;
             }
         }
-        void Turn_ON_Canvas() => BuildCanvas.gameObject.SetActive(true);
-        void Turn_OFF_Canvas() => BuildCanvas.gameObject.SetActive(false);
+        void Turn_ON_Canvas() => BuildCanvas.alpha = 1;
+        void Turn_OFF_Canvas() => BuildCanvas.alpha = 0;
         #endregion
 
         #region Index Cursor Logic
@@ -123,14 +123,18 @@ namespace AgeOfWarBuilders.BuildSystem
         void OnUIAnimationEndClose()
         {
             indexCursor = 0;
+            
         }
 
         void Update()
         {
             Update_OpenCloseMode();
-            Update_CursorMovement();
-            Update_PosToBuild();
-            Update_Instance_Object();
+            if (buildModeActive)
+            {
+                Update_CursorMovement();
+                Update_PosToBuild();
+                Update_Instance_Object();
+            }
         }
 
         void EnterToBuildMode()
@@ -143,6 +147,7 @@ namespace AgeOfWarBuilders.BuildSystem
         {
             ui.InstantClose();
             Turn_OFF_Canvas();
+            Hide();
         }
 
         #region Place Real Object 
@@ -181,12 +186,9 @@ namespace AgeOfWarBuilders.BuildSystem
 
                 if (can_refresh_build_transform)
                 {
-
-                    Debug.Log("Estoy updateando");
                     posToInstanciate = hit.point;
                     currentObject.transform.position = posToInstanciate;
                     currentObject.transform.eulerAngles = euler_rot;
-
                 }
             }
         }
@@ -202,6 +204,11 @@ namespace AgeOfWarBuilders.BuildSystem
             currentObject.transform.position = posToInstanciate;
             currentObject.transform.eulerAngles = euler_rot;
             currentObject_BuildChecker = currentObject.GetComponent<ObjectBuildChecker>();
+        }
+        void Hide()
+        {
+            if (currentObject) { Destroy(currentObject); }
+            currentObject_BuildChecker = null;
         }
 
         public posrot GetPosRot()
