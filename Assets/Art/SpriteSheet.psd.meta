@@ -70,22 +70,22 @@ TextureImporter:
     second: SpriteSheet_21
   - first:
       213: 8784019252837020500
-    second: SpriteSheet_22
+    second: sprite_input_leftMouse
   - first:
       213: -5692808054993777421
     second: SpriteSheet_23
   - first:
       213: -3647626148071368089
-    second: SpriteSheet_24
+    second: sprite_input_centerpress
   - first:
       213: 3740191742173349062
-    second: SpriteSheet_25
+    second: sprite_input_center_roll
   - first:
       213: -5489517133611239331
-    second: SpriteSheet_26
+    second: sprite_input_key_f
   - first:
       213: -1271462477897197946
-    second: SpriteSheet_27
+    second: sprite_input_arrows_horiz
   - first:
       213: 974577563860017414
     second: SpriteSheet_28
@@ -911,7 +911,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteSheet_22
+      name: sprite_input_leftMouse
       rect:
         serializedVersion: 2
         x: 0
@@ -953,7 +953,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteSheet_24
+      name: sprite_input_centerpress
       rect:
         serializedVersion: 2
         x: 184
@@ -974,7 +974,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteSheet_25
+      name: sprite_input_center_roll
       rect:
         serializedVersion: 2
         x: 276
@@ -995,7 +995,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteSheet_26
+      name: sprite_input_key_f
       rect:
         serializedVersion: 2
         x: 368
@@ -1016,7 +1016,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteSheet_27
+      name: sprite_input_arrows_horiz
       rect:
         serializedVersion: 2
         x: 460

@@ -30,7 +30,9 @@ namespace AgeOfWarBuilders.Entities
         public static bool PRESS_Up_BuildMode       => instance.ButtonUpEnterBuildMode();
         public static float AXIS__Horizontal_ARROWS => instance.AxisHorizontalArrows();
         public static bool PRESS_DOWN_Submit        => instance.ButtonDownSubmit();
-        public static bool HOLD_Ctrl          => instance.ButtonHoldCtrl();
+        public static bool HOLD_Ctrl                => instance.ButtonHoldCtrl();
+        public static float AXIS_MouseBUTTONS       => instance.ButtonMouseAxis();
+        public static float AXIS_MouseScrollWheel   => instance.MouseScrollWheel();
 
         ////////////////////////////////////////////////////////////////////////
         ////  PRIVATES
@@ -48,6 +50,9 @@ namespace AgeOfWarBuilders.Entities
         float AxisHorizontalArrows()        { return Input.GetAxisRaw           ("HorizontalArrows"); }
         bool ButtonDownSubmit()             { return Input.GetButtonDown        ("Submit"); }
         bool ButtonHoldCtrl()               { return Input.GetButton            ("AuxSideMovement"); }
+        float ButtonMouseAxis()             { return Input.GetAxisRaw           ("MouseButtonAxis"); }
+        float MouseScrollWheel()            { return Input.GetAxis              ("Mouse ScrollWheel"); }
+
     }
 
 }

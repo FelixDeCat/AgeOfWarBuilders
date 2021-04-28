@@ -134,6 +134,7 @@ namespace AgeOfWarBuilders.BuildSystem
                 Update_CursorMovement();
                 Update_PosToBuild();
                 Update_Instance_Object();
+                Update_ObjectTransform();
             }
         }
 
@@ -175,6 +176,8 @@ namespace AgeOfWarBuilders.BuildSystem
         Vector3 posToInstanciate;
         public LayerMask layer_PlacesToBuild;
         Vector3 euler_rot;
+        public Vector3 frontoffset;
+        public float max_Object_Forward_offset = 5f;
         bool can_refresh_build_transform;
 
         void Update_PosToBuild()
@@ -182,7 +185,10 @@ namespace AgeOfWarBuilders.BuildSystem
             if (currentObject)
             {
                 RaycastHit hit;
-                can_refresh_build_transform = Physics.Raycast(InstancePosition.transform.position + Vector3.up * 5, Vector3.up * -1, out hit, 10, layer_PlacesToBuild);
+
+                Vector3 posToRaycast = InstancePosition.transform.position + InstancePosition.forward * scrollvalue;
+
+                can_refresh_build_transform = Physics.Raycast(posToRaycast + Vector3.up * 5, Vector3.up * -1, out hit, 10, layer_PlacesToBuild);
 
                 if (can_refresh_build_transform)
                 {
@@ -226,6 +232,18 @@ namespace AgeOfWarBuilders.BuildSystem
             }
         }
         #endregion
+
+        float scrollvalue;
+        void Update_ObjectTransform()
+        {
+            var y_rot = euler_rot.y + PlayerController.AXIS_MouseBUTTONS * 100 * Time.deltaTime;
+            euler_rot = new Vector3(0, y_rot, 0);
+
+            scrollvalue += PlayerController.AXIS_MouseScrollWheel;
+            if(scrollvalue < 0) scrollvalue = 0;
+            if (scrollvalue > max_Object_Forward_offset) scrollvalue = max_Object_Forward_offset;
+
+        }
     }
 }
 
