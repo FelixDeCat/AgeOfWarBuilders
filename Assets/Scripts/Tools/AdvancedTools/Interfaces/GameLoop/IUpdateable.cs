@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace Tools.Interfaces
 {
-    public interface IUpdateable
+    public interface IUpdateable : IPlayable
     {
-        void Tick();
+        void Tick(float DeltaTime);
     }
 }
 

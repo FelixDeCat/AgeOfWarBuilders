@@ -1,6 +1,6 @@
 ﻿namespace Tools.Interfaces
 {
-    public interface IInitializable
+    public interface IInitializable: IPlayable
     {
         void Initialize();
     }

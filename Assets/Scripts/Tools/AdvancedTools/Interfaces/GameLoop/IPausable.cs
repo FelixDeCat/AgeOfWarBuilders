@@ -1,6 +1,6 @@
 ﻿namespace Tools.Interfaces
 {
-    public interface IPausable
+    public interface IPausable: IPlayable
     {
         void Pause();
     }

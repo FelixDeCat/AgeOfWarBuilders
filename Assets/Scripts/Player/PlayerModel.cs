@@ -6,7 +6,7 @@ using System;
 
 namespace AgeOfWarBuilders.Entities
 {
-    public class PlayerModel : MonoBehaviour
+    public class PlayerModel : PlayObject
     {
         #region D-XZ Vars
         CharacterController controller;
@@ -31,11 +31,18 @@ namespace AgeOfWarBuilders.Entities
 
         private void Awake()
         {
+            GameLoop.AddObject(this);
+        }
+        protected override void OnInitialize()
+        {
             controller = GetComponent<CharacterController>();
             groundcheck = GetComponentInChildren<PlayerComponent_GroundCheck>();
             if (groundcheck == null) throw new System.Exception("No have a [PlayerComponent_GroundCheck], plase add to some child object");
         }
-        private void Update()
+
+        protected override void OnPause() { }
+        protected override void OnResume() { }
+        protected override void OnTick(float DeltaTime)
         {
             #region Movement & Rotation
             Aux_sideMovement = PlayerController.HOLD_Ctrl;
@@ -44,7 +51,7 @@ namespace AgeOfWarBuilders.Entities
 
             if (direction.magnitude >= 0.1f) //esto es un deathzone virtual
             {
-               
+
                 // calculo la direccion dependiendo... el input de movimiento y le sumo la rotacion de la camara
                 targetangle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
                 // esto hace un Smooth entre mi rotacion y la rotacion a la que quiero ir, le paso un valor de "Cantidad de movimiento (turnSmoothTime)"
@@ -58,7 +65,7 @@ namespace AgeOfWarBuilders.Entities
                 moveDir = Quaternion.Euler(0, targetangle, 0) * Vector3.forward;
 
                 //al controller solo le tengo que pasar el vector direccion
-                controller.Move(moveDir.normalized * speed * Time.deltaTime);
+                controller.Move(moveDir.normalized * speed * DeltaTime);
             }
             #endregion
             #region Jump & Gravity
@@ -80,11 +87,10 @@ namespace AgeOfWarBuilders.Entities
 
             //la gravedad va a estar todo el tiempo afectando... si el valor de Velocity
             //se dispara repentinamente, esto va a hacer que retroceda
-            velocity.y += gravity * Time.deltaTime;
+            velocity.y += gravity * DeltaTime;
 
-            controller.Move(velocity * Time.deltaTime);
+            controller.Move(velocity * DeltaTime);
             #endregion
         }
-
     }
 }

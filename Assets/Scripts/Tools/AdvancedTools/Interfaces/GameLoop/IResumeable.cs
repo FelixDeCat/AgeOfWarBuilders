@@ -1,6 +1,6 @@
 ﻿namespace Tools.Interfaces
 {
-    public interface IResumeable
+    public interface IResumeable :IPlayable
     {
         void Resume();
     }
