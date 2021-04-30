@@ -34,6 +34,15 @@ namespace AgeOfWarBuilders.Entities
         public static float AXIS_MouseBUTTONS       => instance.ButtonMouseAxis();
         public static float AXIS_MouseScrollWheel   => instance.MouseScrollWheel();
 
+
+        /// //// testRapidos
+        public static bool DEBUG_PRESS_T => Input.GetKeyDown(KeyCode.T);
+        public static bool DEBUG_PRESS_Y => Input.GetKeyDown(KeyCode.Y);
+        public static bool DEBUG_PRESS_U => Input.GetKeyDown(KeyCode.U);
+        public static bool DEBUG_PRESS_I => Input.GetKeyDown(KeyCode.I);
+        public static bool DEBUG_PRESS_P => Input.GetKeyDown(KeyCode.P);
+
+
         ////////////////////////////////////////////////////////////////////////
         ////  PRIVATES
         ////////////////////////////////////////////////////////////////////////

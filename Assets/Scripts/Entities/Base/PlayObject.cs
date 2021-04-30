@@ -8,8 +8,13 @@ public abstract class PlayObject : MonoBehaviour, IPausable, IResumeable, IUpdat
     int index = -1;
     public int Index { get => index; set => index = value; }
 
+    void Awake()
+    {
+        GameLoop.AddObject(this);
+    }
+
     //INTERFACE IMPLEMENTATION
-    public void Initialize() { OnInitialize(); }
+    public void Initialize() { OnInitialize(); Debug.Log("Initialize PlayObject"); }
     public void Pause() { OnPause(); }
     public void Resume() { OnResume(); }
     public void Tick(float DeltaTime) { OnTick(DeltaTime); }

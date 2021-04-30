@@ -7,6 +7,8 @@ public class SpatialGrid : MonoBehaviour {
 
     #region Variables
 
+    public static SpatialGrid instance;
+
     //punto de inicio de la grilla en X
     public float x;
 
@@ -46,7 +48,10 @@ public class SpatialGrid : MonoBehaviour {
 
     #region Funciones
 
-    private void Awake() {
+    private void Awake()
+    {
+        instance = this;
+
         buckets       = new HashSet<IGridEntity>[width, height];
 
         //creamos todos los hashsets
@@ -60,7 +65,8 @@ public class SpatialGrid : MonoBehaviour {
                   .Select(n => n.GetComponent<IGridEntity>())
                   .Where(n => n != null);
 
-        foreach (var e in ents) {
+        foreach (var e in ents)
+        {
             e.OnMove += UpdateEntity;
             UpdateEntity(e);
         }
@@ -122,6 +128,10 @@ public class SpatialGrid : MonoBehaviour {
                          from.z <= e.Position.z && e.Position.z <= to.z
                     )
               .Where(n => filterByPosition(n.Position));
+    }
+    public void RemoveFromBucket(int x, int z, IGridEntity entity)
+    {
+        buckets[x, z].Remove(entity);
     }
 
     public Tuple<int, int> GetPositionInGrid(Vector3 pos) {

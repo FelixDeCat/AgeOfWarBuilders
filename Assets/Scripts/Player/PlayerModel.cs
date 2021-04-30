@@ -6,11 +6,12 @@ using System;
 
 namespace AgeOfWarBuilders.Entities
 {
-    public class PlayerModel : PlayObject
+    public class PlayerModel : LivingEntity
     {
+        [Header("--- Player Model Vars ---")]
         #region D-XZ Vars
-        CharacterController controller;
         [SerializeField] Transform cam;
+        CharacterController controller;
         [SerializeField] float speed = 12f;
         bool Aux_sideMovement;
         public float turnSmoothTime = 0.1f;
@@ -29,21 +30,22 @@ namespace AgeOfWarBuilders.Entities
         const float GFORCE = -2;
         #endregion
 
-        private void Awake()
-        {
-            GameLoop.AddObject(this);
-        }
         protected override void OnInitialize()
         {
+            Debug.Log("Initialize Player");
+            base.OnInitialize();
             controller = GetComponent<CharacterController>();
             groundcheck = GetComponentInChildren<PlayerComponent_GroundCheck>();
             if (groundcheck == null) throw new System.Exception("No have a [PlayerComponent_GroundCheck], plase add to some child object");
         }
 
-        protected override void OnPause() { }
-        protected override void OnResume() { }
+        protected override void OnPause() { base.OnPause(); }
+        protected override void OnResume() { base.OnResume(); }
+
+
         protected override void OnTick(float DeltaTime)
         {
+            base.OnTick(DeltaTime);
             #region Movement & Rotation
             Aux_sideMovement = PlayerController.HOLD_Ctrl;
 

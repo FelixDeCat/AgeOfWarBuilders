@@ -6,10 +6,22 @@ using UnityEngine;
 
 public class GridExercises : MonoBehaviour {
 
-    public IQuery query;
-    public IQuery queryCircle;
+    public ObserverQuery query;
+    bool active;
+
+    private void Start()
+    {
+        Invoke("begin", 1f);
+    }
+    void begin()
+    {
+        active = true;
+    }
 
     private void LateUpdate() {
+
+        if (!active) return;
+
         var ej1 = Exercise1();
         var ej2 = Exercise2();
         var ej3 = Exercise3();
@@ -33,12 +45,12 @@ public class GridExercises : MonoBehaviour {
     //Obtener los enemigos(Enemy) débiles en el área de la Query que tengan menos de 5 de vida(hp).
     private IEnumerable<Enemy> Exercise1()
     {
-        return query.Query().Cast<Enemy>().Where(x => x.hp <= 5);
+        return query.Query().Cast<Enemy>().Where(x => x.HP <= 5);
     }
 
     //Obtener el enemigo en el área de la Query más cercano al SquareQuery.
     private IEnumerable<Enemy> Exercise2() {
-        var aux = (SquareQuery)query;
+        var aux = query;
         return aux.Query()
             .Cast<Enemy>()
             .OrderBy(x => (transform.position - x.transform.position).sqrMagnitude)
@@ -47,7 +59,7 @@ public class GridExercises : MonoBehaviour {
 
     //Obtener los 3 primeros enemigos en el área de la Query más cercanos al SquareQuery.
     private IEnumerable<Enemy> Exercise3() {
-        var aux = (SquareQuery)query;
+        var aux = query;
         return aux.Query()
             .Cast<Enemy>()
             .OrderBy(x => (transform.position - x.transform.position).sqrMagnitude)

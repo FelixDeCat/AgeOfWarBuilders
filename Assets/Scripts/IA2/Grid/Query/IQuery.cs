@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 
-public interface IQuery {
-
+public interface IQuery
+{
     IEnumerable<IGridEntity> Query();
-
 }

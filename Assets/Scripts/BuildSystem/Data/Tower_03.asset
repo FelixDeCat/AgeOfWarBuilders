@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Tower_03
   m_EditorClassIdentifier: 
   nombre: Torre Poison
-  model: {fileID: 7129164858054633555, guid: f951debb626f7064992957d3532a8e08, type: 3}
+  model: {fileID: 7129164858054633555, guid: e23a5e93a37d55b40ae1ee038deb4641, type: 3}
   build_phases: []
-  model_BuildMode: {fileID: 7129164858054633555, guid: 6e72bef0e621168479f7b805077495c6,
+  model_BuildMode: {fileID: 7129164858054633555, guid: 6b46bb56b5d20824aa94ace1fe1fe8ae,
     type: 3}
   item_image: {fileID: -3459558614108198297, guid: 24bd98369990dfe44ae72e549c5ba841,
     type: 3}

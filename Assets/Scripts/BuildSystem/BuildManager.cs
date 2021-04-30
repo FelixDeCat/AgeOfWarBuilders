@@ -5,17 +5,23 @@ using UnityEngine.UI;
 using AgeOfWarBuilders.Entities;
 using Tools.UI;
 using Tools.Extensions;
+using UnityEngine.Events;
 
 
 namespace AgeOfWarBuilders.BuildSystem
 {
     public class BuildManager : MonoBehaviour
     {
+        [SerializeField] UnityEvent OnOpenBuildMode;
+        [SerializeField] UnityEvent OnCloseBuildMode;
+
         public UI_BuildSelector ui;
 
         public List<BuildData> ObjectsToBuild;
         public int ObjectCount { get { return ObjectsToBuild.Count; } }
         int indexCursor;
+
+       
 
         public List<GameObject> MyBuildings = new List<GameObject>(); 
 
@@ -140,12 +146,14 @@ namespace AgeOfWarBuilders.BuildSystem
 
         void EnterToBuildMode()
         {
+            OnOpenBuildMode.Invoke();
             Turn_ON_Canvas();
             ui.Open();
 
         }
         void ExitToBuildMode()
         {
+            OnCloseBuildMode.Invoke();
             ui.InstantClose();
             Turn_OFF_Canvas();
             Hide();

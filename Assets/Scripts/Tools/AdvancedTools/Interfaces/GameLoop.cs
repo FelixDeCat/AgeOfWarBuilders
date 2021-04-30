@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Tools.Interfaces;
+using AgeOfWarBuilders.Entities;
 
 public enum PlayableGameType { Initializable, Pausable, Resumable, Updateable }
 public class GameLoop : MonoBehaviour
@@ -19,6 +20,7 @@ public class GameLoop : MonoBehaviour
     public static void PlayGame() => instance.StartGame();
     bool inGame;
     bool isPaused;
+    bool AlreadyInitialized;
 
     private void Start()
     {
@@ -29,6 +31,10 @@ public class GameLoop : MonoBehaviour
     {
         playObject.Index = playObjects.Count;
         playObjects.Add(playObject);
+        if (AlreadyInitialized)
+        {
+            playObject.Initialize();
+        }
     }
     void Remove_PlayObject(PlayObject playObject)
     {
@@ -40,12 +46,12 @@ public class GameLoop : MonoBehaviour
     {
         inGame = true;
         playObjects.ForEach(x => x.Initialize());
+        AlreadyInitialized = true;
     }
     void StopGame()
     {
         inGame = false;
     }
-
     void PauseGame()
     {
         isPaused = true;
@@ -59,11 +65,22 @@ public class GameLoop : MonoBehaviour
 
     private void Update()
     {
+        
         if (inGame)
         {
+            if (PlayerController.DEBUG_PRESS_P)
+            {
+                isPaused = !isPaused;
+            }
+
             if (!isPaused)
             {
-                playObjects.ForEach(x => x.Tick(Time.deltaTime));
+                for (int i = 0; i < PlayObjects.Count; i++)
+                {
+                    if (playObjects[i] != null)
+                        playObjects[i].Tick(Time.deltaTime);
+                }
+
             }
         }
     }

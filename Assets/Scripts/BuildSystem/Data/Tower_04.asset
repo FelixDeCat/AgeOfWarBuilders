@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Tower_04
   m_EditorClassIdentifier: 
   nombre: Torre AlQaeda
-  model: {fileID: 7129164858054633555, guid: 51feac4adbd5aeb4098495e3489d9e02, type: 3}
+  model: {fileID: 7129164858054633555, guid: 99e7ecef9e9a94246b184f1fc53509b5, type: 3}
   build_phases: []
   model_BuildMode: {fileID: 7129164858054633555, guid: 6b46bb56b5d20824aa94ace1fe1fe8ae,
     type: 3}
