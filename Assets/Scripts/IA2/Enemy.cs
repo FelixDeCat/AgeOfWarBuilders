@@ -44,8 +44,12 @@ public class Enemy : LivingEntity, IGridEntity
     {
         base.OnDeath();
 
-        CbkOnDeath.Invoke(this);
+        Invoke("AnimDeath", 1f);
 
+    }
+    void AnimDeath()
+    {
+        CbkOnDeath.Invoke(this);
     }
 
     

@@ -11,9 +11,9 @@ public class Bullet : MonoBehaviour
     public float speed = 50;
     GameObject toIgnore;
 
-    public void Configure( Vector3 direction, GameObject ToIgnore, float life_time = 3f)
+    public void Configure( Vector3 direction, GameObject ToIgnore, float life_time = 1f)
     {
-        Destroy(this, life_time);
+        Destroy(this.gameObject, life_time);
         this.transform.forward = direction;
         this.toIgnore = ToIgnore;
     }
