@@ -6,7 +6,6 @@ public class Enemy : LivingEntity, IGridEntity
 {
     #region Grid Things
     public event Action<IGridEntity> OnMove;
-    public event Action<IGridEntity> OnRemove;
     public Vector3 Position
     {
         get {
@@ -17,23 +16,34 @@ public class Enemy : LivingEntity, IGridEntity
         }
         set => transform.position = value;
     }
+
+    MeshChangeColorCollection colorDebug;
+
+    bool isAlive;
+    public bool IsAlive { get => isAlive; set => isAlive = value; }
     #endregion
 
     protected override void OnInitialize()
     {
+        if (colorDebug == null) colorDebug = GetComponent<MeshChangeColorCollection>();
         base.OnInitialize();
-        Debug.Log("Initialize Enemy");
-        
+        colorDebug.Change(Color.cyan);
+        Resurrect();
+        isAlive = true;
+        SpatialGrid.instance.AddEntityToGrid(this);
+        //OnMove.Invoke(this);
+    }
+    protected override void OnDeinitialize()
+    {
+        base.OnDeinitialize();
+        colorDebug.Change(Color.magenta);
+        SpatialGrid.instance.RemoveEntityToGrid(this);
     }
 
     Action<Enemy> CbkOnDeath;
     public void CallbackOnDeath(Action<Enemy> callback)
     {
         CbkOnDeath = callback;
-    }
-    public void Respawn()
-    {
-        Resurrect();
     }
 
     protected override void OnTick(float DeltaTime)
@@ -43,12 +53,13 @@ public class Enemy : LivingEntity, IGridEntity
     protected override void OnDeath()
     {
         base.OnDeath();
-
+        colorDebug.Change(Color.black);
         Invoke("AnimDeath", 1f);
 
     }
     void AnimDeath()
     {
+        isAlive = false;
         CbkOnDeath.Invoke(this);
     }
 

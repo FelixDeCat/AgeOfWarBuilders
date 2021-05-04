@@ -6,7 +6,7 @@ using UnityEngine;
 public class BuildData : ScriptableObject
 {
     public string nombre;
-    public GameObject model;
+    public TowerEntity model;
     public GameObject[] build_phases; 
     public GameObject model_BuildMode;
     public Sprite item_image;

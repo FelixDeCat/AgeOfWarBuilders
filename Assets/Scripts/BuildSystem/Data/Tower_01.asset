@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Tower_01
   m_EditorClassIdentifier: 
   nombre: Torre tira flechas
-  model: {fileID: 7129164858054633555, guid: c4e02baa2d327674b96d2f44aed97db1, type: 3}
+  model: {fileID: 4043952268123248062, guid: c4e02baa2d327674b96d2f44aed97db1, type: 3}
   build_phases: []
   model_BuildMode: {fileID: 7129164858054633555, guid: 6b46bb56b5d20824aa94ace1fe1fe8ae,
     type: 3}

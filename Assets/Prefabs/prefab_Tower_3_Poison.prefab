@@ -893,6 +893,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c7b262a2cd565b4baf2db3004648f71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 1
+  AddOnAwake: 0
   CanNotWalk: 0
   initial_hp: 100
   ui_life: {fileID: 8445720268739110337}

@@ -9,7 +9,9 @@ namespace AgeOfWarBuilders.Global
     {
         public static Main instance;
         private void Awake() => instance = this;
+        [SerializeField] Transform spawnPoint;
 
+        public static Transform SpawnPosition => instance.spawnPoint;
         public MyEventSystem GetMyEventSystem() => MyEventSystem.instance;
     }
 }

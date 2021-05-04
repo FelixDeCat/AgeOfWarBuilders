@@ -7,7 +7,6 @@ namespace IA2.Clase5
     {
 
         public event Action<IGridEntity> OnMove;
-        public event Action<IGridEntity> OnRemove;
 
         public int hp;
         public int damage;
@@ -19,6 +18,16 @@ namespace IA2.Clase5
             get => transform.position;
             set => transform.position = value;
         }
+
+        Vector3 IGridEntity.Position { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        bool IGridEntity.IsAlive { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+        private void Enemy_Pepe()
+        {
+            throw new NotImplementedException();
+        }
+
+        event Action Pepe;
     }
 
     public enum EnemyType

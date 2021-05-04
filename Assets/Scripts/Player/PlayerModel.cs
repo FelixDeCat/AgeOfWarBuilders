@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Tools.Components;
 using System;
+using AgeOfWarBuilders.Global;
 
 namespace AgeOfWarBuilders.Entities
 {
@@ -93,6 +94,15 @@ namespace AgeOfWarBuilders.Entities
 
             controller.Move(velocity * DeltaTime);
             #endregion
+        }
+
+        private void LateUpdate()
+        {
+            if (this.transform.position.y < -3)
+            {
+                controller.transform.position = Main.SpawnPosition.position;
+                controller.transform.eulerAngles = Main.SpawnPosition.eulerAngles;
+            }
         }
     }
 }

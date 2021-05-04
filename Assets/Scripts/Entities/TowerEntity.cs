@@ -19,32 +19,26 @@ public class TowerEntity : LivingEntity
     protected override void OnTick(float DeltaTime)
     {
         base.OnTick(DeltaTime);
-
+    }
+    private void LateUpdate()
+    {
         if (timer < Time_To_Select_Target)
         {
-            timer = timer + 1 * DeltaTime;
+            timer = timer + 1 * Time.deltaTime;
         }
         else
         {
             timer = 0;
 
-            try
-            {
-                //Le pregunto a la grilla y le pido el enemigo mas cercano
-                currentEnemy = query
-                    .Query()
-                    .Cast<Enemy>()
-                    .OrderBy(x => (transform.position - x.transform.position).sqrMagnitude)
-                    .First();
+            //Le pregunto a la grilla y le pido el enemigo mas cercano
+            currentEnemy = query
+                .Query()
+                .Cast<Enemy>()
+                .OrderBy(x => (transform.position - x.transform.position).sqrMagnitude)
+                .FirstOrDefault();
 
-                StartCoroutine(Shoot(currentEnemy));
-            }
-            catch (System.InvalidOperationException)
-            {
-
-            }
+            if(currentEnemy) StartCoroutine(Shoot(currentEnemy));
         }
-
     }
 
     IEnumerator Shoot(Enemy enemy)

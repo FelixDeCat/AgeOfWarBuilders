@@ -85,7 +85,7 @@ GameObject:
   - component: {fileID: 1254743145255238712}
   - component: {fileID: 1254743145255238713}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: BodyUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -163,6 +163,7 @@ GameObject:
   - component: {fileID: 1254743145520743911}
   - component: {fileID: 1254743145520743908}
   - component: {fileID: 1254743145520743905}
+  - component: {fileID: 423051731295475541}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -230,9 +231,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a6a214da04e0ad4b9dc5c1a2db7ff10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
+  AddOnAwake: 0
   CanNotWalk: 0
   initial_hp: 100
   ui_life: {fileID: 1254743145688725523}
+--- !u!114 &423051731295475541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1254743145520743909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d63f16a5c11ba084389d8782b6edc714, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rendersToChange:
+  - {fileID: 1254743146517920387}
+  - {fileID: 1254743145255238713}
+  RENDER_COLOR_PARAM: _Color
 --- !u!1 &1254743145584547696
 GameObject:
   m_ObjectHideFlags: 0
@@ -445,7 +464,7 @@ GameObject:
   - component: {fileID: 1254743145808919839}
   - component: {fileID: 1254743145808919836}
   m_Layer: 0
-  m_Name: Cube (2)
+  m_Name: Face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -523,7 +542,7 @@ GameObject:
   - component: {fileID: 1254743146517920386}
   - component: {fileID: 1254743146517920387}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: BodyDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

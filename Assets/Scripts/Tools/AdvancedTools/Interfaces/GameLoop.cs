@@ -31,7 +31,7 @@ public class GameLoop : MonoBehaviour
     {
         playObject.Index = playObjects.Count;
         playObjects.Add(playObject);
-        if (AlreadyInitialized)
+        if (!playObject.IsInitialized)
         {
             playObject.Initialize();
         }
@@ -40,6 +40,7 @@ public class GameLoop : MonoBehaviour
     {
         playObjects.RemoveAt(playObject.Index);
         playObject.Index = -1;
+        playObject.Deinitialize();
     }
 
     void StartGame()
@@ -65,7 +66,6 @@ public class GameLoop : MonoBehaviour
 
     private void Update()
     {
-        
         if (inGame)
         {
             if (PlayerController.DEBUG_PRESS_P)

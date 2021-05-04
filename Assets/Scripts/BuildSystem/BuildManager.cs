@@ -23,7 +23,7 @@ namespace AgeOfWarBuilders.BuildSystem
 
        
 
-        public List<GameObject> MyBuildings = new List<GameObject>(); 
+        public List<PlayObject> MyBuildings = new List<PlayObject>(); 
 
         #region Apertura y cierre del modo de Contruccion
         [SerializeField] CanvasGroup BuildCanvas;
@@ -167,10 +167,10 @@ namespace AgeOfWarBuilders.BuildSystem
                 if (currentObject_BuildChecker == null) return;
                 if (currentObject_BuildChecker.CanBuild)
                 {
-                    GameObject go = GameObject.Instantiate(ObjectsToBuild[indexCursor].model, LocalSceneTransforms.parent_MyBuildings);
-                    var posrot = GetPosRot();
-                    go.transform.position = posrot.pos;
-                    go.transform.eulerAngles = posrot.rot;
+                    PlayObject_PoolManager.instance.Feed(ObjectsToBuild[indexCursor].model, LocalSceneTransforms.parent_MyBuildings);
+
+                    var go = PlayObject_PoolManager.instance.Get(ObjectsToBuild[indexCursor].model.type, GetPosRot().pos, GetPosRot().rot);
+
                     MyBuildings.Add(go);
                 }
             }

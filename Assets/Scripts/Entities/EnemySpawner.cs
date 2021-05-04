@@ -10,7 +10,8 @@ public class EnemySpawner : MonoBehaviour
     public Enemy model;
     public Transform parent;
 
-    public List<Enemy> spawner;
+    public int cant = 5;
+    //public List<Enemy> spawner;
 
     Vector3 RandomPos()
     {
@@ -21,16 +22,22 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
-        for (int i = 0; i < spawner.Count; i++)
+        PlayObject_PoolManager.instance.Feed(model, parent);
+
+        for (int i = 0; i < cant; i++)
         {
-            spawner[i].CallbackOnDeath(Respawn);
+            var enem = (Enemy)PlayObject_PoolManager.instance.Get(model.type, RandomPos(), transform.eulerAngles);
+            enem.CallbackOnDeath(DeathEnemy);
         }
     }
 
-
-    public void Respawn(Enemy enemy)
+    public void DeathEnemy(Enemy enemy)
     {
-        enemy.Respawn();
-        enemy.transform.position = RandomPos();
+        PlayObject_PoolManager.instance.Return(enemy);
+        Respawn();
+    }
+    void Respawn()
+    {
+        var enem = (Enemy)PlayObject_PoolManager.instance.Get(model.type, RandomPos(), transform.eulerAngles);
     }
 }
