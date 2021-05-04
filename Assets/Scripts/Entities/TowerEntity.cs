@@ -37,15 +37,14 @@ public class TowerEntity : LivingEntity
                 .OrderBy(x => (transform.position - x.transform.position).sqrMagnitude)
                 .FirstOrDefault();
 
-            if(currentEnemy) StartCoroutine(Shoot(currentEnemy));
+            if (currentEnemy)
+            {
+                var pos = shootPoint.transform.position;
+                var dir = (currentEnemy.transform.position + Vector3.up - shootPoint.position).normalized;
+                Bullet_PoolManager.instance.Shoot(pos,dir);
+            }
+            
         }
-    }
-
-    IEnumerator Shoot(Enemy enemy)
-    {
-        yield return new WaitForEndOfFrame();
-        GameObject bullet = GameObject.Instantiate(bullet_Model, shootPoint.position, shootPoint.rotation);
-        bullet.GetComponent<Bullet>().Configure((enemy.transform.position+Vector3.up) - shootPoint.position, this.gameObject);
     }
 
 }

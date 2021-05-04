@@ -5,32 +5,70 @@ using System;
 
 public class Bullet : MonoBehaviour
 {
-    bool go;
-    public float life_time = 3f;
-    float timer;
-    public float speed = 50;
-    GameObject toIgnore;
+    float life_time = 1f;
+    float timer = 0f;
+    float speed = 50f;
+    int damage = 10;
+    Action<Bullet> OnDeath;
+    bool isAlive;
+    string tag_to_damage = "Enemy";
 
-    public void Configure( Vector3 direction, GameObject ToIgnore, float life_time = 1f)
+    public void Configure(Action<Bullet> OnDeath, Vector3 position, Vector3 direction, float life_time = 1f, float speed = 50f, int damage = 10, string tag_to_damage = "Enemy")
     {
-        Destroy(this.gameObject, life_time);
+        this.transform.position = position;
         this.transform.forward = direction;
-        this.toIgnore = ToIgnore;
+        this.life_time = life_time;
+        this.damage = damage;
+        this.OnDeath = OnDeath;
+        this.tag_to_damage = tag_to_damage;
+        this.speed = speed;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        this.transform.position += this.transform.forward * speed * Time.deltaTime;
+        if (isAlive)
+        {
+            this.transform.position += this.transform.forward * speed * Time.deltaTime;
+
+            if (timer < life_time)
+            {
+                timer = timer + 1 * Time.deltaTime;
+            }
+            else
+            {
+                timer = 0;
+                Death();
+            }
+        }
+        
+    }
+
+    void Death()
+    {
+        OnDeath.Invoke(this);
     }
 
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Enemy")
+        if (isAlive)
         {
-            other.gameObject.GetComponent<LivingEntity>().TakeDamage();
-            Destroy(this.gameObject);
+            if (other.gameObject.tag == tag_to_damage)
+            {
+                other.gameObject.GetComponent<LivingEntity>().TakeDamage(damage);
+                Death();
+            }
         }
     }
 
+    public void On()
+    {
+        timer = 0;
+        isAlive = true;
+    }
+    public void Off()
+    {
+        timer = 0;
+        isAlive = false;
+    }
 }
