@@ -21,6 +21,7 @@ public abstract class PlayObject : MonoBehaviour, IPausable, IResumeable, IUpdat
         if (AddOnAwake) GameLoop.AddObject(this);
     }
 
+
     //INTERFACE IMPLEMENTATION
     public void Initialize()
     {

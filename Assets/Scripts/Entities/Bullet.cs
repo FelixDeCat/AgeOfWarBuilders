@@ -14,6 +14,7 @@ public class Bullet : MonoBehaviour
     bool isAlive;
     string tag_to_damage = "Enemy";
     Damage damagedata;
+    [SerializeField] TrailRenderer myTrail;
 
     public void Configure(Action<Bullet> OnDeath, Vector3 position, Vector3 direction, float life_time = 1f, float speed = 50f, int damage = 10, string tag_to_damage = "Enemy")
     {
@@ -66,11 +67,14 @@ public class Bullet : MonoBehaviour
 
     public void On()
     {
+        myTrail.Clear();
+        myTrail.emitting = true;
         timer = 0;
         isAlive = true;
     }
     public void Off()
     {
+        myTrail.emitting = false;
         timer = 0;
         isAlive = false;
     }

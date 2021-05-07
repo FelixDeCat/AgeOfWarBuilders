@@ -236,6 +236,10 @@ MonoBehaviour:
   CanNotWalk: 0
   initial_hp: 100
   ui_life: {fileID: 1254743145688725523}
+  mypartersLayer:
+    serializedVersion: 2
+    m_Bits: 2048
+  partner_detection_radius: 3
 --- !u!114 &423051731295475541
 MonoBehaviour:
   m_ObjectHideFlags: 0

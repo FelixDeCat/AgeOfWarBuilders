@@ -1,6 +1,9 @@
 ﻿using System;
 using UnityEngine;
 using AgeOfWarBuilders.Entities;
+using System.Collections;
+using System.Linq;
+using System.Collections.Generic;
 
 public class Enemy : LivingEntity, IGridEntity
 {
@@ -15,9 +18,12 @@ public class Enemy : LivingEntity, IGridEntity
                 return new Vector3(int.MaxValue, int.MaxValue, int.MaxValue);
         }
         set => transform.position = value;
-    }
+    } 
 
     MeshChangeColorCollection colorDebug;
+
+    public LayerMask mypartersLayer;
+    public float partner_detection_radius = 5f;
 
     bool isAlive;
     public bool IsAlive { get => isAlive; set => isAlive = value; }
@@ -63,5 +69,23 @@ public class Enemy : LivingEntity, IGridEntity
         CbkOnDeath.Invoke(this);
     }
 
-    
+    public IEnumerable<Enemy> GetPartners()
+    {
+        return Physics
+            .OverlapSphere(this.transform.position, 5f, mypartersLayer)
+            .Select(x => x.GetComponent<Enemy>());
+    }
+
+    public int GetPartnersLegth()
+    {
+        return Physics
+            .OverlapSphere(this.transform.position, 5f, mypartersLayer).Length;
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(this.transform.position, partner_detection_radius);
+    }
+
+
 }

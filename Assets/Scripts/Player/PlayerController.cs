@@ -28,7 +28,8 @@ namespace AgeOfWarBuilders.Entities
         public static bool PRESS_DOWN_Skill_3       => instance.ButtonDownSkill3();
         public static bool PRESS_DOWN_BuildMode     => instance.ButtonDownEnterBuildMode();
         public static bool PRESS_Up_BuildMode       => instance.ButtonUpEnterBuildMode();
-        public static float AXIS__Horizontal_ARROWS => instance.AxisHorizontalArrows();
+        public static float AXIS_Horizontal_ARROWS  => instance.AxisHorizontalArrows();
+        public static float AXIS_Vertical_ARROWS    => instance.AxisVerticalArrows();
         public static bool PRESS_DOWN_Submit        => instance.ButtonDownSubmit();
         public static bool HOLD_Ctrl                => instance.ButtonHoldCtrl();
         public static float AXIS_MouseBUTTONS       => instance.ButtonMouseAxis();
@@ -58,6 +59,7 @@ namespace AgeOfWarBuilders.Entities
         bool ButtonDownEnterBuildMode()     { return Input.GetButtonDown        ("BuildMode"); }
         bool ButtonUpEnterBuildMode()       { return Input.GetButtonUp          ("BuildMode"); }
         float AxisHorizontalArrows()        { return Input.GetAxisRaw           ("HorizontalArrows"); }
+        float AxisVerticalArrows()          { return Input.GetAxisRaw           ("VericalArrows"); }
         bool ButtonDownSubmit()             { return Input.GetButtonDown        ("Submit"); }
         bool ButtonHoldCtrl()               { return Input.GetButton            ("AuxSideMovement"); }
         float ButtonMouseAxis()             { return Input.GetAxisRaw           ("MouseButtonAxis"); }

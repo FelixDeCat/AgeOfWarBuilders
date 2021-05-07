@@ -198,10 +198,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fd6ebe20fc9b684d9e66ac8b250bbbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 3711351475984617631}
   radius: 16
   min_radius: 0
   angle: 45
-  observer: {fileID: 3711351475984617631}
 --- !u!114 &5282246001816766086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,9 +214,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 181f82b31e5d20946a5d2c04f5bba486, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 3711351475984617631}
   width: 32
   height: 32
-  target: {fileID: 3711351475984617631}
 --- !u!1 &911624595030310648
 GameObject:
   m_ObjectHideFlags: 0
@@ -915,13 +915,10 @@ MonoBehaviour:
   CanNotWalk: 0
   initial_hp: 100
   ui_life: {fileID: 8445720268739110337}
-  observer_query: {fileID: 92514991783506765}
-  square_query: {fileID: 5282246001816766086}
   currentEnemy: {fileID: 0}
   Time_To_Select_Target: 1
   shootPoint: {fileID: 6764628627284549570}
-  bullet_Model: {fileID: 2872696894598297591, guid: 0d219afaf082f9447aa0f7e04534f0a4,
-    type: 3}
+  UseBomb: 0
 --- !u!1 &7250323660906830777
 GameObject:
   m_ObjectHideFlags: 0

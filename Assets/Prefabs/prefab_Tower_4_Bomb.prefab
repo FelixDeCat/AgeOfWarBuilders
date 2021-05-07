@@ -163,6 +163,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9185776385494775646}
   - component: {fileID: 92514991783506765}
+  - component: {fileID: 7755950440295301927}
   m_Layer: 0
   m_Name: ObserverQuery
   m_TagString: Untagged
@@ -196,9 +197,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fd6ebe20fc9b684d9e66ac8b250bbbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 3711351475984617631}
   radius: 16
+  min_radius: 0
   angle: 45
-  observer: {fileID: 3711351475984617631}
+--- !u!114 &7755950440295301927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 803953619276006820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 181f82b31e5d20946a5d2c04f5bba486, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 3711351475984617631}
+  width: 15
+  height: 30
 --- !u!1 &911624595030310648
 GameObject:
   m_ObjectHideFlags: 0
@@ -894,12 +911,10 @@ MonoBehaviour:
   CanNotWalk: 0
   initial_hp: 100
   ui_life: {fileID: 8445720268739110337}
-  query: {fileID: 92514991783506765}
   currentEnemy: {fileID: 0}
   Time_To_Select_Target: 1
   shootPoint: {fileID: 6764628627284549570}
-  bullet_Model: {fileID: 2872696894598297591, guid: 0d219afaf082f9447aa0f7e04534f0a4,
-    type: 3}
+  UseBomb: 1
 --- !u!1 &7250323660906830777
 GameObject:
   m_ObjectHideFlags: 0

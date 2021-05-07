@@ -8,6 +8,14 @@ namespace AgeOfWarBuilders.Entities
         [SerializeField] Animator myAnim;
         [SerializeField] PlayerAnimationNames names;
 
+        [SerializeField] ParticleSystem slash;
+
+        public void Play_Slash()
+        {
+            slash.Stop();
+            slash.Play();
+        }
+
         public void BeginMove()
         {
             myAnim?.SetBool(names.NAME_ON_MOVE, true);
@@ -16,6 +24,8 @@ namespace AgeOfWarBuilders.Entities
         {
             myAnim?.SetBool(names.NAME_ON_MOVE, false);
         }
+
+
     }
 
     [System.Serializable]

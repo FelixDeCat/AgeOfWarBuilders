@@ -34,6 +34,8 @@ namespace AgeOfWarBuilders.Entities
         PlayerDamageComponent playerDamageComponent;
         #endregion
 
+        public PlayerView view;
+
         protected override void OnInitialize()
         {
             Debug.Log("Initialize Player");
@@ -110,6 +112,7 @@ namespace AgeOfWarBuilders.Entities
         {
             if (PlayerController.PRESS_DOWN_Fire1)
             {
+                view.Play_Slash();
                 playerDamageComponent.DoDamage();
             }
             playerDamageComponent.Tick(DeltaTime);

@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
-using AgeOfWarBuilders.Entities;
 using Tools.Structs;
+
 
 public class LivingEntity : WalkingEntity
 {
@@ -11,6 +11,7 @@ public class LivingEntity : WalkingEntity
     [SerializeField] FrontendStatBase ui_life;
 
     public float HP { get => life.Life; }
+    
 
     public void ReceiveDamage(int dmg = 5)
     {

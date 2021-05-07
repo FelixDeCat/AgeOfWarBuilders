@@ -20,7 +20,7 @@ namespace AgeOfWarBuilders.BuildSystem
 
         public List<BuildData> list_of_build_data;
         public int ObjectCount { get { return list_of_build_data.Count; } }
-        int indexCursor;
+        [SerializeField] int indexHorizontalCursor;
 
         public List<PlayObject> MyBuildings = new List<PlayObject>(); 
 
@@ -47,12 +47,12 @@ namespace AgeOfWarBuilders.BuildSystem
         #region [EXPOSITION] END Animation Events
         void OnUIAnimationEnd_OPEN()
         {
-            ui.Select(indexCursor);
-            InstanciateStruct(list_of_build_data[indexCursor].model_BuildMode);
+            ui.Select(indexHorizontalCursor);
+            InstanciateStruct(list_of_build_data[indexHorizontalCursor].model_BuildMode);
         }
         void OnUIAnimationEnd_CLOSE()
         {
-            indexCursor = 0;
+            indexHorizontalCursor = 0;
         }
         #endregion
 
@@ -141,19 +141,19 @@ namespace AgeOfWarBuilders.BuildSystem
         #endregion
 
         #region [LOGIC] Selection Index Cursor 
-        public void NextElement(float direction = 1) // 1:adelante  -1:atras
+        public void NextHorizontalElement(float direction = 1) // 1:adelante  -1:atras
         {
-            indexCursor = direction > 0 ? indexCursor.NextIndex(ObjectCount) : indexCursor.BackIndex(ObjectCount);
+            indexHorizontalCursor = direction > 0 ? indexHorizontalCursor.NextIndex(ObjectCount) : indexHorizontalCursor.BackIndex(ObjectCount);
             OnUIAnimationEnd_OPEN();
         }
         bool oneshot_axis;
         void Update_CursorMovement()
         {
-            if (PlayerController.AXIS__Horizontal_ARROWS != 0)
+            if (PlayerController.AXIS_Horizontal_ARROWS != 0)
             {
                 if (!oneshot_axis)
                 {
-                    NextElement(PlayerController.AXIS__Horizontal_ARROWS);
+                    NextHorizontalElement(PlayerController.AXIS_Horizontal_ARROWS);
                     oneshot_axis = true;
                 }
             }
@@ -161,6 +161,15 @@ namespace AgeOfWarBuilders.BuildSystem
             {
                 oneshot_axis = false;
             }
+
+            //if (PlayerController.AXIS_Vertical_ARROWS != 0)
+            //{
+
+            //}
+            //else
+            //{
+
+            //}
         }
         #endregion
 
@@ -172,9 +181,16 @@ namespace AgeOfWarBuilders.BuildSystem
                 if (currentObject_BuildChecker == null) return;
                 if (currentObject_BuildChecker.CanBuild)
                 {
-                    PlayObject_PoolManager.instance.Feed(list_of_build_data[indexCursor].model, LocalSceneTransforms.parent_MyBuildings);
+                    //Arreglar esto del Pool
+                    /*
+                    PlayObject_PoolManager.instance.Feed(list_of_build_data[indexHorizontalCursor].model, LocalSceneTransforms.parent_MyBuildings);
+                    var go = PlayObject_PoolManager.instance.Get(list_of_build_data[indexHorizontalCursor].model.type, GetPosRot().pos, GetPosRot().rot);
+                    */
 
-                    var go = PlayObject_PoolManager.instance.Get(list_of_build_data[indexCursor].model.type, GetPosRot().pos, GetPosRot().rot);
+                    TowerEntity go = GameObject.Instantiate( list_of_build_data[indexHorizontalCursor].model, LocalSceneTransforms.parent_MyBuildings);
+                    go.transform.eulerAngles = GetPosRot().rot;
+                    go.transform.position = GetPosRot().pos;
+                    go.Initialize();
 
                     MyBuildings.Add(go);
                 }
