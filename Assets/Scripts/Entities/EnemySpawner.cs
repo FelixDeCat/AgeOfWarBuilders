@@ -29,6 +29,9 @@ public class EnemySpawner : MonoBehaviour
             var enem = (Enemy)PlayObject_PoolManager.instance.Get(model.type, RandomPos(), transform.eulerAngles);
             enem.CallbackOnDeath(DeathEnemy);
         }
+
+
+       
     }
 
     public void DeathEnemy(Enemy enemy)
@@ -39,5 +42,23 @@ public class EnemySpawner : MonoBehaviour
     void Respawn()
     {
         var enem = (Enemy)PlayObject_PoolManager.instance.Get(model.type, RandomPos(), transform.eulerAngles);
+    }
+
+    private void OnDrawGizmos()
+    {
+        var vfrom = new Vector3(Mathf.Min(from.position.x, to.position.x), 0, Mathf.Min(from.position.z, to.position.z));
+        var vto = new Vector3(Mathf.Max(from.position.x, to.position.x), 0, Mathf.Max(from.position.z, to.position.z));
+
+        float horizontalDist = vto.x - vfrom.x;
+        float VerticalDist = vto.z - vfrom.z;
+        float pos_x_center = vfrom.x + horizontalDist / 2;
+        float pos_z_center = vfrom.z + VerticalDist / 2;
+
+        float scale_x = horizontalDist;
+        float scale_z = VerticalDist;
+
+        Gizmos.DrawWireCube(new Vector3(pos_x_center, 0, pos_z_center), new Vector3(scale_x, 0, scale_z));
+
+
     }
 }

@@ -164,6 +164,7 @@ GameObject:
   - component: {fileID: 1254743145520743908}
   - component: {fileID: 1254743145520743905}
   - component: {fileID: 423051731295475541}
+  - component: {fileID: 7319035039964760279}
   m_Layer: 11
   m_Name: Enemy
   m_TagString: Enemy
@@ -233,7 +234,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   AddOnAwake: 0
-  CanNotWalk: 0
+  CanNotWalk: 1
+  rig_path_finder: {fileID: 7319035039964760279}
+  myRig: {fileID: 1254743145520743908}
   initial_hp: 100
   ui_life: {fileID: 1254743145688725523}
   mypartersLayer:
@@ -256,6 +259,24 @@ MonoBehaviour:
   - {fileID: 1254743146517920387}
   - {fileID: 1254743145255238713}
   RENDER_COLOR_PARAM: _Color
+--- !u!114 &7319035039964760279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1254743145520743909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1090778b6c0b76744886caafcd3e566b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canMove: 0
+  movement_speed: 5
+  radius_to_find_nodes: 6
+  distance_to_close: 1
+  forwardspeed: 5
+  rb: {fileID: 1254743145520743908}
 --- !u!1 &1254743145584547696
 GameObject:
   m_ObjectHideFlags: 0

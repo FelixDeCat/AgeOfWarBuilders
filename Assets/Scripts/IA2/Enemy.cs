@@ -4,6 +4,7 @@ using AgeOfWarBuilders.Entities;
 using System.Collections;
 using System.Linq;
 using System.Collections.Generic;
+using AgeOfWarBuilders.Global;
 
 public class Enemy : LivingEntity, IGridEntity
 {
@@ -55,6 +56,11 @@ public class Enemy : LivingEntity, IGridEntity
     protected override void OnTick(float DeltaTime)
     {
         base.OnTick(DeltaTime);
+
+        if (PlayerController.DEBUG_PRESS_T)
+        {
+            GoToPosition(Main.Player.transform.position);
+        }
     }
     protected override void OnDeath()
     {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Tools;
+using AgeOfWarBuilders.Entities;
 
 namespace AgeOfWarBuilders.Global
 {
@@ -11,7 +12,15 @@ namespace AgeOfWarBuilders.Global
         private void Awake() => instance = this;
         [SerializeField] Transform spawnPoint;
 
+        private void Start()
+        {
+            player = FindObjectOfType<PlayerModel>();
+        }
+
         public static Transform SpawnPosition => instance.spawnPoint;
         public MyEventSystem GetMyEventSystem() => MyEventSystem.instance;
+
+        public PlayerModel player;
+        public static PlayerModel Player => instance.player;
     }
 }

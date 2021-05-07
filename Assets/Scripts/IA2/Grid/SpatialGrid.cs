@@ -78,32 +78,17 @@ public class SpatialGrid : MonoBehaviour
 
     public void AddEntityToGrid(IGridEntity entity)
     {
-        Debug.Log("Me volvieron a agregar");
-        //entity.OnMove += UpdateEntity;
         UpdateEntity(entity);
     }
     public void RemoveEntityToGrid(IGridEntity entity)
     {
         entity.Position = new Vector3(int.MinValue, int.MinValue, int.MinValue);
-        //entity.OnMove -= UpdateEntity;
-        //RemoveFromBucket(entity);
-        //lastPositions.Remove(entity);
-        //UpdateEntity(entity);
     }
 
     public void UpdateEntity(IGridEntity entity)
     {
         var lastPos = lastPositions.ContainsKey(entity) ? lastPositions[entity] : Outside;
         var currentPos = ConvertGlobalPosToGridNormalized(entity.Position);
-
-        //if (!entity.IsAlive)
-        //{
-        //    if (buckets[lastPos.Item1, lastPos.Item2].Contains(entity))
-        //    {
-        //        buckets[lastPos.Item1, lastPos.Item2].Remove(entity);
-        //    }
-        //}
-        
 
         //Misma posición, no necesito hacer nada
         if (lastPos.Equals(currentPos))
