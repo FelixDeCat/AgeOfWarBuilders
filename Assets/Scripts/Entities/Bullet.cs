@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Tools.Structs;
 
 public class Bullet : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class Bullet : MonoBehaviour
     Action<Bullet> OnDeath;
     bool isAlive;
     string tag_to_damage = "Enemy";
+    Damage damagedata;
 
     public void Configure(Action<Bullet> OnDeath, Vector3 position, Vector3 direction, float life_time = 1f, float speed = 50f, int damage = 10, string tag_to_damage = "Enemy")
     {
@@ -22,6 +24,7 @@ public class Bullet : MonoBehaviour
         this.OnDeath = OnDeath;
         this.tag_to_damage = tag_to_damage;
         this.speed = speed;
+        damagedata = new Damage(damage, position, false);
     }
 
     private void FixedUpdate()
@@ -55,7 +58,7 @@ public class Bullet : MonoBehaviour
         {
             if (other.gameObject.tag == tag_to_damage)
             {
-                other.gameObject.GetComponent<LivingEntity>().TakeDamage(damage);
+                other.gameObject.GetComponent<LivingEntity>().ReceiveDamage(damagedata.SetOwnerPosition(this.gameObject.transform.position));
                 Death();
             }
         }

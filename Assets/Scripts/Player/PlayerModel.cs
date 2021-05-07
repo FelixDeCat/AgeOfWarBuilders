@@ -30,6 +30,9 @@ namespace AgeOfWarBuilders.Entities
         [SerializeField] float gravity = -9.81f;
         const float GFORCE = -2;
         #endregion
+        #region Combat Vars
+        PlayerDamageComponent playerDamageComponent;
+        #endregion
 
         protected override void OnInitialize()
         {
@@ -37,6 +40,9 @@ namespace AgeOfWarBuilders.Entities
             base.OnInitialize();
             controller = GetComponent<CharacterController>();
             groundcheck = GetComponentInChildren<PlayerComponent_GroundCheck>();
+            playerDamageComponent = GetComponentInChildren<PlayerDamageComponent>();
+            if (playerDamageComponent != null) { playerDamageComponent.AddOwnerTransform(this.transform); playerDamageComponent.Initialize(true);   }
+            else throw new System.Exception("No have a [PlayerDamageComponent], plase add to some child object");
             if (groundcheck == null) throw new System.Exception("No have a [PlayerComponent_GroundCheck], plase add to some child object");
         }
 
@@ -94,7 +100,21 @@ namespace AgeOfWarBuilders.Entities
 
             controller.Move(velocity * DeltaTime);
             #endregion
+
+            Update_Combat(DeltaTime);
         }
+
+        #region [LOGIC] Combat
+
+        void Update_Combat(float DeltaTime)
+        {
+            if (PlayerController.PRESS_DOWN_Fire1)
+            {
+                playerDamageComponent.DoDamage();
+            }
+            playerDamageComponent.Tick(DeltaTime);
+        }
+        #endregion
 
         private void LateUpdate()
         {

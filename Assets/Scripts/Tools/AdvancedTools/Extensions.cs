@@ -10,12 +10,9 @@ namespace Tools.Extensions
     using RandomWin = System.Random;
     using System.Linq;
 
-    namespace Tools.Extensions.Collections
-    {
+   
 
-    }
-
-    public static class Extensions
+    public static class ExtensionsAndUtils
     {
         //public static GameObject FindObjectWithObjectFinder(ObjectFinder.type type)
         //{
@@ -24,7 +21,24 @@ namespace Tools.Extensions
         //    return null;
         //}
 
-           
+        public static int Clamp(int v, int min, int max)
+        {
+            return v < min ? min : v > max ? max : v;
+        }
+        public static byte Clamp(byte v, byte min, byte max)
+        {
+            return v < min ? min : v > max ? max : v;
+        }
+
+        //Generator genérico, lo vamos a ver más adelante.
+        public static IEnumerable<Src> Generate<Src>(Src seed, Func<Src, Src> generator)
+        {
+            while (true)
+            {
+                yield return seed;
+                seed = generator(seed);
+            }
+        }
 
         private static System.Random rng = new System.Random();
         public static List<T> Shuffle<T>(this List<T> list)

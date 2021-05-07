@@ -20,7 +20,7 @@ public class GameLoop : MonoBehaviour
     public static void PlayGame() => instance.StartGame();
     bool inGame;
     bool isPaused;
-    bool AlreadyInitialized;
+    bool GameAlreadyInitialized;
 
     private void Start()
     {
@@ -31,10 +31,7 @@ public class GameLoop : MonoBehaviour
     {
         playObject.Index = playObjects.Count;
         playObjects.Add(playObject);
-        if (!playObject.IsInitialized)
-        {
-            playObject.Initialize();
-        }
+        if(!playObject.IsInitialized) playObject.Initialize();
     }
     void Remove_PlayObject(PlayObject playObject)
     {
@@ -46,8 +43,8 @@ public class GameLoop : MonoBehaviour
     void StartGame()
     {
         inGame = true;
-        playObjects.ForEach(x => x.Initialize());
-        AlreadyInitialized = true;
+        playObjects.ForEach(x => { if (!x.IsInitialized) x.Initialize(); } );
+        GameAlreadyInitialized = true;
     }
     void StopGame()
     {

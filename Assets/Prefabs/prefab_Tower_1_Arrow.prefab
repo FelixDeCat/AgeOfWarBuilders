@@ -164,6 +164,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9185776385494775646}
   - component: {fileID: 92514991783506765}
+  - component: {fileID: 5282246001816766086}
   m_Layer: 0
   m_Name: ObserverQuery
   m_TagString: Untagged
@@ -198,8 +199,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 16
+  min_radius: 0
   angle: 45
   observer: {fileID: 3711351475984617631}
+--- !u!114 &5282246001816766086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 803953619276006820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 181f82b31e5d20946a5d2c04f5bba486, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  width: 32
+  height: 32
+  target: {fileID: 3711351475984617631}
 --- !u!1 &911624595030310648
 GameObject:
   m_ObjectHideFlags: 0
@@ -898,7 +915,8 @@ MonoBehaviour:
   CanNotWalk: 0
   initial_hp: 100
   ui_life: {fileID: 8445720268739110337}
-  query: {fileID: 92514991783506765}
+  observer_query: {fileID: 92514991783506765}
+  square_query: {fileID: 5282246001816766086}
   currentEnemy: {fileID: 0}
   Time_To_Select_Target: 1
   shootPoint: {fileID: 6764628627284549570}

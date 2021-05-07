@@ -5,7 +5,7 @@ using System.Linq;
 
 public class TowerEntity : LivingEntity
 {
-    public ObserverQuery query;
+    
 
     public Enemy currentEnemy;
 
@@ -13,7 +13,19 @@ public class TowerEntity : LivingEntity
     float timer;
 
     public Transform shootPoint;
-    public GameObject bullet_Model;
+
+    ObserverQuery observer_query;
+    SquareQuery square_query;
+
+    protected override void OnInitialize()
+    {
+        base.OnInitialize();
+
+        observer_query = GetComponentInChildren<ObserverQuery>();
+        observer_query?.Configure(this.transform);
+        square_query = GetComponentInChildren<SquareQuery>();
+        square_query?.Configure(this.transform);
+    }
 
 
     protected override void OnTick(float DeltaTime)
@@ -31,7 +43,7 @@ public class TowerEntity : LivingEntity
             timer = 0;
 
             //Le pregunto a la grilla y le pido el enemigo mas cercano
-            currentEnemy = query
+            currentEnemy = observer_query
                 .Query()
                 .Cast<Enemy>()
                 .OrderBy(x => (transform.position - x.transform.position).sqrMagnitude)

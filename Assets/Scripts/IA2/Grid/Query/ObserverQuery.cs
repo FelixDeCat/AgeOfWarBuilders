@@ -2,39 +2,47 @@
 using System.Linq;
 using UnityEngine;
 
-public class ObserverQuery : MonoBehaviour, IQuery {
+public class ObserverQuery : QueryComponent, IQuery {
 
-   // public SpatialGrid targetGrid;
+    public static string Static_ToString() => "ObserverQuery";
+
+    // public SpatialGrid targetGrid;
     public float radius = 5f;
+    public float min_radius = 0f;
     public float angle = 45;
     public IEnumerable<IGridEntity> selected = new List<IGridEntity>();
 
-    public Transform observer;
+    protected override void OnConfigure(Transform target) { }
 
-    public IEnumerable<IGridEntity> Query() {
+    public override IEnumerable<IGridEntity> Query() {
         return SpatialGrid.instance.Query(
-                                observer.position - new Vector3(radius, 0, radius),
-                                observer.position + new Vector3(radius, 0, radius),
+                                target.position - new Vector3(radius, 0, radius),
+                                target.position + new Vector3(radius, 0, radius),
                                 x => InRadius(x) && InAngle(x));
     }
 
+    float dist;
     bool InRadius(Vector3 v3)
     {
-        return (observer.position - v3).sqrMagnitude < radius * radius;
+        dist = (target.position - v3).sqrMagnitude;
+
+        return  dist < radius * radius && dist > min_radius * min_radius;
     }
     bool InAngle(Vector3 v3)
     {
-        return Vector3.Angle(v3 - observer.position, observer.forward) < angle;
+        return Vector3.Angle(v3 - target.position, target.forward) < angle;
     }
 
     void OnDrawGizmos() {
-        if (SpatialGrid.instance == null || observer == null) return;
+        if (target == null || SpatialGrid.instance) return;
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(observer.transform.position, radius);
+        Gizmos.DrawWireSphere(target.transform.position, radius);
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawWireSphere(target.transform.position, min_radius);
         Gizmos.color = Color.yellow;
-        var vdir = Quaternion.AngleAxis(angle, observer.up) * observer.forward;
-        var vdir2 = Quaternion.AngleAxis(-angle, observer.up) * observer.forward;
-        Gizmos.DrawRay(observer.transform.position, vdir * radius);
-        Gizmos.DrawRay(observer.transform.position, vdir2 * radius);
+        var vdir = Quaternion.AngleAxis(angle, target.up) * target.forward;
+        var vdir2 = Quaternion.AngleAxis(-angle, target.up) * target.forward;
+        Gizmos.DrawRay(target.transform.position, vdir * radius);
+        Gizmos.DrawRay(target.transform.position, vdir2 * radius);
     }
 }

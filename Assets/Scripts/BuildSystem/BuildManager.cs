@@ -6,6 +6,7 @@ using AgeOfWarBuilders.Entities;
 using Tools.UI;
 using Tools.Extensions;
 using UnityEngine.Events;
+using Tools.Structs;
 
 
 namespace AgeOfWarBuilders.BuildSystem
@@ -17,15 +18,62 @@ namespace AgeOfWarBuilders.BuildSystem
 
         public UI_BuildSelector ui;
 
-        public List<BuildData> ObjectsToBuild;
-        public int ObjectCount { get { return ObjectsToBuild.Count; } }
+        public List<BuildData> list_of_build_data;
+        public int ObjectCount { get { return list_of_build_data.Count; } }
         int indexCursor;
-
-       
 
         public List<PlayObject> MyBuildings = new List<PlayObject>(); 
 
-        #region Apertura y cierre del modo de Contruccion
+        private void Start()
+        {
+            if (list_of_build_data == null || list_of_build_data.Count < 1) throw new System.Exception("No hay data cargada");
+            ui.Configurate(() => list_of_build_data, OnUIAnimationEnd_OPEN, OnUIAnimationEnd_CLOSE);
+        }
+
+        #region [TICK]
+        void Update()
+        {
+            Update_OpenCloseMode();
+            if (buildModeActive)
+            {
+                Update_CursorMovement();
+                Update_PosToBuild();
+                Update_Instance_Object();
+                Update_ObjectTransform();
+            }
+        }
+        #endregion
+
+        #region [EXPOSITION] END Animation Events
+        void OnUIAnimationEnd_OPEN()
+        {
+            ui.Select(indexCursor);
+            InstanciateStruct(list_of_build_data[indexCursor].model_BuildMode);
+        }
+        void OnUIAnimationEnd_CLOSE()
+        {
+            indexCursor = 0;
+        }
+        #endregion
+
+        #region [EXPOSITION] Enter and Close to Build Mode
+        void EnterToBuildMode()
+        {
+            OnOpenBuildMode.Invoke();
+            Turn_ON_Canvas();
+            ui.Open();
+
+        }
+        void ExitToBuildMode()
+        {
+            OnCloseBuildMode.Invoke();
+            ui.InstantClose();
+            Turn_OFF_Canvas();
+            Hide();
+        }
+        #endregion
+
+        #region [LOGIC] Open close BUILD MODE
         [SerializeField] CanvasGroup BuildCanvas;
         [SerializeField] UI_ImageFiller filler;
         float timer;
@@ -92,11 +140,11 @@ namespace AgeOfWarBuilders.BuildSystem
         void Turn_OFF_Canvas() => BuildCanvas.alpha = 0;
         #endregion
 
-        #region Index Cursor Logic
+        #region [LOGIC] Selection Index Cursor 
         public void NextElement(float direction = 1) // 1:adelante  -1:atras
         {
             indexCursor = direction > 0 ? indexCursor.NextIndex(ObjectCount) : indexCursor.BackIndex(ObjectCount);
-            RefreshFrontEnd();
+            OnUIAnimationEnd_OPEN();
         }
         bool oneshot_axis;
         void Update_CursorMovement()
@@ -116,50 +164,7 @@ namespace AgeOfWarBuilders.BuildSystem
         }
         #endregion
 
-        private void Start()
-        {
-            ui.Configurate(() => ObjectsToBuild, RefreshFrontEnd, OnUIAnimationEndClose);
-        }
-
-        void RefreshFrontEnd()
-        {
-            ui.Select(indexCursor);
-            InstanciateStruct(ObjectsToBuild[indexCursor].model_BuildMode);
-        }
-        void OnUIAnimationEndClose()
-        {
-            indexCursor = 0;
-            
-        }
-
-        void Update()
-        {
-            Update_OpenCloseMode();
-            if (buildModeActive)
-            {
-                Update_CursorMovement();
-                Update_PosToBuild();
-                Update_Instance_Object();
-                Update_ObjectTransform();
-            }
-        }
-
-        void EnterToBuildMode()
-        {
-            OnOpenBuildMode.Invoke();
-            Turn_ON_Canvas();
-            ui.Open();
-
-        }
-        void ExitToBuildMode()
-        {
-            OnCloseBuildMode.Invoke();
-            ui.InstantClose();
-            Turn_OFF_Canvas();
-            Hide();
-        }
-
-        #region Place Real Object 
+        #region [LOGIC] Press to Build 
         void Update_Instance_Object()
         {
             if (PlayerController.PRESS_DOWN_Submit)
@@ -167,9 +172,9 @@ namespace AgeOfWarBuilders.BuildSystem
                 if (currentObject_BuildChecker == null) return;
                 if (currentObject_BuildChecker.CanBuild)
                 {
-                    PlayObject_PoolManager.instance.Feed(ObjectsToBuild[indexCursor].model, LocalSceneTransforms.parent_MyBuildings);
+                    PlayObject_PoolManager.instance.Feed(list_of_build_data[indexCursor].model, LocalSceneTransforms.parent_MyBuildings);
 
-                    var go = PlayObject_PoolManager.instance.Get(ObjectsToBuild[indexCursor].model.type, GetPosRot().pos, GetPosRot().rot);
+                    var go = PlayObject_PoolManager.instance.Get(list_of_build_data[indexCursor].model.type, GetPosRot().pos, GetPosRot().rot);
 
                     MyBuildings.Add(go);
                 }
@@ -177,7 +182,7 @@ namespace AgeOfWarBuilders.BuildSystem
         }
         #endregion
 
-        #region Object Preview
+        #region [LOGIC] Object Preview
         public Transform InstancePosition;
         public GameObject currentObject;
         ObjectBuildChecker currentObject_BuildChecker;
@@ -229,18 +234,10 @@ namespace AgeOfWarBuilders.BuildSystem
         {
             return new posrot(posToInstanciate, euler_rot);
         }
-        public struct posrot
-        {
-            internal Vector3 pos;
-            internal Vector3 rot;
-            public posrot(Vector3 pos, Vector3 rot)
-            {
-                this.pos = pos;
-                this.rot = rot;
-            }
-        }
+
         #endregion
 
+        #region [LOGIC] Object Transform
         float scrollvalue;
         void Update_ObjectTransform()
         {
@@ -252,6 +249,7 @@ namespace AgeOfWarBuilders.BuildSystem
             if (scrollvalue > max_Object_Forward_offset) scrollvalue = max_Object_Forward_offset;
 
         }
+        #endregion
     }
 }
 

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1254743144886720276}
   - component: {fileID: 1254743144886720278}
   - component: {fileID: 1254743144886720279}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: barBKG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,7 +84,7 @@ GameObject:
   - component: {fileID: 1254743145255238718}
   - component: {fileID: 1254743145255238712}
   - component: {fileID: 1254743145255238713}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BodyUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -164,7 +164,7 @@ GameObject:
   - component: {fileID: 1254743145520743908}
   - component: {fileID: 1254743145520743905}
   - component: {fileID: 423051731295475541}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -264,7 +264,7 @@ GameObject:
   - component: {fileID: 1254743145584547692}
   - component: {fileID: 1254743145584547693}
   - component: {fileID: 1254743145584547698}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -360,7 +360,7 @@ GameObject:
   - component: {fileID: 1254743145688725521}
   - component: {fileID: 1254743145688725523}
   - component: {fileID: 1254743145688725526}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: LifeBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -463,7 +463,7 @@ GameObject:
   - component: {fileID: 1254743145808919837}
   - component: {fileID: 1254743145808919839}
   - component: {fileID: 1254743145808919836}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -541,7 +541,7 @@ GameObject:
   - component: {fileID: 1254743146517920384}
   - component: {fileID: 1254743146517920386}
   - component: {fileID: 1254743146517920387}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BodyDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}

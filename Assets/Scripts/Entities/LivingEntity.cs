@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using AgeOfWarBuilders.Entities;
+using Tools.Structs;
 
 public class LivingEntity : WalkingEntity
 {
@@ -11,9 +12,13 @@ public class LivingEntity : WalkingEntity
 
     public float HP { get => life.Life; }
 
-    public void TakeDamage(int dmg = 5)
+    public void ReceiveDamage(int dmg = 5)
     {
         life.Hit(dmg);
+    }
+    public void ReceiveDamage(Damage damage)
+    {
+        life.Hit(damage.Physical_damage);
     }
     public void Resurrect()
     {
@@ -23,7 +28,7 @@ public class LivingEntity : WalkingEntity
     protected override void OnInitialize()
     {
         base.OnInitialize();
-        Debug.Log("Initialize LivingEntity");
+        Debug.Log("Initialize LivingEntity [" + this.gameObject.name + "]");
         life = new LifeSystemBase(
             initial_hp,
             () => { /*OnLose*/ },

@@ -8,7 +8,7 @@ public abstract class PlayObject : MonoBehaviour, IPausable, IResumeable, IUpdat
 {
     int index = -1;
     public int Index { get => index; set => index = value; }
-    
+
 
     public PlayObjectType type;
 
@@ -18,11 +18,22 @@ public abstract class PlayObject : MonoBehaviour, IPausable, IResumeable, IUpdat
     public bool AddOnAwake = false;
     protected virtual void Awake()
     {
-        if(AddOnAwake) GameLoop.AddObject(this);
+        if (AddOnAwake) GameLoop.AddObject(this);
     }
 
     //INTERFACE IMPLEMENTATION
-    public void Initialize() { OnInitialize(); isInitialized = true; }
+    public void Initialize()
+    {
+        if (!IsInitialized)
+        {
+            OnInitialize();
+            isInitialized = true;
+        }
+        else
+        {
+            Debug.LogWarning("Already Initizalized");
+        }
+    }
     public void Deinitialize() { OnDeinitialize(); isInitialized = false; }
     public void Pause() { OnPause(); }
     public void Resume() { OnResume(); }
