@@ -10,11 +10,11 @@ public class GameLoop : MonoBehaviour
     public static GameLoop instance;
     private void Awake() { instance = this; }
 
-    public List<PlayObject> playObjects = new List<PlayObject>();
+    public HashSet<PlayObject> playObjects = new HashSet<PlayObject>();
 
     public static void AddObject(PlayObject playObject) => instance.Add_PlayObject(playObject);
     public static void RemoveObject(PlayObject playObject) => instance.Remove_PlayObject(playObject);
-    public List<PlayObject> PlayObjects => instance.playObjects;
+    public HashSet<PlayObject> PlayObjects => instance.playObjects;
     public static void Pause() => instance.PauseGame();
     public static void Resume() => instance.ResumeGame();
     public static void PlayGame() => instance.StartGame();
@@ -35,15 +35,14 @@ public class GameLoop : MonoBehaviour
     }
     void Remove_PlayObject(PlayObject playObject)
     {
-        playObjects.RemoveAt(playObject.Index);
-        playObject.Index = -1;
+        playObjects.Remove(playObject);
         playObject.Deinitialize();
     }
 
     void StartGame()
     {
         inGame = true;
-        playObjects.ForEach(x => { if (!x.IsInitialized) x.Initialize(); } );
+        foreach(var p in playObjects) { if (!p.IsInitialized) p.Initialize(); }
         GameAlreadyInitialized = true;
     }
     void StopGame()
@@ -53,12 +52,12 @@ public class GameLoop : MonoBehaviour
     void PauseGame()
     {
         isPaused = true;
-        playObjects.ForEach(x => x.Pause());
+        foreach (var p in playObjects) { p.Pause(); }
     }
     void ResumeGame()
     {
         isPaused = false;
-        playObjects.ForEach(x => x.Resume());
+        foreach (var p in playObjects) { p.Resume(); }
     }
 
     private void Update()
@@ -72,12 +71,10 @@ public class GameLoop : MonoBehaviour
 
             if (!isPaused)
             {
-                for (int i = 0; i < PlayObjects.Count; i++)
+                foreach (var p in playObjects)
                 {
-                    if (playObjects[i] != null)
-                        playObjects[i].Tick(Time.deltaTime);
+                    p.Tick(Time.deltaTime);
                 }
-
             }
         }
     }

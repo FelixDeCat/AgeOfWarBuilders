@@ -29,5 +29,6 @@ public class ScreenFeedback : MonoBehaviour
             timer += Time.deltaTime / cuantoTarda;
             yield return null;
         }
+        imgFeedbackPierdeVida.color = ColorTrasnparente;
     }
 }

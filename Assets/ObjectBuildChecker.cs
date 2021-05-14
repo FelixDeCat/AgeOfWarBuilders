@@ -8,7 +8,8 @@ public class ObjectBuildChecker : MonoBehaviour
 
     bool canBuild;
     public bool CanBuild { get { return canBuild; } }
-
+    public void SetAuxiliarCanBuild(bool val) { canBuildAuxiliar = val; }
+    bool canBuildAuxiliar;
     public float radius;
 
     public Vector3 capsule_point1;
@@ -34,7 +35,7 @@ public class ObjectBuildChecker : MonoBehaviour
 
         for (int i = 0; i < renders.Length; i++)
         {
-            renders[i].material.SetColor("_Color", canBuild ? Color.green : Color.red);
+            renders[i].material.SetColor("_Color", canBuild && canBuildAuxiliar ? Color.green : Color.red);
         }
     }
 

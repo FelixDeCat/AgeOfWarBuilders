@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - Enemy
+  - NotBuild
   layers:
   - Default
   - TransparentFX
@@ -20,9 +21,9 @@ TagManager:
   - player
   - Enemy
   - node
-  - 
-  - 
-  - 
+  - NotBuild
+  - EnemyCollider
+  - PlayerCollider
   - 
   - 
   - 

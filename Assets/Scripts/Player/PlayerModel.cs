@@ -36,6 +36,8 @@ namespace AgeOfWarBuilders.Entities
 
         public PlayerView view;
 
+        Threat myThread;
+
         protected override void OnInitialize()
         {
             Debug.Log("Initialize Player");
@@ -43,9 +45,17 @@ namespace AgeOfWarBuilders.Entities
             controller = GetComponent<CharacterController>();
             groundcheck = GetComponentInChildren<PlayerComponent_GroundCheck>();
             playerDamageComponent = GetComponentInChildren<PlayerDamageComponent>();
+            myThread = GetComponent<Threat>();
+            myThread.Initialize();
             if (playerDamageComponent != null) { playerDamageComponent.AddOwnerTransform(this.transform); playerDamageComponent.Initialize(true);   }
             else throw new System.Exception("No have a [PlayerDamageComponent], plase add to some child object");
             if (groundcheck == null) throw new System.Exception("No have a [PlayerComponent_GroundCheck], plase add to some child object");
+        }
+
+        protected override void OnDeinitialize()
+        {
+            base.OnDeinitialize();
+            myThread.Deinitialize();
         }
 
         protected override void OnPause() { base.OnPause(); }
@@ -62,6 +72,7 @@ namespace AgeOfWarBuilders.Entities
 
             if (direction.magnitude >= 0.1f) //esto es un deathzone virtual
             {
+                view.Run(true);
 
                 // calculo la direccion dependiendo... el input de movimiento y le sumo la rotacion de la camara
                 targetangle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
@@ -78,13 +89,21 @@ namespace AgeOfWarBuilders.Entities
                 //al controller solo le tengo que pasar el vector direccion
                 controller.Move(moveDir.normalized * speed * DeltaTime);
             }
+            else
+            {
+                view.Run(false);
+            }
             #endregion
             #region Jump & Gravity
             isGrounded = groundcheck.IsGrounded;
+            view.IsGrounded(isGrounded);
+
             if (isGrounded && velocity.y < 0)
             {
                 velocity.y = -2f;
             }
+
+            
             //esto se ejecuta 1 solo frame
             if (PlayerController.PRESS_DOWN_Jump && isGrounded)
             {
@@ -94,7 +113,11 @@ namespace AgeOfWarBuilders.Entities
                 // GForce es el multiplicador de Fuerza de Gravedad
                 // en cambio Gravity el la cantidad y direccion de gravedad
                 velocity.y = Mathf.Sqrt(jumpHeight * GFORCE * gravity);
+
+                view.Jump();
             }
+
+            
 
             //la gravedad va a estar todo el tiempo afectando... si el valor de Velocity
             //se dispara repentinamente, esto va a hacer que retroceda
@@ -104,6 +127,8 @@ namespace AgeOfWarBuilders.Entities
             #endregion
 
             Update_Combat(DeltaTime);
+
+            myThread.Tick(DeltaTime);
         }
 
         #region [LOGIC] Combat
@@ -112,11 +137,19 @@ namespace AgeOfWarBuilders.Entities
         {
             if (PlayerController.PRESS_DOWN_Fire1)
             {
-                view.Play_Slash();
-                playerDamageComponent.DoDamage();
+                view.Attack();
             }
             playerDamageComponent.Tick(DeltaTime);
         }
+
+        public void UEVENT_Attack()
+        {
+            view.Play_Slash();
+            playerDamageComponent.DoDamage();
+        }
+
+        
+
         #endregion
 
         private void LateUpdate()
@@ -126,6 +159,22 @@ namespace AgeOfWarBuilders.Entities
                 controller.transform.position = Main.SpawnPosition.position;
                 controller.transform.eulerAngles = Main.SpawnPosition.eulerAngles;
             }
+        }
+
+
+
+        protected override void Feedback_OnHeal()
+        {
+            base.Feedback_OnHeal();
+        }
+        protected override void Feedback_ReceiveDamage()
+        {
+            base.Feedback_ReceiveDamage();
+            ScreenFeedback.instancia.PerderVida();
+        }
+        protected override void OnDeath()
+        {
+            base.OnDeath();
         }
     }
 }

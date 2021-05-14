@@ -11,6 +11,7 @@ namespace AgeOfWarBuilders.Global
         public static Main instance;
         private void Awake() => instance = this;
         [SerializeField] Transform spawnPoint;
+        [SerializeField] Transform mybase;
 
         private void Start()
         {
@@ -22,5 +23,7 @@ namespace AgeOfWarBuilders.Global
 
         public PlayerModel player;
         public static PlayerModel Player => instance.player;
+
+        public static Vector3 MyBasePosition => instance.mybase.position;
     }
 }

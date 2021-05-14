@@ -78,10 +78,12 @@ public class SpatialGrid : MonoBehaviour
 
     public void AddEntityToGrid(IGridEntity entity)
     {
+        entity.OnMove += UpdateEntity;
         UpdateEntity(entity);
     }
     public void RemoveEntityToGrid(IGridEntity entity)
     {
+        entity.OnMove -= UpdateEntity;
         entity.Position = new Vector3(int.MinValue, int.MinValue, int.MinValue);
     }
 
@@ -101,7 +103,7 @@ public class SpatialGrid : MonoBehaviour
         }
 
         //Lo "metemos" a la celda nueva, o lo sacamos si salio de la grilla
-        if (IsInsideGrid(currentPos))
+        if (IsInsideGrid(currentPos) && entity.IsAlive)
         {
             buckets[currentPos.Item1, currentPos.Item2].Add(entity);
             lastPositions[entity] = currentPos;

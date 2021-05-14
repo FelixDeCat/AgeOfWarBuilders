@@ -107,6 +107,8 @@ namespace IA_Felix
         public bool gizmos = false;
         public bool draw_radius;
         public bool draw_neighbors;
+        public Color connectionColor;
+        public float multiplier_up_vector_gizmo_dist = 0.1f;
 
         public void Init(GameObject go) {
             render = go.GetComponent<Renderer>();
@@ -128,8 +130,8 @@ namespace IA_Felix
         {
             if (!gizmos) return;
             if (draw_radius) Gizmos.DrawWireSphere(myPos, radius);
-            if (draw_neighbors) Gizmos.color = Color.magenta;
-            if (draw_neighbors) foreach (var n in col) Gizmos.DrawLine(myPos, n.transform.position);
+            if (draw_neighbors) Gizmos.color = connectionColor;
+            if (draw_neighbors) foreach (var n in col) Gizmos.DrawLine(myPos+Vector3.up* multiplier_up_vector_gizmo_dist, n.transform.position + Vector3.up* multiplier_up_vector_gizmo_dist);
         }
     }
 

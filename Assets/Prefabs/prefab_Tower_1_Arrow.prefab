@@ -180,7 +180,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 803953619276006820}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.66, y: 0, z: 8.42}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3711351475984617631}
@@ -912,7 +912,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 1
   AddOnAwake: 0
-  CanNotWalk: 0
+  CanNotWalk: 1
+  rig_path_finder: {fileID: 0}
+  myRig: {fileID: 0}
   initial_hp: 100
   ui_life: {fileID: 8445720268739110337}
   currentEnemy: {fileID: 0}

@@ -11,7 +11,6 @@ public class LivingEntity : WalkingEntity
     [SerializeField] FrontendStatBase ui_life;
 
     public float HP { get => life.Life; }
-    
 
     public void ReceiveDamage(int dmg = 5)
     {
@@ -26,23 +25,22 @@ public class LivingEntity : WalkingEntity
         life.ResetLife();
     }
 
+    protected virtual void Feedback_ReceiveDamage() { }
+    protected virtual void Feedback_OnHeal() { }
+    protected virtual void OnDeath() { }
+
     protected override void OnInitialize()
     {
         base.OnInitialize();
         Debug.Log("Initialize LivingEntity [" + this.gameObject.name + "]");
         life = new LifeSystemBase(
             initial_hp,
-            () => { /*OnLose*/ },
-            () => { /*OnGain*/ },
+            Feedback_ReceiveDamage,
+            Feedback_OnHeal,
             OnDeath,
             ui_life,
             initial_hp);
     }
 
-    protected virtual void OnDeath()
-    {
-        //GameLoop.RemoveObject(this);
-        //transform.position = new Vector3(int.MaxValue, int.MaxValue, int.MaxValue);
-        //Destroy(this);
-    }
+    
 }

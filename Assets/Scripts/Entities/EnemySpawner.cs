@@ -10,6 +10,8 @@ public class EnemySpawner : MonoBehaviour
     public Enemy model;
     public Transform parent;
 
+    [SerializeField] BurstExecuter burst;
+
     public int cant = 5;
     //public List<Enemy> spawner;
 
@@ -24,20 +26,34 @@ public class EnemySpawner : MonoBehaviour
     {
         PlayObject_PoolManager.instance.Feed(model, parent);
 
-        for (int i = 0; i < cant; i++)
-        {
-            var enem = (Enemy)PlayObject_PoolManager.instance.Get(model.type, RandomPos(), transform.eulerAngles);
-            enem.CallbackOnDeath(DeathEnemy);
-        }
+        //for (int i = 0; i < cant; i++)
+        //{
+        //    SpawnOneEnemy();
+        //}
+        
+    }
 
+    public void Begin()
+    {
+        burst.Begin(SpawnOneEnemy);
+    }
 
-       
+    private void Update()
+    {
+        burst.Tick(Time.deltaTime);
+    }
+
+    public void SpawnOneEnemy()
+    {
+        var enem = (Enemy)PlayObject_PoolManager.instance.Get(model.type, RandomPos(), transform.eulerAngles);
+        enem.CallbackOnDeath(DeathEnemy);
     }
 
     public void DeathEnemy(Enemy enemy)
     {
+       /* 
         PlayObject_PoolManager.instance.Return(enemy);
-        Respawn();
+        Respawn();*/
     }
     void Respawn()
     {

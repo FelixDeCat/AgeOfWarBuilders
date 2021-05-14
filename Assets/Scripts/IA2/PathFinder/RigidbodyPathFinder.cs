@@ -28,6 +28,8 @@ public class RigidbodyPathFinder : MonoBehaviour
     Node finalNode;
 
     public Action callbackEndDinamic = delegate { };
+    public Action callbackOnBeginMove = delegate { };
+    public Action callbackOnEndMove = delegate { };
 
     public void SpeedRelaxSearch() => movement_speed = auxspeed;
     public void SpeedAlertSearch(float _speed) => movement_speed = _speed;
@@ -43,6 +45,7 @@ public class RigidbodyPathFinder : MonoBehaviour
 
     public void StopMovement()
     {
+        callbackOnEndMove.Invoke();
         canMove = false;
     }
 
@@ -55,7 +58,16 @@ public class RigidbodyPathFinder : MonoBehaviour
         callbackEndDinamic = delegate { };
     }
 
-    public void Execute(Vector3 pos)
+    public void AddCallback_OnBeginMove(Action _cbk)
+    {
+        callbackOnBeginMove = _cbk;
+    }
+    public void AddCallback_OnEndMove(Action _cbk)
+    {
+        callbackOnEndMove = _cbk;
+    }
+
+    public bool Execute(Vector3 pos)
     {
         rb.isKinematic = false;
 
@@ -68,14 +80,14 @@ public class RigidbodyPathFinder : MonoBehaviour
             "[ el Node finder tiene suficiente radio ] " +
             "[ los layers son los correctos ] " +
             "[ Hay nodos en el punto de busqueda ]");
-            return; }
+            return false; }
         
 
 
 
         var col = astar.Execute(initialNode, finalNode);
 
-        if (col == null) { Debug.Log("Tengo una Lista nula"); return; }
+        if (col == null) { Debug.Log("Tengo una Lista nula"); return false; }
 
         nodosASeguir = new Queue<Node>(col);
         currentNode = initialNode;
@@ -86,8 +98,9 @@ public class RigidbodyPathFinder : MonoBehaviour
         finalNode.render.PintarVerde();
 
         canMove = true;
+        callbackOnBeginMove.Invoke();
 
-
+        return true;
     }
 
     bool dequeueNext = false;
@@ -110,6 +123,7 @@ public class RigidbodyPathFinder : MonoBehaviour
                 canMove = false;
                 rb.isKinematic = true;
                 callbackEndDinamic.Invoke();
+                callbackOnEndMove.Invoke();
             }
             dequeueNext = true;
         }

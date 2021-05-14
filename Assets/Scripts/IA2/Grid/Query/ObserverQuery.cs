@@ -25,7 +25,6 @@ public class ObserverQuery : QueryComponent, IQuery {
     bool InRadius(Vector3 v3)
     {
         dist = (target.position - v3).sqrMagnitude;
-
         return  dist < radius * radius && dist > min_radius * min_radius;
     }
     bool InAngle(Vector3 v3)

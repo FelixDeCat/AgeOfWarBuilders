@@ -15,6 +15,14 @@ public class CircleQuery : MonoBehaviour, IQuery {
                                 x => (transform.position - x).sqrMagnitude < radius * radius);
     }
 
+    public IEnumerable<IGridEntity> QueryAtPosition(Vector3 pos)
+    {
+        return targetGrid.Query(
+                                pos - new Vector3(radius, 0, radius),
+                                pos + new Vector3(radius, 0, radius),
+                                x => (pos - x).sqrMagnitude < radius * radius);
+    }
+
     void OnDrawGizmos() {
         if (targetGrid == null) return;
         Gizmos.color = Color.red;

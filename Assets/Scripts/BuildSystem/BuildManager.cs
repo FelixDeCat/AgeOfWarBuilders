@@ -179,7 +179,7 @@ namespace AgeOfWarBuilders.BuildSystem
             if (PlayerController.PRESS_DOWN_Submit)
             {
                 if (currentObject_BuildChecker == null) return;
-                if (currentObject_BuildChecker.CanBuild)
+                if (currentObject_BuildChecker.CanBuild && hit.collider.tag != "NotBuild")
                 {
                     //Arreglar esto del Pool
                     /*
@@ -208,13 +208,12 @@ namespace AgeOfWarBuilders.BuildSystem
         public Vector3 frontoffset;
         public float max_Object_Forward_offset = 5f;
         bool can_refresh_build_transform;
-
+        RaycastHit hit;
         void Update_PosToBuild()
         {
             if (currentObject)
             {
-                RaycastHit hit;
-
+                
                 Vector3 posToRaycast = InstancePosition.transform.position + InstancePosition.forward * scrollvalue;
 
                 can_refresh_build_transform = Physics.Raycast(posToRaycast + Vector3.up * 5, Vector3.up * -1, out hit, 10, layer_PlacesToBuild);
@@ -225,6 +224,8 @@ namespace AgeOfWarBuilders.BuildSystem
                     currentObject.transform.position = posToInstanciate;
                     currentObject.transform.eulerAngles = euler_rot;
                 }
+
+                currentObject_BuildChecker.SetAuxiliarCanBuild(hit.collider.tag != "NotBuild");
             }
         }
 
