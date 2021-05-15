@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Packages.Rider.Editor;
+
 using UnityEngine;
 
 namespace IA2.Clase5

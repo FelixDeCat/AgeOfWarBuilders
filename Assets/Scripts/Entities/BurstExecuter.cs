@@ -11,6 +11,7 @@ public class BurstExecuter : MonoBehaviour
 
     //por si se lo queremos pasar por callback
     public Action ExecuteOneElement;
+    public Action OnFinishBurst;
 
     bool useCallback;
 
@@ -20,6 +21,7 @@ public class BurstExecuter : MonoBehaviour
     [SerializeField] bool UseThisEditorValues = false;
     [SerializeField] float time_space_between_executions = 0.2f;
     [SerializeField] int burstCant = 3;
+    public int BurstCant => burstCant;
     int currentBurstCant;
 
 
@@ -33,8 +35,9 @@ public class BurstExecuter : MonoBehaviour
         timer = this.time_space_between_executions;
         canBegin = true;
     }
-    public void Begin(Action ExecuteOneElement, int burstCant = 3, float time_between_executions = 0.2f)
+    public void Begin(Action ExecuteOneElement, Action _OnFinishBurst, int burstCant = 3, float time_between_executions = 0.2f)
     {
+        OnFinishBurst = _OnFinishBurst;
         useCallback = true;
         this.ExecuteOneElement = ExecuteOneElement;
         if (!UseThisEditorValues) this.time_space_between_executions = time_between_executions;
@@ -66,6 +69,7 @@ public class BurstExecuter : MonoBehaviour
                 }
                 else
                 {
+                    OnFinishBurst?.Invoke();
                     currentBurstCant = burstCant;
                     canBegin = false;
                 }

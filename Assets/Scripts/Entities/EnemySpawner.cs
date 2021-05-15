@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -12,31 +13,52 @@ public class EnemySpawner : MonoBehaviour
 
     [SerializeField] BurstExecuter burst;
 
-    public int cant = 5;
+    Action OnEndSpawn;
+
+    int deathEnemies = 0;
+    bool allEnemiesISDeath = false;
     //public List<Enemy> spawner;
+
+    HashSet<Enemy> enemies = new HashSet<Enemy>();
 
     Vector3 RandomPos()
     {
-        return new Vector3(Random.Range(from.transform.position.x, to.transform.position.x), 
-            Random.Range(from.transform.position.y, to.transform.position.y),
-            Random.Range(from.transform.position.z, to.transform.position.z));
+        return new Vector3(UnityEngine.Random.Range(from.transform.position.x, to.transform.position.x),
+            UnityEngine.Random.Range(from.transform.position.y, to.transform.position.y),
+            UnityEngine.Random.Range(from.transform.position.z, to.transform.position.z));
     }
 
     private void Start()
     {
+        canExecute = true;
         PlayObject_PoolManager.instance.Feed(model, parent);
-
-        //for (int i = 0; i < cant; i++)
-        //{
-        //    SpawnOneEnemy();
-        //}
-        
     }
-
     public void Begin()
     {
-        burst.Begin(SpawnOneEnemy);
+        canExecute = true;
+        burst.Begin(SpawnOneEnemy, OnFinishBurst);
     }
+    public void AddCallback_FinishSpawn(Action cbk)
+    {
+        OnEndSpawn = cbk;
+    }
+
+    void OnFinishBurst()
+    {
+        OnEndSpawn?.Invoke();
+    }
+
+    bool canExecute = true;
+    public void Stop()
+    {
+        deathEnemies = 0;
+        isBegined = false;
+        canExecute = false;
+    }
+
+    bool isBegined;
+    public bool IsBegined => isBegined;
+    public bool AllEnemiesIsDeath => allEnemiesISDeath;
 
     private void Update()
     {
@@ -45,12 +67,20 @@ public class EnemySpawner : MonoBehaviour
 
     public void SpawnOneEnemy()
     {
+        isBegined = true;
         var enem = (Enemy)PlayObject_PoolManager.instance.Get(model.type, RandomPos(), transform.eulerAngles);
         enem.CallbackOnDeath(DeathEnemy);
     }
 
     public void DeathEnemy(Enemy enemy)
     {
+       
+        deathEnemies++;
+        if (deathEnemies >= burst.BurstCant)
+        {
+            allEnemiesISDeath = true;
+            Debug.LogWarning("DEATH");
+        }
        /* 
         PlayObject_PoolManager.instance.Return(enemy);
         Respawn();*/

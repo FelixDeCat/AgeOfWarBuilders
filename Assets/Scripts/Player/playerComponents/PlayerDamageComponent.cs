@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using Tools.Structs;
 using System.Linq;
+using AgeOfWarBuilders.Entities;
 
 public class PlayerDamageComponent : PlayerComponent
 {
@@ -60,17 +61,21 @@ public class PlayerDamageComponent : PlayerComponent
 
         var col = query
             .Query()
-            .OfType<Enemy>()
+            .OfType<LivingEntity>()
+            .Where(x => !x.gameObject.GetComponent<PlayerModel>())
             .DefaultIfEmpty();
 
         foreach (var e in col)
         {
             if (e != null)
             {
-                Debug.Log("Do DAMAGE: {"+ damage.Physical_damage + "} => " + e.gameObject.name);
-                e.ReceiveDamage(damage);
+                if (e.gameObject.GetComponent<Enemy>() || e.gameObject.GetComponent<TowerEntity>())
+                {
+                    Debug.Log("Do DAMAGE: {" + damage.Physical_damage + "} => " + e.gameObject.name);
+                    e.ReceiveDamage(damage);
+                }
             }
-                
+
         }
     }
     #endregion

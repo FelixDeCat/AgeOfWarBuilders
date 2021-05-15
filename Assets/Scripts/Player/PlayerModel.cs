@@ -175,6 +175,8 @@ namespace AgeOfWarBuilders.Entities
         protected override void OnDeath()
         {
             base.OnDeath();
+            GameLoop.Pause();
+            GameLoop.Lose();
         }
     }
 }

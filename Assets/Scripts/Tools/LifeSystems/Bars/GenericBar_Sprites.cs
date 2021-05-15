@@ -17,6 +17,7 @@ public class GenericBar_Sprites : GenericBar
     {
         var percent = (value * 100) / maxValue;
         if (porcentaje) porcentaje.text = !realvalue ? ((int)percent).ToString() + "%" : value + " / " + maxValue;
+        if (porcentajePro) porcentajePro.text = !realvalue ? ((int)percent).ToString() + "%" : value + " / " + maxValue;
         sp.fillAmount = percent * scaler;
     }
     public void OnSetAsyncOperation(string name, AsyncOperation operation)

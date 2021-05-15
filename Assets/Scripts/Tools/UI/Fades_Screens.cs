@@ -13,6 +13,9 @@ public class Fades_Screens : MonoBehaviour
     public bool on;
     Action EndOff = delegate { };
     Action EndOn = delegate { };
+    Action<string> EndOffParam = delegate { };
+    Action<string> EndOnParam = delegate { };
+    string parameter;
     public bool Anim=true;
     [SerializeField] bool startOn = false;
     private void Awake() { instance = this; if(startOn) canvas_group.alpha = 1; }
@@ -33,6 +36,22 @@ public class Fades_Screens : MonoBehaviour
         on = false;
         Anim = true;
     }
+    public void FadeOn(Action<string> FadeOnEndCallback, string par)
+    {
+        EndOnParam = FadeOnEndCallback;
+        timer = 0;
+        on = true;
+        Anim = true;
+        parameter = par;
+    }
+    public void FadeOff(Action<string> FadeOffEndCallback, string par)
+    {
+        EndOffParam = FadeOffEndCallback;
+        timer = 1;
+        on = false;
+        Anim = true;
+        parameter = par;
+    }
     void Update()
     {
         if (Anim)
@@ -48,7 +67,8 @@ public class Fades_Screens : MonoBehaviour
                 {
                     timer = 1;
                     Anim = false;
-                    EndOn();
+                    EndOn?.Invoke();
+                    EndOnParam?.Invoke(parameter);
                 }
             }
             else
@@ -62,7 +82,8 @@ public class Fades_Screens : MonoBehaviour
                 {
                     timer = 0;
                     Anim = false;
-                    EndOff();
+                    EndOff?.Invoke();
+                    EndOffParam?.Invoke(parameter);
                 }
             }
         }

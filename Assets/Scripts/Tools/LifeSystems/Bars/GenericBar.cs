@@ -15,11 +15,16 @@ public abstract class GenericBar : MonoBehaviour
     {
         this.maxValue = maxValue;
         this.scaler = scaler;
+        
     }
-    public void Configure(int maxValue, int scaler, float val)
+    public void Configure(int maxValue, float scaler, float val)
     {
         this.maxValue = maxValue;
         this.scaler = scaler;
+
+        var percent = (val * 100) / maxValue;
+        if (porcentaje) porcentaje.text = !realvalue ? ((int)percent).ToString() + "%" : val + " / " + maxValue;
+        if (porcentajePro) porcentajePro.text = !realvalue ? ((int)percent).ToString() + "%" : val + " / " + maxValue;
     }
     public void Configure(float maxValue, float scaler)
     {

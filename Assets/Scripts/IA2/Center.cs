@@ -26,5 +26,9 @@ public class Center : LivingEntity
 
     protected override void Feedback_ReceiveDamage() { }
     protected override void Feedback_OnHeal() { }
-    protected override void OnDeath() { }
+    protected override void OnDeath()
+    {
+        GameLoop.Pause();
+        GameLoop.Lose();
+    }
 }

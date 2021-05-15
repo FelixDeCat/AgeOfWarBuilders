@@ -4,9 +4,24 @@ using UnityEngine;
 using System.Linq;
 using System;
 
-public class TowerEntity : LivingEntity
+public class TowerEntity : LivingEntity, IGridEntity
 {
-
+    #region Grid Things
+    public event Action<IGridEntity> OnMove;
+    public Vector3 Position
+    {
+        get
+        {
+            if (transform != null)
+                return transform.position;
+            else
+                return new Vector3(int.MaxValue, int.MaxValue, int.MaxValue);
+        }
+        set => transform.position = value;
+    }
+    bool isAlive;
+    public bool IsAlive { get => isAlive; set => isAlive = value; }
+    #endregion
 
     public Enemy currentEnemy;
 
@@ -18,24 +33,56 @@ public class TowerEntity : LivingEntity
     ObserverQuery observer_query;
     SquareQuery square_query;
 
-   public bool UseBomb;
+    public bool UseBomb;
     bool BombCreated;
     Vector3 BombPosition;
 
     protected override void OnInitialize()
     {
         base.OnInitialize();
+        isAlive = true;
+        if (SpatialGrid.instance) SpatialGrid.instance.AddEntityToGrid(this); else Invoke("RetardedInitialization", 0.1f);
 
         observer_query = GetComponentInChildren<ObserverQuery>();
         observer_query?.Configure(this.transform);
         square_query = GetComponentInChildren<SquareQuery>();
         square_query?.Configure(this.transform);
     }
+    protected override void OnDeinitialize()
+    {
+        base.OnDeinitialize();
+        isAlive = false;
+        SpatialGrid.instance.RemoveEntityToGrid(this);
+    }
 
+    void RetardedInitialization()
+    {
+        SpatialGrid.instance.AddEntityToGrid(this);
+    }
 
     protected override void OnTick(float DeltaTime)
     {
+        if (!isAlive) return;
         base.OnTick(DeltaTime);
+    }
+    Action<TowerEntity> DeathCallback = delegate { };
+    public void CallbackOnDeath(Action<TowerEntity> _onDeath)
+    {
+        DeathCallback = _onDeath;
+
+    }
+
+    protected override void OnDeath()
+    {
+        base.OnDeath();
+        Invoke("Wait", 0.1f);
+    }
+    void Wait()
+    {
+        DeathCallback?.Invoke(this);
+        Off();
+        transform.position = new Vector3(int.MaxValue, int.MaxValue, int.MaxValue);
+        Destroy(this.gameObject, 0.2f);
     }
 
     IEnumerable<Enemy> partners;
@@ -118,7 +165,7 @@ public class TowerEntity : LivingEntity
             foreach (var p in partners)
             {
                 Gizmos.color = Color.red;
-                Gizmos.DrawLine(p.transform.position + Vector3.up, BombPosition+ Vector3.up);
+                Gizmos.DrawLine(p.transform.position + Vector3.up, BombPosition + Vector3.up);
             }
         }
     }

@@ -24,6 +24,8 @@ public class Enemy : LivingEntity, IGridEntity
     bool isAlive;
     public bool IsAlive { get => isAlive; set => isAlive = value; }
 
+    #endregion
+
     public int damage = 5;
 
     ObserverQuery observer;
@@ -38,7 +40,7 @@ public class Enemy : LivingEntity, IGridEntity
     public float partner_detection_radius = 5f;
 
 
-    #endregion
+    
 
     protected override void OnInitialize()
     {
@@ -177,11 +179,11 @@ public class Enemy : LivingEntity, IGridEntity
         isAlive = false;
         OnMove.Invoke(this);
         view.Anim_Death(true);
+        CbkOnDeath.Invoke(this);
     }
     public void UEVENT_OnDeathFinish()
     {
         SpatialGrid.instance.RemoveEntityToGrid(this);
-        CbkOnDeath.Invoke(this);
     }
 
     void Update_TargetRecalculation()

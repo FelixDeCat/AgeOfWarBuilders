@@ -13,7 +13,35 @@ public class State_Horde : StateElement
             spawners[i].Begin();
         }
     }
-    protected override void OnEnd() { }
+    protected override void OnEnd()
+    {
+        for (int i = 0; i < spawners.Length; i++)
+        {
+            spawners[i].Stop();
+        }
+    }
     protected override void OnForceFinish() { }
-    protected override void OnTick(float DeltaTime) { }
+    protected override void OnTick(float DeltaTime)
+    {
+        Update_CheckIfHordeIsFinish();
+    }
+
+    void Update_CheckIfHordeIsFinish()
+    {
+        for (int i = 0; i < spawners.Length; i++)
+        {
+            if (spawners[i].IsBegined)
+            {
+                if (!spawners[i].AllEnemiesIsDeath)
+                {
+                    return;
+                }
+            }
+            else
+            {
+                return;
+            }
+        }
+        ForceFinish();
+    }
 }

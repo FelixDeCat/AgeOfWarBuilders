@@ -22,12 +22,20 @@ namespace AgeOfWarBuilders.BuildSystem
         public int ObjectCount { get { return list_of_build_data.Count; } }
         [SerializeField] int indexHorizontalCursor;
 
-        public List<PlayObject> MyBuildings = new List<PlayObject>(); 
+        public List<PlayObject> MyBuildings = new List<PlayObject>();
+
+        public int MaxCant_Towers = 20;
+        public int currentCant_Towers = 0;
+        public GenericBar_Sprites bar;
+
+        public bool i_have_space_to_build => currentCant_Towers < MaxCant_Towers;
 
         private void Start()
         {
             if (list_of_build_data == null || list_of_build_data.Count < 1) throw new System.Exception("No hay data cargada");
             ui.Configurate(() => list_of_build_data, OnUIAnimationEnd_OPEN, OnUIAnimationEnd_CLOSE);
+
+            bar.Configure(MaxCant_Towers, 0.01f,0);
         }
 
         #region [TICK]
@@ -70,6 +78,23 @@ namespace AgeOfWarBuilders.BuildSystem
             ui.InstantClose();
             Turn_OFF_Canvas();
             Hide();
+        }
+        #endregion
+
+        #region [LOGIC] Destroy Tower
+        void OnDeathTower(TowerEntity tower)
+        {
+            currentCant_Towers--;
+            MyBuildings.Remove(tower);
+            RefreshTowerQuantity(currentCant_Towers, MaxCant_Towers);
+        }
+        #endregion
+
+        #region [FRONTEND] TOWERS QUANTITY
+        public void RefreshTowerQuantity(int current, int max)
+        {
+            bar.Configure(max, 0.01f);
+            bar.SetValue(current);
         }
         #endregion
 
@@ -179,7 +204,7 @@ namespace AgeOfWarBuilders.BuildSystem
             if (PlayerController.PRESS_DOWN_Submit)
             {
                 if (currentObject_BuildChecker == null) return;
-                if (currentObject_BuildChecker.CanBuild && hit.collider.tag != "NotBuild")
+                if (currentObject_BuildChecker.CanBuild && hit.collider.tag != "NotBuild" && i_have_space_to_build)
                 {
                     //Arreglar esto del Pool
                     /*
@@ -187,12 +212,15 @@ namespace AgeOfWarBuilders.BuildSystem
                     var go = PlayObject_PoolManager.instance.Get(list_of_build_data[indexHorizontalCursor].model.type, GetPosRot().pos, GetPosRot().rot);
                     */
 
-                    TowerEntity go = GameObject.Instantiate( list_of_build_data[indexHorizontalCursor].model, LocalSceneTransforms.parent_MyBuildings);
+                    TowerEntity go = GameObject.Instantiate(list_of_build_data[indexHorizontalCursor].model, LocalSceneTransforms.parent_MyBuildings);
                     go.transform.eulerAngles = GetPosRot().rot;
                     go.transform.position = GetPosRot().pos;
                     go.Initialize();
-
+                    go.CallbackOnDeath(OnDeathTower);
                     MyBuildings.Add(go);
+
+                    currentCant_Towers++;
+                    RefreshTowerQuantity(currentCant_Towers, MaxCant_Towers);
                 }
             }
         }
@@ -213,7 +241,7 @@ namespace AgeOfWarBuilders.BuildSystem
         {
             if (currentObject)
             {
-                
+
                 Vector3 posToRaycast = InstancePosition.transform.position + InstancePosition.forward * scrollvalue;
 
                 can_refresh_build_transform = Physics.Raycast(posToRaycast + Vector3.up * 5, Vector3.up * -1, out hit, 10, layer_PlacesToBuild);
@@ -228,6 +256,8 @@ namespace AgeOfWarBuilders.BuildSystem
                 currentObject_BuildChecker.SetAuxiliarCanBuild(hit.collider.tag != "NotBuild");
             }
         }
+
+        
 
         void InstanciateStruct(GameObject go)
         {
@@ -262,7 +292,7 @@ namespace AgeOfWarBuilders.BuildSystem
             euler_rot = new Vector3(0, y_rot, 0);
 
             scrollvalue += PlayerController.AXIS_MouseScrollWheel;
-            if(scrollvalue < 0) scrollvalue = 0;
+            if (scrollvalue < 0) scrollvalue = 0;
             if (scrollvalue > max_Object_Forward_offset) scrollvalue = max_Object_Forward_offset;
 
         }

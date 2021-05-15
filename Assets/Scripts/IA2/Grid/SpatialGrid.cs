@@ -85,6 +85,7 @@ public class SpatialGrid : MonoBehaviour
     {
         entity.OnMove -= UpdateEntity;
         entity.Position = new Vector3(int.MinValue, int.MinValue, int.MinValue);
+        UpdateEntity(entity);
     }
 
     public void UpdateEntity(IGridEntity entity)
