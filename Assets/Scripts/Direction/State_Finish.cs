@@ -9,7 +9,16 @@ public class State_Finish : StateElement
         GameLoop.Pause();
         GameLoop.Win();
     }
-    protected override void OnEnd() { }
+    protected override void OnInitialize()
+    {
+        UI_StateTimer.instance.Open();
+        UI_StateTimer.Refresh(stateName);
+    }
+    protected override void OnEnd()
+    {
+        UI_StateTimer.instance.Close();
+    }
     protected override void OnForceFinish() { }
     protected override void OnTick(float DeltaTime) { }
+    
 }

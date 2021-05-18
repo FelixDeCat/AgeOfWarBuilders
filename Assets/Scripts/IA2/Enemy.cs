@@ -56,7 +56,7 @@ public class Enemy : LivingEntity, IGridEntity
         myRig.isKinematic = true;
         myRig.detectCollisions = true;
         SpatialGrid.instance.AddEntityToGrid(this);
-        playerpos = Main.instance.player.transform;
+        playerpos = SceneReferences.Player.transform;
 
         rig_path_finder.AddCallback_OnBeginMove(PathFinderBeginMove);
         rig_path_finder.AddCallback_OnEndMove(PathFinderEndMove);
@@ -112,9 +112,9 @@ public class Enemy : LivingEntity, IGridEntity
             else
             {
                 timer_recalculate = 0;
-                if (!GoToPosition(Main.instance.player.transform.position))
+                if (!GoToPosition(SceneReferences.Player.transform.position))
                 {
-                    GoToPosition(Main.MyBasePosition);
+                    GoToPosition(SceneReferences.MyBasePosition);
                 }
             }
 
@@ -157,7 +157,7 @@ public class Enemy : LivingEntity, IGridEntity
 
         if (PlayerController.DEBUG_PRESS_T)
         {
-            GoToPosition(Main.Player.transform.position);
+            GoToPosition(SceneReferences.Player.transform.position);
         }
     }
 

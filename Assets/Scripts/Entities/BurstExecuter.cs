@@ -4,56 +4,49 @@ using UnityEngine;
 using UnityEngine.Events;
 using System;
 
-public class BurstExecuter : MonoBehaviour
+[System.Serializable]
+public class BurstExecuter
 {
-    //por si se quiere hacer desde editor
-    public UnityEvent Execute_One_Element;
-
     //por si se lo queremos pasar por callback
-    public Action ExecuteOneElement;
-    public Action OnFinishBurst;
+    public Action Execute;
+    public Action OnFinish;
 
-    bool useCallback;
-
-    bool canBegin;
+    bool exe;
 
     float timer;
-    [SerializeField] bool UseThisEditorValues = false;
     [SerializeField] float time_space_between_executions = 0.2f;
     [SerializeField] int burstCant = 3;
     public int BurstCant => burstCant;
     int currentBurstCant;
 
-
-
-    public void Begin(int burstCant = 3, float time_between_executions = 0.2f)
+    public void Configure_Basics(int burstCant = 3, float time_between_executions = 0.2f)
     {
-        useCallback = false;
-        if (!UseThisEditorValues) this.time_space_between_executions = time_between_executions;
-        if (!UseThisEditorValues) this.burstCant = burstCant;
-        currentBurstCant = this.burstCant;
-        timer = this.time_space_between_executions;
-        canBegin = true;
+        this.time_space_between_executions = time_between_executions;
+        this.burstCant = burstCant;
     }
-    public void Begin(Action ExecuteOneElement, Action _OnFinishBurst, int burstCant = 3, float time_between_executions = 0.2f)
+    public void Configure_Callbacks(Action Execute, Action OnFinish)
     {
-        OnFinishBurst = _OnFinishBurst;
-        useCallback = true;
-        this.ExecuteOneElement = ExecuteOneElement;
-        if (!UseThisEditorValues) this.time_space_between_executions = time_between_executions;
-        if (!UseThisEditorValues) this.burstCant = burstCant;
+        this.Execute = Execute;
+        this.OnFinish = OnFinish;
+    }
+    public void Play()
+    {
+        exe = true;
+
         currentBurstCant = this.burstCant;
         timer = this.time_space_between_executions;
-        canBegin = true;
     }
     public void Stop()
     {
-        canBegin = false;
+        exe = false;
+
+        currentBurstCant = this.burstCant;
+        timer = this.time_space_between_executions;
     }
 
     public void Tick(float DeltaTime)
     {
-        if (canBegin)
+        if (exe)
         {
             if (timer > 0)
             {
@@ -63,15 +56,14 @@ public class BurstExecuter : MonoBehaviour
             {
                 if (currentBurstCant > 0)
                 {
-                    if (useCallback) ExecuteOneElement.Invoke();
-                    else Execute_One_Element.Invoke();
+                    Execute.Invoke();
                     currentBurstCant--;
                 }
                 else
                 {
-                    OnFinishBurst?.Invoke();
+                    OnFinish.Invoke();
                     currentBurstCant = burstCant;
-                    canBegin = false;
+                    exe = false;
                 }
 
                 timer = time_space_between_executions;

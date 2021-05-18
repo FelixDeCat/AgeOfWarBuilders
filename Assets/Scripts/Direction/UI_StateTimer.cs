@@ -18,6 +18,11 @@ public class UI_StateTimer : UI_Base
         if (timer <= 0) timer = 0.0f;
         instance.txt_timer.text = timer.ToString("#0.00");
     }
+    public static void Refresh(string title)
+    {
+        instance.txt_title.text = title;
+        instance.txt_timer.text = "";
+    }
 
     public override void Refresh() { }
     protected override void OnAwake() { }

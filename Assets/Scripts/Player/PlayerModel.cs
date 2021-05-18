@@ -156,8 +156,8 @@ namespace AgeOfWarBuilders.Entities
         {
             if (this.transform.position.y < -3)
             {
-                controller.transform.position = Main.SpawnPosition.position;
-                controller.transform.eulerAngles = Main.SpawnPosition.eulerAngles;
+                controller.transform.position = SceneReferences.SpawnPosition.position;
+                controller.transform.eulerAngles = SceneReferences.SpawnPosition.eulerAngles;
             }
         }
 

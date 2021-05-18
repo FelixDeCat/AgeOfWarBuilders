@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class State_Preparation : StateElement
 {
-    public float time_to_end;
-    float timer;
-    bool start_countdown;
+    public float time_to_end = 10;
+    float timer = 0;
+    bool start_countdown = false;
+
+    protected override void OnInitialize()
+    {
+        start_countdown = false;
+        timer = time_to_end;
+    }
 
     protected override void OnBegin()
     {
@@ -19,7 +25,6 @@ public class State_Preparation : StateElement
     {
         start_countdown = false;
         timer = time_to_end;
-        UI_StateTimer.instance.Close();
     }
 
     protected override void OnTick(float DeltaTime)

@@ -10,12 +10,18 @@ public abstract class StateElement : MonoBehaviour
     public bool IsRunning { get => isRunning; }
     Action FinishCallback;
 
-    public void Begin(Action onFinish)
+    public void Initialize(Action onFinish)
     {
         FinishCallback = onFinish;
-        isRunning = true;
-        OnBegin();
+        OnInitialize();
     }
+
+    public void BeginExecution()
+    {
+        OnBegin();
+        isRunning = true;
+    }
+
     public void Tick(float DeltaTime)
     {
         if (isRunning)
@@ -36,6 +42,7 @@ public abstract class StateElement : MonoBehaviour
         FinishCallback.Invoke();
     }
 
+    protected abstract void OnInitialize();
     protected abstract void OnBegin();
     protected abstract void OnTick(float DeltaTime);
     protected abstract void OnEnd();

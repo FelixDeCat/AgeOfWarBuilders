@@ -212,7 +212,7 @@ namespace AgeOfWarBuilders.BuildSystem
                     var go = PlayObject_PoolManager.instance.Get(list_of_build_data[indexHorizontalCursor].model.type, GetPosRot().pos, GetPosRot().rot);
                     */
 
-                    TowerEntity go = GameObject.Instantiate(list_of_build_data[indexHorizontalCursor].model, LocalSceneTransforms.parent_MyBuildings);
+                    TowerEntity go = GameObject.Instantiate(list_of_build_data[indexHorizontalCursor].model, SceneReferences.parent_MyBuildings);
                     go.transform.eulerAngles = GetPosRot().rot;
                     go.transform.position = GetPosRot().pos;
                     go.Initialize();

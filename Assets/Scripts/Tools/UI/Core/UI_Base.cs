@@ -34,12 +34,12 @@ public abstract class UI_Base : MonoBehaviour
     protected abstract void OnUpdate();
     public abstract void Refresh();
     public void ConfigurateFirst(GameObject go) => firstToOpenMenu = go;
-    public void ForceDirectConfigurateFirst(GameObject go) { Main.instance.GetMyEventSystem().DeselectGameObject(); StartCoroutine(SelectButtonCoroutine(go)); }
+    public void ForceDirectConfigurateFirst(GameObject go) { SceneReferences.MyEventSystem.DeselectGameObject(); StartCoroutine(SelectButtonCoroutine(go)); }
 
     IEnumerator SelectButtonCoroutine(GameObject button)
     {
         yield return new WaitForEndOfFrame();
-        Main.instance.GetMyEventSystem().Set_First(button);
+        SceneReferences.MyEventSystem.Set_First(button);
     }
 
     public virtual void Open()
@@ -48,7 +48,7 @@ public abstract class UI_Base : MonoBehaviour
         parent.SetActive(true);
         Refresh();
         isActive = true;
-        if(firstToOpenMenu) Main.instance.GetMyEventSystem().Set_First(firstToOpenMenu.gameObject);
+        if(firstToOpenMenu) SceneReferences.MyEventSystem.Set_First(firstToOpenMenu.gameObject);
     }
     public virtual void InstantClose()
     {
@@ -63,7 +63,7 @@ public abstract class UI_Base : MonoBehaviour
             anim.Close();
             parent.SetActive(false);
             isActive = false;
-            if (buttonDeselect) Main.instance.GetMyEventSystem().DeselectGameObject();
+            if (buttonDeselect) SceneReferences.MyEventSystem.DeselectGameObject();
         }
     }
 }
