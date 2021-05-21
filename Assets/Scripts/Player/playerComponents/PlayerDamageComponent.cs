@@ -61,21 +61,18 @@ public class PlayerDamageComponent : PlayerComponent
 
         var col = query
             .Query()
-            .OfType<LivingEntity>()
-            .Where(x => !x.gameObject.GetComponent<PlayerModel>())
-            .DefaultIfEmpty();
-
-        foreach (var e in col)
+            .OfType<GridComponent>()
+            .Select( x => x.Grid_Object.GetComponent<LivingEntity>()) //IA-3 [Select]
+            .Where(x => !x.gameObject.GetComponent<PlayerModel>() && (x.gameObject.GetComponent<Enemy>() || x.gameObject.GetComponent<TowerEntity>())) //IA2-3 [Where]
+            .DefaultIfEmpty(null);
+        if (col == null) return;
+        foreach (var liv_ent in col)
         {
-            if (e != null)
+            if (liv_ent != null)
             {
-                if (e.gameObject.GetComponent<Enemy>() || e.gameObject.GetComponent<TowerEntity>())
-                {
-                    Debug.Log("Do DAMAGE: {" + damage.Physical_damage + "} => " + e.gameObject.name);
-                    e.ReceiveDamage(damage);
-                }
+                Debug.Log("Do DAMAGE: {" + damage.Physical_damage + "} => " + liv_ent.gameObject.name);
+                liv_ent.ReceiveDamage(damage);
             }
-
         }
     }
     #endregion

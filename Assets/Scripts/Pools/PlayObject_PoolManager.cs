@@ -8,10 +8,7 @@ public class PlayObject_PoolManager : MonoBehaviour
 {
 
     public static PlayObject_PoolManager instance;
-    private void Awake()
-    {
-        instance = this;
-    }
+    private void Awake() => instance = this;
     Dictionary<PlayObjectType, Transform> parents = new Dictionary<PlayObjectType, Transform>();
     Dictionary<PlayObjectType, Tuple<PlayObject, GenericPoolManager<PlayObject>>> poolDatabase = new Dictionary<PlayObjectType, Tuple<PlayObject, GenericPoolManager<PlayObject>>>();
 
@@ -32,7 +29,7 @@ public class PlayObject_PoolManager : MonoBehaviour
             obj.gameObject.SetActive(true);
             obj.gameObject.transform.position = position;
             obj.gameObject.transform.eulerAngles = rotation_euler;
-            obj.On();
+            obj.Initialize();
             return obj;
         }
         else
@@ -47,7 +44,7 @@ public class PlayObject_PoolManager : MonoBehaviour
 
         if (poolDatabase.ContainsKey(type))
         {
-            obj.Off();
+            obj.DeInitialize();
             obj.gameObject.SetActive(false);
             poolDatabase[type].Item2.Return(obj);
         }
@@ -67,8 +64,5 @@ public class PlayObject_PoolManager : MonoBehaviour
         {
             throw new System.Exception("No contiene la Key");
         }
-            
-        
     }
-
 }

@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 using Tools.Extensions;
+using System.Linq;
 
 //este sistema de Node solo funciona con 4 conexiones
 //es mas fácil para zafar ahora
@@ -12,25 +14,40 @@ namespace IA_Felix
     public class Node : MonoBehaviour
     {
 
-        public List<Node> vecinos;
+        public HashSet<Node> vecinos;
+        Action OnRecalculate;
+        Rigidbody rig;
+        public NodeCost costs;
 
-        public List<Node> toEliminate;
+        [SerializeField] bool connected = true;
+        public bool IsConnected => connected;
+        public void SetConnectionState(bool connected) => this.connected = connected;
+
+        public bool OnEditMode;
+
+        [Header("to debug")]
+        public List<Node> vecinosDebug;
         public Node parent;
 
-        public NodeCost costs;
+        [Header("Config Node")]
+        public float radius_to_find = 5;
+        public float distance_to_delete = 0.2f;
+
+        [Header("Gizmos")]
         public NodeRender render;
-        public NodeFinder finder;
 
+        [Header("Grid & Queries")]
+        public GridComponent myGridComponent;
+        public CircleQuery circleQuery;
+
+        [Header("Mascaras")]
         public LayerMask mask_hit_floor;
+        public LayerMask detectableLayers;
 
-        public bool execute;
-
-        public void CheckIfNeighborsCanSeeMe()
+        public void RefreshReConnections()
         {
-            var toRemove = new List<Node>();
-            foreach (var n in vecinos) if (!n.CheckCompatibility(this)) toRemove.Add(n);
-            toEliminate = toRemove;
-            foreach (var n in toRemove) vecinos.Remove(n);
+            vecinos.RemoveWhere(x => !x.CheckCompatibility(this) && !x.IsConnected);
+            vecinosDebug = new List<Node>(vecinos);
         }
         public bool CheckCompatibility(Node suitor)
         {
@@ -41,27 +58,54 @@ namespace IA_Felix
             return false;
         }
 
-        public void Awake()
+        #region [GRID] TurnOn & Turn Off
+        public void TurnOn()
         {
-            finder.Init(GetComponent<Rigidbody>());
-            render.Init(gameObject);
+            SetConnectionState(true);
+            myGridComponent.Grid_Rise();
+            OnRecalculate?.Invoke();
+        }
+        public void TurnOff()
+        {
+            SetConnectionState(false);
+            myGridComponent.Grid_Death();
+            OnRecalculate?.Invoke();
+        }
+        #endregion
 
-            Execute();
+        public void OnStart(Action OnRefreshCallBack)
+        {
+            render.Init(gameObject);
+            OnRecalculate = OnRefreshCallBack;
+            rig = this.GetComponent<Rigidbody>();
+
+            if (!OnEditMode)
+            {
+                myGridComponent = this.GetComponent<GridComponent>();
+                myGridComponent.Grid_Initialize(this.gameObject);
+                myGridComponent.Grid_Rise();
+
+                circleQuery = this.GetComponent<CircleQuery>();
+                circleQuery.Configure(rig.transform);
+
+                Invoke("Retarded", 0.1f);
+            }
+            else
+            {
+                Execute();
+            }
         }
 
-        public void OnStart()
+        void Retarded()
         {
-            //si o si esto no tiene que ejecutarse luego del awake, xq sino hay algunos nodos que no los detecta el overlapshere
-            vecinos = finder.FindVecinos(this);
-
-
+            Execute();
         }
 
         public void ClampToFloor()
         {
             RaycastHit hit;
 
-            if (Physics.Raycast(this.transform.position + this.transform.up * 10 , this.transform.up * -1, out hit, 30, mask_hit_floor))
+            if (Physics.Raycast(this.transform.position + this.transform.up * 10, this.transform.up * -1, out hit, 30, mask_hit_floor))
             {
                 this.transform.position = hit.point;
             }
@@ -69,97 +113,67 @@ namespace IA_Felix
 
         public void Execute()
         {
-            vecinos = finder.FindVecinos(this);
-        }
-
-        public void ShutDown()
-        {
-            //esto si o si... al terminar todo... no meterlo dentro del mismo start xq sino apaga los rigidbodys y en el proximo nodo no lo detecta
-            //finder.ShutDownRigidbody();
-        }
-
-        private void Update()
-        {
-            if (execute)
+            if (!IsConnected)
             {
-                execute = false;
-                Execute();
+                foreach (var v in vecinos) v.Desconnect(this);
+                vecinos.Clear();
+                vecinosDebug.Clear();
+                return;
             }
+
+            if (!OnEditMode)
+            {
+                vecinos = new HashSet<Node>(FindVecinosByQuery(this));
+            }
+            else
+            {
+                vecinos = new HashSet<Node>(FindVecinosByRadius(this));
+            }
+
+            vecinosDebug = new List<Node>(vecinos);
+        }
+
+
+        public void Desconnect(Node node)
+        {
+            vecinos.Remove(node);
+            vecinosDebug = new List<Node>(vecinos);
         }
 
         private void OnDrawGizmos()
         {
-            if (render != null) render.Draw(this.transform.position, vecinos, finder.radius);
-        }
-    }
-
-    [System.Serializable]
-    public struct NodeCost
-    {
-        public float cost;
-        public float fitness;
-        public float heuristic;
-    }
-
-    [System.Serializable]
-    public class NodeRender
-    {
-        public bool gizmos = false;
-        public bool draw_radius;
-        public bool draw_neighbors;
-        public Color connectionColor;
-        public float multiplier_up_vector_gizmo_dist = 0.1f;
-
-        public void Init(GameObject go) {
-            render = go.GetComponent<Renderer>();
-            //if(render) render.enabled = false;
-        }
-        Renderer render;
-        public void PintarRojo() { if(render) render.material.color = Color.red; }
-        public void PintarNegro() { if (render) render.material.color = Color.black; }
-        public void PintarVerde() { if (render) render.material.color = Color.green; }
-        public void PintarBlanco() { if (render) render.material.color = Color.white; }
-
-        public void ShutDownRender()
-        {
-            if (render) render.enabled = false;
-            gizmos = false;
+            if (render != null) render.Draw(this.transform.position, vecinos, radius_to_find);
         }
 
-        public void Draw(Vector3 myPos, List<Node> col, float radius)
-        {
-            if (!gizmos) return;
-            if (draw_radius) Gizmos.DrawWireSphere(myPos, radius);
-            if (draw_neighbors) Gizmos.color = connectionColor;
-            if (draw_neighbors) foreach (var n in col) Gizmos.DrawLine(myPos+Vector3.up* multiplier_up_vector_gizmo_dist, n.transform.position + Vector3.up* multiplier_up_vector_gizmo_dist);
-        }
-    }
-
-    [System.Serializable]
-    public class NodeFinder
-    {
-        Rigidbody rig;
-        public float radius = 5;
-        public float distance_to_delete = 0.2f;
-
-        public LayerMask detectableLayers;
-
-        public List<Node> encontrados = new List<Node>();
-
-        public Collider[] colliders;
 
         public void ShutDownRigidbody()
         {
             rig.isKinematic = true;
             rig.detectCollisions = false;
-
         }
 
-        public void Init(Rigidbody _rig) { rig = _rig; }
-
-        public List<Node> FindVecinos(Node MyNode)
+        public HashSet<Node> FindVecinosByRadius(Node MyNode)
         {
-            return MyNode.FindInRadius(radius, detectableLayers);
+            return new HashSet<Node>(MyNode.FindInRadius(radius_to_find, detectableLayers, x => x.IsConnected));
+        }
+        void aes()
+        {
+            
+        }
+        
+
+        public IEnumerable<Node> FindVecinosByQuery(Node MyNode)
+        {
+            return circleQuery.Query()
+                 .OfType<GridComponent>()
+                 .Select(x => x.Grid_Object.GetComponent<Node>()) //IA2-P3 [Select]
+                 .Where(x => x != MyNode && x.IsConnected) //IA2-P3 [Where]
+                 .Where(x => 
+                 {
+                     Vector3 dir = x.transform.position - transform.position;
+                     if (!Physics.Raycast(transform.position, dir, out RaycastHit ray, 10, detectableLayers)) return false;
+                     else return true;
+                 }); 
         }
 
         public void EliminateMostClose(Node MyNode)
@@ -172,4 +186,84 @@ namespace IA_Felix
             to_eliminate.Clear();
         }
     }
+
+    [System.Serializable]
+    public struct NodeCost
+    {
+        public float cost;
+        public float fitness;
+        public float heuristic;
+        public float external_weight;
+    }
+
+
+    #region GIZMOS
+    [System.Serializable]
+    public class NodeRender
+    {
+        public bool draw_gizmos = false;
+        public bool draw_radius;
+        public bool draw_neighbors;
+        public Color connectionColor;
+        public float multiplier_up_vector_gizmo_dist = 0.1f;
+
+        public void Init(GameObject go)
+        {
+            render = go.GetComponent<Renderer>();
+            //if(render) render.enabled = false;
+        }
+        Renderer render;
+        public void PintarRojo() { if (render) render.material.color = Color.red; }
+        public void PintarNegro() { if (render) render.material.color = Color.black; }
+        public void PintarVerde() { if (render) render.material.color = Color.green; }
+        public void PintarBlanco() { if (render) render.material.color = Color.white; }
+
+        public void ShutDownRender()
+        {
+            if (render) render.enabled = false;
+            draw_gizmos = false;
+        }
+
+        public void Draw(Vector3 myPos, List<Node> col, float radius)
+        {
+            if (!draw_gizmos) return;
+            if (draw_radius) Gizmos.DrawWireSphere(myPos, radius);
+            if (draw_neighbors) Gizmos.color = connectionColor;
+            if (draw_neighbors) foreach (var n in col) Gizmos.DrawLine(myPos + Vector3.up * multiplier_up_vector_gizmo_dist, n.transform.position + Vector3.up * multiplier_up_vector_gizmo_dist);
+        }
+        public void Draw(Vector3 myPos, IEnumerable<Node> col, float radius)
+        {
+            if (!draw_gizmos) return;
+            if (draw_radius) Gizmos.DrawWireSphere(myPos, radius);
+            if (draw_neighbors)
+            {
+                Gizmos.color = connectionColor;
+
+                if (col == null) return;
+                foreach (var n in col)
+                {
+                    Vector3 HeightOffset = Vector3.up * multiplier_up_vector_gizmo_dist;
+
+                    Vector3 IntitialPoint = myPos + HeightOffset;
+
+                    var distance = Vector3.Distance(n.transform.position, myPos) / 2;
+                    var dir = (n.transform.position - myPos).normalized;
+                    var destinyPoint = myPos + dir * distance;
+
+                    Vector3 FinalPoint = destinyPoint + HeightOffset;
+
+                    if (render.gameObject.GetComponent<Node>().costs.external_weight == 2)
+                    {
+                        Gizmos.color = new Color(1.0f, 0.64f, 0.0f);
+                    }
+                    if (render.gameObject.GetComponent<Node>().costs.external_weight >= 3)
+                    {
+                        Gizmos.color = Color.red;
+                    }
+                    Gizmos.DrawLine(IntitialPoint, destinyPoint);
+                }
+            }
+        }
+    }
+    #endregion
 }

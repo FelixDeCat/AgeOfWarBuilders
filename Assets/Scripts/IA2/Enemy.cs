@@ -5,33 +5,34 @@ using System.Collections;
 using System.Linq;
 using System.Collections.Generic;
 using AgeOfWarBuilders.Global;
+using Tools.StateMachine;
 
-public class Enemy : LivingEntity, IGridEntity
+public class Enemy : LivingEntity
 {
-    #region Grid Things
-    public event Action<IGridEntity> OnMove;
-    public Vector3 Position
-    {
-        get
-        {
-            if (transform != null)
-                return transform.position;
-            else
-                return new Vector3(int.MaxValue, int.MaxValue, int.MaxValue);
-        }
-        set => transform.position = value;
-    }
-    bool isAlive;
-    public bool IsAlive { get => isAlive; set => isAlive = value; }
-
-    #endregion
-
+    [Header("Enemy Things")]
     public int damage = 5;
 
-    ObserverQuery observer;
+    public GridComponent MyGridComponentEntity;
+
+    bool isAlive;
+
+    public enum EnemyInputs { AWAKE, IDLE, BEGIN_ATTACK, ATTACK, GO_TO_POS, DIE, DISABLE, TAKE_DAMAGE, PARRIED, CHASING, SPECIAL_ATTACK };
+    public EventStateMachine<EnemyInputs> sm;
+
     Enemy_Zombie_View view;
     Transform playerpos;
     ThreatReceptor threatReceptor;
+    AnimEvent myAnimEvent;
+
+    SmoothLookAt SmoothLookAt;
+
+    [System.Serializable]
+    class States
+    {
+        [SerializeField] internal EnemyBase_Idle idle_state;
+    }
+    [SerializeField] States states;
+
 
     float timer_recalculate;
     float time_to_recalculate = 0.5f;
@@ -39,12 +40,9 @@ public class Enemy : LivingEntity, IGridEntity
     public LayerMask mypartersLayer;
     public float partner_detection_radius = 5f;
 
-
-    
-
     protected override void OnInitialize()
     {
-
+        isAlive = true;
         // if (colorDebug == null) colorDebug = GetComponent<MeshChangeColorCollection>();
         base.OnInitialize();
         //colorDebug.Change(Color.cyan);
@@ -52,22 +50,51 @@ public class Enemy : LivingEntity, IGridEntity
         threatReceptor = GetComponent<ThreatReceptor>();
         Resurrect();
         view.Anim_Death(false);
-        isAlive = true;
+
         myRig.isKinematic = true;
         myRig.detectCollisions = true;
-        SpatialGrid.instance.AddEntityToGrid(this);
+        MyGridComponentEntity.Grid_Initialize(this.gameObject);
+        MyGridComponentEntity.Grid_Rise();
         playerpos = SceneReferences.Player.transform;
+
+        SmoothLookAt = GetComponentInChildren<SmoothLookAt>();
 
         rig_path_finder.AddCallback_OnBeginMove(PathFinderBeginMove);
         rig_path_finder.AddCallback_OnEndMove(PathFinderEndMove);
 
-        //OnMove.Invoke(this);
+        myAnimEvent = this.GetComponentInChildren<AnimEvent>();
+        myAnimEvent.ADD_ANIM_EVENT_LISTENER("OnAttack", ANIM_EVENT_OnAttack);
+        myAnimEvent.ADD_ANIM_EVENT_LISTENER("OnDeathFinish", ANIM_EVENT_OnDeathFinish);
+
     }
+
     protected override void OnDeinitialize()
     {
         base.OnDeinitialize();
         //colorDebug.Change(Color.magenta);
-        SpatialGrid.instance.RemoveEntityToGrid(this);
+        MyGridComponentEntity.Grid_Deinitialize();
+    }
+
+    void DebugState(string EnemyState)
+    {
+
+    }
+
+    void InitializeAI()
+    {
+        var idle = new EState<EnemyInputs>("Idle", states.idle_state);
+        var Attack = new EState<EnemyInputs>("Attack");
+
+        ConfigureState.Create(idle)
+            .SetTransition(EnemyInputs.ATTACK, Attack)
+            .Done();
+
+        sm = new EventStateMachine<EnemyInputs>(idle, DebugState);
+    }
+
+    public void SendInput(EnemyInputs input)
+    {
+        sm.SendInput(input);
     }
 
     Action<Enemy> CbkOnDeath;
@@ -81,27 +108,35 @@ public class Enemy : LivingEntity, IGridEntity
     {
         if (!isAlive) return;
 
-        Update_TargetRecalculation();
+        var threat = threatReceptor
+            .Threats
+            .FirstOrDefault();
 
-        /*LivingEntity currentarget;
-         currentarget = threatReceptor.Threats
-          //  .Where(x => x.GetComponent<PlayerModel>() || x.GetComponent<Center>())
-            .OfType<LivingEntity>()
-            .FirstOrDefault();*/
+        if (threat != null)
+        {
+            currentarget = threat.GetComponent<LivingEntity>();
+        }
+
+        //currentarget
 
         //if (threatReceptor.Threats.Length > 0)
         //    currentarget = threatReceptor.Threats[0].GetComponent<LivingEntity>();
 
-        if (threatReceptor.Threats.Length > 0)
-            currentarget = threatReceptor.Threats[0].GetComponent<LivingEntity>();
-
         Vector3 dir_to_target;
         float distance;
+
+        
+
 
         #region Obtencion del target
         if (currentarget != null)
         {
-            GoToPosition(currentarget.transform.position);
+            if (timer_recalculate < time_to_recalculate) timer_recalculate = timer_recalculate + 1 * DeltaTime;
+            else
+            {
+                GoToPosition(currentarget.transform.position);
+            }
+           
             dir_to_target = currentarget.transform.position - this.transform.position;
             distance = Vector3.Distance(currentarget.transform.position, this.transform.position);
         }
@@ -123,22 +158,25 @@ public class Enemy : LivingEntity, IGridEntity
         }
         #endregion
 
+        dir_to_target.Normalize();
+        SmoothLookAt.SetDirection(dir_to_target);
+
         #region Persecucion y destruccion del target
         if (distance < 10)
         {
             CanNotWalk = true;
             dir_to_target.Normalize();
 
-            if (distance <= rig_path_finder.distance_to_close/2)
+            if (distance <= rig_path_finder.distance_to_close / 2)
             {
                 view.Anim_Run(false);
-                this.transform.forward = Vector3.Lerp(transform.forward, new Vector3(dir_to_target.x, 0, dir_to_target.z), DeltaTime * rig_path_finder.forwardspeed);
+                SmoothLookAt.Look(DeltaTime);
                 Update_Attack();
             }
             else
             {
                 view.Anim_Run(true);
-                this.transform.forward = Vector3.Lerp(transform.forward, new Vector3(dir_to_target.x, 0, dir_to_target.z), DeltaTime * rig_path_finder.forwardspeed);
+                SmoothLookAt.Look(DeltaTime);
                 myRig.isKinematic = false;
                 myRig.velocity = transform.forward + dir_to_target * rig_path_finder.movement_speed * DeltaTime;
             }
@@ -153,12 +191,8 @@ public class Enemy : LivingEntity, IGridEntity
         base.OnTick(DeltaTime);
 
         //este on move es para la grid
-        OnMove?.Invoke(this);
+        MyGridComponentEntity.Grid_RefreshComponent();
 
-        if (PlayerController.DEBUG_PRESS_T)
-        {
-            GoToPosition(SceneReferences.Player.transform.position);
-        }
     }
 
     void PathFinderBeginMove()
@@ -177,18 +211,24 @@ public class Enemy : LivingEntity, IGridEntity
         myRig.velocity = new Vector3(0, 0, 0);
         myRig.detectCollisions = false;
         isAlive = false;
-        OnMove.Invoke(this);
+        MyGridComponentEntity.Grid_RefreshComponent();
         view.Anim_Death(true);
-        CbkOnDeath.Invoke(this);
-    }
-    public void UEVENT_OnDeathFinish()
-    {
-        SpatialGrid.instance.RemoveEntityToGrid(this);
+        CbkOnDeath?.Invoke(this);
     }
 
-    void Update_TargetRecalculation()
+    public void ANIM_EVENT_OnAttack()
     {
+        if (!currentarget) throw new Exception("La Entity es null");
+        float distance = Vector3.Distance(currentarget.transform.position, this.transform.position);
+        if (distance <= rig_path_finder.distance_to_close)
+        {
+            currentarget.ReceiveDamage(damage);
+        }
+    }
 
+    public void ANIM_EVENT_OnDeathFinish()
+    {
+        MyGridComponentEntity.Grid_Deinitialize();
     }
 
     void Update_Attack()
@@ -201,7 +241,8 @@ public class Enemy : LivingEntity, IGridEntity
     {
         return Physics
             .OverlapSphere(this.transform.position, 5f, mypartersLayer)
-            .Select(x => x.GetComponent<Enemy>());
+            .Select(x => x.GetComponent<Enemy>()) //IA2-P3 [Select]
+            .Take(3); //IA2-P3 [Take]
     }
 
     public int GetPartnersLegth()
@@ -215,15 +256,7 @@ public class Enemy : LivingEntity, IGridEntity
     }
     #endregion
 
-    public void UEVENT_OnAttack()
-    {
-        if (!currentarget) throw new Exception("La Entity es null");
-        float distance = Vector3.Distance(currentarget.transform.position, this.transform.position);
-        if (distance <= rig_path_finder.distance_to_close)
-        {
-            currentarget.ReceiveDamage(damage);
-        }
-    }
+
 
     protected override void Feedback_ReceiveDamage()
     {

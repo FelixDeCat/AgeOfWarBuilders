@@ -39,10 +39,13 @@ namespace IA_Felix
 
             open.Add(initial);
 
-            while (open.Count > 0)
+            int operations = 5;
+
+            while (open.Count > 0 || operations > 1)
             {
                 float small = float.MaxValue;
 
+                operations--;
                 //seteo el costo mas chico
                 //seteo el nodo con costo mas chico como current
                 foreach (var n in open)
@@ -88,7 +91,7 @@ namespace IA_Felix
                         return null;
                     }
                     v.costs.heuristic = Vector3.Distance(v.transform.position, final.transform.position);
-                    v.costs.cost = v.costs.fitness + v.costs.heuristic;
+                    v.costs.cost = v.costs.fitness + v.costs.heuristic + v.costs.external_weight;
 
                     if (!closed.Contains(v))
                     {

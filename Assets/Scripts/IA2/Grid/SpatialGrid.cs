@@ -8,7 +8,8 @@ public class SpatialGrid : MonoBehaviour
 
     #region Variables
 
-    public static SpatialGrid instance;
+    public Grids gridType;
+    public Color color_grid;
 
     //punto de inicio de la grilla en X
     public float x;
@@ -51,8 +52,6 @@ public class SpatialGrid : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
-
         buckets = new HashSet<IGridEntity>[width, height];
 
         //creamos todos los hashsets
@@ -64,10 +63,17 @@ public class SpatialGrid : MonoBehaviour
             }
         }
 
+        CaptureEntities();
+    }
+
+    void CaptureEntities()
+    {
         var ents = RecursiveWalker(transform)
                   .Where(x => x.gameObject.activeSelf)//esto es para que no me seleccione los que no estan activos
                   .Select(n => n.GetComponent<IGridEntity>())
-                  .Where(n => n != null);
+                  .Where(n => n != null)
+                  .Where(e => e.gridType == this.gridType);
+
 
         foreach (var e in ents)
         {
@@ -78,11 +84,13 @@ public class SpatialGrid : MonoBehaviour
 
     public void AddEntityToGrid(IGridEntity entity)
     {
+        if (entity.gridType != this.gridType) throw new System.Exception("El type de la Entity no corresponde a esta Grilla");
         entity.OnMove += UpdateEntity;
         UpdateEntity(entity);
     }
     public void RemoveEntityToGrid(IGridEntity entity)
     {
+        if (entity.gridType != this.gridType) throw new System.Exception("El type de la Entity no corresponde a esta Grilla");
         entity.OnMove -= UpdateEntity;
         entity.Position = new Vector3(int.MinValue, int.MinValue, int.MinValue);
         UpdateEntity(entity);
@@ -90,6 +98,8 @@ public class SpatialGrid : MonoBehaviour
 
     public void UpdateEntity(IGridEntity entity)
     {
+        if (entity.gridType != this.gridType) throw new System.Exception("El type de la Entity no corresponde a esta Grilla");
+
         var lastPos = lastPositions.ContainsKey(entity) ? lastPositions[entity] : Outside;
         var currentPos = ConvertGlobalPosToGridNormalized(entity.Position);
 
@@ -143,6 +153,7 @@ public class SpatialGrid : MonoBehaviour
         // Iteramos las que queden dentro del criterio
         return cells
               .SelectMany(cell => buckets[cell.Item1, cell.Item2])
+              .Where(e => e.gridType == this.gridType)
               .Where(e =>
                          from.x <= e.Position.x && e.Position.x <= to.x &&
                          from.z <= e.Position.z && e.Position.z <= to.z
@@ -202,12 +213,15 @@ public class SpatialGrid : MonoBehaviour
 
     #region GRAPHIC REPRESENTATION
 
+    public bool gizmos;
     public bool areGizmosShutDown;
     public bool activatedGrid;
     public bool showLogs = true;
 
     private void OnDrawGizmos()
     {
+        if (!gizmos) return;
+
         var rows = Util.Generate(z, curr => curr + cellHeight)
                        .Select(row => Tuple.Create(new Vector3(x, 0, row),
                                                    new Vector3(x + cellWidth * width, 0, row)));
@@ -226,6 +240,7 @@ public class SpatialGrid : MonoBehaviour
 
         foreach (var elem in allLines)
         {
+            Gizmos.color = color_grid;
             Gizmos.DrawLine(elem.Item1, elem.Item2);
         }
 

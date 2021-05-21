@@ -21,6 +21,7 @@ namespace IA2.Clase5
 
         Vector3 IGridEntity.Position { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         bool IGridEntity.IsAlive { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public Grids gridType { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         private void Enemy_Pepe()
         {

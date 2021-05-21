@@ -9,7 +9,9 @@ public class ThreatReceptor : MonoBehaviour
     public float time_to_recalculate_Threat = 0.5f;
 
     [SerializeField] Threat[] threats_collection = new Threat[0];
-    public Threat[] Threats => threats_collection;
+    public IEnumerable<Threat> Threats => threats_collection;
+
+    
 
     public void Update()
     {

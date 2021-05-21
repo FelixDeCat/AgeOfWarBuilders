@@ -9,7 +9,7 @@ public class WalkingEntity : PlayObject
     [SerializeField] protected bool CanNotWalk = false;
     protected bool executeAStar;
 
-    [SerializeField] protected RigidbodyPathFinder rig_path_finder;
+    [SerializeField] protected PathFinder rig_path_finder;
     [SerializeField] protected Rigidbody myRig;
 
     protected override void OnInitialize()

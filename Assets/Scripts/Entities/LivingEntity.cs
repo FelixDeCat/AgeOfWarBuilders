@@ -12,6 +12,11 @@ public class LivingEntity : WalkingEntity
 
     public float HP { get => life.Life; }
 
+    protected override void Awake()
+    {
+        base.Awake();
+    }
+
     public void ReceiveDamage(int dmg = 5)
     {
         life.Hit(dmg);
@@ -27,7 +32,9 @@ public class LivingEntity : WalkingEntity
 
     protected virtual void Feedback_ReceiveDamage() { }
     protected virtual void Feedback_OnHeal() { }
-    protected virtual void OnDeath() { }
+    protected virtual void OnDeath()
+    {
+    }
 
     protected override void OnInitialize()
     {

@@ -11,6 +11,8 @@ public class Center : LivingEntity
         mythreat = GetComponent<Threat>();
         base.OnInitialize();
         mythreat.Initialize();
+        mythreat.Rise();
+        
     }
     protected override void OnDeinitialize()
     {
@@ -28,6 +30,7 @@ public class Center : LivingEntity
     protected override void Feedback_OnHeal() { }
     protected override void OnDeath()
     {
+        mythreat.Death();
         GameLoop.Pause();
         GameLoop.Lose();
     }

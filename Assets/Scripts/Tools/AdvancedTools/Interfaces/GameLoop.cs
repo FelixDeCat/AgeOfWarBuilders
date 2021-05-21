@@ -14,22 +14,16 @@ public class GameLoop : MonoBehaviour
     private void Awake() { instance = this; }
 
     public HashSet<PlayObject> playObjects = new HashSet<PlayObject>();
-    
+
     bool inGame;
     bool isPaused;
-    bool GameAlreadyInitialized;
-
-    [SerializeField] TextMeshProUGUI txt_win_or_lose;
-    [SerializeField] GameObject btn_recargar_go;
-    [SerializeField] Button btn_recargar;
 
     #endregion
 
     #region Monovehaviour
-    private void Start()
-    {
-        PlayGame();
-    }
+
+    private void Start() => PlayGame();
+
     private void Update()
     {
         if (inGame)
@@ -58,12 +52,13 @@ public class GameLoop : MonoBehaviour
     {
         playObject.Index = playObjects.Count;
         playObjects.Add(playObject);
+        Debug.Log("Inicializando: " + playObject);
         if (!playObject.IsInitialized) playObject.Initialize();
     }
     void Remove_PlayObject(PlayObject playObject)
     {
         playObjects.Remove(playObject);
-        playObject.Deinitialize();
+        playObject.DeInitialize();
     }
     #endregion
 
@@ -87,53 +82,31 @@ public class GameLoop : MonoBehaviour
     {
         inGame = true;
         foreach (var p in playObjects) { if (!p.IsInitialized) p.Initialize(); }
-        GameAlreadyInitialized = true;
-    }
-    void StopGame()
-    {
-        inGame = false;
+        isPaused = false;
     }
 
     ///////////////////////////////////////////////////
-    /// PAUSE
+    /// PAUSE // RESUME // STOP
     ///////////////////////////////////////////////////
     ///
     void PauseGame()
     {
         isPaused = true;
-        foreach (var p in playObjects) { p.Pause(); }
+        foreach (var p in playObjects) p.Pause();
     }
     void ResumeGame()
     {
         isPaused = false;
-        foreach (var p in playObjects) { p.Resume(); }
+        foreach (var p in playObjects) p.Resume();
     }
 
     ///////////////////////////////////////////////////
     /// WIN & LOSE
     ///////////////////////////////////////////////////
     ///
-    void OnLose()
-    {
-        Fades_Screens.instance.FadeOn(EndFade, "Perdiste");
-    }
-    void OnWin()
-    {
-        Fades_Screens.instance.FadeOn(EndFade, "Ganaste");
-    }
+    void OnLose() => Fades_Screens.instance.FadeOn(() => CanvasManager.LoseOrWinTextWithAction("Perdiste", Scenes.ReloadThisScene)); 
+    void OnWin() => Fades_Screens.instance.FadeOn(() => CanvasManager.LoseOrWinTextWithAction("Ganaste", Scenes.ReloadThisScene)); 
 
-    void EndFade(string param)
-    {
-        btn_recargar_go.SetActive(true);
-        txt_win_or_lose.enabled = true;
-        txt_win_or_lose.text = param;
-        btn_recargar.onClick.AddListener(ReloadScene);
-    }
-
-    void ReloadScene()
-    {
-        Scenes.ReloadThisScene();
-    }
     #endregion
 
 

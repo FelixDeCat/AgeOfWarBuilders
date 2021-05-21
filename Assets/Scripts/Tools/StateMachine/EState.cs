@@ -12,19 +12,20 @@ namespace Tools.StateMachine
         public Action<T> OnExit = delegate { };
         Dictionary<T, TransitionState<T>> transitions;
         Dictionary<T, Action> transitionAction = new Dictionary<T, Action>();
+        MonoState<T> myMonoState;
 
-        public void Enter(EState<T> lastState) { OnEnter(lastState); }
-        public void Update() { OnUpdate(); }
-        public void LateUpdate() { OnLateUpdate(); }
-        public void FixedUpdate() { OnFixedUpdate(); }
-        public void Exit(T input) { OnExit(input); }
-
+        public void Enter(EState<T> lastState) { OnEnter(lastState); myMonoState?.Enter(lastState); }
+        public void Update() { OnUpdate(); myMonoState?.Tick(); }
+        public void LateUpdate() { OnLateUpdate(); myMonoState?.LateTick(); }
+        public void FixedUpdate() { OnFixedUpdate(); myMonoState?.FixedTick(); }
+        public void Exit(T input) { OnExit(input); myMonoState?.Exit(input); }
 
         public string Name { get; private set; }
 
-        public EState(string _name)
+        public EState(string _name, MonoState<T> myMonoState = null)
         {
             Name = _name;
+            this.myMonoState = myMonoState;
         }
 
         public EState<T> Configure(Dictionary<T, TransitionState<T>> transitions, Dictionary<T, Action> transitionAction)

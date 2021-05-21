@@ -86,8 +86,9 @@ namespace Tools.Extensions
             }
             return aux;
         }
-        public static List<T> FindInRadius<T>(this T own, float radius, LayerMask layermask) where T : Component
+        public static List<T> FindInRadius<T>(this T own, float radius, LayerMask layermask, Func<T, bool> predicate = null) where T : Component
         {
+            if (predicate == null) { predicate = delegate { return true; }; }
             var col = new List<T>();
             var finded_colliders = Physics.OverlapSphere(own.transform.position, radius);
             foreach (var v in finded_colliders)
@@ -96,7 +97,7 @@ namespace Tools.Extensions
             }
             List<Collider> colliders = new List<Collider>();
             return col
-                .Where(x => !own.Equals(x))
+                .Where(x => !own.Equals(x) && predicate(x))
                 .Where(n =>
                 {
                     Vector3 dir = n.transform.position - own.transform.position;
@@ -181,9 +182,11 @@ namespace Tools.Extensions
             return col.ToList();
         }
 
-        public static T FindMostClose<T>(this Vector3 pos, float radius_to_find) where T : Component
+        public static T FindMostClose<T>(this Vector3 pos, float radius_to_find, Func<T,bool> predicate = null) where T : Component
         {
             List<T> col_in_radius = pos.FindInRadius<T>(radius_to_find);
+
+            col_in_radius = col_in_radius.Where(x => predicate(x)).ToList();
 
             if (col_in_radius.Count > 0)
             {

@@ -85,6 +85,7 @@ namespace AgeOfWarBuilders.BuildSystem
         void OnDeathTower(TowerEntity tower)
         {
             currentCant_Towers--;
+            tower.DeInitialize();
             MyBuildings.Remove(tower);
             RefreshTowerQuantity(currentCant_Towers, MaxCant_Towers);
         }

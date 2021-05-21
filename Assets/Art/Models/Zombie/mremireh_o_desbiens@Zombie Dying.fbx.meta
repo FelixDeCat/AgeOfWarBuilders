@@ -60,8 +60,8 @@ ModelImporter:
       curves: []
       events:
       - time: 0.9450549
-        functionName: ANIM_EVENT_Death
-        data: 
+        functionName: TRIGGER_EVENT
+        data: OnDeathFinish
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0

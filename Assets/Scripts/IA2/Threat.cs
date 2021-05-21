@@ -4,24 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class Threat : MonoBehaviour, IGridEntity
+public class Threat : MonoBehaviour
 {
     public TextMeshPro debug_calculate_thread;
 
-    public event Action<IGridEntity> OnMove;
-    public Vector3 Position
-    {
-        get
-        {
-            if (transform != null)
-                return transform.position;
-            else
-                return new Vector3(int.MaxValue, int.MaxValue, int.MaxValue);
-        }
-        set => transform.position = value;
-    }
-    bool isAlive;
-    public bool IsAlive { get => isAlive; set => isAlive = value; }
+    public GridComponent myGridComponent;
 
     public int myThreatLevel;
 
@@ -29,18 +16,23 @@ public class Threat : MonoBehaviour, IGridEntity
 
     public void Tick(float DeltaTime)
     {
-        Debug.Log("Me estan Updateando");
         if (timer < 1f) timer = timer + 1 * DeltaTime;
-        else { timer = 0; OnMove.Invoke(this); }
+        else { timer = 0; myGridComponent.Grid_RefreshComponent(); }
     }
 
-    public void Initialize() { isAlive = true; if (SpatialGrid.instance) SpatialGrid.instance.AddEntityToGrid(this); else Invoke("RetardedInitialization", 0.1f); }
-    public void Deinitialize() { isAlive = false; SpatialGrid.instance.RemoveEntityToGrid(this); }
-
-    void RetardedInitialization()
+    public void Initialize(Transform target = null)
     {
-        SpatialGrid.instance.AddEntityToGrid(this);
+        myGridComponent.Grid_Initialize(target ? target.gameObject : this.gameObject);
+        myGridComponent.Grid_Rise();
     }
+    public void Deinitialize()
+    {
+        myGridComponent.Grid_Deinitialize();
+    }
+
+    public void Death() => myGridComponent.Grid_Death();
+    public void Rise() => myGridComponent.Grid_Rise();
+
 
     [Header("Threads levels by distance")]
     [SerializeField] float hight_thread_distance = 6;
@@ -73,7 +65,7 @@ public class Threat : MonoBehaviour, IGridEntity
             }
         }
         var res = myThreatLevel* multi;
-        debug_calculate_thread.text = "Thr:" + myThreatLevel + " Mult:" + multi + " Res:" + res;
+        if(debug_calculate_thread) debug_calculate_thread.text = "Thr:" + myThreatLevel + " Mult:" + multi + " Res:" + res;
         return res;
     }
 }

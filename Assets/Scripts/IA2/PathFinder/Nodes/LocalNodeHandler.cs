@@ -7,25 +7,45 @@ using IA_Felix;
 public class LocalNodeHandler : MonoBehaviour
 {
     List<Node> nodes;
-    FindNodesAndAdd parentNodes;
+
+    public static LocalNodeHandler instance;
+    private void Awake()
+    {
+        instance = this;
+    }
 
     void Start()
     {
-        //Invoke("Find", 0.1f);
+        Invoke("Find", 0.1f);
     }
 
     public void Find()
     {
-        var finder = GetComponentInChildren<FindNodesAndAdd>();
-        parentNodes = finder;
-        if (parentNodes == null) return;
-        nodes = parentNodes.transform.GetComponentsInChildren<Node>().ToList();
-        nodes.ForEach(x => x.OnStart());
-        nodes.ForEach(x => x.CheckIfNeighborsCanSeeMe());
-        nodes.ForEach(x => x.ShutDown());
+        nodes = this.transform.GetComponentsInChildren<Node>().ToList();
+        nodes.ForEach(x => x.OnStart(Refresh));
+        Invoke("Refresh", 0.1f);
     }
-    public void Render(bool rend)
+
+    public void Refresh()
     {
-        nodes.ForEach(x => x.render.gizmos = rend);
+        nodes.ForEach(x => x.Execute());
+        nodes.ForEach(x => x.RefreshReConnections());
+    }
+
+    public void Render(bool isdraw, bool draw_neighbors, bool draw_Radius)
+    {
+        for (int i = 0; i < nodes.Count; i++)
+        {
+            nodes[i].render.draw_gizmos = isdraw;
+            nodes[i].render.draw_neighbors = draw_neighbors;
+            nodes[i].render.draw_radius = draw_Radius;
+        }
+    }
+    public void ChangeUseGrid(bool is_using_grids)
+    {
+        for (int i = 0; i < nodes.Count; i++)
+        {
+            nodes[i].OnEditMode = !is_using_grids;
+        }
     }
 }

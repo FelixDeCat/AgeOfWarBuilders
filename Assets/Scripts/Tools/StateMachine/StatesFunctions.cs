@@ -8,10 +8,10 @@ namespace Tools.StateMachine
 {
     public abstract class StatesFunctions<T>
     {
-        protected EventStateMachine<T> sm;
-        protected EState<T> state;
 
-        public StatesFunctions(EState<T> myState, EventStateMachine<T> _sm)
+        Action<T> callbackInput;
+
+        public StatesFunctions(EState<T> myState, Action<T> CallbackSendInput)
         {
             myState.OnEnter += Enter;
 
@@ -23,8 +23,11 @@ namespace Tools.StateMachine
 
             myState.OnExit += Exit;
 
-            sm = _sm;
-            state = myState;
+            callbackInput = CallbackSendInput;
+        }
+        protected virtual void SendInput(T input)
+        {
+            callbackInput.Invoke(input);
         }
 
         protected abstract void Enter(EState<T> lastState);

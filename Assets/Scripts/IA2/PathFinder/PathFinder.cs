@@ -5,9 +5,10 @@ using System;
 using Tools.Extensions;
 using IA2;
 using IA_Felix;
+using System.Linq;
 
 [RequireComponent(typeof(Rigidbody))]
-public class RigidbodyPathFinder : MonoBehaviour
+public class PathFinder : MonoBehaviour
 {
     public bool canMove;
 
@@ -26,6 +27,8 @@ public class RigidbodyPathFinder : MonoBehaviour
     Node currentNode;
     Node initialNode;
     Node finalNode;
+
+    public LineRenderer lr_debug;
 
     public Action callbackEndDinamic = delegate { };
     public Action callbackOnBeginMove = delegate { };
@@ -67,6 +70,7 @@ public class RigidbodyPathFinder : MonoBehaviour
         callbackOnEndMove = _cbk;
     }
 
+
     public bool Execute(Vector3 pos)
     {
         rb.isKinematic = false;
@@ -81,11 +85,22 @@ public class RigidbodyPathFinder : MonoBehaviour
             "[ los layers son los correctos ] " +
             "[ Hay nodos en el punto de busqueda ]");
             return false; }
-        
-
-
 
         var col = astar.Execute(initialNode, finalNode);
+
+        if (col == null) return false;
+
+        var positions = col.Select(x => x.transform.position).ToArray();
+
+        if (lr_debug)
+        {
+            lr_debug.positionCount = positions.Length;
+
+            for (int i = 0; i < positions.Length; i++)
+            {
+                lr_debug.SetPosition(i,positions[i]);
+            }
+        }
 
         if (col == null) { Debug.Log("Tengo una Lista nula"); return false; }
 
@@ -101,6 +116,10 @@ public class RigidbodyPathFinder : MonoBehaviour
         callbackOnBeginMove.Invoke();
 
         return true;
+    }
+
+    void Execute()
+    {
     }
 
     bool dequeueNext = false;

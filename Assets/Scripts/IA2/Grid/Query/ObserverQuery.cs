@@ -15,7 +15,7 @@ public class ObserverQuery : QueryComponent, IQuery {
     protected override void OnConfigure(Transform target) { }
 
     public override IEnumerable<IGridEntity> Query() {
-        return SpatialGrid.instance.Query(
+        return myGrid.Query(
                                 target.position - new Vector3(radius, 0, radius),
                                 target.position + new Vector3(radius, 0, radius),
                                 x => InRadius(x) && InAngle(x));
@@ -33,7 +33,7 @@ public class ObserverQuery : QueryComponent, IQuery {
     }
 
     void OnDrawGizmos() {
-        if (target == null || SpatialGrid.instance) return;
+        if (target == null) return;
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(target.transform.position, radius);
         Gizmos.color = Color.magenta;

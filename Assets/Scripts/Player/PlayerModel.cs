@@ -35,7 +35,6 @@ namespace AgeOfWarBuilders.Entities
         #endregion
 
         public PlayerView view;
-
         Threat myThread;
 
         protected override void OnInitialize()
@@ -47,6 +46,7 @@ namespace AgeOfWarBuilders.Entities
             playerDamageComponent = GetComponentInChildren<PlayerDamageComponent>();
             myThread = GetComponent<Threat>();
             myThread.Initialize();
+           // myThread.Rise();
             if (playerDamageComponent != null) { playerDamageComponent.AddOwnerTransform(this.transform); playerDamageComponent.Initialize(true);   }
             else throw new System.Exception("No have a [PlayerDamageComponent], plase add to some child object");
             if (groundcheck == null) throw new System.Exception("No have a [PlayerComponent_GroundCheck], plase add to some child object");
@@ -161,8 +161,6 @@ namespace AgeOfWarBuilders.Entities
             }
         }
 
-
-
         protected override void Feedback_OnHeal()
         {
             base.Feedback_OnHeal();
@@ -175,6 +173,7 @@ namespace AgeOfWarBuilders.Entities
         protected override void OnDeath()
         {
             base.OnDeath();
+            myThread.Death();
             GameLoop.Pause();
             GameLoop.Lose();
         }

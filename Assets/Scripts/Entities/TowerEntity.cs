@@ -4,25 +4,8 @@ using UnityEngine;
 using System.Linq;
 using System;
 
-public class TowerEntity : LivingEntity, IGridEntity
+public class TowerEntity : LivingEntity
 {
-    #region Grid Things
-    public event Action<IGridEntity> OnMove;
-    public Vector3 Position
-    {
-        get
-        {
-            if (transform != null)
-                return transform.position;
-            else
-                return new Vector3(int.MaxValue, int.MaxValue, int.MaxValue);
-        }
-        set => transform.position = value;
-    }
-    bool isAlive;
-    public bool IsAlive { get => isAlive; set => isAlive = value; }
-    #endregion
-
     public Enemy currentEnemy;
 
     public float Time_To_Select_Target = 1f;
@@ -33,57 +16,75 @@ public class TowerEntity : LivingEntity, IGridEntity
     ObserverQuery observer_query;
     SquareQuery square_query;
 
+    NodeDumper dumper;
+
+    Threat myThread;
+
+    public GridComponent myGridCompEntity;
+
     public bool UseBomb;
     bool BombCreated;
     Vector3 BombPosition;
 
+    #region Enter & Exit
     protected override void OnInitialize()
     {
         base.OnInitialize();
-        isAlive = true;
-        if (SpatialGrid.instance) SpatialGrid.instance.AddEntityToGrid(this); else Invoke("RetardedInitialization", 0.1f);
+
+        myThread = GetComponent<Threat>();
+        myThread.Initialize();
+
+        myGridCompEntity.Grid_Initialize(this.gameObject);
+        myGridCompEntity.Grid_Rise();
 
         observer_query = GetComponentInChildren<ObserverQuery>();
         observer_query?.Configure(this.transform);
         square_query = GetComponentInChildren<SquareQuery>();
         square_query?.Configure(this.transform);
+
+        //dumper = GetComponentInChildren<NodeDumper>();
+        //dumper.Rise();
     }
     protected override void OnDeinitialize()
     {
         base.OnDeinitialize();
-        isAlive = false;
-        SpatialGrid.instance.RemoveEntityToGrid(this);
-    }
+        myGridCompEntity.Grid_Deinitialize();
 
-    void RetardedInitialization()
-    {
-        SpatialGrid.instance.AddEntityToGrid(this);
+        myThread.Deinitialize();
     }
+    #endregion
 
+    #region [TICK]
     protected override void OnTick(float DeltaTime)
     {
-        if (!isAlive) return;
         base.OnTick(DeltaTime);
+        //myGridCompEntity.Grid_RefreshComponent();
     }
+    #endregion
+
+    #region [LOGIC] Death
     Action<TowerEntity> DeathCallback = delegate { };
     public void CallbackOnDeath(Action<TowerEntity> _onDeath)
     {
         DeathCallback = _onDeath;
-
     }
-
     protected override void OnDeath()
     {
         base.OnDeath();
+        myThread.Death();
+        myGridCompEntity.Grid_Death();
+
         Invoke("Wait", 0.1f);
+
     }
     void Wait()
     {
+        //dumper.Death();
         DeathCallback?.Invoke(this);
-        Off();
         transform.position = new Vector3(int.MaxValue, int.MaxValue, int.MaxValue);
         Destroy(this.gameObject, 0.2f);
     }
+    #endregion
 
     IEnumerable<Enemy> partners;
 
@@ -101,13 +102,13 @@ public class TowerEntity : LivingEntity, IGridEntity
             {
                 partners = square_query
                 .Query()
-                .OfType<Enemy>()
-                .OrderByDescending(x => x.GetPartnersLegth())
+                .OfType<GridComponent>()
+                .Select(x => x.GetComponent<Enemy>())
+                .OrderByDescending(x => x.GetPartnersLegth()) //IA2-P3 [OrderBy]
                 .First()
                 .GetPartners();
 
-
-                var pointToShootBomb = partners.Aggregate(Tuple.Create(0, Vector3.zero),
+                var pointToShootBomb = partners.Aggregate(Tuple.Create(0, Vector3.zero), //IA2-P3 [Aggregate]
                 (acum, enemy) =>
                 {
                     //acumulo para el Legth
@@ -126,22 +127,15 @@ public class TowerEntity : LivingEntity, IGridEntity
                 //obtengo el punto central de todos los vectores
                 BombPosition = pointToShootBomb.Item2 / pointToShootBomb.Item1;
 
-                ////ejemplo con frutas Agreggate
-                //    string[] fruits = { "apple", "mango", "orange", "passionfruit", "grape" };
-                //// Determine whether any string in the array is longer than "banana".
-                //string longestName =
-                //    fruits.Aggregate("banana",
-                //                    (longest, next) =>
-                //                        next.Length > longest.Length ? next : longest,
-                //                    // Return the final result as an upper case string.
-                //                    fruit => fruit.ToUpper());
             }
             else
             {
                 //Le pregunto a la grilla y le pido el enemigo mas cercano
                 currentEnemy = observer_query
                     .Query()
-                    .OfType<Enemy>()
+                    .OfType<GridComponent>()
+                    .Where( x => x.Grid_Object.GetComponent<Enemy>())
+                    .Select(x => x.Grid_Object.GetComponent<Enemy>())
                     .OrderBy(x => (transform.position - x.transform.position).sqrMagnitude)
                     .FirstOrDefault();
 
@@ -149,7 +143,7 @@ public class TowerEntity : LivingEntity, IGridEntity
                 {
                     var pos = shootPoint.transform.position;
                     var dir = (currentEnemy.transform.position + Vector3.up - shootPoint.position).normalized;
-                    Bullet_PoolManager.instance.Shoot(pos, dir);
+                    Bullet_PoolManager.instance.Shoot(pos, dir,1,50,1);
                 }
             }
         }

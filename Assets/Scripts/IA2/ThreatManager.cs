@@ -14,18 +14,10 @@ public class ThreatManager : MonoBehaviour
 
     private IEnumerable<Threat> GetThreats(Vector3 position)
     {
-        //var debug = querie.QueryAtPosition(position)
-        //    .OfType<Threat>().ToArray();
-
         var threats = querie.QueryAtPosition(position)
-            .OfType<Threat>()
+            .OfType<GridComponent>()
+            .Select(x => x.Grid_Object.GetComponent<Threat>())
            .OrderByDescending(x => x.ThreatByDistanceMultiplier(position));
-
-        //for (int i = 0; i < debug.Length; i++)
-        //{
-        //    Debug.LogWarning("DEB THREATH: " + debug[i].gameObject.name);
-        //}
-
         return threats;
     }
 }

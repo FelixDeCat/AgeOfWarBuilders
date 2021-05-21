@@ -10,5 +10,5 @@ public class NodeFinder
     public NodeFinder(float _radius) => radius = _radius;
 
     public Node FindMostCloseNode(Vector3 pos) => 
-        pos.FindMostClose<Node>(radius);
+        pos.FindMostClose<Node>(radius, x => x.IsConnected);
 }
