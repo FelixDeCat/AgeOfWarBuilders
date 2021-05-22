@@ -42,8 +42,8 @@ public class TowerEntity : LivingEntity
         square_query = GetComponentInChildren<SquareQuery>();
         square_query?.Configure(this.transform);
 
-        //dumper = GetComponentInChildren<NodeDumper>();
-        //dumper.Rise();
+        dumper = GetComponentInChildren<NodeDumper>();
+        dumper.Rise();
     }
     protected override void OnDeinitialize()
     {
@@ -58,7 +58,7 @@ public class TowerEntity : LivingEntity
     protected override void OnTick(float DeltaTime)
     {
         base.OnTick(DeltaTime);
-        //myGridCompEntity.Grid_RefreshComponent();
+        myGridCompEntity.Grid_RefreshComponent();
     }
     #endregion
 
@@ -79,7 +79,7 @@ public class TowerEntity : LivingEntity
     }
     void Wait()
     {
-        //dumper.Death();
+        dumper.Death();
         DeathCallback?.Invoke(this);
         transform.position = new Vector3(int.MaxValue, int.MaxValue, int.MaxValue);
         Destroy(this.gameObject, 0.2f);
@@ -143,7 +143,7 @@ public class TowerEntity : LivingEntity
                 {
                     var pos = shootPoint.transform.position;
                     var dir = (currentEnemy.transform.position + Vector3.up - shootPoint.position).normalized;
-                    Bullet_PoolManager.instance.Shoot(pos, dir,1,50,1);
+                    Bullet_PoolManager.instance.Shoot(pos, dir);
                 }
             }
         }

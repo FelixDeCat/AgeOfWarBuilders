@@ -88,17 +88,12 @@ namespace IA_Felix
                 circleQuery = this.GetComponent<CircleQuery>();
                 circleQuery.Configure(rig.transform);
 
-                Invoke("Retarded", 0.1f);
+                Invoke("Execute", 1f);
             }
             else
             {
                 Execute();
             }
-        }
-
-        void Retarded()
-        {
-            Execute();
         }
 
         public void ClampToFloor()
@@ -123,7 +118,9 @@ namespace IA_Felix
 
             if (!OnEditMode)
             {
-                vecinos = new HashSet<Node>(FindVecinosByQuery(this));
+                var v = FindVecinosByQuery(this);
+
+                vecinos = new HashSet<Node>(v);
             }
             else
             {
@@ -156,11 +153,6 @@ namespace IA_Felix
         {
             return new HashSet<Node>(MyNode.FindInRadius(radius_to_find, detectableLayers, x => x.IsConnected));
         }
-        void aes()
-        {
-            
-        }
-        
 
         public IEnumerable<Node> FindVecinosByQuery(Node MyNode)
         {

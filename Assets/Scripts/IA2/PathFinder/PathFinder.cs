@@ -78,17 +78,18 @@ public class PathFinder : MonoBehaviour
         initialNode = nodefinder.FindMostCloseNode(rb.transform.position);
         finalNode = nodefinder.FindMostCloseNode(pos);
 
-        if (initialNode == null || finalNode == null) { Debug.LogWarning("" +
+        if (initialNode == null || finalNode == null)
+        {
+            Debug.LogWarning("" +
             "PATHFINDER IMPORTANT MESSAGE: { Initial o Final node es nulo } " +
             "=> Cortando la ejecucion::: REVISAR QUE... >>> " +
             "[ el Node finder tiene suficiente radio ] " +
             "[ los layers son los correctos ] " +
             "[ Hay nodos en el punto de busqueda ]");
-            return false; }
+            return false;
+        }
 
         var col = astar.Execute(initialNode, finalNode);
-
-        if (col == null) return false;
 
         var positions = col.Select(x => x.transform.position).ToArray();
 
@@ -98,7 +99,7 @@ public class PathFinder : MonoBehaviour
 
             for (int i = 0; i < positions.Length; i++)
             {
-                lr_debug.SetPosition(i,positions[i]);
+                lr_debug.SetPosition(i, positions[i] + Vector3.up/2);
             }
         }
 

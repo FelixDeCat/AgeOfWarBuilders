@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 7319035039964760279}
   - component: {fileID: 5543939540343034662}
   - component: {fileID: 4581924996818045136}
-  - component: {fileID: 7699390740066324708}
+  - component: {fileID: 4810115075012617930}
   m_Layer: 11
   m_Name: Enemy
   m_TagString: Enemy
@@ -191,7 +191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   spawn_logic: 0
-  CanNotWalk: 0
+  CanNotWalk: 1
   rig_path_finder: {fileID: 7319035039964760279}
   myRig: {fileID: 1254743145520743908}
   initial_hp: 100
@@ -236,7 +236,7 @@ MonoBehaviour:
   distance_to_close: 3
   forwardspeed: 6
   rb: {fileID: 1254743145520743908}
-  lr_debug: {fileID: 7699390740066324708}
+  lr_debug: {fileID: 4810115075012617930}
 --- !u!114 &5543939540343034662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -264,7 +264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type_grid: 0
---- !u!120 &7699390740066324708
+--- !u!120 &4810115075012617930
 LineRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -302,20 +302,16 @@ LineRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Positions:
-  - {x: 0, y: 0, z: 0}
-  - {x: 7.633548, y: 0, z: 1.5714779}
-  - {x: 3.32, y: 0, z: 8.53}
-  - {x: 0.23997486, y: 0, z: 4.645834}
+  m_Positions: []
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.7996614
+    widthMultiplier: 0.1098866
     widthCurve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.14689255
+        value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -327,18 +323,18 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0, g: 1, b: 0.00427413, a: 1}
-      key1: {r: 1, g: 1, b: 0, a: 1}
-      key2: {r: 1, g: 1, b: 0, a: 0}
-      key3: {r: 1, g: 0, b: 0, a: 0}
+      key0: {r: 0, g: 1, b: 0, a: 1}
+      key1: {r: 1, g: 0.9767441, b: 0, a: 1}
+      key2: {r: 1, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
       ctime0: 0
-      ctime1: 16384
-      ctime2: 49151
-      ctime3: 65535
+      ctime1: 32768
+      ctime2: 65535
+      ctime3: 0
       ctime4: 0
       ctime5: 0
       ctime6: 0
@@ -352,12 +348,12 @@ LineRenderer:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_NumColorKeys: 4
+      m_NumColorKeys: 3
       m_NumAlphaKeys: 2
     numCornerVertices: 0
     numCapVertices: 0
     alignment: 0
-    textureMode: 1
+    textureMode: 0
     shadowBias: 0.5
     generateLightingData: 0
   m_UseWorldSpace: 1

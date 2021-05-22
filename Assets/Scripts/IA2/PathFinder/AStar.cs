@@ -39,24 +39,27 @@ namespace IA_Felix
 
             open.Add(initial);
 
-            int operations = 5;
-
-            while (open.Count > 0 || operations > 1)
+            while (open.Count > 0)
             {
+
+                Debug.Log("LLego hasta aca");
+
                 float small = float.MaxValue;
 
-                operations--;
                 //seteo el costo mas chico
                 //seteo el nodo con costo mas chico como current
-                foreach (var n in open)
-                {
-                    if (n == null) continue;
-                    if (n.costs.cost < small)
-                    {
-                        small = n.costs.cost;
-                        current = n;
-                    }
-                }
+
+                current = open.OrderBy(x => x.costs.cost).First(); //cambiar lo de abajo por esto
+
+                //foreach (var n in open)
+                //{
+                //    if (n == null) continue;
+                //    if (n.costs.cost < small)
+                //    {
+                //        small = n.costs.cost;
+                //        current = n;
+                //    }
+                //}
 
                 ///////////////////////////////////////////////////
 
@@ -69,6 +72,8 @@ namespace IA_Felix
                 if (current == null) { Debug.LogWarning("Current es null, se va a cortar la ejecucion"); return null; }
                 if (final == null) { Debug.LogWarning("Final es null, se va a cortar la ejecucion"); return null; }
 
+
+                Debug.Log("LLego hasta aca");
                 if (current.Equals(final))
                 {
                     path.Clear();

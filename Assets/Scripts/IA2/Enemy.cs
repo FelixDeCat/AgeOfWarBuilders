@@ -106,6 +106,7 @@ public class Enemy : LivingEntity
     LivingEntity currentarget = null;
     protected override void OnTick(float DeltaTime)
     {
+
         if (!isAlive) return;
 
         var threat = threatReceptor

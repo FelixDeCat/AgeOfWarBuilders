@@ -23,7 +23,7 @@ public class LocalNodeHandler : MonoBehaviour
     {
         nodes = this.transform.GetComponentsInChildren<Node>().ToList();
         nodes.ForEach(x => x.OnStart(Refresh));
-        Invoke("Refresh", 0.1f);
+        //Invoke("Refresh", 0.1f);
     }
 
     public void Refresh()
