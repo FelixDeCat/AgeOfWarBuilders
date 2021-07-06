@@ -16,6 +16,7 @@ public class State_Preparation : StateElement
 
     protected override void OnBegin()
     {
+        Main.PlayClip_Preparation();
         start_countdown = true;
         timer = time_to_end;
         UI_StateTimer.instance.Open();

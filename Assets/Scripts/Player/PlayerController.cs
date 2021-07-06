@@ -36,6 +36,7 @@ namespace AgeOfWarBuilders.Entities
         public static float AXIS_MouseScrollWheel   => instance.MouseScrollWheel();
         public static bool PRESS_DOWN_Fire1         => instance.ButtonDownFire1();
         public static bool PRESS_UP_Fire1           => instance.ButtonUpFire1();
+        public static bool PRESS_DOWN_Interact      => instance.ButtonInteract();
 
         /// //// testRapidos
         public static bool DEBUG_PRESS_T => Input.GetKeyDown(KeyCode.T);
@@ -66,6 +67,7 @@ namespace AgeOfWarBuilders.Entities
         float MouseScrollWheel()            { return Input.GetAxis              ("Mouse ScrollWheel"); }
         bool ButtonDownFire1()              { return Input.GetButtonDown        ("Fire1"); }
         bool ButtonUpFire1()                { return Input.GetButtonUp          ("Fire1"); }
+        bool ButtonInteract()               { return Input.GetButtonDown        ("Interact"); }
 
     }
 

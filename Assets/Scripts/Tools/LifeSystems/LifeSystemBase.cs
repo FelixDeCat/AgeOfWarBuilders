@@ -57,6 +57,8 @@ public class LifeSystemBase
     public bool CanHealth()                     => life.Value < life.MaxVal;
     public bool CanThisBlowKillHim(int val)     => life.Value - val <= 0;
     public override string ToString()           => life.Value.ToString();
+    public bool IsFull()                        => life.Value >= life.MaxVal;
+    public bool IsEmpty() => life.Value <= 0;
 
     ///////////////////////////////////////////////////////////////////////////////
     /// SETTERS

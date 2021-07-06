@@ -30,12 +30,33 @@ namespace AgeOfWarBuilders.BuildSystem
 
         public bool i_have_space_to_build => currentCant_Towers < MaxCant_Towers;
 
+
+
+        [SerializeField] AudioClip BuildSucessful;
+        [SerializeField] AudioClip Click_Tower_Switch;
+        [SerializeField] AudioClip BuildNegate;
+        [SerializeField] AudioClip Enter_Build_Mode;
+        [SerializeField] AudioClip Exit_Build_Mode;
+
+
+        void PlayClip_BuildSucessful() => AudioManager.instance.PlaySound(BuildSucessful.name, transform);
+        void PlayClip_Click_Tower_Switch() => AudioManager.instance.PlaySound(Click_Tower_Switch.name, transform);
+        void PlayClip_BuildNegate() => AudioManager.instance.PlaySound(BuildNegate.name, transform);
+        void PlayClip_Enter() => AudioManager.instance.PlaySound(Enter_Build_Mode.name, transform);
+        void PlayClip_Exit() => AudioManager.instance.PlaySound(Exit_Build_Mode.name, transform);
+
         private void Start()
         {
             if (list_of_build_data == null || list_of_build_data.Count < 1) throw new System.Exception("No hay data cargada");
             ui.Configurate(() => list_of_build_data, OnUIAnimationEnd_OPEN, OnUIAnimationEnd_CLOSE);
 
             bar.Configure(MaxCant_Towers, 0.01f,0);
+
+            AudioManager.instance.GetSoundPool(BuildSucessful.name, AudioManager.SoundDimesion.TwoD, AudioGroups.GAME_FX, BuildSucessful);//
+            AudioManager.instance.GetSoundPool(Click_Tower_Switch.name, AudioManager.SoundDimesion.TwoD, AudioGroups.GAME_FX, Click_Tower_Switch);//
+            AudioManager.instance.GetSoundPool(BuildNegate.name, AudioManager.SoundDimesion.TwoD, AudioGroups.GAME_FX, BuildNegate);//
+            AudioManager.instance.GetSoundPool(Enter_Build_Mode.name, AudioManager.SoundDimesion.TwoD, AudioGroups.GAME_FX, Enter_Build_Mode);//
+            AudioManager.instance.GetSoundPool(Exit_Build_Mode.name, AudioManager.SoundDimesion.TwoD, AudioGroups.GAME_FX, Exit_Build_Mode);//
         }
 
         #region [TICK]
@@ -70,6 +91,7 @@ namespace AgeOfWarBuilders.BuildSystem
             OnOpenBuildMode.Invoke();
             Turn_ON_Canvas();
             ui.Open();
+            PlayClip_Enter();
 
         }
         void ExitToBuildMode()
@@ -78,15 +100,20 @@ namespace AgeOfWarBuilders.BuildSystem
             ui.InstantClose();
             Turn_OFF_Canvas();
             Hide();
+            PlayClip_Exit();
         }
         #endregion
 
         #region [LOGIC] Destroy Tower
-        void OnDeathTower(TowerEntity tower)
+        void OnDeathTower(TowerEntity tower, Vector3 lastPosition)
         {
             currentCant_Towers--;
             tower.DeInitialize();
             MyBuildings.Remove(tower);
+
+
+            ParticlesPoolManager.Play_DestroyTower(lastPosition + Vector3.up * 2);
+
             RefreshTowerQuantity(currentCant_Towers, MaxCant_Towers);
         }
         #endregion
@@ -180,6 +207,7 @@ namespace AgeOfWarBuilders.BuildSystem
                 if (!oneshot_axis)
                 {
                     NextHorizontalElement(PlayerController.AXIS_Horizontal_ARROWS);
+                    PlayClip_Click_Tower_Switch();
                     oneshot_axis = true;
                 }
             }
@@ -219,9 +247,13 @@ namespace AgeOfWarBuilders.BuildSystem
                     go.Initialize();
                     go.CallbackOnDeath(OnDeathTower);
                     MyBuildings.Add(go);
-
+                    PlayClip_BuildSucessful();
                     currentCant_Towers++;
                     RefreshTowerQuantity(currentCant_Towers, MaxCant_Towers);
+                }
+                else
+                {
+                    PlayClip_BuildNegate();
                 }
             }
         }

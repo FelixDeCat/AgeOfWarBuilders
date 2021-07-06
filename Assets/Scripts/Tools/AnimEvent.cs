@@ -29,6 +29,7 @@ public class AnimEvent : MonoBehaviour
 
     public void TRIGGER_EVENT(string parameter)
     {
-        events[parameter]?.Invoke();
+        if (events.ContainsKey(parameter))
+            events[parameter]?.Invoke();
     }
 }

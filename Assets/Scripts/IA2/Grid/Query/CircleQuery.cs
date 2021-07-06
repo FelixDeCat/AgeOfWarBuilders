@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CircleQuery : QueryComponent, IQuery {
 
-    public SpatialGrid             targetGrid;
     public float radius = 5f;
     public IEnumerable<IGridEntity> selected = new List<IGridEntity>();
     [SerializeField] bool drawGizmos;
@@ -34,8 +33,7 @@ public class CircleQuery : QueryComponent, IQuery {
 
     void OnDrawGizmos() {
         if (!drawGizmos) return;
-        if (targetGrid == null) return;
-        Gizmos.color = Color.red;
+        Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.transform.position, radius);
     }
 }

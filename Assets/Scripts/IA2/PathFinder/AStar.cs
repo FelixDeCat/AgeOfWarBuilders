@@ -30,7 +30,7 @@ namespace IA_Felix
             }
         }
 
-        public List<Node> Execute(Node initial, Node final)
+        public List<Node> Execute(Node initial, Node final, int watchDogSteps = int.MaxValue)
         {
             path.Clear();
             open.Clear();
@@ -39,13 +39,13 @@ namespace IA_Felix
 
             open.Add(initial);
 
-            while (open.Count > 0)
+            int watchdog = 0;
+
+            while (open.Count > 0  && watchdog < watchDogSteps)
             {
-
-                Debug.Log("LLego hasta aca");
-
                 float small = float.MaxValue;
-
+                watchdog++;
+                
                 //seteo el costo mas chico
                 //seteo el nodo con costo mas chico como current
 

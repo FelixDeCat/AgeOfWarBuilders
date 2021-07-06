@@ -88,6 +88,7 @@ namespace Tools.Extensions
         }
         public static List<T> FindInRadius<T>(this T own, float radius, LayerMask layermask, Func<T, bool> predicate = null) where T : Component
         {
+            if (own == null) return null;
             if (predicate == null) { predicate = delegate { return true; }; }
             var col = new List<T>();
             var finded_colliders = Physics.OverlapSphere(own.transform.position, radius);

@@ -18,10 +18,14 @@ namespace IA_Felix
         Action OnRecalculate;
         Rigidbody rig;
         public NodeCost costs;
+        float original_external_cost;
+
 
         [SerializeField] bool connected = true;
         public bool IsConnected => connected;
         public void SetConnectionState(bool connected) => this.connected = connected;
+        public void SetExternalCost(int weight) => costs.external_weight = weight;
+        public void ResetExternalCost() => costs.external_weight = original_external_cost;
 
         public bool OnEditMode;
 
@@ -58,17 +62,20 @@ namespace IA_Felix
             return false;
         }
 
-        #region [GRID] TurnOn & Turn Off
+        #region [GRID] TurnOn & TurnOff
         public void TurnOn()
         {
-            SetConnectionState(true);
-            myGridComponent.Grid_Rise();
+            ResetExternalCost();
+            
+            //SetConnectionState(true);
+           // myGridComponent.Grid_Rise();
             OnRecalculate?.Invoke();
         }
         public void TurnOff()
         {
-            SetConnectionState(false);
-            myGridComponent.Grid_Death();
+            SetExternalCost(int.MaxValue);
+            //SetConnectionState(false);
+            //myGridComponent.Grid_Death();
             OnRecalculate?.Invoke();
         }
         #endregion
@@ -78,6 +85,7 @@ namespace IA_Felix
             render.Init(gameObject);
             OnRecalculate = OnRefreshCallBack;
             rig = this.GetComponent<Rigidbody>();
+            original_external_cost = costs.external_weight;
 
             if (!OnEditMode)
             {
@@ -156,7 +164,7 @@ namespace IA_Felix
 
         public IEnumerable<Node> FindVecinosByQuery(Node MyNode)
         {
-            return circleQuery.Query()
+            return circleQuery.Query() //IA2-P2 [SpatialGrid - Node Finder]
                  .OfType<GridComponent>()
                  .Select(x => x.Grid_Object.GetComponent<Node>()) //IA2-P3 [Select]
                  .Where(x => x != MyNode && x.IsConnected) //IA2-P3 [Where]
@@ -251,6 +259,10 @@ namespace IA_Felix
                     if (render.gameObject.GetComponent<Node>().costs.external_weight >= 3)
                     {
                         Gizmos.color = Color.red;
+                    }
+                    if (render.gameObject.GetComponent<Node>().costs.external_weight > 10)
+                    {
+                        Gizmos.color = Color.black;
                     }
                     Gizmos.DrawLine(IntitialPoint, destinyPoint);
                 }

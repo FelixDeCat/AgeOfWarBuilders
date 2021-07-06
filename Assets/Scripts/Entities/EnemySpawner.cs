@@ -9,8 +9,13 @@ public class EnemySpawner : MonoBehaviour
     public Transform from;
     public Transform to;
 
-    public Enemy model;
+    public Enemy[] model;
     public Transform parent;
+
+    [SerializeField] bool use_sequence = false;
+    [SerializeField] string sequence = "0,0,0,1,0,0,1"; //solo un ejemplo
+    int[] translated_sequence = new int[0];
+    int curretindex;
 
     public Text debug;
 
@@ -23,23 +28,56 @@ public class EnemySpawner : MonoBehaviour
     bool allEnemiesISDeath = false;
     public bool AllEnemiesIsDeath => allEnemiesISDeath;
 
-    public bool Loop;
+    public bool Loop_On_Dead;
 
     HashSet<Enemy> enemies = new HashSet<Enemy>();
 
     public void Initialize(Action<EnemySpawner> OnAllEnemiesDeath)
     {
-        allEnemiesISDeath = false;
-        deathEnemies = 0;
-        PlayObject_PoolManager.instance.Feed(model, parent);
+        curretindex = 0;
+        Reset();
+        for (int i = 0; i < model.Length; i++)
+        {
+            PlayObject_PoolManager.instance.FeedDatabase(model[i], parent);
+        }
+        
         burst.Configure_Callbacks(OnBurstExecute, OnBurstFinish);
+
+        if (use_sequence)
+        {
+            string[] rawseq = sequence.Split(',');
+            translated_sequence = new int[rawseq.Length];
+            for (int i = 0; i < rawseq.Length; i++) { translated_sequence[i] = int.Parse(rawseq[i]); }
+            burst.Configure_Basics(translated_sequence.Length);
+        }
+
         this.OnAllEnemiesDeath = OnAllEnemiesDeath;
     }
     public void Deinitialize() { burst.Stop(); deathEnemies = 0; allEnemiesISDeath = false; }
     public void Begin() { burst.Play(); if(debug) debug.text = deathEnemies + "/" + burst.BurstCant; }
+    public void Begin(string seq)
+    {
+        curretindex = 0;
+        if (use_sequence)
+        {
+            string[] rawseq = seq.Split(',');
+            translated_sequence = new int[rawseq.Length];
+            for (int i = 0; i < rawseq.Length; i++) { translated_sequence[i] = int.Parse(rawseq[i]); }
+            burst.Configure_Basics(translated_sequence.Length);
+        }
+
+        burst.Play();
+        if (debug) debug.text = deathEnemies + "/" + burst.BurstCant;
+    }
 
     void OnBurstFinish() => OnAllEnemiesDeath.Invoke(this);
     void OnBurstExecute() => Spawn().CallbackOnDeath(DeathEnemy);
+
+    private void Reset()
+    {
+        allEnemiesISDeath = false;
+        deathEnemies = 0;
+    }
 
     private void Update()
     {
@@ -55,10 +93,13 @@ public class EnemySpawner : MonoBehaviour
         {
             allEnemiesISDeath = true;
             OnAllEnemiesDeath.Invoke(this);
+            curretindex = 0;
         }
-        if (Loop)
+
+        PlayObject_PoolManager.instance.Return(enemy);
+
+        if (Loop_On_Dead)
         {
-            PlayObject_PoolManager.instance.Return(enemy);
             Spawn();
         }
     }
@@ -66,7 +107,9 @@ public class EnemySpawner : MonoBehaviour
     #region [SHORTS]
     Enemy Spawn()
     {
-        return (Enemy)PlayObject_PoolManager.instance.Get(model.type, RandomPos(), transform.eulerAngles);
+        var e = (Enemy)PlayObject_PoolManager.instance.Get(model[translated_sequence[curretindex]].type, RandomPos(), transform.eulerAngles);
+        curretindex++;
+        return e;
     }
     Vector3 RandomPos()
     {

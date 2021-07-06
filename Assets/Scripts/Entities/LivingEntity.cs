@@ -7,23 +7,39 @@ public class LivingEntity : WalkingEntity
 {
     [Header("--- Living Entity Vars ---")]
     [SerializeField] int initial_hp = 100;
-    [SerializeField] LifeSystemBase life;
+    [SerializeField] protected LifeSystemBase life;
     [SerializeField] FrontendStatBase ui_life;
 
+    protected Func<int,bool> Protection = delegate { return false; };
+
     public float HP { get => life.Life; }
+
+    public bool LifeIsFull => life.IsFull();
 
     protected override void Awake()
     {
         base.Awake();
     }
 
+    public void Heal(int val)
+    {
+        life.Heal(1);
+    }
+
     public void ReceiveDamage(int dmg = 5)
     {
-        life.Hit(dmg);
+        if (!Protection(dmg))
+        {
+            life.Hit(dmg);
+        }
+        
     }
     public void ReceiveDamage(Damage damage)
     {
-        life.Hit(damage.Physical_damage);
+        if (!Protection(damage.Physical_damage))
+        {
+            life.Hit(damage.Physical_damage);
+        }
     }
     public void Resurrect()
     {
@@ -39,7 +55,7 @@ public class LivingEntity : WalkingEntity
     protected override void OnInitialize()
     {
         base.OnInitialize();
-        Debug.Log("Initialize LivingEntity [" + this.gameObject.name + "]");
+        //Debug.Log("Initialize LivingEntity [" + this.gameObject.name + "]");
         life = new LifeSystemBase(
             initial_hp,
             Feedback_ReceiveDamage,

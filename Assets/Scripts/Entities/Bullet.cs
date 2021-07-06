@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using Tools.Structs;
+using System.Linq;
+using Tools;
+using Tools.Extensions;
 
 public class Bullet : MonoBehaviour
 {
@@ -10,13 +13,19 @@ public class Bullet : MonoBehaviour
     float timer = 0f;
     float speed = 50f;
     int damage = 10;
-    Action<Bullet> OnDeath;
+    Action<Bullet, bool> OnDeath;
     bool isAlive;
     string tag_to_damage = "Enemy";
+
+    string floor = "floor";
     Damage damagedata;
     [SerializeField] TrailRenderer myTrail;
 
-    public void Configure(Action<Bullet> OnDeath, Vector3 position, Vector3 direction, float life_time = 1f, float speed = 50f, int damage = 10, string tag_to_damage = "Enemy")
+    public LayerMask maskExplotion;
+
+    public bool IsABomb;
+
+    public void Configure(Action<Bullet, bool> OnDeath, Vector3 position, Vector3 direction, float life_time = 1f, float speed = 50f, int damage = 10, string tag_to_damage = "Enemy")
     {
         this.transform.position = position;
         this.transform.forward = direction;
@@ -41,15 +50,18 @@ public class Bullet : MonoBehaviour
             else
             {
                 timer = 0;
-                Death();
+
+                if (!IsABomb)
+                    Death(false);
+                else Explode();
             }
         }
-        
+
     }
 
-    void Death()
+    void Death(bool findtarget)
     {
-        OnDeath.Invoke(this);
+        OnDeath.Invoke(this, findtarget);
     }
 
 
@@ -57,12 +69,40 @@ public class Bullet : MonoBehaviour
     {
         if (isAlive)
         {
-            if (other.gameObject.tag == tag_to_damage)
+            if (!IsABomb)
             {
-                other.gameObject.GetComponent<LivingEntity>().ReceiveDamage(damagedata.SetOwnerPosition(this.gameObject.transform.position));
-                Death();
+
+                if (other.gameObject.tag == tag_to_damage)
+                {
+                    other.gameObject.GetComponent<LivingEntity>().ReceiveDamage(damagedata.SetOwnerPosition(this.gameObject.transform.position));
+                    Death(true);
+                }
+            }
+            else
+            {
+                Explode();
+
+                if (other.gameObject.tag == tag_to_damage || other.gameObject.tag == floor)
+                {
+                    
+                }
             }
         }
+    }
+
+    void Explode()
+    {
+        var lives = Physics.OverlapSphere(this.transform.position, 5, maskExplotion)
+            .Where(x => x.gameObject.GetComponent<LivingEntity>())
+            .Select(X => X.gameObject.GetComponent<LivingEntity>());
+
+        foreach (var l in lives)
+        {
+            l.ReceiveDamage(damage);
+        }
+
+        ParticlesPoolManager.Play_Catapult(this.transform.position);
+        Death(true);
     }
 
     public void On()

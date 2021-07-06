@@ -24,6 +24,7 @@ public class PathFinder : MonoBehaviour
     NodeFinder nodefinder;
     AStar astar = new AStar();
     Queue<Node> nodosASeguir = new Queue<Node>();
+    public List<Node> debugNodes = new List<Node>();
     Node currentNode;
     Node initialNode;
     Node finalNode;
@@ -89,19 +90,19 @@ public class PathFinder : MonoBehaviour
             return false;
         }
 
-        var col = astar.Execute(initialNode, finalNode);
+        var col = astar.Execute(initialNode, finalNode,100);
 
-        var positions = col.Select(x => x.transform.position).ToArray();
+        //var positions = col.Select(x => x.transform.position).ToArray();
 
-        if (lr_debug)
-        {
-            lr_debug.positionCount = positions.Length;
+        //if (lr_debug)
+        //{
+        //    lr_debug.positionCount = positions.Length;
 
-            for (int i = 0; i < positions.Length; i++)
-            {
-                lr_debug.SetPosition(i, positions[i] + Vector3.up/2);
-            }
-        }
+        //    for (int i = 0; i < positions.Length; i++)
+        //    {
+        //        lr_debug.SetPosition(i, positions[i] + Vector3.up/2);
+        //    }
+        //}
 
         if (col == null) { Debug.Log("Tengo una Lista nula"); return false; }
 
@@ -119,8 +120,28 @@ public class PathFinder : MonoBehaviour
         return true;
     }
 
+    public bool CanExecute(Vector3 pos)
+    {
+        initialNode = nodefinder.FindMostCloseNode(rb.transform.position);
+        finalNode = nodefinder.FindMostCloseNode(pos);
+        if (initialNode == null || finalNode == null)
+        {
+            Debug.LogWarning("" +
+            "PATHFINDER IMPORTANT MESSAGE: { Initial o Final node es nulo } " +
+            "=> Cortando la ejecucion::: REVISAR QUE... >>> " +
+            "[ el Node finder tiene suficiente radio ] " +
+            "[ los layers son los correctos ] " +
+            "[ Hay nodos en el punto de busqueda ]");
+            return false;
+        }
+        var col = astar.Execute(initialNode, finalNode, 100);
+        if (col == null) { Debug.Log("Tengo una Lista nula"); return false; }
+        return true;
+    }
+
     void Execute()
     {
+
     }
 
     bool dequeueNext = false;

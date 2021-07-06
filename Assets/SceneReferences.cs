@@ -17,12 +17,14 @@ public class SceneReferences : MonoBehaviour
 
     [Header("Principal Objects")]
     [SerializeField] PlayerModel player;
+    [SerializeField] Center centerBase;
 
     public static Transform SpawnPosition => instance.spawnPoint;
     public static MyEventSystem MyEventSystem => MyEventSystem.instance;
     
     public static PlayerModel Player => instance.player;
     public static Vector3 MyBasePosition => instance.mybase.position;
+    public static Center myCenterBase => instance.centerBase;
 
     public static Transform parent_MyBuildings => instance.parent_MyBuilings;
     public static Transform parent_Enemies => instance.parent_enemies;

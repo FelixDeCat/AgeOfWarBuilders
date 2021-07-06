@@ -7,6 +7,7 @@ public class guard_Anim_Events : MonoBehaviour
 {
     public UnityEvent OnBeginAttack;
     public UnityEvent OnEndAttack;
+    public UnityEvent OnFootStep;
 
     public void EVENT_Begin_Attack()
     {
@@ -15,5 +16,10 @@ public class guard_Anim_Events : MonoBehaviour
     public void EVENT_End_Attack()
     {
         OnEndAttack.Invoke();
+    }
+
+    public void EVENT_FootStep()
+    {
+        OnFootStep.Invoke();
     }
 }

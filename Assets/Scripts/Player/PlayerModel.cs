@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Tools.Components;
 using System;
-using AgeOfWarBuilders.Global;
 
 namespace AgeOfWarBuilders.Entities
 {
@@ -37,6 +36,8 @@ namespace AgeOfWarBuilders.Entities
         public PlayerView view;
         Threat myThread;
 
+        GenericInteractor interactor;
+
         protected override void OnInitialize()
         {
             Debug.Log("Initialize Player");
@@ -44,6 +45,8 @@ namespace AgeOfWarBuilders.Entities
             controller = GetComponent<CharacterController>();
             groundcheck = GetComponentInChildren<PlayerComponent_GroundCheck>();
             playerDamageComponent = GetComponentInChildren<PlayerDamageComponent>();
+            interactor = GetComponent<GenericInteractor>();
+            interactor.InitializeInteractor();
             myThread = GetComponent<Threat>();
             myThread.Initialize();
            // myThread.Rise();
@@ -56,6 +59,7 @@ namespace AgeOfWarBuilders.Entities
         {
             base.OnDeinitialize();
             myThread.Deinitialize();
+            interactor.DeinitializeInteractor();
         }
 
         protected override void OnPause() { base.OnPause(); }
@@ -128,6 +132,11 @@ namespace AgeOfWarBuilders.Entities
 
             Update_Combat(DeltaTime);
 
+            if (PlayerController.PRESS_DOWN_Interact)
+            {
+                interactor.Execute();
+            }
+
             myThread.Tick(DeltaTime);
         }
 
@@ -169,13 +178,17 @@ namespace AgeOfWarBuilders.Entities
         {
             base.Feedback_ReceiveDamage();
             ScreenFeedback.instancia.PerderVida();
+            view.PLay_Hit();
+            view.Play_Clip_TakeDamage();
         }
         protected override void OnDeath()
         {
+            view.Play_Clip_Die();
             base.OnDeath();
             myThread.Death();
             GameLoop.Pause();
             GameLoop.Lose();
+            
         }
     }
 }

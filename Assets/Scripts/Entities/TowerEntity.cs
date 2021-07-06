@@ -17,6 +17,7 @@ public class TowerEntity : LivingEntity
     SquareQuery square_query;
 
     NodeDumper dumper;
+    Vector3 buildpos;
 
     Threat myThread;
 
@@ -25,6 +26,31 @@ public class TowerEntity : LivingEntity
     public bool UseBomb;
     bool BombCreated;
     Vector3 BombPosition;
+
+    [SerializeField] AudioClip ShootSound;
+    [SerializeField] AudioClip TakeDamage;
+    [SerializeField] AudioClip DestroySound;
+
+    [SerializeField] ParticleSystem hitTower;
+    private void Start()
+    {
+        AudioManager.instance.GetSoundPool(ShootSound.name, AudioManager.SoundDimesion.ThreeD, AudioGroups.GAME_FX, ShootSound);
+        AudioManager.instance.GetSoundPool(TakeDamage.name, AudioManager.SoundDimesion.TwoD, AudioGroups.GAME_FX, TakeDamage);
+        AudioManager.instance.GetSoundPool(DestroySound.name, AudioManager.SoundDimesion.TwoD, AudioGroups.GAME_FX, DestroySound);
+    }
+    void PlayClip_ShootSound()
+    {
+        AudioManager.instance.PlaySound(ShootSound.name, transform);
+    }
+    void PlayClip_TakeDadmage()
+    {
+        hitTower.Play();
+        AudioManager.instance.PlaySound(TakeDamage.name, transform);
+    }
+    void PlayClip_Destroy()
+    {
+        AudioManager.instance.PlaySound(DestroySound.name, transform);
+    }
 
     #region Enter & Exit
     protected override void OnInitialize()
@@ -44,6 +70,8 @@ public class TowerEntity : LivingEntity
 
         dumper = GetComponentInChildren<NodeDumper>();
         dumper.Rise();
+
+        buildpos = transform.position;
     }
     protected override void OnDeinitialize()
     {
@@ -63,8 +91,8 @@ public class TowerEntity : LivingEntity
     #endregion
 
     #region [LOGIC] Death
-    Action<TowerEntity> DeathCallback = delegate { };
-    public void CallbackOnDeath(Action<TowerEntity> _onDeath)
+    Action<TowerEntity, Vector3> DeathCallback = delegate { };
+    public void CallbackOnDeath(Action<TowerEntity, Vector3> _onDeath)
     {
         DeathCallback = _onDeath;
     }
@@ -75,18 +103,24 @@ public class TowerEntity : LivingEntity
         myGridCompEntity.Grid_Death();
 
         Invoke("Wait", 0.1f);
+        PlayClip_Destroy();
 
+    }
+    protected override void Feedback_ReceiveDamage()
+    {
+        PlayClip_TakeDadmage();
+        base.Feedback_ReceiveDamage();
     }
     void Wait()
     {
         dumper.Death();
-        DeathCallback?.Invoke(this);
+        DeathCallback?.Invoke(this, buildpos);
         transform.position = new Vector3(int.MaxValue, int.MaxValue, int.MaxValue);
         Destroy(this.gameObject, 0.2f);
     }
     #endregion
 
-    IEnumerable<Enemy> partners;
+    //IEnumerable<Enemy> partners;
 
     private void LateUpdate()
     {
@@ -100,43 +134,53 @@ public class TowerEntity : LivingEntity
 
             if (UseBomb)
             {
-                partners = square_query
-                .Query()
+                var currentEnemy = square_query
+                .Query() //IA2-P2 [SpatialGrid - Bombs]
                 .OfType<GridComponent>()
+                .Where(x => x.GetComponent<Enemy>())
                 .Select(x => x.GetComponent<Enemy>())
                 .OrderByDescending(x => x.GetPartnersLegth()) //IA2-P3 [OrderBy]
-                .First()
-                .GetPartners();
+                .FirstOrDefault();
 
-                var pointToShootBomb = partners.Aggregate(Tuple.Create(0, Vector3.zero), //IA2-P3 [Aggregate]
-                (acum, enemy) =>
+                if (currentEnemy != null)
                 {
-                    //acumulo para el Legth
-                    var num = acum.Item1;
-                    num++;
+                var pointToShootBomb = currentEnemy.GetPartners().Aggregate(Tuple.Create(0, Vector3.zero), //IA2-P3 [Aggregate]
+                    (acum, enemy) =>
+                    {
+                        //acumulo para el Legth
+                        var num = acum.Item1;
+                        num++;
 
-                    //acumulo para dividir por el Legth
-                    var pos = acum.Item2;
-                    pos += enemy.transform.position;
+                        //acumulo para dividir por el Legth
+                        var pos = acum.Item2;
+                        pos += enemy.transform.position;
 
-                    return Tuple.Create(num, pos);
-                }
+                        return Tuple.Create(num, pos);
+                    }
                 );
 
-                BombCreated = true;
-                //obtengo el punto central de todos los vectores
-                BombPosition = pointToShootBomb.Item2 / pointToShootBomb.Item1;
+                    BombCreated = true;
+                    //obtengo el punto central de todos los vectores
+                    BombPosition = pointToShootBomb.Item2 / pointToShootBomb.Item1;
+
+                    var dir = (BombPosition - shootPoint.position).normalized;
+                    Bomb_PoolManager.instance.Shoot(shootPoint.position, dir, 2f, 25f);
+                    PlayClip_ShootSound();
+                }
+
+                // 
+
 
             }
             else
             {
                 //Le pregunto a la grilla y le pido el enemigo mas cercano
                 currentEnemy = observer_query
-                    .Query()
+                    .Query() //IA2-P2 [SpatialGrid - Arrows]
                     .OfType<GridComponent>()
-                    .Where( x => x.Grid_Object.GetComponent<Enemy>())
-                    .Select(x => x.Grid_Object.GetComponent<Enemy>())
-                    .OrderBy(x => (transform.position - x.transform.position).sqrMagnitude)
+                    .Where(x => x.Grid_Object.GetComponent<Enemy>()) //IA2-P3 [Where]
+                    .Select(x => x.Grid_Object.GetComponent<Enemy>()) //IA2-P3 [Select]
+                    .OrderBy(x => (transform.position - x.transform.position).sqrMagnitude) //IA2-P3 [OrderBy]
                     .FirstOrDefault();
 
                 if (currentEnemy)
@@ -144,6 +188,7 @@ public class TowerEntity : LivingEntity
                     var pos = shootPoint.transform.position;
                     var dir = (currentEnemy.transform.position + Vector3.up - shootPoint.position).normalized;
                     Bullet_PoolManager.instance.Shoot(pos, dir);
+                    PlayClip_ShootSound();
                 }
             }
         }
@@ -151,16 +196,16 @@ public class TowerEntity : LivingEntity
 
     private void OnDrawGizmos()
     {
-        if (BombCreated)
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(BombPosition, 2f);
+        //if (BombCreated)
+        //{
+        //    Gizmos.color = Color.red;
+        //    Gizmos.DrawWireSphere(BombPosition, 2f);
 
-            foreach (var p in partners)
-            {
-                Gizmos.color = Color.red;
-                Gizmos.DrawLine(p.transform.position + Vector3.up, BombPosition + Vector3.up);
-            }
-        }
+        //    foreach (var p in partners)
+        //    {
+        //        Gizmos.color = Color.red;
+        //        Gizmos.DrawLine(p.transform.position + Vector3.up, BombPosition + Vector3.up);
+        //    }
+        //}
     }
 }

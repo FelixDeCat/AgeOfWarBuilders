@@ -35,7 +35,9 @@ namespace Tools.Sound
             source.outputAudioMixerGroup = mixerGroup;
             source.clip = ac;
             source.loop = loop;
-            source.spatialBlend = 0;
+            source.spatialBlend = 1;
+            source.minDistance = 5;
+            source.maxDistance = 10;
             source.playOnAwake = playOnAwake;
             
 

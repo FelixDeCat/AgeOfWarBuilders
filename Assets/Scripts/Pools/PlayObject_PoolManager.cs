@@ -12,7 +12,7 @@ public class PlayObject_PoolManager : MonoBehaviour
     Dictionary<PlayObjectType, Transform> parents = new Dictionary<PlayObjectType, Transform>();
     Dictionary<PlayObjectType, Tuple<PlayObject, GenericPoolManager<PlayObject>>> poolDatabase = new Dictionary<PlayObjectType, Tuple<PlayObject, GenericPoolManager<PlayObject>>>();
 
-    public void Feed(PlayObject newObject, Transform parent)
+    public void FeedDatabase(PlayObject newObject, Transform parent)
     {
         if (!poolDatabase.ContainsKey(newObject.type))
         {

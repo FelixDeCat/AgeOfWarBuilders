@@ -4,8 +4,8 @@ using AgeOfWarBuilders.Entities;
 using System.Collections;
 using System.Linq;
 using System.Collections.Generic;
-using AgeOfWarBuilders.Global;
 using Tools.StateMachine;
+using TMPro;
 
 public class Enemy : LivingEntity
 {
@@ -16,22 +16,45 @@ public class Enemy : LivingEntity
 
     bool isAlive;
 
-    public enum EnemyInputs { AWAKE, IDLE, BEGIN_ATTACK, ATTACK, GO_TO_POS, DIE, DISABLE, TAKE_DAMAGE, PARRIED, CHASING, SPECIAL_ATTACK };
+    [SerializeField] bool use_protection = false;
+
+    const float FAR_DISTANCE = 10;
+
+    public enum EnemyInputs
+    {
+        ImRelax,
+        MyObjetiveIsFar,
+        MyObjetiveIsNear,
+        ILostMyObjetive,
+        ICanAttack,
+        IAmDeath,
+        ResurrectMe,
+        MyObjetiveIsDead,
+        MyAttackIsFinish
+    };
     public EventStateMachine<EnemyInputs> sm;
 
-    Enemy_Zombie_View view;
+    [System.NonSerialized] public Enemy_Zombie_View view;
+    [System.NonSerialized] public AnimEvent myAnimEvent;
+    [System.NonSerialized] public FindTarget targetFinder;
+    [System.NonSerialized] public FollowComponent follow_component;
     Transform playerpos;
     ThreatReceptor threatReceptor;
-    AnimEvent myAnimEvent;
+    [System.NonSerialized] public SmoothLookAt smoothLookAt;
 
-    SmoothLookAt SmoothLookAt;
 
     [System.Serializable]
     class States
     {
-        [SerializeField] internal EnemyBase_Idle idle_state;
+        [SerializeField] internal EnemyBase_Rising rising;
+        [SerializeField] internal EnemyBase_Idle idle;
+        [SerializeField] internal EnemyBase_Chasing chasing;
+        [SerializeField] internal EnemyBase_Fighting fighting;
+        [SerializeField] internal EnemyBase_Attacking attacking;
+        [SerializeField] internal EnemyBase_Dying dying;
     }
     [SerializeField] States states;
+    [SerializeField] TextMeshProUGUI textdebug_states;
 
 
     float timer_recalculate;
@@ -48,8 +71,19 @@ public class Enemy : LivingEntity
         //colorDebug.Change(Color.cyan);
         view = GetComponent<Enemy_Zombie_View>();
         threatReceptor = GetComponent<ThreatReceptor>();
+        targetFinder = GetComponent<FindTarget>();
+        follow_component = GetComponentInChildren<FollowComponent>();
         Resurrect();
-        view.Anim_Death(false);
+
+        if (use_protection)
+        {
+            var protection = GetComponent<SimpleProtection>();
+            if (protection)
+            {
+                protection.Initialize();
+                Protection = protection.TakeDamage;
+            }
+        }
 
         myRig.isKinematic = true;
         myRig.detectCollisions = true;
@@ -57,39 +91,95 @@ public class Enemy : LivingEntity
         MyGridComponentEntity.Grid_Rise();
         playerpos = SceneReferences.Player.transform;
 
-        SmoothLookAt = GetComponentInChildren<SmoothLookAt>();
-
-        rig_path_finder.AddCallback_OnBeginMove(PathFinderBeginMove);
-        rig_path_finder.AddCallback_OnEndMove(PathFinderEndMove);
+        smoothLookAt = GetComponentInChildren<SmoothLookAt>();
 
         myAnimEvent = this.GetComponentInChildren<AnimEvent>();
-        myAnimEvent.ADD_ANIM_EVENT_LISTENER("OnAttack", ANIM_EVENT_OnAttack);
+        //myAnimEvent.ADD_ANIM_EVENT_LISTENER("OnAttack", ANIM_EVENT_OnAttack);
         myAnimEvent.ADD_ANIM_EVENT_LISTENER("OnDeathFinish", ANIM_EVENT_OnDeathFinish);
+        myAnimEvent.ADD_ANIM_EVENT_LISTENER("OnFootStep", view.Play_Clip_Walk);
 
+        InitializeAI();
+
+    }
+
+    private void Reset()
+    {
+        
     }
 
     protected override void OnDeinitialize()
     {
         base.OnDeinitialize();
+
+        myAnimEvent.REMOVE_ANIM_EVENT_LISTENER("OnDeathFinish", ANIM_EVENT_OnDeathFinish);
+        myAnimEvent.REMOVE_ANIM_EVENT_LISTENER("OnFootStep", view.Play_Clip_Walk);
+
         //colorDebug.Change(Color.magenta);
         MyGridComponentEntity.Grid_Deinitialize();
     }
 
     void DebugState(string EnemyState)
     {
-
+        textdebug_states.text = EnemyState;
     }
 
     void InitializeAI()
     {
-        var idle = new EState<EnemyInputs>("Idle", states.idle_state);
-        var Attack = new EState<EnemyInputs>("Attack");
+        //IA2-P1 [StateMachine]
 
-        ConfigureState.Create(idle)
-            .SetTransition(EnemyInputs.ATTACK, Attack)
+        var rising = new EState<EnemyInputs>("rising", states.rising);
+        var idle = new EState<EnemyInputs>("idle", states.idle);
+        var chasing = new EState<EnemyInputs>("chasing", states.chasing);
+        var fighting = new EState<EnemyInputs>("fighting", states.fighting);
+        var attacking = new EState<EnemyInputs>("attacking", states.attacking);
+        var dying = new EState<EnemyInputs>("dying", states.dying);
+
+        ConfigureState.Create(rising)
+            .SetTransition(EnemyInputs.ImRelax, idle)
+            .SetTransition(EnemyInputs.MyObjetiveIsFar, chasing)
+            .SetTransition(EnemyInputs.MyObjetiveIsNear, fighting)
+            .SetTransition(EnemyInputs.IAmDeath, dying)
             .Done();
 
-        sm = new EventStateMachine<EnemyInputs>(idle, DebugState);
+        ConfigureState.Create(idle)
+            .SetTransition(EnemyInputs.MyObjetiveIsFar, chasing)
+            .SetTransition(EnemyInputs.MyObjetiveIsNear, fighting)
+            .SetTransition(EnemyInputs.IAmDeath, dying)
+            .Done();
+
+        ConfigureState.Create(chasing)
+            .SetTransition(EnemyInputs.ImRelax, idle)
+            .SetTransition(EnemyInputs.MyObjetiveIsNear, fighting)
+            .SetTransition(EnemyInputs.IAmDeath, dying)
+            .Done();
+
+        ConfigureState.Create(fighting)
+            .SetTransition(EnemyInputs.ImRelax, idle)
+            .SetTransition(EnemyInputs.MyObjetiveIsFar, chasing)
+            .SetTransition(EnemyInputs.ICanAttack, attacking)
+            .SetTransition(EnemyInputs.MyObjetiveIsDead, idle)
+            .SetTransition(EnemyInputs.IAmDeath, dying)
+            .Done();
+
+        ConfigureState.Create(attacking)
+            .SetTransition(EnemyInputs.MyAttackIsFinish, fighting)
+            .SetTransition(EnemyInputs.MyObjetiveIsDead, fighting)
+            .SetTransition(EnemyInputs.IAmDeath, dying)
+            .Done();
+
+        ConfigureState.Create(dying)
+            .SetTransition(EnemyInputs.ResurrectMe, rising)
+            .Done();
+
+        states.rising.Configure(SendInput, this);
+        states.idle.Configure(SendInput, this);
+        states.chasing.Configure(SendInput, this);
+        states.fighting.Configure(SendInput, this);
+        states.attacking.Configure(SendInput, this);
+        states.dying.Configure(SendInput, this);
+
+
+        sm = new EventStateMachine<EnemyInputs>(rising, DebugState);
     }
 
     public void SendInput(EnemyInputs input)
@@ -109,133 +199,81 @@ public class Enemy : LivingEntity
 
         if (!isAlive) return;
 
-        var threat = threatReceptor
-            .Threats
-            .FirstOrDefault();
-
-        if (threat != null)
-        {
-            currentarget = threat.GetComponent<LivingEntity>();
-        }
-
-        //currentarget
-
-        //if (threatReceptor.Threats.Length > 0)
-        //    currentarget = threatReceptor.Threats[0].GetComponent<LivingEntity>();
-
-        Vector3 dir_to_target;
-        float distance;
-
         
 
+        //smoothLookAt.SetDirection(targetFinder.DirectionToTarget);
 
-        #region Obtencion del target
-        if (currentarget != null)
-        {
-            if (timer_recalculate < time_to_recalculate) timer_recalculate = timer_recalculate + 1 * DeltaTime;
-            else
-            {
-                GoToPosition(currentarget.transform.position);
-            }
-           
-            dir_to_target = currentarget.transform.position - this.transform.position;
-            distance = Vector3.Distance(currentarget.transform.position, this.transform.position);
-        }
-        else
-        {
-            Debug.LogWarning("Current Target es null");
-            if (timer_recalculate < time_to_recalculate) timer_recalculate = timer_recalculate + 1 * DeltaTime;
-            else
-            {
-                timer_recalculate = 0;
-                if (!GoToPosition(SceneReferences.Player.transform.position))
-                {
-                    GoToPosition(SceneReferences.MyBasePosition);
-                }
-            }
+        //if (QUERY_TargetIsFar)
+        //{
+        //    GoToPositionWithPathFinder(targetFinder.Target.transform.position);
+        //}
+        //else
+        //{
+        //    CanNotUsePathFinder = true;
 
-            dir_to_target = playerpos.position - this.transform.position;
-            distance = Vector3.Distance(playerpos.position, this.transform.position);
-        }
-        #endregion
-
-        dir_to_target.Normalize();
-        SmoothLookAt.SetDirection(dir_to_target);
-
-        #region Persecucion y destruccion del target
-        if (distance < 10)
-        {
-            CanNotWalk = true;
-            dir_to_target.Normalize();
-
-            if (distance <= rig_path_finder.distance_to_close / 2)
-            {
-                view.Anim_Run(false);
-                SmoothLookAt.Look(DeltaTime);
-                Update_Attack();
-            }
-            else
-            {
-                view.Anim_Run(true);
-                SmoothLookAt.Look(DeltaTime);
-                myRig.isKinematic = false;
-                myRig.velocity = transform.forward + dir_to_target * rig_path_finder.movement_speed * DeltaTime;
-            }
-        }
-        else
-        {
-            CanNotWalk = false;
-        }
-        #endregion
+        //    if (QUERY_IsTooClose)
+        //    {
+        //        view.Anim_Run(false);
+        //        smoothLookAt.Look(DeltaTime);
+        //        Update_Attack();
+        //    }
+        //    else
+        //    {
+        //        view.Anim_Run(true);
+        //        smoothLookAt.Look(DeltaTime);
+        //        follow_component.Tick_Follow(DeltaTime, targetFinder.DirectionToTarget);
+        //    }
+        //}
 
         //esto esta despues porque aca se va a ejecutar el AStar
         base.OnTick(DeltaTime);
+
+        targetFinder.TickFinding();
+
+        sm.Update();
 
         //este on move es para la grid
         MyGridComponentEntity.Grid_RefreshComponent();
 
     }
 
-    void PathFinderBeginMove()
-    {
-        view.Anim_Run(true);
-    }
-    void PathFinderEndMove()
-    {
-        view.Anim_Run(false);
-    }
+    public bool QUERY_TargetIsFar => targetFinder.DistanceToTarget > FAR_DISTANCE;
+    public bool QUERY_IsTooClose => targetFinder.DistanceToTarget <= rig_path_finder.distance_to_close / 2;
+
     protected override void OnDeath()
     {
         base.OnDeath();
+        SendInput(EnemyInputs.IAmDeath);
         //colorDebug.Change(Color.black);
         myRig.isKinematic = true;
         myRig.velocity = new Vector3(0, 0, 0);
         myRig.detectCollisions = false;
+        view.Particle_GetPhysicalDamage();
         isAlive = false;
         MyGridComponentEntity.Grid_RefreshComponent();
-        view.Anim_Death(true);
-        CbkOnDeath?.Invoke(this);
-    }
-
-    public void ANIM_EVENT_OnAttack()
-    {
-        if (!currentarget) throw new Exception("La Entity es null");
-        float distance = Vector3.Distance(currentarget.transform.position, this.transform.position);
-        if (distance <= rig_path_finder.distance_to_close)
-        {
-            currentarget.ReceiveDamage(damage);
-        }
     }
 
     public void ANIM_EVENT_OnDeathFinish()
     {
+        Debug.Log("Animevent_deathFinish");
+        CbkOnDeath?.Invoke(this);
         MyGridComponentEntity.Grid_Deinitialize();
     }
 
-    void Update_Attack()
-    {
-        view.Anim_Attack();
-    }
+    //public void ANIM_EVENT_OnAttack()
+    //{
+    //    if (!currentarget) throw new Exception("La Entity es null");
+    //    float distance = Vector3.Distance(currentarget.transform.position, this.transform.position);
+    //    if (distance <= rig_path_finder.distance_to_close)
+    //    {
+    //        currentarget.ReceiveDamage(damage);
+    //    }
+    //}
+
+    //void Update_Attack()
+    //{
+    //    view.Anim_Attack();
+    //}
 
     #region Get Partners para Queries
     public IEnumerable<Enemy> GetPartners()
@@ -245,7 +283,6 @@ public class Enemy : LivingEntity
             .Select(x => x.GetComponent<Enemy>()) //IA2-P3 [Select]
             .Take(3); //IA2-P3 [Take]
     }
-
     public int GetPartnersLegth()
     {
         return Physics
@@ -258,11 +295,10 @@ public class Enemy : LivingEntity
     #endregion
 
 
-
     protected override void Feedback_ReceiveDamage()
     {
         base.Feedback_ReceiveDamage();
         view.Particle_GetPhysicalDamage();
-        view.Sound_GetPhysicalDamage();
+        view.Play_Clip_takeDamage();
     }
 }

@@ -22,6 +22,7 @@ public class GameDirector : MonoBehaviour
     #region MonoBehaviour
     public void Start()
     {
+        
         current = -1;
         elements = GetComponentsInChildren<StateElement>();
         if (debugState) debugState.text = current.ToString();

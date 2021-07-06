@@ -6,7 +6,11 @@ public class MenuScript : MonoBehaviour
 {
     public void BUTTON_PLAY()
     {
-        Scenes.Load("FirstScene");
+        Scenes.Load("Level1");
+    }
+    public void BUTTON_GOAP()
+    {
+        Scenes.Load("LevelGOAP");
     }
 
     public void BUTTON_EXIT()

@@ -10,6 +10,7 @@ public class Bullet_PoolManager : MonoBehaviour
     GenericPoolManager<Bullet> pool;
     [SerializeField] Bullet bullet_model;
     [SerializeField] Transform parent;
+    [SerializeField] AudioClip arrwo_sound_collision;
 
     readonly Vector3 FAR = new Vector3(int.MaxValue, int.MaxValue, int.MaxValue);
 
@@ -17,6 +18,8 @@ public class Bullet_PoolManager : MonoBehaviour
     {
         instance = this;
         pool = new GenericPoolManager<Bullet>(Create, TurnOn, TurnOff, "BulletBasic", true, 10);
+        AudioManager.instance.GetSoundPool(arrwo_sound_collision.name, AudioManager.SoundDimesion.ThreeD, AudioGroups.GAME_FX, arrwo_sound_collision);
+
     }
 
     public void Shoot(Vector3 position, Vector3 direction,  float life_time = 1f, float speed = 50f, int damage = 10, string tag_to_damage = "Enemy")
@@ -26,10 +29,11 @@ public class Bullet_PoolManager : MonoBehaviour
         bullet.On();
     }
 
-    void OnBulletDeath(Bullet bullet)
+    void OnBulletDeath(Bullet bullet, bool  findtarget)
     {
         bullet.Off();
         pool.Return(bullet);
+        if (findtarget) AudioManager.instance.PlaySound(arrwo_sound_collision.name, bullet.transform);
     }
 
     void TurnOn(Bullet obj) => obj.gameObject.SetActive(true);

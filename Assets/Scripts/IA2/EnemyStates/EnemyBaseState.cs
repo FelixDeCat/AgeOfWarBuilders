@@ -1,6 +1,13 @@
 ﻿using System;
 using Tools.StateMachine;
-public abstract class EnemyBaseState : StatesFunctionsMonoBehaviour<Enemy.EnemyInputs> 
-{
+using UnityEngine;
 
+public abstract class EnemyBaseState : MonoState<Enemy.EnemyInputs>
+{
+    public MonoState<Enemy.EnemyInputs> Configure(Action<Enemy.EnemyInputs> action, Enemy own)
+    {
+        this.own = own;
+        return base.Configure(action);
+    }
+    protected Enemy own;
 }

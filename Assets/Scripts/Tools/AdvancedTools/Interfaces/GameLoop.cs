@@ -24,6 +24,9 @@ public class GameLoop : MonoBehaviour
 
     private void Start() => PlayGame();
 
+    [SerializeField] string Message_on_Win;
+    [SerializeField] string load_on_Win;
+
     private void Update()
     {
         if (inGame)
@@ -104,10 +107,19 @@ public class GameLoop : MonoBehaviour
     /// WIN & LOSE
     ///////////////////////////////////////////////////
     ///
-    void OnLose() => Fades_Screens.instance.FadeOn(() => CanvasManager.LoseOrWinTextWithAction("Perdiste", Scenes.ReloadThisScene)); 
-    void OnWin() => Fades_Screens.instance.FadeOn(() => CanvasManager.LoseOrWinTextWithAction("Ganaste", Scenes.ReloadThisScene)); 
+    void OnLose() => Fades_Screens.instance.FadeOn(() =>
+    {
+        CanvasManager.LoseOrWinTextWithAction("Perdiste", Scenes.ReloadThisScene, "rejugar");
+        Main.PlayClip_Lose();
+    }
+    );
+
+    void OnWin() => Fades_Screens.instance.FadeOn(() =>
+    {
+        CanvasManager.LoseOrWinTextWithAction("Ganaste", () => Scenes.Load(load_on_Win), Message_on_Win);
+        Main.PlayClip_Win();
+    }
+    );
 
     #endregion
-
-
 }

@@ -60,10 +60,10 @@ public class PlayerDamageComponent : PlayerComponent
         if (query == null) { throw new Exception("[ERROR] I do not have a " + ObserverQuery.Static_ToString()); }
 
         var col = query
-            .Query()
+            .Query() //IA2-P2 [SpatialGrid - PlayerDamage]
             .OfType<GridComponent>()
-            .Select( x => x.Grid_Object.GetComponent<LivingEntity>()) //IA-3 [Select]
-            .Where(x => !x.gameObject.GetComponent<PlayerModel>() && (x.gameObject.GetComponent<Enemy>() || x.gameObject.GetComponent<TowerEntity>())) //IA2-3 [Where]
+            .Select( x => x.Grid_Object.GetComponent<LivingEntity>()) //IA-P3 [Select]
+            .Where(x => !x.gameObject.GetComponent<PlayerModel>() && (x.gameObject.GetComponent<Enemy>() || x.gameObject.GetComponent<TowerEntity>())) //IA2-P3 [Where]
             .DefaultIfEmpty(null);
         if (col == null) return;
         foreach (var liv_ent in col)

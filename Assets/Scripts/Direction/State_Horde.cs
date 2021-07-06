@@ -9,6 +9,9 @@ public class State_Horde : StateElement
 
     public Tuple<EnemySpawner, int, bool>[] spawners_data = new Tuple<EnemySpawner, int, bool>[0];
 
+    public string sequence;
+
+
     protected override void OnInitialize()
     {
         for (int i = 0; i < spawners.Length; i++)
@@ -18,9 +21,10 @@ public class State_Horde : StateElement
     }
     protected override void OnBegin()
     {
+        Main.PlayClip_Horde();
         for (int i = 0; i < spawners.Length; i++)
         {
-            spawners[i].Begin();
+            spawners[i].Begin(sequence);
         }
         UI_StateTimer.instance.Open();
         UI_StateTimer.Refresh(stateName);
