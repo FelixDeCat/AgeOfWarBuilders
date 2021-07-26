@@ -9,7 +9,8 @@ public class AStar<T> {
     public IEnumerable<T> Run(T                                     start,
                               Func<T, bool>                         isGoal,
                               Func<T, IEnumerable<WeightedNode<T>>> explode,
-                              Func<T, float>                        getHeuristic) {
+                              Func<T, float>                        getHeuristic)
+    {
         
         var queue     = new PriorityQueue<T>();
         var distances = new Dictionary<T, float>();
@@ -82,12 +83,11 @@ public class AStar<T> {
                 yield return null;
             }
 
-            //if (stopwatch.ElapsedMilliseconds >= 1f / 10f)
-            //{
-            //    result(CommonUtils.CreatePath(parents, dequeued.Element));
-            //    yield return null;
-            //    stopwatch.Restart();
-            //}
+            if (stopwatch.ElapsedMilliseconds >= 1f / 30f)
+            {
+                stopwatch.Restart();
+                yield break;
+            }
 
 
             var toEnqueue = explode(dequeued.Element);

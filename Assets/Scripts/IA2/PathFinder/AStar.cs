@@ -72,8 +72,6 @@ namespace IA_Felix
                 if (current == null) { Debug.LogWarning("Current es null, se va a cortar la ejecucion"); return null; }
                 if (final == null) { Debug.LogWarning("Final es null, se va a cortar la ejecucion"); return null; }
 
-
-                Debug.Log("LLego hasta aca");
                 if (current.Equals(final))
                 {
                     path.Clear();

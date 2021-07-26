@@ -6,8 +6,12 @@ using System;
 
 public class GenericInteractor : MonoBehaviour
 {
+
     HashSet<GenericInteractable> interactables = new HashSet<GenericInteractable>();
     GenericInteractable most_close;
+
+    Action<GenericInteractable> OnAddInteractable = delegate { };
+    Action<GenericInteractable> OnRemoveInteractable = delegate { };
 
     Func<GenericInteractable, bool> Predicate = delegate { return true; };
 
@@ -15,8 +19,22 @@ public class GenericInteractor : MonoBehaviour
 
     bool isStoped;
 
-    public void AddInteractable(GenericInteractable i) { StopCoroutine(Refresh()); interactables.Add(i); StartCoroutine(Refresh()); }
-    public void RemoveInteractable(GenericInteractable i) { StopCoroutine(Refresh()); interactables.Remove(i); StartCoroutine(Refresh()); }
+    public void AddInteractable(GenericInteractable i)
+    {
+        StopCoroutine(Refresh());
+        interactables.Add(i);
+        OnAddInteractable.Invoke(i);
+        StartCoroutine(Refresh());
+    }
+    public void RemoveInteractable(GenericInteractable i)
+    {
+        StopCoroutine(Refresh());
+        interactables.Remove(i);
+        OnRemoveInteractable.Invoke(i);
+        StartCoroutine(Refresh());
+    }
+    public void ADD_CALLBACK_Add_Interactable(Action<GenericInteractable> callback_add_interactable) => OnAddInteractable = callback_add_interactable;
+    public void ADD_CALLBACK_Remove_Interactable(Action<GenericInteractable> callback_remove_interactable) => OnRemoveInteractable = callback_remove_interactable;
 
     private void OnDestroy()
     {
@@ -110,7 +128,7 @@ public class GenericInteractor : MonoBehaviour
     {
         if (most_close != null)
         {
-            Debug.Log("Estoy input");
+            Debug.Log("Estoy ready papu");
             most_close.Execute();
         }
     }

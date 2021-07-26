@@ -29,9 +29,10 @@ public class GenericEnergyComponent : MonoBehaviour
 
     public bool EnergyIsFull() => life.IsFull();
     public bool EnergyEmpty() => life.IsEmpty();
-    public void AddEnergy(int val) => life.Heal(1); 
+    public void AddEnergy(int val) => life.Heal(val); 
     public void SpendEnergy(int spended = 1) => life.Hit(spended);
     public void FillAllEnergy() => life.ResetLife();
+    public void SpendAllEnergy() => life.Hit(int.MaxValue);
 
     protected virtual void Feedback_IAmSpendingEnergy() { IAmSpendingEnergy.Invoke(); }
     protected virtual void Feedback_IAmResting() { IAmResting.Invoke(); }

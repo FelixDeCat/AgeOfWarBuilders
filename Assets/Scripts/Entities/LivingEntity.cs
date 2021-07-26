@@ -23,7 +23,7 @@ public class LivingEntity : WalkingEntity
 
     public void Heal(int val)
     {
-        life.Heal(1);
+        life.Heal(val);
     }
 
     public void ReceiveDamage(int dmg = 5)

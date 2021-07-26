@@ -72,7 +72,7 @@ public class CombatState : Villager_MonoStateBase
 
     public override void UpdateLoop()
     {
-        Tick_LostEnergyGainHungry();
-        Tick_TakeDamage();
+        //Tick_LostEnergyGainHungry();
+        //Tick_TakeDamage();
     }
 }

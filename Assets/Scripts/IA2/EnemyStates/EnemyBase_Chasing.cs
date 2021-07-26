@@ -23,7 +23,6 @@ public class EnemyBase_Chasing : EnemyBaseState
     public override void Tick()
     {
         base.Tick();
-        Debug.Log("ESTA TICKEANDO");
 
         var finder = own.targetFinder;
         var lookat = own.smoothLookAt;
@@ -46,7 +45,6 @@ public class EnemyBase_Chasing : EnemyBaseState
         else
         {
             debug_flag_ISFar = false;
-            Debug.Log("Target esta cerca");
             lookat.Look(Time.deltaTime);
 
             own.CanNotUsePathFinder = true;

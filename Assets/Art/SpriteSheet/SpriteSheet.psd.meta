@@ -16,7 +16,7 @@ TextureImporter:
     second: sprite_tower_04
   - first:
       213: -689520407193891599
-    second: SpriteSheet_4
+    second: sprite_tower_05
   - first:
       213: 160890277334083914
     second: SpriteSheet_5
@@ -533,7 +533,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteSheet_4
+      name: sprite_tower_05
       rect:
         serializedVersion: 2
         x: 368

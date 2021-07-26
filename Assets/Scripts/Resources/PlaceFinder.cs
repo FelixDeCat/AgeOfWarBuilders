@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 
 public class PlaceFinder : MonoBehaviour
 {
     float timer;
     float timer_recalculate;
-    [SerializeField] float cd_execute = 1f;
+    [SerializeField] float cd_harvest = 1f;
     [SerializeField] float cd_recalculate = 0.5f;
     bool execute;
 
@@ -17,58 +18,50 @@ public class PlaceFinder : MonoBehaviour
     [SerializeField] GenericInteractor interactor;
     [SerializeField] CircleQuery QuerieResourceFinder;
 
-    public const string REST = "rest";
+    PlaceToAction current;
 
-    public void ConfigureFilter()
+    Func<PlaceToAction, bool> predicate = delegate { return true; };
+    Action Exe = delegate { };
+
+    public void ReconfigurePredicate(Func<PlaceToAction, bool> pred)
     {
-        //le digo al interactor que me filtre y me guarde los resources del tipo que quiero
-        interactor.AddFilter(REST, x =>
-        {
-            var r = x.GetComponent<PlaceToRest>();
-            if (r != null)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        });
+        predicate = pred;
     }
 
-    public void FindPlace()
+    public void ReconfigureExecution(Action _Execution)
     {
-        var col = interactor.GetFilteredCollection(REST);
-        if (col.Count <= 0)
-        {
-            var place = QuerieResourceFinder.Query()
+        Exe = _Execution;
+    }
+
+    void CalculatePlace()
+    {
+        current = QuerieResourceFinder.Query()
                 .OfType<GridComponent>()
-                .Where(x => x.Grid_Object.GetComponent<PlaceToRest>())
-                .Select(x => x.Grid_Object.GetComponent<PlaceToRest>())
-                .FirstOrDefault();
+                .Where(x => x.Grid_Object.GetComponent<PlaceToAction>())
+                .Select(x => x.Grid_Object.GetComponent<PlaceToAction>())
+                .Where(x => predicate(x))
+                .OrderBy(x => Vector3.Distance(x.transform.position, this.transform.position))
+                .First();
+    }
 
-            if (place)
-            {
-                Debug.Log(":) El place que encontre es::: " + place.gameObject.name);
+    public void Go_To_Execute_Action()
+    {
+        current = null;
+        CalculatePlace();
+        villager.GoToPositionWithPathFinder(current.Position_to_Action.position);
+        villager.Callback_IHaveArrived(() => villager.LerpPosRot(current.Position_to_Action, BeginExecution));
+    }
 
-                villager.transform.position = place.transform.position;
-                BeginRest();
-            }
-            else
-            {
-                Debug.LogWarning("Ni el interactor, ni el Query encontraron algo");
-            }
-        }
-        else
-        {
-            BeginRest();
-        }
+    public void StopWork()
+    {
+        current = null;
+        EndHarvest();
     }
 
     public void Initialize()
     {
         active = true;
-        ConfigureFilter();
+        CalculatePlace();
         QuerieResourceFinder.Configure(villager.transform);
     }
     public void Deinitialize()
@@ -79,66 +72,46 @@ public class PlaceFinder : MonoBehaviour
         execute = false;
     }
 
-    public void BeginRest()
+    public void BeginExecution()
     {
-        execute = true;
-        timer = 0;
+        if (execute) return;
+
+        if (current.isInstantOneShot)
+        {
+            Exe.Invoke();
+            current.OnExecuted();
+        }
+        else
+        {
+            execute = true;
+            timer = 0;
+        }
     }
-    public void EndRest()
+    public void EndHarvest()
     {
         execute = false;
         timer = 0;
     }
 
-    void Update_RecalculatePulseToBeginBehaviour()
+    private void Update()
     {
-        if (timer_recalculate < cd_recalculate)
-        {
-            timer_recalculate = timer_recalculate + 1 * Time.deltaTime;
-            var col = interactor.GetFilteredCollection(villager.GetProfession().ToString());
-            Debug.Log("RES_Col:>" + col.Count);
-            if (col.Count > 0)
-            {
-                execute = true;
-            }
-            else
-            {
-                execute = false;
-            }
-        }
-        else
-        {
-            timer_recalculate = 0;
-        }
-    }
-    void Update_ExecuteBehaviour()
-    {
+        if (!active) return;
+
         if (execute)
         {
-            if (timer < cd_execute)
+            if (timer < cd_harvest)
             {
                 timer = timer + 1 * Time.deltaTime;
             }
             else
             {
-                var place = interactor
-                    .GetFilteredCollection(REST)
-                    .Select(x => x.GetComponent<PlaceToRest>())
-                    .FirstOrDefault();
-
-                //ACA LO HAGO DESCANZAR
-
-                //villager descanzo++
-
-                timer = 0;
+                if (current)
+                {
+                    Exe.Invoke();
+                    current.OnExecuted();
+                    timer = 0;
+                }
             }
         }
-    }
-
-    private void Update()
-    {
-        if (!active) return;
-        Update_RecalculatePulseToBeginBehaviour();
-        Update_ExecuteBehaviour();
     }
 }

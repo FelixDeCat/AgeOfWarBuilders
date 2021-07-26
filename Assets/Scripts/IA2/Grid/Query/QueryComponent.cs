@@ -12,6 +12,7 @@ public abstract class QueryComponent : MonoBehaviour
 
     public void Configure(Transform Target)
     {
+
         target = Target;
         OnConfigure(Target);
         myGrid = GridManager.GetGrid(grid_type);

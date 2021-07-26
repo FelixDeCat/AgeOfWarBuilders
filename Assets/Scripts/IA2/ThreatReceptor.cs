@@ -5,13 +5,20 @@ using System.Linq;
 
 public class ThreatReceptor : MonoBehaviour
 {
+
+
     float timer;
     public float time_to_recalculate_Threat = 0.5f;
 
     [SerializeField] Threat[] threats_collection = new Threat[0];
     public IEnumerable<Threat> Threats => threats_collection;
 
-    
+    Threat own;
+
+    private void Start()
+    {
+        own = GetComponent<Threat>();
+    }
 
     public void Update()
     {

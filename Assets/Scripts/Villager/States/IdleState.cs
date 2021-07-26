@@ -21,9 +21,6 @@ public class IdleState : Villager_MonoStateBase
 
     public override void UpdateLoop()
     {
-        
-        Tick_SpendEnergy();
-        Tick_AddHungry();
 
     }
 }

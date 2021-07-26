@@ -8,6 +8,12 @@ public class FindWeaponState : Villager_MonoStateBase
 {
     public override event Action OnNeedsReplan;
 
+    public override void Enter(IState from, Dictionary<string, object> transitionParameters = null)
+    {
+        base.Enter(from, transitionParameters);
+        villager.Go_To_Take_Weapon();
+    }
+
     public override IState ProcessInput()
     {
         if (villager.inventory.HasWeapon)
@@ -19,7 +25,7 @@ public class FindWeaponState : Villager_MonoStateBase
 
     public override void UpdateLoop()
     {
-        Tick_LostEnergyGainHungry();
+        //Tick_LostEnergyGainHungry();
 
         if (Input.GetKeyDown(KeyCode.F))
         {

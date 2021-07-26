@@ -150,7 +150,7 @@ public class PathFinder : MonoBehaviour
     {
         if (!canMove) return;
 
-        if (currentNode == null) { Debug.LogError("El CurrentNode es Nulo"); }
+        if (currentNode == null) { Debug.LogError("El CurrentNode es Nulo"); return; }
 
         currentdist = Vector3.Distance(rb.transform.position, currentNode.transform.position);
 

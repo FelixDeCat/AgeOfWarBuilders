@@ -8,6 +8,13 @@ public class FindToolState : Villager_MonoStateBase
 {
     public override event Action OnNeedsReplan;
 
+    public override void Enter(IState from, Dictionary<string, object> transitionParameters = null)
+    {
+        base.Enter(from, transitionParameters);
+
+        villager.Go_To_Take_Tool();
+    }
+
     public override IState ProcessInput()
     {
         if (villager.inventory.HasTool)
@@ -19,7 +26,7 @@ public class FindToolState : Villager_MonoStateBase
 
     public override void UpdateLoop()
     {
-        Tick_LostEnergyGainHungry();
+        //Tick_LostEnergyGainHungry();
 
         if (Input.GetKeyDown(KeyCode.F))
         {

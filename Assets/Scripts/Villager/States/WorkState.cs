@@ -5,6 +5,12 @@ using UnityEngine;
 
 public class WorkState : Villager_MonoStateBase
 {
+    public override void Enter(IState from, Dictionary<string, object> transitionParameters = null)
+    {
+        base.Enter(from, transitionParameters);
+        villager.GoToWork();
+    }
+
     public override IState ProcessInput()
     {
         /*
@@ -13,6 +19,8 @@ public class WorkState : Villager_MonoStateBase
         .Effect(c.HAS_ENERGY, false) /al pre de rest, hide to rest, pre de work, pre de combat
         .Effect(c.I_AM_HUNGRY, true) // eat,work, find food
         */
+
+        Debug.Log("Entro a trabajar");
 
         if (!villager.inDanger)
         {
@@ -26,17 +34,26 @@ public class WorkState : Villager_MonoStateBase
                     }
                     else
                     {
+                        Debug.Log("SIGO TRABAJANDO");
                         return this;
                     }
                 }
                 else
                 {
+
                     return Transitionate(VillagerStatesNames.REST);
                 }
             }
             else
             {
-                return Logic_Try_To_EAT();
+                if (villager.VeryHungry())
+                {
+                    return Logic_Try_To_EAT();
+                }
+                else
+                {
+                    return this;
+                }
             }
         }
         else //si en peligro
@@ -53,7 +70,7 @@ public class WorkState : Villager_MonoStateBase
 
     public override void UpdateLoop()
     {
-        Tick_SpendEnergy();
-        Tick_AddHungry();
+        //Tick_SpendEnergy();
+        //Tick_AddHungry();
     }
 }

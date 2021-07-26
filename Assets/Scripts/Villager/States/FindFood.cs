@@ -8,6 +8,12 @@ public class FindFood : Villager_MonoStateBase
 {
     public override event Action OnNeedsReplan;
 
+    public override void Enter(IState from, Dictionary<string, object> transitionParameters = null)
+    {
+        base.Enter(from, transitionParameters);
+        villager.Go_To_Take_Food();
+    }
+
     public override IState ProcessInput()
     {
         if (villager.inventory.HasFood && !villager.MyHungryIsSatisfied)
@@ -19,7 +25,7 @@ public class FindFood : Villager_MonoStateBase
 
     public override void UpdateLoop()
     {
-        Tick_SpendEnergy();
+        //Tick_SpendEnergy();
 
         if (Input.GetKeyDown(KeyCode.F))
         {

@@ -13,7 +13,7 @@ public class RestState : Villager_MonoStateBase
     public override void Enter(IState from, Dictionary<string, object> transitionParameters = null)
     {
         base.Enter(from, transitionParameters);
-        OnNeedsReplan();
+        villager.Go_To_Rest();
     }
 
     public override IState ProcessInput()
@@ -24,15 +24,27 @@ public class RestState : Villager_MonoStateBase
         ////    .Effect(c.HAS_WEAPON, false) /al pre de combat, al pre de find weapon
         //    .Effect(c.HAS_ENERGY, true) /al pre de hide to rest, pre de work, pre de combat
 
+        Debug.Log("Entro a descanzar");
+
         if (!villager.inDanger)
         {
+            Debug.Log("No estoy en peligro");
+
             if (villager.EnergyIsFull)
             {
+                Debug.Log("Tengo energia, voy a trabajar");
                 return Transitionate(VillagerStatesNames.WORK);
+            }
+            else
+            {
+                Debug.Log("No tengo energia, sigo en rest");
+                return this;
             }
         }
         else
         {
+            Debug.Log("Estoy en peligro");
+
             if (villager.EnergyIsFull)
             {
                 return Logic_Try_To_Combat();
@@ -42,13 +54,10 @@ public class RestState : Villager_MonoStateBase
                 return Transitionate(VillagerStatesNames.HIDE_TO_REST);
             }
         }
-
-        return this;
-        
     }
 
     public override void UpdateLoop()
     {
-        Tick_AddEnergy();
+        //Tick_AddEnergy();
     }
 }

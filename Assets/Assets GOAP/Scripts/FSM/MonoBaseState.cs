@@ -33,7 +33,9 @@ namespace FSM {
             HasStarted = true;
         }
 
-        public virtual Dictionary<string, object> Exit(IState to) {
+        public virtual Dictionary<string, object> Exit(IState to)
+        {
+            Debug.Log("EXIT de..." + this.Name);
             OnExit?.Invoke(this, to);
             HasStarted = false;
             return null;

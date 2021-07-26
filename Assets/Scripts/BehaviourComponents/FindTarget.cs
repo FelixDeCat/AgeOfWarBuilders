@@ -55,6 +55,11 @@ public class FindTarget : MonoBehaviour
                 if (threat != null)
                 {
                     currentarget = threat.GetComponent<LivingEntity>();
+                    if (currentarget == null)
+                    {
+                        //pequeño fix cabeza, si no encuentro el living, lo debe tener mi parent
+                        currentarget = threat.transform.parent.GetComponent<LivingEntity>();
+                    }
                 }
 
                 if (currentarget == null)

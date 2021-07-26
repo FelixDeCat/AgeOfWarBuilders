@@ -14,7 +14,7 @@ public abstract class Villager_MonoStateBase : MonoBaseState
 
     public override void Enter(IState from, Dictionary<string, object> transitionParameters = null)
     {
-        villager.DebugState(Name);
+        villager.DebugState("From: " + from.Name + " this: " + Name);
         base.Enter(from, transitionParameters);
     }
 
@@ -45,10 +45,12 @@ public abstract class Villager_MonoStateBase : MonoBaseState
     {
         if (villager.inventory.HasTool)
         {
+            Debug.Log("Tengo herramienta, me voy a trabajar");
             return Transitionate(VillagerStatesNames.WORK);
         }
         else
         {
+            Debug.Log("no Tengo herramienta, voy a buscar la herramienta");
             return Transitionate(VillagerStatesNames.FIND_TOOL);
         }
     }

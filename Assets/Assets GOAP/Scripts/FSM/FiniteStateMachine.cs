@@ -10,7 +10,7 @@ namespace FSM
     public class FiniteStateMachine
     {
 
-        private const int _MAX_TRANSITIONS_PER_FRAME = 3;
+        private const int _MAX_TRANSITIONS_PER_FRAME = 5;
 
         public delegate void StateEvent(IState from, IState to);
 
@@ -49,9 +49,10 @@ namespace FSM
 
                 var nextState = CurrentState.ProcessInput();
                 var stateTransitions = 0;
-                Callback_state.Invoke(CurrentState.Name + " > " + (nextState != null ? nextState.Name : "NULL"));
 
-                if (nextState == null) yield return null;
+                Callback_state.Invoke(CurrentState.Name + " > " + nextState.Name);
+
+                //Debug.Log("El next state se espera que sea: " + nextState.Name);
 
                 while (nextState != CurrentState && stateTransitions < _MAX_TRANSITIONS_PER_FRAME)
                 {
@@ -113,8 +114,14 @@ namespace FSM
                 _isActive = value;
                 if (_isActive)
                 {
-                    if (!CurrentState.HasStarted) CurrentState.Enter(CurrentState, null);
-                    _startCoroutine(Update());
+                    if (!CurrentState.HasStarted)
+                    {
+                        //Debug.Log("Inicio " + CurrentState.Name + " con la corrutina Update()");
+
+                        CurrentState.Enter(CurrentState, null);
+                        _startCoroutine(Update());
+                    }
+                    
                     OnActive?.Invoke();
                 }
                 else

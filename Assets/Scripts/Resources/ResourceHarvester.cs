@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 
 public class ResourceHarvester : MonoBehaviour
 {
@@ -17,17 +18,23 @@ public class ResourceHarvester : MonoBehaviour
     [SerializeField] GenericInteractor interactor;
     [SerializeField] CircleQuery QuerieResourceFinder;
 
+    Resource current_resource;
+
+    string MyProfessionName => villager.GetProfession().ToString();
+    VillagerProfesion MyProfessionType => villager.GetProfession();
+
+    bool canExplodeResource;
+
     public void ReconfigureProfession()
     {
-        var prof = villager.GetProfession();
-
         //le digo al interactor que me filtre y me guarde los resources del tipo que quiero
-        interactor.AddFilter(prof.ToString(), x =>
+
+        interactor.AddFilter(MyProfessionName, x =>
         {
             var r = x.GetComponent<Resource>();
             if (r != null)
             {
-                switch (prof)
+                switch (MyProfessionType)
                 {
                     case VillagerProfesion.miner: return r.GetResourceType == ResourceType.metal;
                     case VillagerProfesion.farmer: return r.GetResourceType == ResourceType.food;
@@ -43,42 +50,65 @@ public class ResourceHarvester : MonoBehaviour
         });
     }
 
-    public void FindResource()
+    public Resource GetResourceToWork()
     {
-        var col = interactor.GetFilteredCollection(villager.GetProfession().ToString());
-        if (col.Count <= 0)
-        {
-            var resource = QuerieResourceFinder.Query()
+
+        return QuerieResourceFinder.Query()
                 .OfType<GridComponent>()
                 .Where(x => x.Grid_Object.GetComponent<Resource>())
                 .Select(x => x.Grid_Object.GetComponent<Resource>())
-                .Where(x => x.GetResourceType == GetResByProfession(villager.GetProfession()))
+                .Where(x => x.GetResourceType == GetResByProfession(MyProfessionType))
                 .OrderBy(x => Vector3.Distance(x.transform.position, this.transform.position))
-                .FirstOrDefault();
+                .First();
+    }
 
-            Debug.Log("El resource que encontre es::: " + resource.gameObject.name);
+    public void BeginWork()
+    {
+        current_resource = null;
+        canExplodeResource = true;
+        current_resource = GetResourceToWork();
+        // Move_to(resource.pos_to_work, IHaveArrived);
+        villager.GoToPositionWithPathFinder(current_resource.pos_to_work.position);
+        villager.Callback_IHaveArrived(IHaveArrived);
+    }
 
-            if (resource)
-            {
-                villager.transform.position = resource.pos_to_work.position;
-                villager.transform.eulerAngles = resource.pos_to_work.eulerAngles;
-                BeginHarvest();
-            }
-        }
-        else
-        {
-            BeginHarvest();
-        }
+    public void StopWork()
+    {
+        canExplodeResource = false;
+        current_resource = null;
+        EndHarvest();
+    }
+
+    void IHaveArrived()
+    {
+        villager.LerpPosRot(current_resource.pos_to_work, EndLerp);
+
+    }
+    void EndLerp()
+    {
+        BeginHarvest();
+    }
+
+    void OnInteractableAdded(GenericInteractable i)
+    {
+
+    }
+    void OnInteractableRemoved(GenericInteractable i)
+    {
+
     }
 
     public void Initialize()
     {
         active = true;
         ReconfigureProfession();
+        interactor.ADD_CALLBACK_Add_Interactable(OnInteractableAdded);
+        interactor.ADD_CALLBACK_Remove_Interactable(OnInteractableRemoved);
         QuerieResourceFinder.Configure(villager.transform);
     }
     public void Deinitialize()
     {
+        canExplodeResource = false;
         active = false;
         timer = 0;
         timer_recalculate = 0;
@@ -113,25 +143,6 @@ public class ResourceHarvester : MonoBehaviour
     {
         if (!active) return;
 
-        if (timer_recalculate < cd_recalculate)
-        {
-            timer_recalculate = timer_recalculate + 1 * Time.deltaTime;
-            var col = interactor.GetFilteredCollection(villager.GetProfession().ToString());
-            Debug.Log("Col:>" + col.Count);
-            if (col.Count > 0)
-            {
-                in_harvest = true;
-            }
-            else
-            {
-                in_harvest = false;
-            }
-        }
-        else
-        {
-            timer_recalculate = 0;
-        }
-
         if (in_harvest)
         {
             if (timer < cd_harvest)
@@ -141,14 +152,17 @@ public class ResourceHarvester : MonoBehaviour
             else
             {
 
-                Debug.Log("Estoy recolectando");
                 var resource = interactor
                     .GetFilteredCollection(villager.GetProfession().ToString())
                     .Select(x => x.GetComponent<Resource>())
                     .FirstOrDefault();
 
+                if (resource == null) { return; }
 
                 var package = resource.GetElement();
+
+                villager.AddHungry(3);
+                villager.SpendEnergy(3);
 
                 if (package == null)
                 {
@@ -176,6 +190,8 @@ public class ResourceHarvester : MonoBehaviour
                     }
                     timer = 0;
                 }
+
+                villager.Replan();
             }
         }
     }

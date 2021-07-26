@@ -38,36 +38,34 @@ public class Resource : MonoBehaviour
         if (capacity > 0)
         {
             capacity--;
-            if (!isRenovable)
-            {
-                if (capacity <= 0)
-                {
-                    Destroy();
-                }
-            }
-
-            return new ResourcePackage(1, type);
+            var pack = new ResourcePackage(1, type);
+            Check();
+            return pack;
         }
         else
         {
-            if (!isRenovable)
+            if (isRenovable)
             {
-                //recurso agotado
-                //no renovable
+                //feedback de "Esperá a que se cargue"
             }
             else
             {
-                //recurso agotado
-                //espera a que se renueve
+                //feedback de "Esto ya no se va a cargar mas"
             }
-
             return null;
         }
     }
 
-    public void Destroy()
+    void Check()
     {
-
+        if (capacity <= 0)
+        {
+            //feedback unico de "¡Pum! justo se te terminó"
+        }
+        else
+        {
+            //feedback de "entrego el paquete"
+        }
     }
 }
 public enum ResourceType

@@ -28,7 +28,7 @@ public class GoapPlanner
 
             startCoroutine(astar.Run(from,
                              state => Satisfies(state, to),
-                             node => Explode(node, actions, ref _watchdog),
+                             node => Explode(node, actions/*, ref _watchdog*/),
                              state => GetHeuristic(state, to),
                              col => states = col
                              ));
@@ -40,7 +40,7 @@ public class GoapPlanner
         {
             var path = astar.Run(from,
                                  state => Satisfies(state, to),
-                                 node => Explode(node, actions, ref _watchdog),
+                                 node => Explode(node, actions/*, ref _watchdog*/),
                                  state => GetHeuristic(state, to));
 
             if (path == null) return null;
@@ -48,7 +48,7 @@ public class GoapPlanner
         }
     }
 
-    public static FiniteStateMachine ConfigureFSM(IEnumerable<GOAPAction> plan, Func<IEnumerator, Coroutine> startCoroutine, Action<string> debugstate = null, IState defaultState = null)
+    public static FiniteStateMachine ConfigureFSM(IEnumerable<GOAPAction> plan, Func<IEnumerator, Coroutine> startCoroutine, Action<string> debugstate = null)
     {
         var prevState = plan.First().linkedState;
 
@@ -101,21 +101,38 @@ public class GoapPlanner
     private static float GetHeuristic(GOAPState from, GOAPState goal) => goal.values.Count(kv => !kv.In(from.values));
     private static bool Satisfies(GOAPState state, GOAPState to) => to.values.All(kv => kv.In(state.values));
 
-    private static IEnumerable<WeightedNode<GOAPState>> Explode(GOAPState node, IEnumerable<GOAPAction> actions,
-                                                                ref int watchdog)
+    private static IEnumerable<WeightedNode<GOAPState>> Explode(
+                                                                    GOAPState node,
+                                                                    IEnumerable<GOAPAction> actions
+                                                                    /*ref int watchdog*/)
     {
-        if (watchdog == 0) return Enumerable.Empty<WeightedNode<GOAPState>>();
-        watchdog--;
+        //if (watchdog == 0) return Enumerable.Empty<WeightedNode<GOAPState>>();
+        //watchdog--;
 
-        return actions.Where(action => action.preconditions.All(kv => kv.In(node.values)))
-                      .Aggregate(new List<WeightedNode<GOAPState>>(), (possibleList, action) =>
+        return actions
+
+            //filtro todas las acciones que su precondicion coincida con el del node (current state)
+            .Where(x => x.preconditions.All(v => node.values.Contains(v)))
+                    
+            //creo una lista con GOAPStates y sus pesos
+            .Aggregate(new List<WeightedNode<GOAPState>>(), (possibleList, current_action) =>
                       {
+                          //creo un nuevo estado, al pasarle el node, estamos actualizado todos los valores
                           var newState = new GOAPState(node);
-                          newState.values.UpdateWith(action.effects);
-                          newState.generatingAction = action;
+
+                          //como mas arriba filtro las acciones que cumplen las precondiciones
+                          //puedo actualizar los efectos de este estado con los efectos de la current_action
+                          newState.values.UpdateWith(current_action.effects);
+
+                          //importante pasarle la accion que lo generó, para que luego lo comparemos y no volvamos a repetir
+                          newState.generatingAction = current_action;
+
+                          //todos los posibles nodos que van a salir de acá son... el step de mi origen +1
+                          //cualquiera que yo elija despues va a tener este +1
                           newState.step = node.step + 1;
 
-                          possibleList.Add(new WeightedNode<GOAPState>(newState, action.cost));
+                          //se lo agrego a la lista que el agreggate va a memorizar
+                          possibleList.Add(new WeightedNode<GOAPState>(newState, current_action.cost));
                           return possibleList;
                       });
     }

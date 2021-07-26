@@ -7,6 +7,20 @@ public class HideState : Villager_MonoStateBase
 {
     public bool heal = false;
 
+    public override void Enter(IState from, Dictionary<string, object> transitionParameters = null)
+    {
+        base.Enter(from, transitionParameters);
+
+        if (heal)
+        {
+            villager.Go_To_Heal();
+        }
+        else
+        {
+            villager.Go_To_Rest();
+        }
+    }
+
     public override IState ProcessInput()
     {
         if (heal)
@@ -69,13 +83,6 @@ public class HideState : Villager_MonoStateBase
 
     public override void UpdateLoop()
     {
-        if (heal)
-        {
-            Tick_Heal();
-        }
-        else
-        {
-            Tick_AddEnergy();
-        }
+        
     }
 }

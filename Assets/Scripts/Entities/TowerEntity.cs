@@ -9,12 +9,12 @@ public class TowerEntity : LivingEntity
     public Enemy currentEnemy;
 
     public float Time_To_Select_Target = 1f;
-    float timer;
+    protected float timer;
 
     public Transform shootPoint;
 
     ObserverQuery observer_query;
-    SquareQuery square_query;
+    protected SquareQuery square_query;
 
     NodeDumper dumper;
     Vector3 buildpos;
@@ -32,7 +32,7 @@ public class TowerEntity : LivingEntity
     [SerializeField] AudioClip DestroySound;
 
     [SerializeField] ParticleSystem hitTower;
-    private void Start()
+    protected virtual void Start()
     {
         AudioManager.instance.GetSoundPool(ShootSound.name, AudioManager.SoundDimesion.ThreeD, AudioGroups.GAME_FX, ShootSound);
         AudioManager.instance.GetSoundPool(TakeDamage.name, AudioManager.SoundDimesion.TwoD, AudioGroups.GAME_FX, TakeDamage);
@@ -122,7 +122,7 @@ public class TowerEntity : LivingEntity
 
     //IEnumerable<Enemy> partners;
 
-    private void LateUpdate()
+    protected virtual void LateUpdate()
     {
         if (timer < Time_To_Select_Target)
         {
