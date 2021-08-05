@@ -68,20 +68,19 @@ public class GoapDebug : MonoBehaviour
             {
                 var elem = GameObject.Instantiate(model, parent_elements);
                 elem.Configure(OnValueChange, s.Key);
-                elem.SetActiveAction(s.Value);
+                elem.SetValue(s.Value);
                 col_Elements.Add(s.Key, elem);
             }
             else
             {
                 var elem = col_Elements[s.Key];
-                elem.SetActiveAction(s.Value);
+                elem.SetValue(s.Value);
             }
-           
         }
     }
     void OnValueChange(string s)
     {
-       var villager = FindObjectOfType<Villager>();
+        var villager = FindObjectOfType<Villager>();
         villager.DebugChangeAState(s);
     }
 

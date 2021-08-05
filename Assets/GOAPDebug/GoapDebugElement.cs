@@ -8,12 +8,17 @@ public class GoapDebugElement : MonoBehaviour
 {
     string my_name;
     [SerializeField] TextMeshProUGUI txt_Action;
+    [SerializeField] TextMeshProUGUI txt_value;
     Action<string> CallbackPressChange;
     public void Configure(Action<string> cbk_change, string s)
     {
         CallbackPressChange = cbk_change;
         txt_Action.text = s;
         my_name = s;
+    }
+    public void SetValue(object obj)
+    {
+        txt_value.text = obj.ToString();
     }
     public void SetActiveAction(bool v)
     {

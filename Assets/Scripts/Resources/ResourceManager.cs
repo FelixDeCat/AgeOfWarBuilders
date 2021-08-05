@@ -27,6 +27,69 @@ public class ResourceManager : MonoBehaviour
         InitializeResources();
     }
 
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            AddRes(5, ResourceType.wood);
+        }
+    }
+
+    public bool SpendResourcePackage(Tuple<ResourceType, int>[] to_spend)
+    {
+        if (to_spend.Length <= 0 || resources_store.Count <= 0) return false;
+        for (int i = 0; i < to_spend.Length; i++)
+        {
+            if (!IHaveElement(to_spend[i].Item1, to_spend[i].Item2)) return false;
+            else continue;
+        }
+
+        for (int i = 0; i < to_spend.Length; i++)
+        {
+            RawSubstractElement(to_spend[i].Item1, to_spend[i].Item2);
+        }
+
+        return true;
+    }
+
+    public bool IHaveThisResourcePackage(Tuple<ResourceType, int>[] to_check)
+    {
+        if (to_check.Length <= 0 || resources_store.Count <= 0) return false;
+        for (int i = 0; i < to_check.Length; i++)
+        {
+            if (!IHaveElement(to_check[i].Item1, to_check[i].Item2)) return false;
+            else continue;
+        }
+        return true;
+    }
+
+    bool IHaveElement(ResourceType type, int quantity)
+    {
+        if (!resources_store.ContainsKey(type)) return false;
+        if (resources_store[type] < quantity) return false;
+        else return true;
+    }
+
+    void RawSubstractElement(ResourceType type, int quantity)
+    {
+        resources_store[type] -= quantity;
+        if (resources_store[type] < 0) resources_store[type] = 0;
+
+        ui.UpdateResource(type, resources_store[type].ToString());
+        ui.AnimateRemoveResource(type);
+    }
+    bool SubstractElement(ResourceType type, int quantity)
+    {
+        if (!resources_store.ContainsKey(type)) return false;
+        if (resources_store[type] >= quantity)
+        {
+            resources_store[type] -= quantity;
+            if (resources_store[type] < 0) resources_store[type] = 0;
+            return true;
+        }
+        else return false;
+    }
+
     void InitializeResources()
     {
         for (int i = 0; i < data.Length; i++)

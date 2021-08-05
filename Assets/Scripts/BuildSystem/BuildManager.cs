@@ -7,6 +7,7 @@ using Tools.UI;
 using Tools.Extensions;
 using UnityEngine.Events;
 using Tools.Structs;
+using System;
 
 
 namespace AgeOfWarBuilders.BuildSystem
@@ -232,14 +233,22 @@ namespace AgeOfWarBuilders.BuildSystem
         {
             if (PlayerController.PRESS_DOWN_Submit)
             {
+
+                var resource = ConvertRecipeToTupleArray(indexHorizontalCursor);
+
                 if (currentObject_BuildChecker == null) return;
-                if (currentObject_BuildChecker.CanBuild && hit.collider.tag != "NotBuild" && i_have_space_to_build)
+                if (currentObject_BuildChecker.CanBuild && 
+                    hit.collider.tag != "NotBuild" &&
+                    i_have_space_to_build && 
+                    ResourceManager.instance.IHaveThisResourcePackage(resource))
                 {
                     //Arreglar esto del Pool
                     /*
                     PlayObject_PoolManager.instance.Feed(list_of_build_data[indexHorizontalCursor].model, LocalSceneTransforms.parent_MyBuildings);
                     var go = PlayObject_PoolManager.instance.Get(list_of_build_data[indexHorizontalCursor].model.type, GetPosRot().pos, GetPosRot().rot);
                     */
+
+                    ResourceManager.instance.SpendResourcePackage(resource);
 
                     TowerEntity go = GameObject.Instantiate(list_of_build_data[indexHorizontalCursor].model, SceneReferences.parent_MyBuildings);
                     go.transform.eulerAngles = GetPosRot().rot;
@@ -256,6 +265,18 @@ namespace AgeOfWarBuilders.BuildSystem
                     PlayClip_BuildNegate();
                 }
             }
+        }
+        Tuple<ResourceType, int>[] ConvertRecipeToTupleArray(int indexCursor)
+        {
+            var data = list_of_build_data[indexHorizontalCursor].requirements;
+            var packdata = new Tuple<ResourceType, int>[data.Length];
+
+            for (int i = 0; i < data.Length; i++)
+            {
+                packdata[i] = Tuple.Create(data[i].resource, data[i].Cant);
+            }
+
+            return packdata;
         }
         #endregion
 
@@ -275,6 +296,8 @@ namespace AgeOfWarBuilders.BuildSystem
             if (currentObject)
             {
 
+                var resource = ConvertRecipeToTupleArray(indexHorizontalCursor);
+
                 Vector3 posToRaycast = InstancePosition.transform.position + InstancePosition.forward * scrollvalue;
 
                 can_refresh_build_transform = Physics.Raycast(posToRaycast + Vector3.up * 5, Vector3.up * -1, out hit, 10, layer_PlacesToBuild);
@@ -286,7 +309,7 @@ namespace AgeOfWarBuilders.BuildSystem
                     currentObject.transform.eulerAngles = euler_rot;
                 }
 
-                currentObject_BuildChecker.SetAuxiliarCanBuild(hit.collider.tag != "NotBuild");
+                currentObject_BuildChecker.SetAuxiliarCanBuild(hit.collider.tag != "NotBuild" && ResourceManager.instance.IHaveThisResourcePackage(resource));
             }
         }
 

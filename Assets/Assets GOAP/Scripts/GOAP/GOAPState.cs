@@ -3,7 +3,7 @@ using System.Linq;
 
 public class GOAPState
 {
-    public Dictionary<string, bool> values = new Dictionary<string, bool>();
+    public Dictionary<string, object> values = new Dictionary<string, object>();
     public GOAPAction generatingAction = null;
     public int step = 0;
 

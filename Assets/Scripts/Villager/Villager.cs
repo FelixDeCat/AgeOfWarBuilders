@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using FSM;
 using c = VillagerCond;
+using v = WorldValues;
 using TMPro;
 
 public class Villager : LivingEntity
@@ -373,7 +374,7 @@ public class Villager : LivingEntity
     /// <param name="val"></param>
     public void DebugChangeAState(string val)
     {
-        currentState.values[val] = !currentState.values[val];
+        //currentState.values[val] = !currentState.values[val];
         Replan();
     }
     #endregion
@@ -393,6 +394,11 @@ public static class VillagerStatesNames
     public const string FIND_TOOL = "FindTool";
     public const string FIND_WEAPON = "FindWeapon";
 }
+public static class WorldValues
+{
+    public const string ENERGY = "Energy";
+}
+
 public static class VillagerCond
 {
     public const string GAME_WIN = "GameWin";

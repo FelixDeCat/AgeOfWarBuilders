@@ -19,4 +19,6 @@ MonoBehaviour:
     type: 3}
   item_image: {fileID: 5546671543968653177, guid: 24bd98369990dfe44ae72e549c5ba841,
     type: 3}
-  requirements: []
+  requirements:
+  - resource: 1
+    Cant: 1

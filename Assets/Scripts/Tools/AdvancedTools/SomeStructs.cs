@@ -121,7 +121,7 @@ namespace Tools.Structs
     [System.Serializable]
     public struct Item_Recipe
     {
-        public int ID;
+        public ResourceType resource;
         public int Cant;
     }
 
