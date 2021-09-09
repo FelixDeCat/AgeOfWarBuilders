@@ -9,6 +9,7 @@ public class WorkState : Villager_MonoStateBase
     {
         base.Enter(from, transitionParameters);
         villager.GoToWork();
+        
     }
 
     public override IState ProcessInput()

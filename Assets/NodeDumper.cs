@@ -41,7 +41,7 @@ public class NodeDumper : MonoBehaviour
             nodes[i].TurnOff();
         }
 
-        LocalNodeHandler.instance.Refresh();
+        if(LocalNodeHandler.instance) LocalNodeHandler.instance.Refresh();
         yield return null;
     }
     public void Death()

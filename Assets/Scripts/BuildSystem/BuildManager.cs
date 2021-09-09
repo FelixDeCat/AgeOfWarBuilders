@@ -31,8 +31,6 @@ namespace AgeOfWarBuilders.BuildSystem
 
         public bool i_have_space_to_build => currentCant_Towers < MaxCant_Towers;
 
-
-
         [SerializeField] AudioClip BuildSucessful;
         [SerializeField] AudioClip Click_Tower_Switch;
         [SerializeField] AudioClip BuildNegate;
@@ -239,8 +237,8 @@ namespace AgeOfWarBuilders.BuildSystem
                 if (currentObject_BuildChecker == null) return;
                 if (currentObject_BuildChecker.CanBuild && 
                     hit.collider.tag != "NotBuild" &&
-                    i_have_space_to_build && 
-                    ResourceManager.instance.IHaveThisResourcePackage(resource))
+                    i_have_space_to_build /*&& 
+                    ResourceManager.instance.IHaveThisResourcePackage(resource)*/)
                 {
                     //Arreglar esto del Pool
                     /*
@@ -248,9 +246,11 @@ namespace AgeOfWarBuilders.BuildSystem
                     var go = PlayObject_PoolManager.instance.Get(list_of_build_data[indexHorizontalCursor].model.type, GetPosRot().pos, GetPosRot().rot);
                     */
 
+                    /*
                     ResourceManager.instance.SpendResourcePackage(resource);
+                    */
 
-                    TowerEntity go = GameObject.Instantiate(list_of_build_data[indexHorizontalCursor].model, SceneReferences.parent_MyBuildings);
+                    TowerEntity go = GameObject.Instantiate(list_of_build_data[indexHorizontalCursor].model, this.transform);
                     go.transform.eulerAngles = GetPosRot().rot;
                     go.transform.position = GetPosRot().pos;
                     go.Initialize();
@@ -285,7 +285,7 @@ namespace AgeOfWarBuilders.BuildSystem
         public GameObject currentObject;
         ObjectBuildChecker currentObject_BuildChecker;
         Vector3 posToInstanciate;
-        public LayerMask layer_PlacesToBuild;
+        public LayerMask leyer_to_interact;
         Vector3 euler_rot;
         public Vector3 frontoffset;
         public float max_Object_Forward_offset = 5f;
@@ -300,7 +300,7 @@ namespace AgeOfWarBuilders.BuildSystem
 
                 Vector3 posToRaycast = InstancePosition.transform.position + InstancePosition.forward * scrollvalue;
 
-                can_refresh_build_transform = Physics.Raycast(posToRaycast + Vector3.up * 5, Vector3.up * -1, out hit, 10, layer_PlacesToBuild);
+                can_refresh_build_transform = Physics.Raycast(posToRaycast + Vector3.up * 5, Vector3.up * -1, out hit, 10, leyer_to_interact);
 
                 if (can_refresh_build_transform)
                 {
@@ -309,7 +309,8 @@ namespace AgeOfWarBuilders.BuildSystem
                     currentObject.transform.eulerAngles = euler_rot;
                 }
 
-                currentObject_BuildChecker.SetAuxiliarCanBuild(hit.collider.tag != "NotBuild" && ResourceManager.instance.IHaveThisResourcePackage(resource));
+                currentObject_BuildChecker.SetAuxiliarCanBuild(hit.collider.tag != "NotBuild" /*&& ResourceManager.instance.IHaveThisResourcePackage(resource)*/);
+                
             }
         }
 

@@ -13,13 +13,17 @@ public class Bomb_PoolManager : MonoBehaviour
     [SerializeField] AudioClip bomb_collision;
 
     readonly Vector3 FAR = new Vector3(int.MaxValue, int.MaxValue, int.MaxValue);
-
     private void Awake()
     {
         instance = this;
+    }
+    private void Start()
+    {
+        
         pool = new GenericPoolManager<Bullet>(Create, TurnOn, TurnOff, "BombBasic", true, 10);
         AudioManager.instance.GetSoundPool(bomb_collision.name, AudioManager.SoundDimesion.ThreeD, AudioGroups.GAME_FX, bomb_collision);
     }
+    
 
     public void Shoot(Vector3 position, Vector3 direction, float life_time = 1f, float speed = 50f, int damage = 10, string tag_to_damage = "Enemy")
     {
