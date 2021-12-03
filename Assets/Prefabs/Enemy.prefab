@@ -195,6 +195,7 @@ MonoBehaviour:
   CanNotUsePathFinder: 0
   rig_path_finder: {fileID: 7319035039964760279}
   myRig: {fileID: 1254743145520743908}
+  lerp_pos_time: 1
   initial_hp: 100
   ui_life: {fileID: 1254743145688725523}
   damage: 5
@@ -1517,6 +1518,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: -4598575597112392108, guid: 6c6180775f623844c99615b6d8ca1e45,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3931972f5b7a4c144a396a4bb9282c67, type: 2}
     - target: {fileID: -4455781353118930537, guid: 6c6180775f623844c99615b6d8ca1e45,
         type: 3}
       propertyPath: m_Layer

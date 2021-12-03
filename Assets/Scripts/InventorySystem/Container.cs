@@ -139,7 +139,10 @@ public class Container //La caja de bombones
         if (aux_temp == 0) return true;
         if (aux_temp < 0) throw new System.Exception("Hubo un error, mi cantidad temporal no puede ser menor a cero");
 
+
+        Debug.LogWarning("Ya no puedo agregar mas, me sobra... " + aux_temp + " " + data.Element_Name);
         return false;
+
 
     }
 }

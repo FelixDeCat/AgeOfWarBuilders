@@ -81,8 +81,15 @@ public class ResourceHarvester : MonoBehaviour
 
     void IHaveArrived()
     {
-        villager.LerpPosRot(current_resource.pos_to_work, EndLerp);
-
+        if (Vector3.Distance(current_resource.pos_to_work.position, villager.transform.position) < 0.5f)
+        {
+            BeginHarvest();
+        }
+        else
+        {
+            villager.view.PLAY_ANIM_Idle();
+            villager.LerpPosRot(current_resource.pos_to_work, EndLerp);
+        }
     }
     void EndLerp()
     {
@@ -120,11 +127,14 @@ public class ResourceHarvester : MonoBehaviour
         if (in_harvest) return;
         in_harvest = true;
         timer = 0;
+        active = true;
     }
     public void EndHarvest()
     {
         in_harvest = false;
         timer = 0;
+        active = false;
+        villager.view.PLAY_ANIM_Walk();
     }
 
     ResourceType GetResByProfession(VillagerProfesion profesion)
@@ -142,6 +152,7 @@ public class ResourceHarvester : MonoBehaviour
     private void Update()
     {
         if (!active) return;
+        Debug.Log("Ejecutando el RESOURCE HARVESTER");
 
         if (in_harvest)
         {
@@ -161,8 +172,8 @@ public class ResourceHarvester : MonoBehaviour
 
                 var package = resource.GetElement();
 
-                villager.AddHungry(3);
-                villager.SpendEnergy(3);
+                villager.AddHungry(10);
+                villager.SpendEnergy(10);
 
                 if (package == null)
                 {

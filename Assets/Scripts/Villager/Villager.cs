@@ -8,21 +8,21 @@ using TMPro;
 
 public class Villager : LivingEntity
 {
-    VillagerProfesion profession;
+    [SerializeField] VillagerProfesion profession;
     float timer_recalculate_work_station;
 
     [Header("States")]
-    [SerializeField] IdleState idleState;
-    [SerializeField] RestState reststate;
+    //[SerializeField] IdleState idleState;
+    //[SerializeField] RestState reststate;
     [SerializeField] WorkState workState;
     [SerializeField] HideState hideRestState;
-    [SerializeField] HideState hideHealState;
-    [SerializeField] EatState eatState;
+    //[SerializeField] HideState hideHealState;
+   // [SerializeField] EatState eatState;
     [SerializeField] FindToolState findToolState;
     [SerializeField] FindWeaponState findWeaponState;
     [SerializeField] CombatState combatState;
-    [SerializeField] FindFood findFood;
-    [SerializeField] HealState healstate;
+   // [SerializeField] FindFood findFood;
+   // [SerializeField] HealState healstate;
     FiniteStateMachine myFsm;
     GOAPState currentState;
     [SerializeField] internal GOAPVillagerValueConditions villager_values_conditions;
@@ -35,9 +35,15 @@ public class Villager : LivingEntity
     [SerializeField] ResourceHarvester harvester;
     [SerializeField] PlaceFinder placefinder;
     [SerializeField] PlaceFinderCombat placefinderCombat;
+    [SerializeField] NPC_CombatComponent combatComponent;
     public GridComponent MyGridComponentEntity;
     public Villager_View view;
     Threat mythreat;
+
+    public SmoothLookAt smoothLookAt;
+    public FollowComponent follow_component;
+
+    GoapPlanner planner = new GoapPlanner();
 
     public bool HasWork = true;
     public bool inDanger = false;
@@ -53,30 +59,16 @@ public class Villager : LivingEntity
     protected override void OnInitialize()
     {
         base.OnInitialize();
-
-        idleState.SetVillager(this);
-        reststate.SetVillager(this);
         workState.SetVillager(this);
         hideRestState.SetVillager(this);
-        hideHealState.SetVillager(this);
-        eatState.SetVillager(this);
         findToolState.SetVillager(this);
         findWeaponState.SetVillager(this);
         combatState.SetVillager(this);
-        findFood.SetVillager(this);
-        healstate.SetVillager(this);
-
-        idleState.OnNeedsReplan += Replan;
-        reststate.OnNeedsReplan += Replan;
         workState.OnNeedsReplan += Replan;
         hideRestState.OnNeedsReplan += Replan;
-        hideHealState.OnNeedsReplan += Replan;
-        eatState.OnNeedsReplan += Replan;
         findToolState.OnNeedsReplan += Replan;
         findWeaponState.OnNeedsReplan += Replan;
         combatState.OnNeedsReplan += Replan;
-        findFood.OnNeedsReplan += Replan;
-        healstate.OnNeedsReplan += Replan;
 
         interactor.InitializeInteractor();
         interactor.ConfigurePredicate(x =>
@@ -95,12 +87,15 @@ public class Villager : LivingEntity
         mythreat.Initialize();
         mythreat.Rise();
 
+        combatComponent.Configure(this.transform, EnemyNear, NoEnemiesNear, x => GoToPositionWithPathFinder(x));
+
         Hungry.SpendAllEnergy();
 
-        Invoke("Replan", 0.1f);
+        Invoke("Replan", 5f);
 
-        Invoke("Replan", 2f);
+        combatComponent.BeginSensor();
     }
+
     protected override void OnDeinitialize()
     {
         base.OnDeinitialize();
@@ -121,7 +116,10 @@ public class Villager : LivingEntity
             Replan();
         }
         // if (Input.GetKeyDown(KeyCode.L)) placefinder.FindPlace();
-        if (Input.GetKeyDown(KeyCode.Y)) inDanger = !inDanger;
+        if (Input.GetKeyDown(KeyCode.Y)) {
+            inDanger = !inDanger;
+            Replan();
+        }
         if (Input.GetKeyDown(KeyCode.U)) HasWork = !HasWork;
 
         if (Input.GetKeyDown(KeyCode.K))
@@ -135,32 +133,66 @@ public class Villager : LivingEntity
 
     #endregion
 
+    void EnemyNear()
+    {
+        inDanger = true;
+        Replan();
+    }
+    void NoEnemiesNear()
+    {
+        inDanger = false;
+        Replan();
+        view.PLAY_ANIM_Walk();
+    }
+
+    public void StopAction()
+    {
+        Debug.Log("Stop Action");
+        placefinder.StopWork();
+        placefinder.ReconfigureExecution(() => { });
+        view.PLAY_ANIM_Walk();
+    }
+
+    public void Go_To_Combat()
+    {
+        harvester.StopWork();
+        placefinder.StopWork();
+        //combatComponent.
+        Debug.Log("GOTOCOMBAT");
+        combatComponent.GoToAttack();
+    }
+
     public void Go_To_Rest()
     {
-        placefinder.ReconfigureExecution(() => { Energy.AddEnergy(5); Replan(); });
+        placefinder.ReconfigureExecution(() => { Energy.AddEnergy(100); RemoveHungry(100); Replan(); inventory.DropWeaponAndTool(); Replan(); view.PLAY_ANIM_Walk(); });
         placefinder.ReconfigurePredicate(x => x.action_type == ActionPlaces.rest);
         placefinder.Go_To_Execute_Action();
+        
     }
     public void Go_To_Take_Weapon()
     {
-        placefinder.ReconfigureExecution(() => { inventory.PickUpWeapon(); Replan(); });
+        view.PLAY_ANIM_Walk();
+        placefinder.ReconfigureExecution(() => { inventory.PickUpWeapon(); Replan(); view.PLAY_ANIM_Walk(); });
         placefinder.ReconfigurePredicate(x => x.action_type == ActionPlaces.weapon);
         placefinder.Go_To_Execute_Action();
     }
     public void Go_To_Take_Tool()
     {
-        placefinder.ReconfigureExecution(() => { inventory.PickUpTool(); Replan(); });
+        view.PLAY_ANIM_Walk();
+        placefinder.ReconfigureExecution(() => { inventory.PickUpTool(); Replan(); view.PLAY_ANIM_Walk(); });
         placefinder.ReconfigurePredicate(x => x.action_type == ActionPlaces.tool);
         placefinder.Go_To_Execute_Action();
     }
     public void Go_To_Take_Food()
     {
+        view.PLAY_ANIM_Walk();
         placefinder.ReconfigureExecution(() => { inventory.PickUpFood(); Replan(); });
         placefinder.ReconfigurePredicate(x => x.action_type == ActionPlaces.food);
         placefinder.Go_To_Execute_Action();
     }
     public void Go_To_Heal()
     {
+        view.PLAY_ANIM_Walk();
         placefinder.ReconfigureExecution(() => { Heal(5); Replan(); });
         placefinder.ReconfigurePredicate(x => x.action_type == ActionPlaces.heal);
         placefinder.Go_To_Execute_Action();
@@ -178,8 +210,23 @@ public class Villager : LivingEntity
 
     public void Replan()
     {
-        var planner = new GoapPlanner();
-        var plan = planner.Run(From(), To(), Actions(),StartCoroutine);
+
+        //var planner = new GoapPlanner();
+        GOAPState from = From();
+        GOAPState to = To();
+        List<GOAPAction> actions = new List<GOAPAction>();
+        actions = Actions();
+        var plan = planner.Run(from, to, actions, StartCoroutine, x => Debug.Log(x));
+
+        //if (plan != null)
+        //{
+        //    foreach (var a in plan)
+        //    {
+        //        Debug.Log("GoapAction: " + a.name);
+        //    }
+        //}
+        
+
         DebugGOAP(plan);
     }
 
@@ -210,60 +257,18 @@ public class Villager : LivingEntity
     {
         return new List<GOAPAction>
         {
-            new GOAPAction(VillagerStatesNames.IDLE)
-            .Pre(c.HAS_WORK, false)
-            .Effect(c.HAS_WORK,     true)//¿los efectos no serían todos? ¿que filosofia tengo que tomar?
-            .LinkedState(idleState),
+            
 
-            new GOAPAction(VillagerStatesNames.HEAL)
-            .Pre(c.HAS_LIFE, false)
-            .Pre(c.IS_IN_DANGER,    false)
-            .Effect(c.HAS_WORK, true)
-            .Effect(c.HAS_LIFE, true)
-            //.Effect(c.HAS_TOOL, false)
-            .Effect(c.HAS_WEAPON, false)
-            .LinkedState(healstate),
-
-            new GOAPAction(VillagerStatesNames.REST)
-            .Pre(c.IS_IN_DANGER,    false)
-            .Pre(c.HAS_ENERGY,      false)
-            //.Effect(c.HAS_TOOL, false)
-            .Effect(c.HAS_WORK, true)
-            .Effect(c.HAS_WEAPON, false)
-            .Effect(c.HAS_ENERGY,   true)
-            .LinkedState(reststate),
-
-            new GOAPAction(VillagerStatesNames.EAT)
-            .Pre(c.HAS_FOOD_IN_MY_INVENTORY,    true)
-            .Pre(c.I_AM_HUNGRY,                 true)
-            .Effect(c.HAS_FOOD_IN_MY_INVENTORY, false)
-            .Effect(c.I_AM_HUNGRY,              false)
-          //  .Effect(c.HAS_TOOL, false)
-         //  .Effect(c.HAS_WEAPON, false)
-            .Effect(c.HAS_ENERGY, true)
-            .LinkedState(eatState),
-
-            new GOAPAction(VillagerStatesNames.HIDE_TO_HEAL)
-            .Pre(c.IS_IN_DANGER,    true)
-            .Pre(c.HAS_LIFE,        false)
-            .Effect(c.HAS_LIFE,     true)
-            .Effect(c.HAS_TOOL,     false)
-            .Effect(c.HAS_WEAPON,   false)
-            .LinkedState(hideHealState),
-
-            new GOAPAction(VillagerStatesNames.HIDE_TO_REST)
-            .Pre(c.IS_IN_DANGER,    true)
+            new GOAPAction(VillagerStatesNames.HIDE)
             .Pre(c.HAS_ENERGY,      false)
             .Effect(c.HAS_ENERGY,   true)
-            .Effect(c.HAS_TOOL,     false)
-            .Effect(c.HAS_WEAPON,   false)
+            .Effect(c.I_AM_HUNGRY,  false)
             .LinkedState(hideRestState),
 
             new GOAPAction(VillagerStatesNames.WORK)
             .Pre(c.HAS_WORK,            true)
             .Pre(c.HAS_ENERGY,          true)
             .Pre(c.HAS_LIFE,            true)
-            .Pre(c.I_AM_HUNGRY,         false)
             .Pre(c.HAS_TOOL,            true)
             .Pre(c.IS_IN_DANGER,        false)
             .Effect(c.HAS_WORK,         false)
@@ -281,14 +286,10 @@ public class Villager : LivingEntity
             .Effect(c.HAS_ENERGY,   false)
             .Effect(c.HAS_LIFE,     false)
             .Effect(c.HAS_TOOL,     false)
+            .Effect(c.GAME_WIN,     true)
             .Effect(c.I_AM_HUNGRY,  true)
             .LinkedState(combatState),
 
-            new GOAPAction(VillagerStatesNames.FIND_FOOD)
-            .Pre(c.I_AM_HUNGRY,                     true)
-            .Pre(c.HAS_FOOD_IN_MY_INVENTORY,        false)
-            .Effect(c.HAS_FOOD_IN_MY_INVENTORY,     true)
-            .LinkedState(findFood),
 
             new GOAPAction(VillagerStatesNames.FIND_TOOL)
             .Pre(c.HAS_TOOL,        false)
@@ -299,6 +300,7 @@ public class Villager : LivingEntity
             new GOAPAction(VillagerStatesNames.FIND_WEAPON)
             .Pre(c.HAS_WEAPON,      false)
             .Pre(c.HAS_LIFE,        true)
+            .Pre(c.IS_IN_DANGER,    true)
             .Effect(c.HAS_WEAPON,   true)
             .Effect(c.HAS_TOOL,     false)
             .LinkedState(findWeaponState)
@@ -313,7 +315,7 @@ public class Villager : LivingEntity
     {
         if (myFsm != null) {
             myFsm.Active = false;
-            //myFsm.Clear();
+            myFsm.Clear();
         }
         myFsm = GoapPlanner.ConfigureFSM(plan, StartCoroutine);
         myFsm.Active = true;
@@ -387,7 +389,7 @@ public static class VillagerStatesNames
     public const string REST = "Rest";
     public const string EAT = "Eat";
     public const string HIDE_TO_HEAL = "Hide_To_Heal";
-    public const string HIDE_TO_REST = "Hide_To_Rest";
+    public const string HIDE = "Hide_To_Rest";
     public const string WORK = "Work";
     public const string COMBAT = "Combat";
     public const string FIND_FOOD = "FindFood";

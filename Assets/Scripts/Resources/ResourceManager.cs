@@ -11,6 +11,8 @@ public class ResourceManager : MonoBehaviour
     Dictionary<ResourceType, ResourceData> resources_modeldatabase = new Dictionary<ResourceType, ResourceData>();
     public ResourceData[] data;
 
+    public event Action OnChange;
+
     [SerializeField] UI_Resources ui;
 
     public int maxCapacity;
@@ -35,6 +37,21 @@ public class ResourceManager : MonoBehaviour
         }
     }
 
+    public void ForceEventChange()
+    {
+        OnChange?.Invoke();
+    }
+
+    public void SubscribeToChanges(Action _onChange)
+    {
+        OnChange += _onChange;
+    }
+
+    public Sprite GetSprite(ResourceType val)
+    {
+        return resources_modeldatabase[val].GetSprite();
+    }
+
     public bool SpendResourcePackage(Tuple<ResourceType, int>[] to_spend)
     {
         if (to_spend.Length <= 0 || resources_store.Count <= 0) return false;
@@ -48,6 +65,8 @@ public class ResourceManager : MonoBehaviour
         {
             RawSubstractElement(to_spend[i].Item1, to_spend[i].Item2);
         }
+
+        OnChange?.Invoke();
 
         return true;
     }
@@ -77,6 +96,8 @@ public class ResourceManager : MonoBehaviour
 
         ui.UpdateResource(type, resources_store[type].ToString());
         ui.AnimateRemoveResource(type);
+
+        OnChange?.Invoke();
     }
     bool SubstractElement(ResourceType type, int quantity)
     {
@@ -85,9 +106,13 @@ public class ResourceManager : MonoBehaviour
         {
             resources_store[type] -= quantity;
             if (resources_store[type] < 0) resources_store[type] = 0;
+            OnChange?.Invoke();
             return true;
         }
-        else return false;
+        else {
+            OnChange?.Invoke();
+            return false;
+        }
     }
 
     void InitializeResources()
@@ -108,6 +133,7 @@ public class ResourceManager : MonoBehaviour
         if (current == maxCapacity)
         {
             ui.AnimateCanNotAddResource(type);
+            OnChange?.Invoke();
             return false;
         }
         else
@@ -120,6 +146,7 @@ public class ResourceManager : MonoBehaviour
             resources_store[type] = current;
             ui.UpdateResource(type, current.ToString());
             ui.AnimateAddResource(type);
+            OnChange?.Invoke();
             return true;
         }
     }
@@ -131,6 +158,7 @@ public class ResourceManager : MonoBehaviour
         if (current < quantity)
         {
             ui.AnimateCanNotRemoveResource(type);
+            OnChange?.Invoke();
             return false;
         }
         else
@@ -140,6 +168,7 @@ public class ResourceManager : MonoBehaviour
             resources_store[type] = current;
             ui.UpdateResource(type, current.ToString());
             ui.AnimateRemoveResource(type);
+            OnChange?.Invoke();
             return true;
         }
     }

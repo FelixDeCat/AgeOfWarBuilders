@@ -45,6 +45,7 @@ namespace FSM
         {
             while (Active)
             {
+
                 CurrentState.UpdateLoop();
 
                 var nextState = CurrentState.ProcessInput();

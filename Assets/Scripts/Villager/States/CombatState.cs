@@ -5,6 +5,20 @@ using UnityEngine;
 
 public class CombatState : Villager_MonoStateBase
 {
+    NPC_CombatComponent combat_Component;
+
+    public override void Enter(IState from, Dictionary<string, object> transitionParameters = null)
+    {
+        Debug.Log("EnterCombat");
+        base.Enter(from, transitionParameters);
+        villager.Go_To_Combat();
+    }
+    public override Dictionary<string, object> Exit(IState to)
+    {
+        Debug.Log("ExitCombat");
+        return base.Exit(to);
+    }
+
     public override IState ProcessInput()
     {
         /*
@@ -19,27 +33,14 @@ public class CombatState : Villager_MonoStateBase
         {
             if (villager.LifeIsFull)
             {
-                if (villager.EnergyIsFull)
+                if (villager.EnergyIsFull && villager.MyHungryIsSatisfied)
                 {
-                    if (villager.MyHungryIsSatisfied)
-                    {
-                        return Logic_Try_To_Work();
-                    }
-                    else
-                    {
-                        return Logic_Try_To_EAT();
-                    }
-                }
-                else
-                {
-
-                    return Transitionate(VillagerStatesNames.REST);
+                    return Logic_Try_To_Work();
                 }
             }
             else
             {
-                return Transitionate(VillagerStatesNames.HEAL);
-
+                return Transitionate(VillagerStatesNames.HIDE);
             }
         }
         else
@@ -59,7 +60,7 @@ public class CombatState : Villager_MonoStateBase
                 }
                 else
                 {
-                    return Transitionate(VillagerStatesNames.HIDE_TO_REST);
+                    return Transitionate(VillagerStatesNames.HIDE);
                 }
             }
             else
@@ -67,6 +68,8 @@ public class CombatState : Villager_MonoStateBase
                 return Transitionate(VillagerStatesNames.HIDE_TO_HEAL);
             }
         }
+
+        return this;
 
     }
 

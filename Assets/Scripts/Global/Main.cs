@@ -27,7 +27,7 @@ using AgeOfWarBuilders.Entities;
         AudioManager.instance.GetSoundPool(ambient_day.name, AudioManager.SoundDimesion.TwoD, AudioGroups.MUSIC, ambient_day);
         AudioManager.instance.GetSoundPool(ambient_night.name, AudioManager.SoundDimesion.TwoD, AudioGroups.MUSIC, ambient_night);
 
-        PlayClip_AmbientDay();
+        //PlayClip_AmbientDay();
     }
 
     public static void PlayClip_Horde() => AudioManager.instance.PlaySound(instance.horde.name);

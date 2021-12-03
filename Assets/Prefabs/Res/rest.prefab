@@ -101,7 +101,7 @@ MonoBehaviour:
   action_type: 3
   myAnim: {fileID: 6354502761508922561}
   clip_execute: {fileID: 8300000, guid: 115e8b033ac7eb549b6d5389f4314d1c, type: 3}
-  isInstantOneShot: 0
+  isInstantOneShot: 1
   pos_to_action: {fileID: 6354502763235465272}
 --- !u!95 &6354502761508922561
 Animator:

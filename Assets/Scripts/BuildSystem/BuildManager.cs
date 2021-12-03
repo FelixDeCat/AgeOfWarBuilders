@@ -91,6 +91,7 @@ namespace AgeOfWarBuilders.BuildSystem
             Turn_ON_Canvas();
             ui.Open();
             PlayClip_Enter();
+            ResourceManager.instance.ForceEventChange();
 
         }
         void ExitToBuildMode()
@@ -237,8 +238,8 @@ namespace AgeOfWarBuilders.BuildSystem
                 if (currentObject_BuildChecker == null) return;
                 if (currentObject_BuildChecker.CanBuild && 
                     hit.collider.tag != "NotBuild" &&
-                    i_have_space_to_build /*&& 
-                    ResourceManager.instance.IHaveThisResourcePackage(resource)*/)
+                    i_have_space_to_build && 
+                    ResourceManager.instance.IHaveThisResourcePackage(resource))
                 {
                     //Arreglar esto del Pool
                     /*
@@ -246,9 +247,9 @@ namespace AgeOfWarBuilders.BuildSystem
                     var go = PlayObject_PoolManager.instance.Get(list_of_build_data[indexHorizontalCursor].model.type, GetPosRot().pos, GetPosRot().rot);
                     */
 
-                    /*
+                    
                     ResourceManager.instance.SpendResourcePackage(resource);
-                    */
+                    
 
                     TowerEntity go = GameObject.Instantiate(list_of_build_data[indexHorizontalCursor].model, this.transform);
                     go.transform.eulerAngles = GetPosRot().rot;
@@ -309,7 +310,12 @@ namespace AgeOfWarBuilders.BuildSystem
                     currentObject.transform.eulerAngles = euler_rot;
                 }
 
-                currentObject_BuildChecker.SetAuxiliarCanBuild(hit.collider.tag != "NotBuild" /*&& ResourceManager.instance.IHaveThisResourcePackage(resource)*/);
+                if (hit.collider != null)
+                    currentObject_BuildChecker.SetAuxiliarCanBuild(hit.collider.tag != "NotBuild" 
+                        && ResourceManager.instance.IHaveThisResourcePackage(resource));
+                else throw new System.Exception("No esta detectando nada");
+
+                
                 
             }
         }

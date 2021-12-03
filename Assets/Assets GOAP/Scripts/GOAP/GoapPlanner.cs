@@ -15,7 +15,7 @@ public class GoapPlanner
 
     Func<IEnumerable<GOAPState>> func = delegate { return default; };
 
-    public IEnumerable<GOAPAction> Run(GOAPState from, GOAPState to, IEnumerable<GOAPAction> actions, Func<IEnumerator, Coroutine> startCoroutine = null)
+    public IEnumerable<GOAPAction> Run(GOAPState from, GOAPState to, IEnumerable<GOAPAction> actions, Func<IEnumerator, Coroutine> startCoroutine = null, Action<string> debug = null)
     {
         _watchdog = _WATCHDOG_MAX;
 
@@ -23,18 +23,24 @@ public class GoapPlanner
 
         if (startCoroutine != null)
         {
-
             IEnumerable<GOAPState> states = default;
 
             startCoroutine(astar.Run(from,
                              state => Satisfies(state, to),
                              node => Explode(node, actions/*, ref _watchdog*/),
                              state => GetHeuristic(state, to),
-                             col => states = col
+                             col => states = col, debug
                              ));
 
-            if (states == null) return null;
-            else return CalculateGoap(states);
+            if (states == null)
+            {
+                
+                return null;
+            }
+            else
+            {
+                return CalculateGoap(states);
+            }
         }
         else
         {

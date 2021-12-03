@@ -59,7 +59,7 @@ public class GoapDebug : MonoBehaviour
 
     public static void Message(string msg) => instance.txtGoapActions.text = msg;
 
-    public static void RefreshState(GOAPState state) => instance.Refresh_State(state);
+    public static void RefreshState(GOAPState state) {  if(instance) instance.Refresh_State(state); }
     void Refresh_State(GOAPState state)
     {
         foreach (var s in state.values)
@@ -84,7 +84,7 @@ public class GoapDebug : MonoBehaviour
         villager.DebugChangeAState(s);
     }
 
-    public static void RefresPlan(IEnumerable<GOAPAction> actions) => instance.Refresh_Plan(actions);
+    public static void RefresPlan(IEnumerable<GOAPAction> actions) { if(instance) instance.Refresh_Plan(actions); }
     void Refresh_Plan(IEnumerable<GOAPAction> actions)
     {
         txtGoapActions.text = "\n";

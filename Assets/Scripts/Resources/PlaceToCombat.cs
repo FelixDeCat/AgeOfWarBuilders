@@ -8,6 +8,7 @@ public class PlaceToCombat : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log("Place to combat: " + gameObject.name);
         Initialize();
     }
 

@@ -37,7 +37,7 @@ public class EnemyBase_Chasing : EnemyBaseState
             if (timer < 1) timer = timer + 1 * Time.deltaTime;
             else
             {
-                own.CanNotUsePathFinder = false;
+                own.PlayPathFinder();
                 own.GoToPositionWithPathFinder(finder.Target.transform.position);
                 timer = 0;
             } 
@@ -47,7 +47,7 @@ public class EnemyBase_Chasing : EnemyBaseState
             debug_flag_ISFar = false;
             lookat.Look(Time.deltaTime);
 
-            own.CanNotUsePathFinder = true;
+            own.PlayPathFinder();
 
             if (own.QUERY_IsTooClose)
             {

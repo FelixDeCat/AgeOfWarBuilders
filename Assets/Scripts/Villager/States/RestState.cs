@@ -51,7 +51,7 @@ public class RestState : Villager_MonoStateBase
             }
             else
             {
-                return Transitionate(VillagerStatesNames.HIDE_TO_REST);
+                return Transitionate(VillagerStatesNames.HIDE);
             }
         }
     }

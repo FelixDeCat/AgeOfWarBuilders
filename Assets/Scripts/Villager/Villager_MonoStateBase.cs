@@ -32,25 +32,27 @@ public abstract class Villager_MonoStateBase : MonoBaseState
 
     protected IState Logic_Try_To_Combat()
     {
+        
         if (villager.inventory.HasWeapon)
         {
+            Debug.Log("voy a Combat");
             return Transitionate(VillagerStatesNames.COMBAT);
         }
         else
         {
+            Debug.Log("Voy a buscar arma");
             return Transitionate(VillagerStatesNames.FIND_WEAPON);
         }
     }
     protected IState Logic_Try_To_Work()
     {
+        Debug.Log("TRY TO WORK");
         if (villager.inventory.HasTool)
         {
-            Debug.Log("Tengo herramienta, me voy a trabajar");
             return Transitionate(VillagerStatesNames.WORK);
         }
         else
         {
-            Debug.Log("no Tengo herramienta, voy a buscar la herramienta");
             return Transitionate(VillagerStatesNames.FIND_TOOL);
         }
     }
@@ -131,7 +133,7 @@ public abstract class Villager_MonoStateBase : MonoBaseState
                 }
                 else
                 {
-                    return Transitions[VillagerStatesNames.HIDE_TO_REST];
+                    return Transitions[VillagerStatesNames.HIDE];
                 }
             }
             else

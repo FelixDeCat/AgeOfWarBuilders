@@ -56,7 +56,7 @@ public class AStar<T> {
                              Func<T, bool> isGoal,
                              Func<T, IEnumerable<WeightedNode<T>>> explode,
                              Func<T, float> getHeuristic,
-                             Action<IEnumerable<T>> result)
+                             Action<IEnumerable<T>> result, Action<string> debug = null)
     {
 
         var queue = new PriorityQueue<T>();
@@ -72,7 +72,6 @@ public class AStar<T> {
 
         while (!queue.IsEmpty)
         {
-            
 
             var dequeued = queue.Dequeue();
             visited.Add(dequeued.Element);
@@ -80,13 +79,14 @@ public class AStar<T> {
             if (isGoal(dequeued.Element))
             {
                 result(CommonUtils.CreatePath(parents, dequeued.Element));
-                yield return null;
+                yield break;
             }
 
-            if (stopwatch.ElapsedMilliseconds >= 1f / 30f)
+            if (stopwatch.ElapsedMilliseconds >= 1f / 60f * 1000f)
             {
+
                 stopwatch.Restart();
-                yield break;
+                yield return null;
             }
 
 

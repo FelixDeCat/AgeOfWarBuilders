@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using System;
-public enum Grids { entity, thread, node, resource }
+public enum Grids { entity, thread, node, resource, enemy }
 public class GridManager : MonoBehaviour
 {
     public static GridManager instance;

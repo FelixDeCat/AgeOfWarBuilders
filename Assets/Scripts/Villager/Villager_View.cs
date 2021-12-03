@@ -25,6 +25,15 @@ public class Villager_View : MonoBehaviour
         myAnimator.SetBool("farm", val);
     }
 
+    public void ANIM_SetAttack(bool value)
+    {
+        myAnimator.SetBool("attack", value);
+    }
+
+    public void PLAY_ANIM_Attack()
+    {
+        myAnimator.Play("hit");
+    }
 
     public void PLAY_ANIM_Walk()
     {

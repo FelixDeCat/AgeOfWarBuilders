@@ -49,12 +49,13 @@ public class PlaceFinder : MonoBehaviour
         current = null;
         CalculatePlace();
         villager.GoToPositionWithPathFinder(current.Position_to_Action.position);
-        villager.Callback_IHaveArrived(() => villager.LerpPosRot(current.Position_to_Action, BeginExecution));
+        villager.Callback_IHaveArrived(() => { villager.LerpPosRot(current.Position_to_Action, BeginExecution); villager.view.PLAY_ANIM_Idle(); });
     }
 
     public void StopWork()
     {
-        current = null;
+        active = false;
+        timer = 0;
         EndHarvest();
     }
 
@@ -74,18 +75,23 @@ public class PlaceFinder : MonoBehaviour
 
     public void BeginExecution()
     {
+
+
         if (execute) return;
 
-        if (current.isInstantOneShot)
-        {
-            Exe.Invoke();
-            current.OnExecuted();
-        }
-        else
-        {
-            execute = true;
-            timer = 0;
-        }
+        Exe.Invoke();
+        current.OnExecuted();
+
+        //if (current.isInstantOneShot)
+        //{
+        //    Exe.Invoke();
+        //    current.OnExecuted();
+        //}
+        //else
+        //{
+        //    execute = true;
+        //    timer = 0;
+        //}
     }
     public void EndHarvest()
     {
@@ -93,25 +99,25 @@ public class PlaceFinder : MonoBehaviour
         timer = 0;
     }
 
-    private void Update()
-    {
-        if (!active) return;
+    //private void Update()
+    //{
+    //    if (!active) return;
 
-        if (execute)
-        {
-            if (timer < cd_harvest)
-            {
-                timer = timer + 1 * Time.deltaTime;
-            }
-            else
-            {
-                if (current)
-                {
-                    Exe.Invoke();
-                    current.OnExecuted();
-                    timer = 0;
-                }
-            }
-        }
-    }
+    //    if (execute)
+    //    {
+    //        if (timer < cd_harvest)
+    //        {
+    //            timer = timer + 1 * Time.deltaTime;
+    //        }
+    //        else
+    //        {
+    //            if (current)
+    //            {
+    //                Exe.Invoke();
+    //                current.OnExecuted();
+    //                timer = 0;
+    //            }
+    //        }
+    //    }
+    //}
 }

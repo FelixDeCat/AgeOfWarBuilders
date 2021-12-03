@@ -6,8 +6,10 @@ using System;
 public class WalkingEntity : PlayObject
 {
     [Header("--- Walking Entity Vars ---")]
-    [SerializeField] public bool CanNotUsePathFinder = false;
+    [SerializeField] protected bool block_pathfinder_execution = false;
     protected bool executeAStar;
+    public void StopPathFinder() => block_pathfinder_execution = true;
+    public void PlayPathFinder() => block_pathfinder_execution = false;
 
     //IA2-P1 [PathFinding]
     [SerializeField] protected PathFinder rig_path_finder;
@@ -55,7 +57,7 @@ public class WalkingEntity : PlayObject
             }
         }
 
-        if (CanNotUsePathFinder) return;
+        if (block_pathfinder_execution) return;
         if (executeAStar) { rig_path_finder.Refresh(); }
     }
 

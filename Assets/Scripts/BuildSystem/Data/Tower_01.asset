@@ -21,4 +21,4 @@ MonoBehaviour:
     type: 3}
   requirements:
   - resource: 1
-    Cant: 1
+    Cant: 10

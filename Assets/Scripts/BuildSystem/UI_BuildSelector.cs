@@ -12,6 +12,8 @@ public class UI_BuildSelector : UI_Base
     Action Callback_OnEndCloseAnimation;
     Action Callback_OnEndOpenAnimation;
 
+    [SerializeField] ui_item_recipe ui_item_recipe_model;
+
     public void Configurate(Func<List<BuildData>> _data, Action _OnEndOpenAnimation, Action _OnEndCloseAnimation)
     {
         GetData = _data;
@@ -35,11 +37,13 @@ public class UI_BuildSelector : UI_Base
                 //creo 1 nuevo
                 var go = GameObject.Instantiate(model, parent_to_instanciate);
                 go.SetImage(col[i].item_image);
+                go.SetRequirements(col[i].requirements, ui_item_recipe_model);
                 items.Add(go);
             }
             else
             {
                 items[i].SetImage(col[i].item_image);
+                items[i].Refresh();
                 //solo actualizo
             }
         }

@@ -7,6 +7,7 @@ public class CircleQuery : QueryComponent, IQuery {
     public float radius = 5f;
     public IEnumerable<IGridEntity> selected = new List<IGridEntity>();
     [SerializeField] bool drawGizmos;
+    [SerializeField] Color gizmo_color = Color.yellow;
 
     protected override void OnConfigure(Transform target)
     {
@@ -15,6 +16,8 @@ public class CircleQuery : QueryComponent, IQuery {
 
     public override IEnumerable<IGridEntity> Query()
     {
+        if (myGrid == null) throw new System.Exception("Este Query no fue Configurado");
+
         return myGrid.Query(
                                 target.position - new Vector3(radius, 0, radius),
                                 target.position + new Vector3(radius, 0, radius),
@@ -33,7 +36,7 @@ public class CircleQuery : QueryComponent, IQuery {
 
     void OnDrawGizmos() {
         if (!drawGizmos) return;
-        Gizmos.color = Color.yellow;
+        Gizmos.color = gizmo_color;
         Gizmos.DrawWireSphere(transform.transform.position, radius);
     }
 }
