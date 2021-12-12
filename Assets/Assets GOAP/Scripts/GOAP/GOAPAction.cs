@@ -3,6 +3,13 @@ using FSM;
 using UnityEngine;
 using System;
 
+public class WorldState
+{
+    public int gold;
+    public float life;
+    public float energy;
+}
+
 public class GOAPAction {
 
     public Dictionary<string, object> preconditions { get; private set; }
@@ -10,6 +17,11 @@ public class GOAPAction {
     public string                   name          { get; private set; }
     public float                    cost          { get; private set; }
     public IState                   linkedState   { get; private set; }
+
+    Func<int, bool> asd;
+
+    public Dictionary<string, Func<WorldState, bool>> preconditions_by_worldstate;
+    public Dictionary<string, Action<WorldState>> effects_by_worldstate;
 
 
     public GOAPAction(string name) {
@@ -35,9 +47,21 @@ public class GOAPAction {
         return this;
     }
 
+    public GOAPAction Pre(string s, Func<WorldState, bool> func)
+    {
+        preconditions_by_worldstate[s] = func;
+        return this;
+    }
+
 
     public GOAPAction Effect(string s, object value) {
         effects[s] = value;
+        return this;
+    }
+
+    public GOAPAction Effect(string s, Action<WorldState> act)
+    {
+        effects_by_worldstate[s] = act;
         return this;
     }
 

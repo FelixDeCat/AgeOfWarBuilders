@@ -8,54 +8,60 @@ using TMPro;
 
 public class Villager : LivingEntity
 {
-    [SerializeField] VillagerProfesion profession;
-    float timer_recalculate_work_station;
-
+    #region variables_states
     [Header("States")]
-    //[SerializeField] IdleState idleState;
-    //[SerializeField] RestState reststate;
     [SerializeField] WorkState workState;
     [SerializeField] HideState hideRestState;
-    //[SerializeField] HideState hideHealState;
-   // [SerializeField] EatState eatState;
     [SerializeField] FindToolState findToolState;
     [SerializeField] FindWeaponState findWeaponState;
     [SerializeField] CombatState combatState;
-   // [SerializeField] FindFood findFood;
-   // [SerializeField] HealState healstate;
+    #endregion
+    #region variables_goap
     FiniteStateMachine myFsm;
     GOAPState currentState;
+    GoapPlanner planner = new GoapPlanner();
+    public bool HasWork = true;
+    public bool inDanger = false;
     [SerializeField] internal GOAPVillagerValueConditions villager_values_conditions;
-
-    [Header("Components")]
-    public GenericInteractor interactor;
+    #endregion
+    #region variables_health
     [SerializeField] GenericEnergyComponent Energy;
     [SerializeField] GenericEnergyComponent Hungry;
+    #endregion
+    #region variables_work
+    [SerializeField] VillagerProfesion profession;
+    float timer_recalculate_work_station;
+    public GenericInteractor interactor;
     [SerializeField] public VillagerInventory inventory;
     [SerializeField] ResourceHarvester harvester;
     [SerializeField] PlaceFinder placefinder;
+    #endregion
+    #region variables_combat
     [SerializeField] PlaceFinderCombat placefinderCombat;
     [SerializeField] NPC_CombatComponent combatComponent;
-    public GridComponent MyGridComponentEntity;
+    #endregion
+    #region variables_view
     public Villager_View view;
+    #endregion
+    #region variables_world_threat
     Threat mythreat;
-
+    #endregion
+    #region variables_grid
+    public GridComponent MyGridComponentEntity;
+    #endregion
+    #region variables_steering
     public SmoothLookAt smoothLookAt;
     public FollowComponent follow_component;
-
-    GoapPlanner planner = new GoapPlanner();
-
-    public bool HasWork = true;
-    public bool inDanger = false;
-
+    #endregion
+    #region variables_debugging
     [Header("Debugs")]
     [SerializeField] string villagerName = "villager";
     public string VillagerName { get => villagerName; set { villagerName = value; villager_text_name.text = value; } }
     [SerializeField] TextMeshProUGUI villager_text_name;
     [SerializeField] TextMeshProUGUI debug_state;
+    #endregion
 
     #region Init / DeInit / Tick
-
     protected override void OnInitialize()
     {
         base.OnInitialize();
@@ -95,7 +101,6 @@ public class Villager : LivingEntity
 
         combatComponent.BeginSensor();
     }
-
     protected override void OnDeinitialize()
     {
         base.OnDeinitialize();
@@ -116,7 +121,8 @@ public class Villager : LivingEntity
             Replan();
         }
         // if (Input.GetKeyDown(KeyCode.L)) placefinder.FindPlace();
-        if (Input.GetKeyDown(KeyCode.Y)) {
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
             inDanger = !inDanger;
             Replan();
         }
@@ -130,9 +136,8 @@ public class Villager : LivingEntity
         MyGridComponentEntity.Grid_RefreshComponent();
         mythreat.Tick(DeltaTime);
     }
-
     #endregion
-
+    #region EnemySensor
     void EnemyNear()
     {
         inDanger = true;
@@ -144,7 +149,8 @@ public class Villager : LivingEntity
         Replan();
         view.PLAY_ANIM_Walk();
     }
-
+    #endregion
+    #region Action Orders
     public void StopAction()
     {
         Debug.Log("Stop Action");
@@ -152,7 +158,6 @@ public class Villager : LivingEntity
         placefinder.ReconfigureExecution(() => { });
         view.PLAY_ANIM_Walk();
     }
-
     public void Go_To_Combat()
     {
         harvester.StopWork();
@@ -161,13 +166,12 @@ public class Villager : LivingEntity
         Debug.Log("GOTOCOMBAT");
         combatComponent.GoToAttack();
     }
-
     public void Go_To_Rest()
     {
         placefinder.ReconfigureExecution(() => { Energy.AddEnergy(100); RemoveHungry(100); Replan(); inventory.DropWeaponAndTool(); Replan(); view.PLAY_ANIM_Walk(); });
         placefinder.ReconfigurePredicate(x => x.action_type == ActionPlaces.rest);
         placefinder.Go_To_Execute_Action();
-        
+
     }
     public void Go_To_Take_Weapon()
     {
@@ -197,9 +201,8 @@ public class Villager : LivingEntity
         placefinder.ReconfigurePredicate(x => x.action_type == ActionPlaces.heal);
         placefinder.Go_To_Execute_Action();
     }
-
+    #endregion
     #region GOAP
-
     [System.Serializable]
     internal class GOAPVillagerValueConditions
     {
@@ -207,26 +210,13 @@ public class Villager : LivingEntity
         [SerializeField] internal int low_energy_min = 20;
         [SerializeField] internal int low_hungry_min = 20;
     }
-
     public void Replan()
     {
-
-        //var planner = new GoapPlanner();
         GOAPState from = From();
         GOAPState to = To();
         List<GOAPAction> actions = new List<GOAPAction>();
         actions = Actions();
         var plan = planner.Run(from, to, actions, StartCoroutine, x => Debug.Log(x));
-
-        //if (plan != null)
-        //{
-        //    foreach (var a in plan)
-        //    {
-        //        Debug.Log("GoapAction: " + a.name);
-        //    }
-        //}
-        
-
         DebugGOAP(plan);
     }
 
@@ -257,8 +247,6 @@ public class Villager : LivingEntity
     {
         return new List<GOAPAction>
         {
-            
-
             new GOAPAction(VillagerStatesNames.HIDE)
             .Pre(c.HAS_ENERGY,      false)
             .Effect(c.HAS_ENERGY,   true)
@@ -290,7 +278,6 @@ public class Villager : LivingEntity
             .Effect(c.I_AM_HUNGRY,  true)
             .LinkedState(combatState),
 
-
             new GOAPAction(VillagerStatesNames.FIND_TOOL)
             .Pre(c.HAS_TOOL,        false)
             .Effect(c.HAS_TOOL,     true)
@@ -304,16 +291,15 @@ public class Villager : LivingEntity
             .Effect(c.HAS_WEAPON,   true)
             .Effect(c.HAS_TOOL,     false)
             .LinkedState(findWeaponState)
-
         };
     }
 
     #endregion
-
     #region SM
     private void ConfigureFsm(IEnumerable<GOAPAction> plan)
     {
-        if (myFsm != null) {
+        if (myFsm != null)
+        {
             myFsm.Active = false;
             myFsm.Clear();
         }
@@ -321,7 +307,6 @@ public class Villager : LivingEntity
         myFsm.Active = true;
     }
     #endregion
-
     #region Energy and Hungry
 
     ////////////////////////////////////////////////////
@@ -341,7 +326,6 @@ public class Villager : LivingEntity
     public bool VeryHungry() => Hungry.Energy > villager_values_conditions.low_hungry_min;
 
     #endregion
-
     #region Profession
     public void ConfigureProfession(VillagerProfesion _profesion)
     {
@@ -361,7 +345,6 @@ public class Villager : LivingEntity
         harvester.StopWork();
     }
     #endregion
-
     #region Axiliars DEBUGs
     void DebugGOAP(IEnumerable<GOAPAction> plan)
     {
@@ -376,7 +359,6 @@ public class Villager : LivingEntity
     /// <param name="val"></param>
     public void DebugChangeAState(string val)
     {
-        //currentState.values[val] = !currentState.values[val];
         Replan();
     }
     #endregion
@@ -400,7 +382,6 @@ public static class WorldValues
 {
     public const string ENERGY = "Energy";
 }
-
 public static class VillagerCond
 {
     public const string GAME_WIN = "GameWin";

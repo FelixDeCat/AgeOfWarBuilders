@@ -34,7 +34,7 @@ public class GoapPlanner
 
             if (states == null)
             {
-                
+
                 return null;
             }
             else
@@ -73,14 +73,6 @@ public class GoapPlanner
 
     private IEnumerable<GOAPAction> CalculateGoap(IEnumerable<GOAPState> sequence)
     {
-
-        foreach (var act in sequence.Skip(1))
-        {
-            //Debug.Log(act);
-        }
-
-        //Debug.Log("WATCHDOG " + _watchdog);
-
         return sequence.Skip(1).Select(x => x.generatingAction);
     }
 
@@ -107,19 +99,14 @@ public class GoapPlanner
     private static float GetHeuristic(GOAPState from, GOAPState goal) => goal.values.Count(kv => !kv.In(from.values));
     private static bool Satisfies(GOAPState state, GOAPState to) => to.values.All(kv => kv.In(state.values));
 
-    private static IEnumerable<WeightedNode<GOAPState>> Explode(
-                                                                    GOAPState node,
-                                                                    IEnumerable<GOAPAction> actions
-                                                                    /*ref int watchdog*/)
+    private static IEnumerable<WeightedNode<GOAPState>> Explode(GOAPState node, IEnumerable<GOAPAction> actions)
     {
-        //if (watchdog == 0) return Enumerable.Empty<WeightedNode<GOAPState>>();
-        //watchdog--;
 
         return actions
 
             //filtro todas las acciones que su precondicion coincida con el del node (current state)
             .Where(x => x.preconditions.All(v => node.values.Contains(v)))
-                    
+
             //creo una lista con GOAPStates y sus pesos
             .Aggregate(new List<WeightedNode<GOAPState>>(), (possibleList, current_action) =>
                       {
