@@ -2,11 +2,11 @@
 using System.Linq;
 
 public static class DictionaryExtensions {
-    public static bool In<T>(this T x, HashSet<T> set) {
+    public static bool IsInTheHashSet<T>(this T x, HashSet<T> set) {
         return set.Contains(x);
     }
 
-    public static bool In<K, V>(this KeyValuePair<K, V> x, Dictionary<K, V> dict) {
+    public static bool IsInTheDictionary<K, V>(this KeyValuePair<K, V> x, Dictionary<K, V> dict) {
         return dict.Contains(x);
     }
 

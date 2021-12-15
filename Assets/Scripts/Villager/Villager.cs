@@ -22,7 +22,9 @@ public class Villager : LivingEntity
     GoapPlanner planner = new GoapPlanner();
     public bool HasWork = true;
     public bool inDanger = false;
-    [SerializeField] internal GOAPVillagerValueConditions villager_values_conditions;
+    [SerializeField] internal GOAPVillagerValueConditions queryvalues;
+    public const int EMPTY = 0;
+    public const int FILL = 100;
     #endregion
     #region variables_health
     [SerializeField] GenericEnergyComponent Energy;
@@ -212,6 +214,7 @@ public class Villager : LivingEntity
     }
     public void Replan()
     {
+        Debug.Log("REPLANEANDO");
         GOAPState from = From();
         GOAPState to = To();
         List<GOAPAction> actions = new List<GOAPAction>();
@@ -223,22 +226,35 @@ public class Villager : LivingEntity
     #region Configure From-To States
     GOAPState From()
     {
-        var from = new GOAPState();
-        from.values[c.GAME_WIN] = false;
-        from.values[c.I_AM_HUNGRY] = Hungry.Energy > villager_values_conditions.low_hungry_min;
-        from.values[c.HAS_ENERGY] = Energy.Energy > villager_values_conditions.low_energy_min;
-        from.values[c.HAS_LIFE] = HP > villager_values_conditions.low_life_min;
-        from.values[c.HAS_WORK] = HasWork;
-        from.values[c.IS_IN_DANGER] = inDanger;
-        from.values[c.HAS_FOOD_IN_MY_INVENTORY] = inventory.HasFood;
-        from.values[c.HAS_TOOL] = inventory.HasTool;
-        from.values[c.HAS_WEAPON] = inventory.HasWeapon;
+        var from = new GOAPState("FROM");
+        
+        //from.values[c.GAME_WIN] = false;
+        //from.values[c.I_AM_HUNGRY] = Hungry.Energy > queryvalues.low_hungry_min;
+        //from.values[c.HAS_ENERGY] = Energy.Energy > queryvalues.low_energy_min;
+        //from.values[c.HAS_LIFE] = HP > queryvalues.low_life_min;
+        //from.values[c.HAS_WORK] = HasWork;
+        //from.values[c.IS_IN_DANGER] = inDanger;
+        ////from.values[c.HAS_FOOD_IN_MY_INVENTORY] = inventory.HasFood;
+        //from.values[c.HAS_TOOL] = inventory.HasTool;
+        //from.values[c.HAS_WEAPON] = inventory.HasWeapon;
+
+        from.currentState.Gamewin = false;
+        from.currentState.Hungry = Hungry.Energy;
+        from.currentState.Energy = Energy.Energy;
+        from.currentState.Life = HP;
+        from.currentState.HasWork = HasWork;
+        from.currentState.IsInDanger = inDanger;
+        from.currentState.Hastool = inventory.HasTool;
+        from.currentState.HasWeapon = inventory.HasWeapon;
+
+
         return from;
     }
     GOAPState To()
     {
-        var to = new GOAPState();
-        to.values[c.GAME_WIN] = true;
+        var to = new GOAPState("TO");
+        to.currentState.Gamewin = true;
+        //to.values[c.GAME_WIN] = true;
         return to;
     }
     #endregion
@@ -247,50 +263,104 @@ public class Villager : LivingEntity
     {
         return new List<GOAPAction>
         {
+            #region HIDE
+
             new GOAPAction(VillagerStatesNames.HIDE)
-            .Pre(c.HAS_ENERGY,      false)
-            .Effect(c.HAS_ENERGY,   true)
-            .Effect(c.I_AM_HUNGRY,  false)
+
+            .PreW(c.HAS_ENERGY,         x => x.Energy < queryvalues.low_energy_min)
+            .EffectW(c.HAS_ENERGY,      x => x.Energy = FILL)
+            .EffectW(c.I_AM_HUNGRY,     x => x.Hungry = EMPTY)
+
             .LinkedState(hideRestState),
-
+            #endregion
+            #region WORK
             new GOAPAction(VillagerStatesNames.WORK)
-            .Pre(c.HAS_WORK,            true)
-            .Pre(c.HAS_ENERGY,          true)
-            .Pre(c.HAS_LIFE,            true)
-            .Pre(c.HAS_TOOL,            true)
-            .Pre(c.IS_IN_DANGER,        false)
-            .Effect(c.HAS_WORK,         false)
-            .Effect(c.GAME_WIN,         true)
-            .Effect(c.HAS_ENERGY,       false)
-            .Effect(c.I_AM_HUNGRY,      true)
+
+            //.Pre(c.HAS_WORK,            true)
+            //.Pre(c.HAS_ENERGY,          true)
+            //.Pre(c.HAS_LIFE,            true)
+            //.Pre(c.HAS_TOOL,            true)
+            //.Pre(c.IS_IN_DANGER,        false)
+            //.Effect(c.HAS_WORK,         false)
+            //.Effect(c.GAME_WIN,         true)
+            //.Effect(c.HAS_ENERGY,       false)
+            //.Effect(c.I_AM_HUNGRY,      true)
+
+            .PreW(c.HAS_WORK,       x => x.HasWork)
+            .PreW(c.HAS_ENERGY,     x => x.Energy > queryvalues.low_energy_min)
+            .PreW(c.HAS_LIFE,       x => x.Life > queryvalues.low_life_min)
+            .PreW(c.HAS_TOOL,       x => x.Hastool)
+            .PreW(c.IS_IN_DANGER,   x => !x.IsInDanger)
+            .EffectW(c.HAS_WORK,    x => x.HasWork = false)
+            .EffectW(c.GAME_WIN,    x => x.Gamewin = true)
+            .EffectW(c.HAS_ENERGY,  x => x.Energy = EMPTY)
+            .EffectW(c.I_AM_HUNGRY, x => x.Hungry = FILL)
+
             .LinkedState(workState),
-
+            #endregion
+            #region COMBAT
             new GOAPAction(VillagerStatesNames.COMBAT)
-            .Pre(c.IS_IN_DANGER,    true)
-            .Pre(c.HAS_WEAPON,      true)
-            .Pre(c.HAS_ENERGY,      true)
-            .Pre(c.HAS_LIFE,        true)
-            .Effect(c.IS_IN_DANGER, false)
-            .Effect(c.HAS_ENERGY,   false)
-            .Effect(c.HAS_LIFE,     false)
-            .Effect(c.HAS_TOOL,     false)
-            .Effect(c.GAME_WIN,     true)
-            .Effect(c.I_AM_HUNGRY,  true)
+
+            //.Pre(c.IS_IN_DANGER,    true)
+            //.Pre(c.HAS_WEAPON,      true)
+            //.Pre(c.HAS_ENERGY,      true)
+            //.Pre(c.HAS_LIFE,        true)
+            //.Effect(c.IS_IN_DANGER, false)
+            //.Effect(c.HAS_ENERGY,   false)
+            //.Effect(c.HAS_LIFE,     false)
+            //.Effect(c.HAS_TOOL,     false)
+            //.Effect(c.GAME_WIN,     true)
+            //.Effect(c.I_AM_HUNGRY,  true)
+
+            .PreW(c.IS_IN_DANGER,   x => x.IsInDanger)
+            .PreW(c.HAS_WEAPON,     x => x.HasWeapon)
+            .PreW(c.HAS_ENERGY,     x => x.Energy > queryvalues.low_energy_min)
+            .PreW(c.HAS_LIFE,       x => x.Life > queryvalues.low_life_min)
+            .EffectW(c.IS_IN_DANGER, x => x.IsInDanger = false)
+            .EffectW(c.HAS_ENERGY,   x => x.Energy = EMPTY)
+            .EffectW(c.HAS_LIFE,     x => x.Life = 1)
+            .EffectW(c.HAS_TOOL,     x => x.Hastool = false)
+            .EffectW(c.GAME_WIN,     x => x.Gamewin = true)
+            .EffectW(c.I_AM_HUNGRY,  x => x.Hungry = FILL)
+
             .LinkedState(combatState),
-
+            #endregion
+            #region FIND TOOL
             new GOAPAction(VillagerStatesNames.FIND_TOOL)
-            .Pre(c.HAS_TOOL,        false)
-            .Effect(c.HAS_TOOL,     true)
-            .Effect(c.HAS_WEAPON,   false)
-            .LinkedState(findToolState),
 
+            //.Pre(c.HAS_TOOL,        false)
+            
+
+            //.Effect(c.HAS_TOOL,     true)
+            //.Effect(c.HAS_WEAPON,   false)
+
+            .PreW(c.HAS_TOOL,       x => !x.Hastool)
+            .EffectW(c.HAS_TOOL,    x => x.Hastool = true)
+            .EffectW(c.HAS_WEAPON,  x => x.HasWeapon = false)
+
+            .LinkedState(findToolState),
+            #endregion
+            #region FIND WEAPON
             new GOAPAction(VillagerStatesNames.FIND_WEAPON)
-            .Pre(c.HAS_WEAPON,      false)
-            .Pre(c.HAS_LIFE,        true)
-            .Pre(c.IS_IN_DANGER,    true)
-            .Effect(c.HAS_WEAPON,   true)
-            .Effect(c.HAS_TOOL,     false)
+
+            //.Pre(c.HAS_WEAPON,      false)
+            //.Pre(c.HAS_LIFE,        true)
+            //.Pre(c.IS_IN_DANGER,    true)
+
+            
+
+            //.Effect(c.HAS_WEAPON,   true)
+            //.Effect(c.HAS_TOOL,     false)
+
+            .PreW(c.HAS_WEAPON,      x => !x.HasWeapon)
+            .PreW(c.HAS_LIFE,        x => x.Life > queryvalues.low_life_min)
+            .PreW(c.IS_IN_DANGER,    x => x.IsInDanger)
+            .EffectW(c.HAS_WEAPON,   x => x.HasWeapon = true)
+            .EffectW(c.HAS_TOOL,     x => x.Hastool = false)
+
+
             .LinkedState(findWeaponState)
+            #endregion
         };
     }
 
@@ -315,7 +385,7 @@ public class Villager : LivingEntity
     public void AddEnergy(int val) => Energy.AddEnergy(val);
     public void SpendEnergy(int val) => Energy.SpendEnergy(val);
     public bool EnergyIsFull => Energy.EnergyIsFull();
-    public bool IAmVeryTired => Energy.Energy < villager_values_conditions.low_energy_min;
+    public bool IAmVeryTired => Energy.Energy < queryvalues.low_energy_min;
 
     ////////////////////////////////////////////////////
     //// HUNGRY
@@ -323,7 +393,7 @@ public class Villager : LivingEntity
     public void RemoveHungry(int val) => Hungry.SpendEnergy(val);
     public void AddHungry(int val) => Hungry.AddEnergy(val);
     public bool MyHungryIsSatisfied => Hungry.EnergyEmpty();
-    public bool VeryHungry() => Hungry.Energy > villager_values_conditions.low_hungry_min;
+    public bool VeryHungry() => Hungry.Energy > queryvalues.low_hungry_min;
 
     #endregion
     #region Profession

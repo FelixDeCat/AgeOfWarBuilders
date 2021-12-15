@@ -152,7 +152,6 @@ public class ResourceHarvester : MonoBehaviour
     private void Update()
     {
         if (!active) return;
-        Debug.Log("Ejecutando el RESOURCE HARVESTER");
 
         if (in_harvest)
         {

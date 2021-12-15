@@ -1,29 +1,45 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System;
 
 public class GOAPState
 {
     public Dictionary<string, object> values = new Dictionary<string, object>();
+    public WorldState currentState;
     public GOAPAction generatingAction = null;
     public int step = 0;
 
+    public string myNameState;
+
     #region CONSTRUCTOR
-    public GOAPState(GOAPAction gen = null)
+    public GOAPState(string _myNameState = "default")
     {
-        generatingAction = gen;
+        currentState = new WorldState();
+        //generatingAction = gen;
+        myNameState = _myNameState;
     }
 
-    public GOAPState(GOAPState source, GOAPAction gen = null)
+    public GOAPState(GOAPState source, string _myNameState = "default")//NUEVO CONSTRUCTOR
     {
-        foreach (var elem in source.values)
-        {
-            if (values.ContainsKey(elem.Key))
-                values[elem.Key] = elem.Value;
-            else
-                values.Add(elem.Key, elem.Value);
-        }
-        generatingAction = gen;
+        //directamente piso todo el objeto WorldState, esto se va a usar para crear nuevos estados con la refe del estado del mundo anterior
+        currentState = source.currentState;
+        myNameState = _myNameState;
     }
+
+    public void RefreshStateWithNewEffects(Dictionary<string, Action<WorldState>> new_values)
+    {
+        foreach(var values in new_values)
+        {
+            new_values[values.Key].Invoke(currentState);
+        }
+    }
+
+    public GOAPState(WorldState current_state)
+    {
+        currentState = current_state;
+        generatingAction = null;
+    }
+
     #endregion
 
     public override bool Equals(object obj)
@@ -32,8 +48,8 @@ public class GOAPState
         var result =
             other != null
             && other.generatingAction == generatingAction       //Very important to keep! TODO: REVIEW
-            && other.values.Count == values.Count
-            && other.values.All(kv => kv.In(values));
+            && other.currentState.register.Count == currentState.register.Count
+            && other.currentState.register.All(kv => kv.IsInTheDictionary(currentState.register));
         //&& other.values.All(kv => values.Contains(kv));
         return result;
     }
@@ -50,7 +66,7 @@ public class GOAPState
         //return hashCode;
 
         //Heuristic count+first value hash multiplied by polynomial primes
-        return values.Count == 0 ? 0 : 31 * values.Count + 31 * 31 * values.First().GetHashCode();
+        return currentState.register.Count == 0 ? 0 : 31 * currentState.register.Count + 31 * 31 * currentState.register.First().GetHashCode();
     }
 
     public override string ToString()
@@ -60,6 +76,6 @@ public class GOAPState
         {
             str += $"{kv.Key:12} : {kv.Value}\n";
         }
-        return "--->" + (generatingAction != null ? generatingAction.name : "NULL") + "\n" + str;
+        return "--->" + (generatingAction != null ? "<b>"+generatingAction.name : "<b>NULL") + "</b>" + str;
     }
 }

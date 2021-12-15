@@ -57,7 +57,7 @@ public class GoapDebug : MonoBehaviour
     //    }
     //}
 
-    public static void Message(string msg) => instance.txtGoapActions.text = msg;
+    public static void Message(string msg) { if(instance) instance.txtGoapActions.text = msg; }
 
     public static void RefreshState(GOAPState state) {  if(instance) instance.Refresh_State(state); }
     void Refresh_State(GOAPState state)

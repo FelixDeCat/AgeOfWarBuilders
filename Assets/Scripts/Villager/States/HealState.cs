@@ -22,7 +22,7 @@ public class HealState : Villager_MonoStateBase
             }
             else
             {
-                if (villager.HP > villager.villager_values_conditions.low_life_min)
+                if (villager.HP > villager.queryvalues.low_life_min)
                 {
                     return Logic_Try_To_Work();
                 }

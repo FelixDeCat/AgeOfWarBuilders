@@ -85,7 +85,7 @@ public class NPC_CombatComponent : MonoBehaviour
 
         if (enem == null)
         {
-            Debug.Log("No Hay enemigos cerca");
+            //Debug.Log("No Hay enemigos cerca");
             beginCombat = false;
             current = null;
             if (combat_has_started)
@@ -96,7 +96,7 @@ public class NPC_CombatComponent : MonoBehaviour
         }
         else
         {
-            Debug.Log("Encontre un enemigo");
+           // Debug.Log("Encontre un enemigo");
             if (enem != current)
             {
                 current = enem;
