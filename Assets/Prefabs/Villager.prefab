@@ -478,7 +478,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d93d7f239bac4894d9a2df7a895dff1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
+  type: 6
   spawn_logic: 0
   block_pathfinder_execution: 0
   rig_path_finder: {fileID: 8772817146380024567}
@@ -486,30 +486,30 @@ MonoBehaviour:
   lerp_pos_time: 1
   initial_hp: 100
   ui_life: {fileID: 956063979186326067}
-  profession: 1
   workState: {fileID: 8446059461930651132}
   hideRestState: {fileID: 8446059461388386516}
   findToolState: {fileID: 8446059461668933633}
   findWeaponState: {fileID: 8446059460504736222}
   combatState: {fileID: 8446059462450185128}
-  villager_values_conditions:
+  HasWork: 1
+  inDanger: 0
+  queryvalues:
     low_life_min: 20
     low_energy_min: 20
     low_hungry_min: 20
-  interactor: {fileID: 956063979351685069}
   Energy: {fileID: 8446059460918142693}
   Hungry: {fileID: 8446059462225869533}
+  profession: 1
+  interactor: {fileID: 956063979351685069}
   inventory: {fileID: 956063979351685058}
   harvester: {fileID: 956063979351685059}
   placefinder: {fileID: 956063979351685068}
   placefinderCombat: {fileID: 956063979351685071}
   combatComponent: {fileID: 304800871718667341}
-  MyGridComponentEntity: {fileID: 2574763365679364848}
   view: {fileID: 956063979351685057}
+  MyGridComponentEntity: {fileID: 2574763365679364848}
   smoothLookAt: {fileID: 3096705272743406140}
   follow_component: {fileID: 4126374631395199217}
-  HasWork: 1
-  inDanger: 0
   villagerName: pedro
   villager_text_name: {fileID: 1123504399505401895}
   debug_state: {fileID: 8446059461341859017}

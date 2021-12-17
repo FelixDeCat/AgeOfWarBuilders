@@ -58,7 +58,7 @@ public class TowerEntity : LivingEntity
         base.OnInitialize();
 
         myThread = GetComponent<Threat>();
-        myThread.Initialize();
+        myThread.Initialize(type);
 
         myGridCompEntity.Grid_Initialize(this.gameObject);
         myGridCompEntity.Grid_Rise();

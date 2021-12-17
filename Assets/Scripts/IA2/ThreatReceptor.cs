@@ -6,9 +6,10 @@ using System.Linq;
 public class ThreatReceptor : MonoBehaviour
 {
 
-
     float timer;
     public float time_to_recalculate_Threat = 0.5f;
+
+    public PlayObjectType preferences;
 
     [SerializeField] Threat[] threats_collection = new Threat[0];
     public IEnumerable<Threat> Threats => threats_collection;
@@ -29,7 +30,7 @@ public class ThreatReceptor : MonoBehaviour
         else
         {
             timer = 0;
-            threats_collection = ThreatManager.GetThreatsAtPoint(transform.position).ToArray();
+            threats_collection = ThreatManager.GetThreatsAtPoint(transform.position).OrderByDescending(x => x.MyType == preferences).ToArray();
         }
     }
 }

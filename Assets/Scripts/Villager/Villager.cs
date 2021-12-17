@@ -63,6 +63,12 @@ public class Villager : LivingEntity
     [SerializeField] TextMeshProUGUI debug_state;
     #endregion
 
+    protected override void OnDeath()
+    {
+        base.OnDeath();
+        Destroy(this.gameObject);
+    }
+
     #region Init / DeInit / Tick
     protected override void OnInitialize()
     {
@@ -92,7 +98,7 @@ public class Villager : LivingEntity
         MyGridComponentEntity.Grid_Rise();
 
         mythreat = GetComponentInChildren<Threat>();
-        mythreat.Initialize();
+        mythreat.Initialize(type);
         mythreat.Rise();
 
         combatComponent.Configure(this.transform, EnemyNear, NoEnemiesNear, x => GoToPositionWithPathFinder(x));

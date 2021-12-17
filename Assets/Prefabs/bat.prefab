@@ -259,6 +259,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5543939540343034662, guid: da95ad43a37fe644b8671d1b65e9e234,
+        type: 3}
+      propertyPath: preferences
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 9113714301347123859, guid: da95ad43a37fe644b8671d1b65e9e234,
         type: 3}
       propertyPath: myAnimator

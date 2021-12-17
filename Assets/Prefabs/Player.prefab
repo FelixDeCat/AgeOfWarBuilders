@@ -717,60 +717,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3222236001984499260
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6887766914776584224}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49b65978002775c4b824383c2d71e62f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnBeginAttack:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3222236002227622497}
-        m_MethodName: UEVENT_Attack
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnEndAttack:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3222236002227622501}
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnFootStep:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3222236002227622502}
-        m_MethodName: Play_Clip_Walk
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &3222236002145817472
 GameObject:
   m_ObjectHideFlags: 0
@@ -858,11 +804,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02e6350669a338c4e9ef885a4b07b51c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
+  type: 5
   spawn_logic: 0
-  CanNotUsePathFinder: 0
+  block_pathfinder_execution: 0
   rig_path_finder: {fileID: 0}
   myRig: {fileID: 0}
+  lerp_pos_time: 1
   initial_hp: 50
   ui_life: {fileID: 3222236000751367828}
   cam: {fileID: 0}
@@ -1019,6 +966,60 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 256
+--- !u!114 &3222236001984499260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6887766914776584224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49b65978002775c4b824383c2d71e62f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnBeginAttack:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3222236002227622497}
+        m_MethodName: UEVENT_Attack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnEndAttack:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3222236002227622501}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnFootStep:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3222236002227622502}
+        m_MethodName: Play_Clip_Walk
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &332180263330565872
 PrefabInstance:
   m_ObjectHideFlags: 0

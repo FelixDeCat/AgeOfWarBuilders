@@ -271,6 +271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   time_to_recalculate_Threat: 0.5
+  preferences: 6
   threats_collection: []
 --- !u!114 &4581924996818045136
 MonoBehaviour:

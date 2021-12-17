@@ -10,7 +10,7 @@ public class Center : LivingEntity
     {
         mythreat = GetComponent<Threat>();
         base.OnInitialize();
-        mythreat.Initialize();
+        mythreat.Initialize(type);
         mythreat.Rise();
         
     }

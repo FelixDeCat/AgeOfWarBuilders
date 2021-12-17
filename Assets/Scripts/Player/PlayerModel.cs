@@ -48,7 +48,7 @@ namespace AgeOfWarBuilders.Entities
             interactor = GetComponent<GenericInteractor>();
             interactor.InitializeInteractor();
             myThread = GetComponent<Threat>();
-            myThread.Initialize();
+            myThread.Initialize(type);
            // myThread.Rise();
             if (playerDamageComponent != null) { playerDamageComponent.AddOwnerTransform(this.transform); playerDamageComponent.Initialize(true);   }
             else throw new System.Exception("No have a [PlayerDamageComponent], plase add to some child object");

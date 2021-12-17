@@ -11,6 +11,8 @@ public class Threat : MonoBehaviour
     public GridComponent myGridComponent;
 
     public int myThreatLevel;
+    PlayObjectType myType;
+    public PlayObjectType MyType =>  myType;
 
     float timer;
 
@@ -20,8 +22,9 @@ public class Threat : MonoBehaviour
         else { timer = 0; myGridComponent.Grid_RefreshComponent(); }
     }
 
-    public void Initialize(Transform target = null)
+    public void Initialize(PlayObjectType _myType, Transform target = null)
     {
+        myType = _myType;
         myGridComponent.Grid_Initialize(target ? target.gameObject : this.gameObject);
         myGridComponent.Grid_Rise();
     }
