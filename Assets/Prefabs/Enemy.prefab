@@ -192,7 +192,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   spawn_logic: 0
-  CanNotUsePathFinder: 0
+  block_pathfinder_execution: 0
   rig_path_finder: {fileID: 7319035039964760279}
   myRig: {fileID: 1254743145520743908}
   lerp_pos_time: 1
@@ -201,6 +201,7 @@ MonoBehaviour:
   damage: 5
   MyGridComponentEntity: {fileID: 4581924996818045136}
   use_protection: 0
+  myAnimEvent: {fileID: 2083981521127974363}
   states:
     rising: {fileID: 1117675470207124148}
     idle: {fileID: 8195001936664688095}

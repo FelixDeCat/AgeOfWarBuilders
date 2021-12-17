@@ -9,6 +9,7 @@ public class AnimEvent : MonoBehaviour
 
     public void ADD_ANIM_EVENT_LISTENER(string parameter, Action callback)
     {
+
         if (!events.ContainsKey(parameter))
         {
             events.Add(parameter, null);

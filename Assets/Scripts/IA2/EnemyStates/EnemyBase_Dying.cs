@@ -7,6 +7,7 @@ public class EnemyBase_Dying : EnemyBaseState
 {
     public override void Enter(EState<Enemy.EnemyInputs> lastState)
     {
+        Debug.Log("Entro al dying STATE");
         base.Enter(lastState);
         own.view.Anim_Death(true);
     }

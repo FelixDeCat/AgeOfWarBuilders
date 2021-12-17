@@ -139,7 +139,6 @@ public class NPC_CombatComponent : MonoBehaviour
             }
             else
             {
-                Debug.Log("Esta cerca");
                 own.StopPathFinder();
 
                 lookat.SetDirection(EnemyDirection);
@@ -147,14 +146,11 @@ public class NPC_CombatComponent : MonoBehaviour
 
                 if (Vector3.Distance(myTransform.position, EnemyPosition) < distance_to_begin_combat)
                 {
-                    Debug.Log("Distancia para atacar");
-
                     own.view.PLAY_ANIM_Attack();
                     //si lo tengo en rango y lo suficientemente cerca coomo para pegarle
                 }
                 else
                 {
-                    Debug.Log("Me tengo que acercar");
                     //si esta en rango y esta lo suficientemente cerca, pero no tanto como para pegarle, lo voy a buscar
                     own.view.PLAY_ANIM_Walk();
                     own.StopPathFinder();

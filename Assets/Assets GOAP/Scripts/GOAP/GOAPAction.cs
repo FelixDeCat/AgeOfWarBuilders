@@ -50,17 +50,17 @@ public class GOAPAction
     //todos tienen que cumplir
     public bool AllPreconditionsMatch(GOAPState world_state)
     {
-        Debug.Log("CheckAction: " + name);
+       //Debug.Log("CheckAction: " + name);
         foreach (var v in new_preconditions)
         {
-            Debug.Log("Precondicion: " + v.Key + " -> StateName: " + world_state.myNameState + " value: <color=" + (v.Value.Invoke(world_state.currentState) ? "green" : "red") + ">" + v.Value.Invoke(world_state.currentState).ToString() + "</color>");
+           // Debug.Log("Precondicion: " + v.Key + " -> StateName: " + world_state.myNameState + " value: <color=" + (v.Value.Invoke(world_state.currentState) ? "green" : "red") + ">" + v.Value.Invoke(world_state.currentState).ToString() + "</color>");
             if (!v.Value.Invoke(world_state.currentState))
             {
-                Debug.Log("<i> { hay uno que no cumple } </i>");
+                //Debug.Log("<i> { hay uno que no cumple } </i>");
                 return false;//si alguna da false, me salgo y cancelo todo
             }
         }
-        Debug.Log("<i> { todos cumplen } </i>");
+        //Debug.Log("<i> { todos cumplen } </i>");
         return true;
     }
 
@@ -82,14 +82,14 @@ public class GOAPAction
     {
         foreach (var v in new_preconditions)
         {
-            Debug.Log("Precondicion: " + v.Key + " -> State: " + world_state.myNameState + " value: " + v.Value.Invoke(world_state.currentState).ToString());
+           // Debug.Log("Precondicion: " + v.Key + " -> State: " + world_state.myNameState + " value: " + v.Value.Invoke(world_state.currentState).ToString());
             if (v.Value.Invoke(world_state.currentState))
             {
-                Debug.Log("Al Menos uno cumple");
+              //  Debug.Log("Al Menos uno cumple");
                 return true;
             }
         }
-        Debug.Log("Ninguno cumple");
+       // Debug.Log("Ninguno cumple");
         return false;
     }
 

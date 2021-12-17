@@ -35,7 +35,7 @@ public class Enemy : LivingEntity
     public EventStateMachine<EnemyInputs> sm;
 
     [System.NonSerialized] public Enemy_Zombie_View view;
-    [System.NonSerialized] public AnimEvent myAnimEvent;
+    [SerializeField] public AnimEvent myAnimEvent;
     [System.NonSerialized] public FindTarget targetFinder;
     [System.NonSerialized] public FollowComponent follow_component;
     Transform playerpos;
@@ -93,7 +93,7 @@ public class Enemy : LivingEntity
 
         smoothLookAt = GetComponentInChildren<SmoothLookAt>();
 
-        myAnimEvent = this.GetComponentInChildren<AnimEvent>();
+        //myAnimEvent = this.GetComponentInChildren<AnimEvent>(false);
         //myAnimEvent.ADD_ANIM_EVENT_LISTENER("OnAttack", ANIM_EVENT_OnAttack);
         myAnimEvent.ADD_ANIM_EVENT_LISTENER("OnDeathFinish", ANIM_EVENT_OnDeathFinish);
         myAnimEvent.ADD_ANIM_EVENT_LISTENER("OnFootStep", view.Play_Clip_Walk);

@@ -107,6 +107,8 @@ public class EnemySpawner : MonoBehaviour
     #region [SHORTS]
     Enemy Spawn()
     {
+        
+
         var e = (Enemy)PlayObject_PoolManager.instance.Get(model[translated_sequence[curretindex]].type, RandomPos(), transform.eulerAngles);
         curretindex++;
         return e;

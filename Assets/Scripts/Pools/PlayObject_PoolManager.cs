@@ -29,6 +29,7 @@ public class PlayObject_PoolManager : MonoBehaviour
             obj.gameObject.SetActive(true);
             obj.gameObject.transform.position = position;
             obj.gameObject.transform.eulerAngles = rotation_euler;
+            Debug.Log("Spawneando :<color=grey>" + obj.name + "</color> - en la posision <color=blue>" + position + "</color>");
             obj.Initialize();
             return obj;
         }

@@ -12,13 +12,15 @@ public class EnemyBase_Rising : EnemyBaseState
         own.view.Anim_Rising();
         own.myAnimEvent.ADD_ANIM_EVENT_LISTENER("EndRising", OnEndRising);
         own.targetFinder.BeginFinding();
+        if (own.type == PlayObjectType.enemy_bat) Debug.Log("<color=green>BEGIN RISING</color>");
     }
 
     void OnEndRising()
     {
-        if (!own.targetFinder.IHaveATarget) { SendInput(Enemy.EnemyInputs.ImRelax); return; }
-        if(!own.QUERY_IsTooClose) SendInput(Enemy.EnemyInputs.MyObjetiveIsFar);
-        else SendInput(Enemy.EnemyInputs.MyObjetiveIsNear);
+        Debug.Log("<color=green>END RISING </color>" + own.name);
+        if (!own.targetFinder.IHaveATarget) { SendInput(Enemy.EnemyInputs.ImRelax); Debug.Log("ENDRISIGN_ " + own.name + "I DON HAVE A TARGET"); return; }
+        if (!own.QUERY_IsTooClose) { SendInput(Enemy.EnemyInputs.MyObjetiveIsFar); Debug.Log("ENDRISIGN_" + own.name + "istoclose"); }
+        else { SendInput(Enemy.EnemyInputs.MyObjetiveIsNear); Debug.Log("ENDRISIGN_ " +own.name + "is far"); }
     }
 
     public override void Exit(Enemy.EnemyInputs input)

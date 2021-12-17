@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Tools.Interfaces;
 
-public enum PlayObjectType { enemy, tower_arrow, tower_bomb, enemy_secondary }
+public enum PlayObjectType { enemy, tower_arrow, tower_bomb, enemy_secondary, enemy_bat }
 public enum spawn_logic { autonomous, belongs_to_a_pool }
 public abstract class PlayObject : MonoBehaviour, IPausable, IResumeable, IUpdateable, IInitializable
 {

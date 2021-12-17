@@ -219,7 +219,7 @@ public class Villager : LivingEntity
         GOAPState to = To();
         List<GOAPAction> actions = new List<GOAPAction>();
         actions = Actions();
-        var plan = planner.Run(from, to, actions, StartCoroutine, x => Debug.Log(x));
+        var plan = planner.Run(from, to, actions, StartCoroutine, x => { /*Debug.Log(x);*/ });
         DebugGOAP(plan);
     }
 
