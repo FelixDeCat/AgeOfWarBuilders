@@ -245,6 +245,7 @@ public class Enemy : LivingEntity
         base.OnDeath();
         SendInput(EnemyInputs.IAmDeath);
         //colorDebug.Change(Color.black);
+        Store.SpawnCoin(this.transform.position);
         myRig.isKinematic = true;
         myRig.velocity = new Vector3(0, 0, 0);
         myRig.detectCollisions = false;
@@ -257,6 +258,7 @@ public class Enemy : LivingEntity
     {
         Debug.Log("Animevent_deathFinish");
         CbkOnDeath?.Invoke(this);
+        
         MyGridComponentEntity.Grid_Deinitialize();
     }
 

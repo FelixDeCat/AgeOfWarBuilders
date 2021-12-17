@@ -40,9 +40,9 @@ public class UI_Villager_Selector : MonoBehaviour
         group.interactable = false;
     }
 
-    public void BTN_Select_Be_Farmer() { if (currentVillager == null) return; currentVillager.ConfigureProfession(VillagerProfesion.farmer); UpdateProfesion(); }
-    public void BTN_Select_Be_LumberJack() { if (currentVillager == null) return; currentVillager.ConfigureProfession(VillagerProfesion.lumberjack); UpdateProfesion(); }
-    public void BTN_Select_Be_Miner() { if (currentVillager == null) return; currentVillager.ConfigureProfession(VillagerProfesion.miner);  UpdateProfesion(); }
+    public void BTN_Select_Be_Farmer() { if (currentVillager == null) return; currentVillager.ConfigureProfession(VillagerProfesion.farmer, true); UpdateProfesion(); }
+    public void BTN_Select_Be_LumberJack() { if (currentVillager == null) return; currentVillager.ConfigureProfession(VillagerProfesion.lumberjack, true); UpdateProfesion(); }
+    public void BTN_Select_Be_Miner() { if (currentVillager == null) return; currentVillager.ConfigureProfession(VillagerProfesion.miner, true);  UpdateProfesion(); }
     public void BTN_Select_Be_Warrior() { if (currentVillager == null) return; currentVillager.ConfigureProfession(VillagerProfesion.warrior);  UpdateProfesion(); }
     public void SetName(string name) { if (currentVillager == null) return; currentVillager.VillagerName = name; inputname.text = name; }
 

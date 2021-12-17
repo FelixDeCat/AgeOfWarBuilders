@@ -71,6 +71,8 @@ public class PlayerDamageComponent : PlayerComponent
             if (liv_ent != null)
             {
                 Debug.Log("Do DAMAGE: {" + damage.Physical_damage + "} => " + liv_ent.gameObject.name);
+
+                if (liv_ent.GetComponent<TowerEntity>() && !OptionTowerDamage.instance.doDamageTowers) return;
                 liv_ent.ReceiveDamage(damage);
             }
         }

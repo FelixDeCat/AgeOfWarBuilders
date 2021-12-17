@@ -25,6 +25,10 @@ public class LivingEntity : WalkingEntity
     {
         life.Heal(val);
     }
+    public void Add_Life(int val)
+    {
+        life.IncreaseLife(val);
+    }
 
     public void ReceiveDamage(int dmg = 5)
     {

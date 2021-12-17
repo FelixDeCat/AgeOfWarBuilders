@@ -25,7 +25,7 @@ namespace AgeOfWarBuilders.Entities
             foreach (var c in clips_Walk) AudioManager.instance.GetSoundPool(c.name, AudioManager.SoundDimesion.TwoD, AudioGroups.GAME_FX, c);
         }
 
-        public void PLay_Hit() { if(hit) hit.Stop(); hit.Play(); }
+        public void PLay_Hit() { if (hit) { hit.Stop(); hit.Play(); } }
         public void Play_Slash() { slash.Stop(); slash.Play(); Play_Clip_SwordWhoosh(); }
         public void BeginMove() => myAnim?.SetBool(names.NAME_ON_MOVE, true);
         public void StopMove() => myAnim?.SetBool(names.NAME_ON_MOVE, false);

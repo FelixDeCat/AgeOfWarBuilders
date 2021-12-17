@@ -374,6 +374,7 @@ public class Villager : LivingEntity
     #region SM
     private void ConfigureFsm(IEnumerable<GOAPAction> plan)
     {
+        if (plan == null) return;
         if (myFsm != null)
         {
             myFsm.Active = false;
@@ -403,11 +404,11 @@ public class Villager : LivingEntity
 
     #endregion
     #region Profession
-    public void ConfigureProfession(VillagerProfesion _profesion)
+    public void ConfigureProfession(VillagerProfesion _profesion, bool obligate_to_work = false)
     {
         profession = _profesion;
         harvester.ReconfigureProfession();
-        Invoke("GoToWork", 0.1f);
+        if(obligate_to_work) Invoke("GoToWork", 0.1f);
     }
 
     public VillagerProfesion GetProfession() => profession;
@@ -424,9 +425,11 @@ public class Villager : LivingEntity
     #region Axiliars DEBUGs
     void DebugGOAP(IEnumerable<GOAPAction> plan)
     {
-        GoapDebug.RefreshState(From());
-        if (plan == null) GoapDebug.Message("El path no contiene elementos");
-        else { GoapDebug.RefresPlan(plan); ConfigureFsm(plan); }
+        //GoapDebug.RefreshState(From());
+        //if (plan == null) GoapDebug.Message("El path no contiene elementos");
+        //else { GoapDebug.RefresPlan(plan); ConfigureFsm(plan); }
+
+        ConfigureFsm(plan);
     }
     public void DebugState(string value) => debug_state.text = value;
     /// <summary>

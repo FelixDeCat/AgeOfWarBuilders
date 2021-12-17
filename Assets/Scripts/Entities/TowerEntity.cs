@@ -11,6 +11,8 @@ public class TowerEntity : LivingEntity
     public float Time_To_Select_Target = 1f;
     protected float timer;
 
+    public static float global_speed_tower_multiplier = 1; 
+
     public Transform shootPoint;
 
     ObserverQuery observer_query;
@@ -51,7 +53,7 @@ public class TowerEntity : LivingEntity
     {
         AudioManager.instance.PlaySound(DestroySound.name, transform);
     }
-
+    bool alreadyAdded = false;
     #region Enter & Exit
     protected override void OnInitialize()
     {
@@ -71,16 +73,30 @@ public class TowerEntity : LivingEntity
         dumper = GetComponentInChildren<NodeDumper>();
         dumper.Rise();
 
+        TryToAddLife();
+
         buildpos = transform.position;
     }
     protected override void OnDeinitialize()
     {
         base.OnDeinitialize();
         myGridCompEntity.Grid_Deinitialize();
-
+        alreadyAdded = false;
         myThread.Deinitialize();
     }
     #endregion
+
+    public void TryToAddLife()
+    {
+        if (BuyItem_LifeTowers.instance)
+        {
+            if (BuyItem_LifeTowers.instance.isActive && !alreadyAdded)
+            {
+                Add_Life(BuyItem_LifeTowers.instance.cantToAdd);
+                alreadyAdded = true;
+            }
+        }
+    }
 
     #region [TICK]
     protected override void OnTick(float DeltaTime)
@@ -126,7 +142,15 @@ public class TowerEntity : LivingEntity
     {
         if (timer < Time_To_Select_Target)
         {
-            timer = timer + 1 * Time.deltaTime;
+            if (BuyItem_FastTower.instance)
+            {
+                timer = timer + (BuyItem_FastTower.instance.isActive ? BuyItem_FastTower.instance.global_speed_modifier : 1f) * Time.deltaTime;
+            }
+            else
+            {
+                timer = timer + 1 * Time.deltaTime;
+            }
+            
         }
         else
         {

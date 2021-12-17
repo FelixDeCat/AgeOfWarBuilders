@@ -1489,9 +1489,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 1
   spawn_logic: 0
-  CanNotUsePathFinder: 0
+  block_pathfinder_execution: 0
   rig_path_finder: {fileID: 0}
   myRig: {fileID: 0}
+  lerp_pos_time: 1
   initial_hp: 100
   ui_life: {fileID: 8445720268739110337}
   currentEnemy: {fileID: 0}
@@ -1503,7 +1504,6 @@ MonoBehaviour:
   TakeDamage: {fileID: 8300000, guid: b3abd64df94d93143a7bcf731d1c1915, type: 3}
   DestroySound: {fileID: 8300000, guid: 9f218663b0a3d0141a9383252ed90acd, type: 3}
   hitTower: {fileID: 5066594044075779394}
-  destroyTower: {fileID: 4744898926332981294}
 --- !u!114 &3465856811935426829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2073,12 +2073,6 @@ PrefabInstance:
 --- !u!4 &5055019927978399649 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1865330114175812623, guid: 168a87fb53627274c830fcd481e54144,
-    type: 3}
-  m_PrefabInstance: {fileID: 6901188140051305390}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &4744898926332981294 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 2169809659099095936, guid: 168a87fb53627274c830fcd481e54144,
     type: 3}
   m_PrefabInstance: {fileID: 6901188140051305390}
   m_PrefabAsset: {fileID: 0}

@@ -427,6 +427,149 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 232062975}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &270842106
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7361003870471011992}
+    m_Modifications:
+    - target: {fileID: 100000, guid: 756d99540142b5e4a8d174e18a6310d9, type: 3}
+      propertyPath: m_Name
+      value: FX_Fire (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 756d99540142b5e4a8d174e18a6310d9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 756d99540142b5e4a8d174e18a6310d9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 756d99540142b5e4a8d174e18a6310d9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.2576228
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 756d99540142b5e4a8d174e18a6310d9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 46.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 756d99540142b5e4a8d174e18a6310d9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 756d99540142b5e4a8d174e18a6310d9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.73445356
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 756d99540142b5e4a8d174e18a6310d9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 756d99540142b5e4a8d174e18a6310d9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.67865896
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 756d99540142b5e4a8d174e18a6310d9, type: 3}
+      propertyPath: m_RootOrder
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 756d99540142b5e4a8d174e18a6310d9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 756d99540142b5e4a8d174e18a6310d9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -94.522
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 756d99540142b5e4a8d174e18a6310d9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 756d99540142b5e4a8d174e18a6310d9, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key2.r
+      value: 0.21960783
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 756d99540142b5e4a8d174e18a6310d9, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key2.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 756d99540142b5e4a8d174e18a6310d9, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key2.b
+      value: 0.6455795
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 756d99540142b5e4a8d174e18a6310d9, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key3.g
+      value: 0.8773585
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 756d99540142b5e4a8d174e18a6310d9, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key3.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 756d99540142b5e4a8d174e18a6310d9, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key3.b
+      value: 0.09805726
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 756d99540142b5e4a8d174e18a6310d9, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key4.r
+      value: 0.048766762
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 756d99540142b5e4a8d174e18a6310d9, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key4.g
+      value: 0.6698113
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 756d99540142b5e4a8d174e18a6310d9, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key4.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 756d99540142b5e4a8d174e18a6310d9, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key5.r
+      value: 0.032828275
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 756d99540142b5e4a8d174e18a6310d9, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key5.g
+      value: 0.23584908
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 756d99540142b5e4a8d174e18a6310d9, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key5.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 756d99540142b5e4a8d174e18a6310d9, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.a
+      value: 0.16078432
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 756d99540142b5e4a8d174e18a6310d9, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.a
+      value: 0.16078432
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 756d99540142b5e4a8d174e18a6310d9, type: 3}
+      propertyPath: ShapeModule.type
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 756d99540142b5e4a8d174e18a6310d9, type: 3}
+      propertyPath: ShapeModule.m_Rotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 756d99540142b5e4a8d174e18a6310d9, type: 3}
+      propertyPath: ShapeModule.m_Scale.z
+      value: 2.9715018
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 756d99540142b5e4a8d174e18a6310d9, type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 756d99540142b5e4a8d174e18a6310d9, type: 3}
+      propertyPath: simulationSpeed
+      value: 3.47
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 756d99540142b5e4a8d174e18a6310d9, type: 3}
+--- !u!4 &270842107 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400000, guid: 756d99540142b5e4a8d174e18a6310d9,
+    type: 3}
+  m_PrefabInstance: {fileID: 270842106}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &287028070
 GameObject:
   m_ObjectHideFlags: 0
@@ -453,7 +596,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 287028070}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.93, y: 0, z: 23.56}
+  m_LocalPosition: {x: 5.53, y: 0, z: 23.63}
   m_LocalScale: {x: 0.1, y: 1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 2023844332}
@@ -505,6 +648,172 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 287028070}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &293950775
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 293950776}
+  - component: {fileID: 293950778}
+  - component: {fileID: 293950777}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &293950776
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293950775}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1784739857}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.59119385, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &293950777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293950775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 4d90019de2481f84a9c788065813c5c6, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &293950778
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293950775}
+  m_CullTransparentMesh: 0
+--- !u!1 &322913786
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 322913787}
+  - component: {fileID: 322913788}
+  m_Layer: 0
+  m_Name: State_Horde (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &322913787
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 322913786}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7361003870618306137}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &322913788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 322913786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33e486a2abef3f945ad524edb210c890, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateName: Horda 3
+  spawners:
+  - {fileID: 7361003872112586069}
+  - {fileID: 2023844333}
+  sequence: 0,0,0,0,0
+--- !u!1 &343754975
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 343754976}
+  - component: {fileID: 343754977}
+  m_Layer: 0
+  m_Name: State_Preparation (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &343754976
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343754975}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7361003870618306137}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &343754977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343754975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 230b097c07d730048a5e9d47225cc70e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateName: preparacion
+  time_to_end: 10
 --- !u!1 &387538054
 GameObject:
   m_ObjectHideFlags: 0
@@ -598,6 +907,143 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 387538054}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &390033804
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 390033805}
+  - component: {fileID: 390033806}
+  m_Layer: 0
+  m_Name: State_Horde (6)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &390033805
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 390033804}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7361003870618306137}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &390033806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 390033804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33e486a2abef3f945ad524edb210c890, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateName: Horda 3
+  spawners:
+  - {fileID: 7361003872112586069}
+  sequence: 1,0,1,0
+--- !u!1 &391516347
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 391516348}
+  - component: {fileID: 391516349}
+  m_Layer: 0
+  m_Name: State_Preparation (6)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &391516348
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 391516347}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7361003870618306137}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &391516349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 391516347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 230b097c07d730048a5e9d47225cc70e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateName: preparacion
+  time_to_end: 10
+--- !u!1 &476014204
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 476014205}
+  - component: {fileID: 476014206}
+  m_Layer: 0
+  m_Name: State_Preparation (5)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &476014205
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 476014204}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7361003870618306137}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &476014206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 476014204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 230b097c07d730048a5e9d47225cc70e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateName: preparacion
+  time_to_end: 10
 --- !u!1001 &492419612
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -658,7 +1104,7 @@ PrefabInstance:
     - target: {fileID: 956063979351685062, guid: ed995806031a19343ac90623d917cbe4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 19
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 956063979351685062, guid: ed995806031a19343ac90623d917cbe4,
         type: 3}
@@ -988,7 +1434,7 @@ PrefabInstance:
     - target: {fileID: 956063979351685062, guid: ed995806031a19343ac90623d917cbe4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 18
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 956063979351685062, guid: ed995806031a19343ac90623d917cbe4,
         type: 3}
@@ -1442,6 +1888,381 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 588422098}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &617332255
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 617332256}
+  - component: {fileID: 617332258}
+  - component: {fileID: 617332257}
+  m_Layer: 5
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &617332256
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 617332255}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1295571072}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.35866785, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &617332257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 617332255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: "player puede da\xF1ar torres"
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_outlineColor:
+    serializedVersion: 2
+    rgba: 4278190080
+  m_fontSize: 7.4
+  m_fontSizeBase: 7.4
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_textAlignment: 4098
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_firstOverflowCharacterIndex: -1
+  m_linkedTextComponent: {fileID: 0}
+  m_isLinkedTextComponent: 0
+  m_isTextTruncated: 0
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_ignoreRectMaskCulling: 0
+  m_ignoreCulling: 1
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_VertexBufferAutoSizeReduction: 1
+  m_firstVisibleCharacter: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_textInfo:
+    textComponent: {fileID: 617332257}
+    characterCount: 25
+    spriteCount: 0
+    spaceCount: 3
+    wordCount: 4
+    linkCount: 0
+    lineCount: 2
+    pageCount: 1
+    materialCount: 1
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_spriteAnimator: {fileID: 0}
+  m_hasFontAssetChanged: 0
+  m_subTextObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &617332258
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 617332255}
+  m_CullTransparentMesh: 0
+--- !u!1 &625885775
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 625885776}
+  - component: {fileID: 625885778}
+  - component: {fileID: 625885777}
+  - component: {fileID: 625885779}
+  m_Layer: 5
+  m_Name: Content
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &625885776
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 625885775}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 657165744}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0.8756979}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &625885777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 625885775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.89411765}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &625885778
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 625885775}
+  m_CullTransparentMesh: 0
+--- !u!114 &625885779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 625885775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 1
+    m_Right: 1
+    m_Top: 1
+    m_Bottom: 1
+  m_ChildAlignment: 4
+  m_Spacing: 2
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+--- !u!1 &657165743
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 657165744}
+  - component: {fileID: 657165745}
+  - component: {fileID: 657165746}
+  m_Layer: 5
+  m_Name: UI_Store
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &657165744
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 657165743}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1479744336}
+  - {fileID: 625885776}
+  m_Father: {fileID: 7361003871434928017}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.46216226, y: 0.22493096}
+  m_AnchorMax: {x: 0.97875, y: 0.8357608}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &657165745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 657165743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ea4ca5851ad79142896933e36526a95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parent: {fileID: 625885776}
+  model: {fileID: 252915025274784588, guid: 03f3ac84eda49d843be6e422a9b0503d, type: 3}
+  canvasGroup: {fileID: 657165746}
+--- !u!225 &657165746
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 657165743}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
+--- !u!1 &747728934
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 747728935}
+  - component: {fileID: 747728936}
+  m_Layer: 0
+  m_Name: Store
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &747728935
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 747728934}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7361003870908764755}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &747728936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 747728934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dac889adf6fe18488a72e0ecbb3339b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coins_value: {fileID: 993848749}
+  clip_take_coin: {fileID: 8300000, guid: f0a61b21c6c92544ca5e97977ce8d72d, type: 3}
+  clip_buy: {fileID: 8300000, guid: 47d88ceef1d177d4090a8f8ebdf14959, type: 3}
+  coin_model: {fileID: 659760389321652461, guid: 6b7a770123587ab4ebb31984e9bf15f6,
+    type: 3}
+  ui: {fileID: 657165745}
+  database:
+  - {fileID: 11400000, guid: 3dd753f5e48c9b2489f9ee56a8ad477f, type: 2}
+  - {fileID: 11400000, guid: 606320dabd112894aa31fe6fc26aa503, type: 2}
+  - {fileID: 11400000, guid: e459d319b43c2284d8dc29a04a151195, type: 2}
+  - {fileID: 11400000, guid: 67dea19b95494494497571ce8a1584ce, type: 2}
+  - {fileID: 11400000, guid: 8631e85c3e1e71e4e98e920aa3a0bb35, type: 2}
 --- !u!1 &788684111
 GameObject:
   m_ObjectHideFlags: 0
@@ -1534,6 +2355,79 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 788684111}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &811340445
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 811340446}
+  - component: {fileID: 811340448}
+  - component: {fileID: 811340447}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &811340446
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 811340445}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 956830216}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.59119385, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &811340447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 811340445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 974577563860017414, guid: 24bd98369990dfe44ae72e549c5ba841, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &811340448
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 811340445}
+  m_CullTransparentMesh: 0
 --- !u!1 &857787389
 GameObject:
   m_ObjectHideFlags: 0
@@ -1560,7 +2454,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 857787389}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.56, y: 0, z: 15.67}
+  m_LocalPosition: {x: 2.72, y: 0, z: 22.68}
   m_LocalScale: {x: 0.1, y: 1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 2023844332}
@@ -1797,6 +2691,254 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 917786955}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &956830215
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 956830216}
+  - component: {fileID: 956830217}
+  m_Layer: 5
+  m_Name: Coins (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &956830216
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 956830215}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 811340446}
+  - {fileID: 1654167307}
+  m_Father: {fileID: 7361003871434928017}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.90120256, y: 0.7663446}
+  m_AnchorMax: {x: 0.9918159, y: 0.8470421}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &956830217
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 956830215}
+  m_CullTransparentMesh: 0
+--- !u!1 &976474369
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 976474370}
+  - component: {fileID: 976474371}
+  m_Layer: 0
+  m_Name: State_Horde (5)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &976474370
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976474369}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7361003870618306137}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &976474371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976474369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33e486a2abef3f945ad524edb210c890, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateName: Horda 3
+  spawners:
+  - {fileID: 7361003872112586069}
+  sequence: 1,0,1,0
+--- !u!1 &993848747
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 993848748}
+  - component: {fileID: 993848750}
+  - component: {fileID: 993848749}
+  m_Layer: 5
+  m_Name: value
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &993848748
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993848747}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1784739857}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.59119385, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &993848749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993848747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 0
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_outlineColor:
+    serializedVersion: 2
+    rgba: 4278190080
+  m_fontSize: 14
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 10
+  m_fontSizeMax: 14
+  m_fontStyle: 0
+  m_textAlignment: 8194
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_firstOverflowCharacterIndex: -1
+  m_linkedTextComponent: {fileID: 0}
+  m_isLinkedTextComponent: 0
+  m_isTextTruncated: 0
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_ignoreRectMaskCulling: 0
+  m_ignoreCulling: 1
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_VertexBufferAutoSizeReduction: 1
+  m_firstVisibleCharacter: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_textInfo:
+    textComponent: {fileID: 993848749}
+    characterCount: 1
+    spriteCount: 0
+    spaceCount: 0
+    wordCount: 1
+    linkCount: 0
+    lineCount: 1
+    pageCount: 1
+    materialCount: 1
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_spriteAnimator: {fileID: 0}
+  m_hasFontAssetChanged: 0
+  m_subTextObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &993848750
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993848747}
+  m_CullTransparentMesh: 0
 --- !u!1 &1041008558
 GameObject:
   m_ObjectHideFlags: 0
@@ -1955,6 +3097,126 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1047131965}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1060698007
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1060698008}
+  - component: {fileID: 1060698010}
+  - component: {fileID: 1060698009}
+  m_Layer: 5
+  m_Name: Checkmark
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1060698008
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1060698007}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1819659352}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 20, y: 20}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1060698009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1060698007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1060698010
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1060698007}
+  m_CullTransparentMesh: 0
+--- !u!1 &1061276870
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1061276871}
+  - component: {fileID: 1061276872}
+  m_Layer: 0
+  m_Name: State_Horde (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1061276871
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1061276870}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7361003870618306137}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1061276872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1061276870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33e486a2abef3f945ad524edb210c890, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateName: Horda 3
+  spawners:
+  - {fileID: 7361003872112586069}
+  sequence: 1
 --- !u!1 &1147370318
 GameObject:
   m_ObjectHideFlags: 0
@@ -2232,6 +3494,116 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1218508681}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1295571071
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1295571072}
+  - component: {fileID: 1295571073}
+  - component: {fileID: 1295571074}
+  m_Layer: 5
+  m_Name: Toggle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1295571072
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1295571071}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1819659352}
+  - {fileID: 617332256}
+  m_Father: {fileID: 7361003871434928017}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.090137765, y: 0.0423356}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1295571073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1295571071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1819659353}
+  toggleTransition: 1
+  graphic: {fileID: 1060698009}
+  m_Group: {fileID: 0}
+  onValueChanged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1295571074}
+        m_MethodName: ChangeValue
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_IsOn: 1
+--- !u!114 &1295571074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1295571071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4b2bef2fd26bfb4490b1903649280fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doDamageTowers: 0
 --- !u!1 &1476323740
 GameObject:
   m_ObjectHideFlags: 0
@@ -2324,6 +3696,125 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1476323740}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1479744335
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1479744336}
+  - component: {fileID: 1479744338}
+  - component: {fileID: 1479744337}
+  m_Layer: 5
+  m_Name: Title
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1479744336
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1479744335}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1953436552}
+  m_Father: {fileID: 657165744}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.8756979}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1479744337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1479744335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1479744338
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1479744335}
+  m_CullTransparentMesh: 0
+--- !u!1 &1536196580
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1536196581}
+  - component: {fileID: 1536196582}
+  m_Layer: 0
+  m_Name: State_Preparation (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1536196581
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1536196580}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7361003870618306137}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1536196582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1536196580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 230b097c07d730048a5e9d47225cc70e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateName: preparacion
+  time_to_end: 10
 --- !u!1 &1537188180
 GameObject:
   m_ObjectHideFlags: 0
@@ -2415,6 +3906,163 @@ Transform:
   m_Father: {fileID: 7361003870923441791}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 42.455, y: 117.590004, z: 167.12001}
+--- !u!1 &1654167306
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1654167307}
+  - component: {fileID: 1654167309}
+  - component: {fileID: 1654167308}
+  m_Layer: 5
+  m_Name: value
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1654167307
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1654167306}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 956830216}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.59119385, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1654167308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1654167306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 'Open
+
+    Store'
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_outlineColor:
+    serializedVersion: 2
+    rgba: 4278190080
+  m_fontSize: 14
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 10
+  m_fontSizeMax: 14
+  m_fontStyle: 0
+  m_textAlignment: 4098
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_firstOverflowCharacterIndex: -1
+  m_linkedTextComponent: {fileID: 0}
+  m_isLinkedTextComponent: 0
+  m_isTextTruncated: 0
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_ignoreRectMaskCulling: 0
+  m_ignoreCulling: 1
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_VertexBufferAutoSizeReduction: 1
+  m_firstVisibleCharacter: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_textInfo:
+    textComponent: {fileID: 1654167308}
+    characterCount: 10
+    spriteCount: 0
+    spaceCount: 1
+    wordCount: 2
+    linkCount: 0
+    lineCount: 2
+    pageCount: 1
+    materialCount: 1
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_spriteAnimator: {fileID: 0}
+  m_hasFontAssetChanged: 0
+  m_subTextObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1654167309
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1654167306}
+  m_CullTransparentMesh: 0
 --- !u!1 &1740831717
 GameObject:
   m_ObjectHideFlags: 0
@@ -2493,6 +4141,126 @@ MonoBehaviour:
     type: 3}
   parent: {fileID: 1741791758}
   ParticleName: destroyTower
+--- !u!1 &1784739856
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1784739857}
+  - component: {fileID: 1784739858}
+  m_Layer: 5
+  m_Name: Coins
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1784739857
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1784739856}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 293950776}
+  - {fileID: 993848748}
+  m_Father: {fileID: 7361003871434928017}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.90120256, y: 0.85509}
+  m_AnchorMax: {x: 0.9918159, y: 0.91989803}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1784739858
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1784739856}
+  m_CullTransparentMesh: 0
+--- !u!1 &1819659351
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1819659352}
+  - component: {fileID: 1819659354}
+  - component: {fileID: 1819659353}
+  m_Layer: 5
+  m_Name: Background
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1819659352
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1819659351}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1060698008}
+  m_Father: {fileID: 1295571072}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 10, y: -10}
+  m_SizeDelta: {x: 20, y: 20}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1819659353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1819659351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1819659354
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1819659351}
+  m_CullTransparentMesh: 0
 --- !u!1 &1830553458
 GameObject:
   m_ObjectHideFlags: 0
@@ -2700,6 +4468,161 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1926208211}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1953436551
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1953436552}
+  - component: {fileID: 1953436554}
+  - component: {fileID: 1953436553}
+  m_Layer: 5
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1953436552
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953436551}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1479744336}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1953436553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953436551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: STORE
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_outlineColor:
+    serializedVersion: 2
+    rgba: 4278190080
+  m_fontSize: 15
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 10
+  m_fontSizeMax: 15
+  m_fontStyle: 1
+  m_textAlignment: 8194
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_firstOverflowCharacterIndex: -1
+  m_linkedTextComponent: {fileID: 0}
+  m_isLinkedTextComponent: 0
+  m_isTextTruncated: 0
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_ignoreRectMaskCulling: 0
+  m_ignoreCulling: 1
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_VertexBufferAutoSizeReduction: 1
+  m_firstVisibleCharacter: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_textInfo:
+    textComponent: {fileID: 1953436553}
+    characterCount: 5
+    spriteCount: 0
+    spaceCount: 0
+    wordCount: 1
+    linkCount: 0
+    lineCount: 1
+    pageCount: 1
+    materialCount: 1
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_spriteAnimator: {fileID: 0}
+  m_hasFontAssetChanged: 0
+  m_subTextObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1953436554
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953436551}
+  m_CullTransparentMesh: 0
 --- !u!1001 &1957561003
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2937,7 +4860,7 @@ GameObject:
   - component: {fileID: 2023844332}
   - component: {fileID: 2023844333}
   m_Layer: 0
-  m_Name: EnemySpawner (1)
+  m_Name: EnemySpawner bats
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2951,7 +4874,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2023844331}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.3, y: 0, z: 18.5}
+  m_LocalPosition: {x: -1.48, y: 0, z: 23.04}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 857787390}
@@ -2974,8 +4897,6 @@ MonoBehaviour:
   from: {fileID: 857787390}
   to: {fileID: 287028071}
   model:
-  - {fileID: 1254743145520743905, guid: da95ad43a37fe644b8671d1b65e9e234, type: 3}
-  - {fileID: 4184575681916895333, guid: b3d39d460b2ee6b418ffc9ba512654f0, type: 3}
   - {fileID: 4689798197143512592, guid: 67f862650d22a154fbbaec57803e60d3, type: 3}
   parent: {fileID: 7361003871700555816}
   use_sequence: 1
@@ -3103,7 +5024,7 @@ PrefabInstance:
     - target: {fileID: 7302216524232587574, guid: bc88658bbe6c1da4eaf05158729ca9f7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.557
+      value: -1.49
       objectReference: {fileID: 0}
     - target: {fileID: 7302216524232587574, guid: bc88658bbe6c1da4eaf05158729ca9f7,
         type: 3}
@@ -3113,7 +5034,7 @@ PrefabInstance:
     - target: {fileID: 7302216524232587574, guid: bc88658bbe6c1da4eaf05158729ca9f7,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -21.46
+      value: -22.47
       objectReference: {fileID: 0}
     - target: {fileID: 7302216524232587574, guid: bc88658bbe6c1da4eaf05158729ca9f7,
         type: 3}
@@ -3238,6 +5159,55 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 402108458282585839}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &659760389707619055
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 659760389321652456, guid: 6b7a770123587ab4ebb31984e9bf15f6,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 659760389321652456, guid: 6b7a770123587ab4ebb31984e9bf15f6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 659760389321652456, guid: 6b7a770123587ab4ebb31984e9bf15f6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 659760389321652456, guid: 6b7a770123587ab4ebb31984e9bf15f6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 659760389321652456, guid: 6b7a770123587ab4ebb31984e9bf15f6,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 659760389321652456, guid: 6b7a770123587ab4ebb31984e9bf15f6,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 20.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 659760389321652456, guid: 6b7a770123587ab4ebb31984e9bf15f6,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 659760389321652461, guid: 6b7a770123587ab4ebb31984e9bf15f6,
+        type: 3}
+      propertyPath: m_Name
+      value: coin_recolectable
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6b7a770123587ab4ebb31984e9bf15f6, type: 3}
 --- !u!1001 &1039044392883370192
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3248,7 +5218,7 @@ PrefabInstance:
     - target: {fileID: 7515636259499677552, guid: 54a5fb5854732a5498f9780c7acd081c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.66
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 7515636259499677552, guid: 54a5fb5854732a5498f9780c7acd081c,
         type: 3}
@@ -3258,7 +5228,7 @@ PrefabInstance:
     - target: {fileID: 7515636259499677552, guid: 54a5fb5854732a5498f9780c7acd081c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -22.98
+      value: -24.51
       objectReference: {fileID: 0}
     - target: {fileID: 7515636259499677552, guid: 54a5fb5854732a5498f9780c7acd081c,
         type: 3}
@@ -3330,6 +5300,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7361003870923441791}
     m_Modifications:
+    - target: {fileID: 956063979351685056, guid: ed995806031a19343ac90623d917cbe4,
+        type: 3}
+      propertyPath: profession
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 956063979351685061, guid: ed995806031a19343ac90623d917cbe4,
         type: 3}
       propertyPath: m_Name
@@ -3801,7 +5776,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870040408519}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -3889,7 +5864,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -4475,7 +6450,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870047467031}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -4572,7 +6547,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -4822,7 +6797,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870062746083}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -4912,7 +6887,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -5225,7 +7200,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -5259,7 +7234,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870076003202}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -5511,7 +7486,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870088139921}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -5593,7 +7568,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -5918,7 +7893,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -5938,7 +7913,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870092585652}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -6114,7 +8089,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -6134,7 +8109,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870093945978}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -6563,7 +8538,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870107801832}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -6718,7 +8693,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -6767,7 +8742,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -6787,7 +8762,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870108396644}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -6922,7 +8897,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870108668102}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -7079,7 +9054,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -7127,7 +9102,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870109112158}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -7281,7 +9256,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -7563,7 +9538,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870116474981}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -7655,7 +9630,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -7751,7 +9726,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870131672943}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -7846,7 +9821,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -8088,7 +10063,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870146700363}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -8176,7 +10151,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -8317,7 +10292,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870152037430}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -8471,7 +10446,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -8907,7 +10882,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7770419, y: 1}
+    m_SensorSize: {x: 1.7748344, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -9435,7 +11410,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -9538,7 +11513,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870187936901}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -10050,7 +12025,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870215113777}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -10144,7 +12119,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -11051,7 +13026,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870245711181}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -11144,7 +13119,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -11502,7 +13477,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870253179183}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -11591,7 +13566,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -12113,7 +14088,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870273847319}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -12205,7 +14180,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -12581,7 +14556,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -12601,7 +14576,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870282796654}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -12771,7 +14746,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -12791,7 +14766,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870286886230}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -13127,7 +15102,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -13223,7 +15198,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870296189251}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -13506,12 +15481,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870303627536}
-  m_LocalRotation: {x: 0.18287717, y: 0.005415304, z: -0.001007339, w: 0.9831204}
+  m_LocalRotation: {x: 0.18287718, y: 0.00540858, z: -0.0010060882, w: 0.98312044}
   m_LocalPosition: {x: 13.14, y: 4.379365, z: 1.7138348}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7361003870908764755}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 24.79, y: 0, z: 0}
 --- !u!1 &7361003870303627536
 GameObject:
@@ -14653,7 +16628,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7361003870908764755}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7361003870346238777
 GameObject:
@@ -14714,7 +16689,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870350456681}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -14806,7 +16781,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -14880,7 +16855,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870352063460}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -15034,7 +17009,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -15218,7 +17193,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870362963882}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -15373,7 +17348,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -15599,7 +17574,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -15619,7 +17594,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870374836140}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -15738,7 +17713,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870377801338}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -15890,7 +17865,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -16058,7 +18033,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870380730340}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -16216,7 +18191,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -16639,7 +18614,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870398562810}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -16800,7 +18775,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -16850,7 +18825,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870399087793}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -16940,7 +18915,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -17313,7 +19288,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -17347,7 +19322,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870408137408}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -17666,7 +19641,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -17686,7 +19661,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870415363644}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -18075,7 +20050,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870427808894}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -18229,7 +20204,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -18346,7 +20321,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870431029823}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -18436,7 +20411,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -18905,7 +20880,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870462273426}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -19055,7 +21030,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -19111,6 +21086,7 @@ Transform:
   - {fileID: 7361003871461332135}
   - {fileID: 7361003870766663344}
   - {fileID: 7361003871463213960}
+  - {fileID: 270842107}
   m_Father: {fileID: 7361003871134624182}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -19524,7 +21500,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870486642232}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -19675,7 +21651,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -19709,7 +21685,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870490362398}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -19862,7 +21838,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -19896,7 +21872,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870499027150}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -20056,7 +22032,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -20348,7 +22324,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870510991929}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -20446,7 +22422,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -20587,7 +22563,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870514216844}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -20746,7 +22722,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -20796,7 +22772,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870519189981}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -20887,7 +22863,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -21096,7 +23072,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -21116,7 +23092,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870523411318}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -21689,7 +23665,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7770419, y: 1}
+    m_SensorSize: {x: 1.7748344, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -21705,7 +23681,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870537185105}
-  m_LocalRotation: {x: 0.14217316, y: 0.0100965835, z: -0.0014502713, w: 0.98978925}
+  m_LocalRotation: {x: 0.14217319, y: 0.010084047, z: -0.0014484706, w: 0.9897894}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -22436,7 +24412,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -22456,7 +24432,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870575484592}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -22748,7 +24724,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870578136467}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -22830,7 +24806,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -23084,7 +25060,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -23104,7 +25080,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870589002614}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -23245,7 +25221,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870594369247}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -23338,7 +25314,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -23636,7 +25612,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870608933918}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -23795,7 +25771,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -23851,7 +25827,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870611591359}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -23948,7 +25924,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -24075,7 +26051,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -24095,7 +26071,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870615183898}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -24230,7 +26206,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870617690381}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -24320,7 +26296,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -24407,7 +26383,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870618207778}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -24560,7 +26536,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -24605,6 +26581,14 @@ Transform:
   - {fileID: 7361003872089505115}
   - {fileID: 7361003871804205655}
   - {fileID: 7361003870651947015}
+  - {fileID: 343754976}
+  - {fileID: 1061276871}
+  - {fileID: 1536196581}
+  - {fileID: 322913787}
+  - {fileID: 476014205}
+  - {fileID: 976474370}
+  - {fileID: 391516348}
+  - {fileID: 390033805}
   - {fileID: 7361003870643600049}
   m_Father: {fileID: 7361003871438664552}
   m_RootOrder: 1
@@ -24751,7 +26735,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870626788426}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -24911,7 +26895,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -25136,7 +27120,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7361003870618306137}
-  m_RootOrder: 6
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &7361003870646787533
 PrefabInstance:
@@ -25578,7 +27562,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870652335435}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -25673,7 +27657,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -26385,7 +28369,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870669393197}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -26478,7 +28462,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -26655,7 +28639,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870679752519}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -26742,7 +28726,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -27350,7 +29334,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870692084952}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -27503,7 +29487,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -27796,7 +29780,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -27816,7 +29800,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870704133138}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -28181,7 +30165,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870713790581}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -28732,7 +30716,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870737147984}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -28882,7 +30866,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -29011,7 +30995,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870744587627}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -29090,7 +31074,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -29340,7 +31324,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -29360,7 +31344,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870748724024}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -29698,7 +31682,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870760224573}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -29788,7 +31772,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -30502,7 +32486,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -30536,7 +32520,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870773708866}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -30828,7 +32812,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870780812033}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -30925,7 +32909,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -30962,7 +32946,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870784218071}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -31042,7 +33026,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -31242,7 +33226,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870799925875}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -31331,7 +33315,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -31527,7 +33511,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870807115711}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -31615,7 +33599,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -31909,7 +33893,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870816311236}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -32061,7 +34045,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -32117,7 +34101,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870816575753}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -32209,7 +34193,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -32305,7 +34289,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870821917869}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -32402,7 +34386,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -32476,7 +34460,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870824731320}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -32629,7 +34613,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -32754,7 +34738,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870833235871}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -32836,7 +34820,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -33054,7 +35038,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870848373409}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -33142,7 +35126,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -33534,7 +35518,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870871842313}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -33622,7 +35606,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -33945,7 +35929,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870889782323}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -34035,7 +36019,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -34237,7 +36221,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870900862053}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -34318,7 +36302,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -34427,7 +36411,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870906165115}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -34515,7 +36499,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -34602,6 +36586,7 @@ Transform:
   - {fileID: 7361003870706372442}
   - {fileID: 7361003870205560887}
   - {fileID: 7361003870643354866}
+  - {fileID: 747728935}
   - {fileID: 7361003870346238774}
   - {fileID: 7361003871790574153}
   - {fileID: 7361003870303627535}
@@ -34710,7 +36695,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870912354618}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -34867,7 +36852,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -34992,7 +36977,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870922755643}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -35082,7 +37067,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -35267,7 +37252,6 @@ Transform:
   - {fileID: 1039044392883370193}
   - {fileID: 8881707828983951837}
   - {fileID: 4469876081854546813}
-  - {fileID: 7646874292379810006}
   - {fileID: 510436192}
   - {fileID: 492419613}
   m_Father: {fileID: 0}
@@ -35453,7 +37437,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870927696897}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -35549,7 +37533,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -35749,7 +37733,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870943296763}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -35838,7 +37822,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -35941,7 +37925,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870948547003}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -36028,7 +38012,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -36137,7 +38121,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870949883641}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -36226,7 +38210,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -36427,7 +38411,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870968273637}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -36522,7 +38506,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -36696,7 +38680,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -36730,7 +38714,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870968537604}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -36934,7 +38918,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003870977951502}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -37089,7 +39073,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -38017,7 +40001,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871007588017}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -38106,7 +40090,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -38193,7 +40177,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871013401928}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -38347,7 +40331,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -38464,7 +40448,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871017602191}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -38549,7 +40533,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -38906,7 +40890,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871027844220}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -39063,7 +41047,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -39493,7 +41477,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871037284590}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -39643,7 +41627,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -39699,7 +41683,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871039954869}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -39789,7 +41773,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -39949,7 +41933,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -40045,7 +42029,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871047404677}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -40119,7 +42103,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -40222,7 +42206,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871052190533}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -40581,7 +42565,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871058958921}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -40669,7 +42653,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -41037,7 +43021,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871062030968}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -41189,7 +43173,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -41238,7 +43222,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7770419, y: 1}
+    m_SensorSize: {x: 1.7748344, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -41254,7 +43238,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871063674935}
-  m_LocalRotation: {x: 0.19475454, y: -0.000000016876918, z: 0.0000000033510221, w: 0.980852}
+  m_LocalRotation: {x: 0.19475454, y: 0.000000016876909, z: -0.0000000033510201, w: 0.980852}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -41732,7 +43716,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871078932009}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -41821,7 +43805,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -42295,7 +44279,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871093067026}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -42450,7 +44434,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -42597,7 +44581,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -42617,7 +44601,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871101895678}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -42752,7 +44736,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871103199907}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -42834,7 +44818,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -43273,7 +45257,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871125382590}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -43427,7 +45411,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -43607,7 +45591,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871131612046}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -43760,7 +45744,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -43850,7 +45834,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871138218987}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -43946,7 +45930,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -44208,7 +46192,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871146451689}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -44294,7 +46278,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -44403,7 +46387,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871146494003}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -44490,7 +46474,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -44642,7 +46626,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871151854772}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -44802,7 +46786,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -44931,7 +46915,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -44965,7 +46949,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871154769668}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -45047,7 +47031,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871154800523}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -45146,7 +47130,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -45376,7 +47360,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871164949613}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -45468,7 +47452,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -45669,7 +47653,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871175905379}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -45762,7 +47746,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -46095,7 +48079,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -46115,7 +48099,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871188924846}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -46305,7 +48289,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871194548806}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -46458,7 +48442,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -46528,7 +48512,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871197311069}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -46617,7 +48601,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -47096,7 +49080,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871220911651}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -47185,7 +49169,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -47595,7 +49579,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871238357414}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -47753,7 +49737,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -47840,7 +49824,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -47860,7 +49844,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871238550950}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -48391,7 +50375,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -48411,7 +50395,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871250272944}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -48683,7 +50667,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871264426059}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -48772,7 +50756,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -49521,7 +51505,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871282900660}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -49672,7 +51656,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -50410,7 +52394,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -50444,7 +52428,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871303471300}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -50916,7 +52900,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871318023289}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -51008,7 +52992,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -51453,7 +53437,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871324957411}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -51542,7 +53526,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -51817,7 +53801,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871334125255}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -51905,7 +53889,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -52139,7 +54123,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871338645744}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -52295,7 +54279,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -52345,7 +54329,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871339170787}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -52432,7 +54416,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -52671,7 +54655,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871348101032}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -52825,7 +54809,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -53072,7 +55056,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871357516840}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -53227,7 +55211,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -53414,7 +55398,7 @@ Transform:
   - {fileID: 5623870754839644845}
   - {fileID: 7361003871602675059}
   m_Father: {fileID: 7361003870908764755}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7361003871359700642
 MonoBehaviour:
@@ -53492,7 +55476,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -53512,7 +55496,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871359700650}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -53653,7 +55637,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871362827899}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -53745,7 +55729,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -54694,7 +56678,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -54714,7 +56698,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871388391098}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -54956,7 +56940,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -55052,7 +57036,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871396876869}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -55250,7 +57234,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871402161972}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -55404,7 +57388,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -55816,7 +57800,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871415215406}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -55967,7 +57951,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -56440,7 +58424,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871423591614}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -56590,7 +58574,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -57054,6 +59038,10 @@ RectTransform:
   - {fileID: 7361003870587252456}
   - {fileID: 7361003871417043418}
   - {fileID: 7361003871914224145}
+  - {fileID: 657165744}
+  - {fileID: 1784739857}
+  - {fileID: 956830216}
+  - {fileID: 1295571072}
   m_Father: {fileID: 7361003870423009764}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -57466,7 +59454,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871461031133}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -57549,7 +59537,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -58491,7 +60479,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -58511,7 +60499,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871481492992}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -58593,7 +60581,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871482831646}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -58750,7 +60738,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -58873,7 +60861,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871493281227}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -58971,7 +60959,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -59268,7 +61256,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871501212568}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -59418,7 +61406,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -59474,7 +61462,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871501897651}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -59564,7 +61552,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -59732,7 +61720,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871503728799}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -59827,7 +61815,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -59990,7 +61978,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871509943755}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -60083,7 +62071,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -60554,7 +62542,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871535427785}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -60643,7 +62631,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -61003,7 +62991,7 @@ MonoBehaviour:
   clamp_to_floor: 0
   rename: 0
   dist_to_eliminate: 0.1
-  switch_UseGrids: 0
+  switch_UseGrids: 1
   switch_render: 0
   draw_neighbors: 0
   draw_radius: 0
@@ -61576,7 +63564,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871559031417}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -61673,7 +63661,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -61747,7 +63735,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871563793950}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -61907,7 +63895,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -63139,7 +65127,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871603341914}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -63292,7 +65280,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -63422,7 +65410,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -63456,7 +65444,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871604252676}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -63532,7 +65520,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871605571657}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -63618,7 +65606,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -63794,7 +65782,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871618802643}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -63893,7 +65881,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -64107,7 +66095,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871628132446}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -64261,7 +66249,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -64311,7 +66299,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871630756449}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -64400,7 +66388,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -64584,7 +66572,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7361003871632270745
 RectTransform:
   m_ObjectHideFlags: 0
@@ -64643,7 +66631,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871639395427}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -64727,7 +66715,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -64830,7 +66818,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871642048811}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -64912,7 +66900,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -65178,7 +67166,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -65198,7 +67186,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871664121444}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -65339,7 +67327,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871667781367}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -65436,7 +67424,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -65715,7 +67703,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871675832136}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -65868,7 +67856,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -66163,7 +68151,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871679515921}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -66253,7 +68241,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -66911,7 +68899,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871703849215}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -67003,7 +68991,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -67316,7 +69304,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871708073304}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -67471,7 +69459,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -67626,7 +69614,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -67722,7 +69710,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871708447237}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -67790,7 +69778,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871709742473}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -67880,7 +69868,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -67967,7 +69955,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871713661128}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -68118,7 +70106,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -68152,7 +70140,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871714643962}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -68306,7 +70294,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -68407,7 +70395,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871722129006}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -68565,7 +70553,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -68615,7 +70603,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871722275229}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -68701,7 +70689,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -68877,7 +70865,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871731456369}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -68966,7 +70954,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -69139,7 +71127,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871733608427}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -69235,7 +71223,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -69602,7 +71590,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -69698,7 +71686,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871742896515}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -69795,7 +71783,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871743738621}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -69877,7 +71865,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -69972,8 +71960,7 @@ MonoBehaviour:
   stateName: Horda 1
   spawners:
   - {fileID: 7361003872112586069}
-  - {fileID: 2023844333}
-  sequence: 0,1,2
+  sequence: 0
 --- !u!1 &7361003871744803827
 GameObject:
   m_ObjectHideFlags: 0
@@ -70102,7 +72089,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871765624741}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -70193,7 +72180,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -70786,7 +72773,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871784992605}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -70868,7 +72855,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -71069,7 +73056,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7770419, y: 1}
+    m_SensorSize: {x: 1.7748344, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -71158,7 +73145,7 @@ Transform:
   - {fileID: 7361003870537185103}
   - {fileID: 7361003871063674933}
   m_Father: {fileID: 7361003870908764755}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7361003871790574155
 GameObject:
@@ -71278,7 +73265,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871795706982}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -71431,7 +73418,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -71584,7 +73571,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871802057157}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -71674,7 +73661,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -71764,7 +73751,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871802165199}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -71851,7 +73838,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -72005,7 +73992,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871806427771}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -72095,7 +74082,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -72545,7 +74532,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -72565,7 +74552,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871809697550}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -72850,7 +74837,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -72870,7 +74857,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871828336844}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -73294,7 +75281,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871844667217}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -73384,7 +75371,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -73510,7 +75497,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871860939437}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -73603,7 +75590,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -74412,7 +76399,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871876206986}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -74563,7 +76550,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -74698,7 +76685,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871881599797}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -74786,7 +76773,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -74882,7 +76869,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871882259787}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -74970,7 +76957,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -75074,7 +77061,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -75108,7 +77095,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871883395072}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -75475,7 +77462,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -75495,7 +77482,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871892534318}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -75781,7 +77768,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871897304966}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -75939,7 +77926,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -76547,7 +78534,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871925847127}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -76644,7 +78631,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -76740,7 +78727,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871926108875}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -76831,7 +78818,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -77385,7 +79372,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871950912026}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -77539,7 +79526,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -77656,7 +79643,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871976563349}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -77740,7 +79727,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -77844,7 +79831,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -77864,7 +79851,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871977486184}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -78424,7 +80411,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -78444,7 +80431,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003871990487872}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -78702,7 +80689,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003872001295330}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -78854,7 +80841,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -79060,7 +81047,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003872008543884}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -79216,7 +81203,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -80282,7 +82269,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003872066304926}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -80435,7 +82422,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -80469,7 +82456,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003872066662407}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -80562,7 +82549,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -80731,7 +82718,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003872069314068}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -80880,7 +82867,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -80936,7 +82923,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003872069621415}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -81026,7 +83013,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -81100,7 +83087,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003872071347274}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -81259,7 +83246,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -81696,7 +83683,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003872084744127}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -81791,7 +83778,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -81859,7 +83846,8 @@ MonoBehaviour:
   stateName: Horda 2
   spawners:
   - {fileID: 7361003872112586069}
-  sequence: 0,1,2
+  - {fileID: 2023844333}
+  sequence: 0
 --- !u!1 &7361003872089505114
 GameObject:
   m_ObjectHideFlags: 0
@@ -82065,7 +84053,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -82085,7 +84073,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003872094965342}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -82442,7 +84430,6 @@ MonoBehaviour:
   model:
   - {fileID: 1254743145520743905, guid: da95ad43a37fe644b8671d1b65e9e234, type: 3}
   - {fileID: 4184575681916895333, guid: b3d39d460b2ee6b418ffc9ba512654f0, type: 3}
-  - {fileID: 4689798197143512592, guid: 67f862650d22a154fbbaec57803e60d3, type: 3}
   parent: {fileID: 7361003871700555816}
   use_sequence: 1
   sequence: 1
@@ -82641,7 +84628,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003872122693936}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -82797,7 +84784,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -83075,7 +85062,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003872134075119}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -83170,7 +85157,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -83340,7 +85327,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003872154789937}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -83430,7 +85417,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -83929,7 +85916,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003872170632385}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -84022,7 +86009,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -84211,7 +86198,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7361003872181294253}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -84302,7 +86289,7 @@ MonoBehaviour:
   radius_to_find: 5
   distance_to_delete: 0.2
   render:
-    draw_gizmos: 0
+    draw_gizmos: 1
     draw_radius: 0
     draw_neighbors: 1
     connectionColor: {r: 0, g: 1, b: 0.097970724, a: 1}
@@ -84355,81 +86342,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1001 &7646874292379810005
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 7361003870923441791}
-    m_Modifications:
-    - target: {fileID: 880644639659276963, guid: ad3e7e2604ddc394da404a266719196d,
-        type: 3}
-      propertyPath: m_Name
-      value: Heal
-      objectReference: {fileID: 0}
-    - target: {fileID: 880644639659276965, guid: ad3e7e2604ddc394da404a266719196d,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.5538006
-      objectReference: {fileID: 0}
-    - target: {fileID: 880644639659276965, guid: ad3e7e2604ddc394da404a266719196d,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.41949704
-      objectReference: {fileID: 0}
-    - target: {fileID: 880644639659276965, guid: ad3e7e2604ddc394da404a266719196d,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -24.828154
-      objectReference: {fileID: 0}
-    - target: {fileID: 880644639659276965, guid: ad3e7e2604ddc394da404a266719196d,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 880644639659276965, guid: ad3e7e2604ddc394da404a266719196d,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 880644639659276965, guid: ad3e7e2604ddc394da404a266719196d,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 880644639659276965, guid: ad3e7e2604ddc394da404a266719196d,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 880644639659276965, guid: ad3e7e2604ddc394da404a266719196d,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 17
-      objectReference: {fileID: 0}
-    - target: {fileID: 880644639659276965, guid: ad3e7e2604ddc394da404a266719196d,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 880644639659276965, guid: ad3e7e2604ddc394da404a266719196d,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 880644639659276965, guid: ad3e7e2604ddc394da404a266719196d,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: ad3e7e2604ddc394da404a266719196d, type: 3}
---- !u!4 &7646874292379810006 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 880644639659276965, guid: ad3e7e2604ddc394da404a266719196d,
-    type: 3}
-  m_PrefabInstance: {fileID: 7646874292379810005}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8083080079627232690
 PrefabInstance:
   m_ObjectHideFlags: 0
