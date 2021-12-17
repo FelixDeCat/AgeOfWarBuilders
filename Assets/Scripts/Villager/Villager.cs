@@ -23,7 +23,7 @@ public class Villager : LivingEntity
     public bool HasWork = true;
     public bool inDanger = false;
     [SerializeField] internal GOAPVillagerValueConditions queryvalues;
-    public const int EMPTY = 0;
+    public const int EMPTY = 0; 
     public const int FILL = 100;
     #endregion
     #region variables_health
